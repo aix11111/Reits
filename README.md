@@ -1,6 +1,6 @@
 # REITsMonitor
 
-**China's first open, structured operational dataset for public REITs — plus the post-investment analytics that only an industry insider can write.**
+**A structured operational dataset for China's public REITs, with post-investment analytics.**
 
 > 中国公募REITs投后经营数据基础设施 + 投后分析规则引擎
 
@@ -13,7 +13,7 @@ China's public REITs (公募REITs) market launched in 2021 and now spans 70+ fun
 - Market data (price, volume) is freely available via libraries like `akshare` — that's the easy part.
 - **Operational data** — toll revenue, traffic volume, distributable amount, NOI, NAV — is scattered across hundreds of PDF announcements on exchange websites, in inconsistent formats, with no API.
 
-Wind and Choice have this data — behind expensive paywalls. **No one maintains it in the open.** That's the gap this project fills.
+Wind and Choice have this data — behind expensive paywalls. This project opens up that data layer.
 
 This is not another price-charting dashboard. The dataset is the product; the app is its interface.
 
@@ -80,12 +80,6 @@ tests/                  pytest suite
 - [x] **Phase 1** — Highway REITs: single-fund operational dashboard + dataset foundation
 - [ ] **Phase 2** — Peer benchmarking: cross-fund ranking, industry averages
 - [ ] **Phase 3** — Full market (70+ funds) + NAV premium/discount, FFO-yield ranking, user-uploaded asset comparison
-
-## Why this matters
-
-- **For analysts / post-investment teams** — free, structured operational data that previously required Wind/Choice licenses or hours of PDF digging
-- **For researchers** — the first open dataset of China REIT operational performance
-- **Built by someone who did the job** — the metrics and rules come from real post-investment work at a state-owned fund, not from a textbook
 
 ---
 

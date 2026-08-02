@@ -19,6 +19,27 @@ import fitz
 
 TRAFFIC_HEADER = "日均收费车流量（辆次）"
 REVENUE_HEADER = "路费收入（人民币，万元，含增值税）"
+TRAFFIC_HEADER_RE = re.compile(r"日均(?:收费|自然)车流量（辆次）")
+REVENUE_HEADER_RE = re.compile(r"(?:路费|通行费)收入（人民币，万元，含增值税）")
+VALUE_TOKEN_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
+BARE_YEAR_RE = re.compile(r"20\d{2}$")
+LABEL_TOKENS = {
+    "当月",
+    "环比",
+    "同比",
+    "变动",
+    "累计",
+    "月份",
+    "项目",
+    "本月",
+    "本期",
+    "本年",
+    "当年",
+    "本年累计",
+    "当年累计",
+    "月",
+    "年",
+}
 NOTE_MARKERS = ("备注", "注：")
 PERIOD_ANCHOR = "主要运营数据"
 ARABIC_PERIOD_RE = re.compile(r"(\d{4})\s*年\s*(\d{1,2})\s*月")
@@ -26,6 +47,7 @@ CN_DIGITS = "〇零一二三四五六七八九十"
 CN_PERIOD_RE = re.compile(rf"([{CN_DIGITS}]{{4}})年([{CN_DIGITS}]+)月")
 LABEL_CHARS = set("当月环比同比变动累计年")
 NUMBER_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
+NAME_NUMBER_RE = re.compile(r"^(.*?)(-?\d[\d,]*(?:\.\d+)?%?)$")
 
 
 def extract_text(pdf_path: Path) -> str:
@@ -174,6 +196,135 @@ def parse_generic_monthly(text: str) -> dict:
             f"运营数据数值不足，期望 10 个，实际 {len(numbers)} 个"
         )
 
+    traffic, revenue = numbers[:5], numbers[5:10]
+    return {
+        "period": period,
+        "project_name": project_name,
+        "daily_traffic": _to_number(traffic[0]),
+        "traffic_mom": _to_number(traffic[1]),
+        "traffic_yoy": _to_number(traffic[2]),
+        "traffic_cum": _to_number(traffic[3]),
+        "traffic_cum_yoy": _to_number(traffic[4]),
+        "toll_revenue_wan": _to_number(revenue[0]),
+        "revenue_mom": _to_number(revenue[1]),
+        "revenue_yoy": _to_number(revenue[2]),
+        "revenue_cum": _to_number(revenue[3]),
+        "revenue_cum_yoy": _to_number(revenue[4]),
+    }
+
+
+def _is_label_token(token: str) -> bool:
+    """判断文本流 token 是否为表头标签碎片（当月/环比/变动/2026年/2026年累 等）。"""
+    s = token.strip()
+    if not s:
+        return True
+    if s in LABEL_TOKENS:
+        return True
+    if re.fullmatch(r"20\d{2}年(?:累?计?)?", s):
+        return True
+    if BARE_YEAR_RE.match(s):
+        return True
+    return all(ch in LABEL_CHARS for ch in s)
+
+
+def _split_name_number(token: str):
+    """拆分“名称+数值”黏连的 token（如 6月45237 → (“6月”, “45237”)）。
+
+    若 token 尾部是数值则拆分，否则返回 (None, None)。
+    """
+    m = NAME_NUMBER_RE.match(token)
+    if m and m.group(1):
+        return m.group(1), m.group(2)
+    return None, None
+
+
+def parse_pdf(pdf_path: Path) -> dict:
+    """坐标版解析月度运营公告 PDF，覆盖多表头措辞与单项目“月份”列格式。
+
+    用 fitz 按文本块坐标定位「日均(收费|自然)车流量（辆次）」与
+    「(路费|通行费)收入（人民币，万元，含增值税）」两个表头，在其下方
+    按行顺序跳过标签、识别项目名、收集 10 个数值；报告期复用 _parse_period。
+    """
+    text = extract_text(pdf_path)
+
+    traffic_header_block = None
+    revenue_header_block = None
+    traffic_header_page = None
+    revenue_header_page = None
+    with fitz.open(str(pdf_path)) as doc:
+        for pno, page in enumerate(doc):
+            for block in page.get_text("blocks"):
+                bbox_text = block[4]
+                if traffic_header_block is None and TRAFFIC_HEADER_RE.search(bbox_text):
+                    traffic_header_block = block
+                    traffic_header_page = pno
+                if revenue_header_block is None and REVENUE_HEADER_RE.search(bbox_text):
+                    revenue_header_block = block
+                    revenue_header_page = pno
+                if traffic_header_block is not None and revenue_header_block is not None:
+                    break
+            if traffic_header_block is not None and revenue_header_block is not None:
+                break
+
+    if traffic_header_block is None:
+        raise ValueError("公告缺少“日均（收费/自然）车流量（辆次）”表头")
+    if revenue_header_block is None:
+        raise ValueError("公告缺少“（路费/通行费）收入（人民币，万元，含增值税）”表头")
+
+    header_page = max(traffic_header_page, revenue_header_page)
+    data_start_y = max(
+        traffic_header_block[3] if traffic_header_page == header_page else 0,
+        revenue_header_block[3] if revenue_header_page == header_page else 0,
+    )
+
+    project_name = None
+    numbers = []
+    blocks = []
+    with fitz.open(str(pdf_path)) as doc:
+        for pno, page in enumerate(doc):
+            if pno < header_page:
+                continue
+            for block in page.get_text("blocks"):
+                blocks.append((pno, block))
+    blocks.sort(key=lambda item: (item[0], item[1][1]))
+
+    for pno, block in blocks:
+        if pno == header_page and block[1] < data_start_y:
+            continue
+        block_text = block[4]
+        note_idx = _find_note_start(block_text, 0)
+        truncated = note_idx != len(block_text)
+        if truncated:
+            block_text = block_text[:note_idx]
+        for token in block_text.split():
+            if _is_label_token(token):
+                continue
+            name_part, num_part = _split_name_number(token)
+            if num_part is not None:
+                if project_name is None and name_part and not _is_label_token(name_part):
+                    project_name = name_part
+                numbers.append(num_part)
+                if len(numbers) >= 12:
+                    break
+                continue
+            if project_name is None and not VALUE_TOKEN_RE.fullmatch(token):
+                project_name = token
+                continue
+            if VALUE_TOKEN_RE.fullmatch(token):
+                numbers.append(token)
+                if len(numbers) >= 12:
+                    break
+        if truncated or len(numbers) >= 12:
+            break
+
+    if len(numbers) < 10:
+        raise ValueError(
+            f"运营数据数值不足，期望 10 个，实际 {len(numbers)} 个"
+        )
+    if not project_name:
+        raise ValueError("未找到数据行项目名")
+
+    period = _parse_period(text)
     traffic, revenue = numbers[:5], numbers[5:10]
     return {
         "period": period,

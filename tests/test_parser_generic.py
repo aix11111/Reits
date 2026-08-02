@@ -115,6 +115,79 @@ EXPECTED = {
     },
 }
 
+EXPECTED_PDF = {
+    "monthly_508009_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "沿江高速",
+        "daily_traffic": 19761,
+        "traffic_mom": 12.55,
+        "traffic_yoy": -2.12,
+        "traffic_cum": 20633,
+        "traffic_cum_yoy": -9.08,
+        "toll_revenue_wan": 7186,
+        "revenue_mom": 6.94,
+        "revenue_yoy": -4.73,
+        "revenue_cum": 42354,
+        "revenue_cum_yoy": -8.98,
+    },
+    "monthly_508007_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "鄄菏高速",
+        "daily_traffic": 18835,
+        "traffic_mom": 16.7,
+        "traffic_yoy": 0.4,
+        "traffic_cum": 18132,
+        "traffic_cum_yoy": -3.8,
+        "toll_revenue_wan": 2165,
+        "revenue_mom": 12.4,
+        "revenue_yoy": -1.0,
+        "revenue_cum": 12127,
+        "revenue_cum_yoy": -7.4,
+    },
+    "monthly_508036_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "6月",
+        "daily_traffic": 57911,
+        "traffic_mom": 17.67,
+        "traffic_yoy": -1.06,
+        "traffic_cum": 52099,
+        "traffic_cum_yoy": -4.53,
+        "toll_revenue_wan": 19042,
+        "revenue_mom": 9.19,
+        "revenue_yoy": -1.15,
+        "revenue_cum": 104686,
+        "revenue_cum_yoy": -4.58,
+    },
+    "monthly_508020_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "6月",
+        "daily_traffic": 45237,
+        "traffic_mom": 5.12,
+        "traffic_yoy": 59.06,
+        "traffic_cum": 44301,
+        "traffic_cum_yoy": 80.04,
+        "toll_revenue_wan": 4595.85,
+        "revenue_mom": 2.03,
+        "revenue_yoy": 58.44,
+        "revenue_cum": 26294.52,
+        "revenue_cum_yoy": 64.28,
+    },
+    "monthly_508069_202605.pdf": {
+        "period": "2026-04",
+        "project_name": "2026年4月",
+        "daily_traffic": 37908,
+        "traffic_mom": -5.5,
+        "traffic_yoy": -8.0,
+        "traffic_cum": 38802,
+        "traffic_cum_yoy": -4.1,
+        "toll_revenue_wan": 3917,
+        "revenue_mom": -10.8,
+        "revenue_yoy": -5.5,
+        "revenue_cum": 15711,
+        "revenue_cum_yoy": 0.2,
+    },
+}
+
 VALUE_KEYS = (
     "daily_traffic",
     "traffic_mom",
@@ -138,6 +211,18 @@ def test_parse_generic_monthly_real_pdf(pdf_name):
     text = _fixture_text(pdf_name)
     result = parser_generic.parse_generic_monthly(text)
     exp = EXPECTED[pdf_name]
+
+    assert result["period"] == exp["period"]
+    assert result["project_name"] == exp["project_name"]
+    for key in VALUE_KEYS:
+        assert result[key] == pytest.approx(exp[key])
+
+
+@pytest.mark.parametrize("pdf_name", list(EXPECTED_PDF))
+def test_parse_pdf_real_pdf(pdf_name):
+    """坐标版 parse_pdf 覆盖 5 种新公告格式（含“自然/通行费”表头与单项目月份列）。"""
+    result = parser_generic.parse_pdf(FIXTURES_DIR / pdf_name)
+    exp = EXPECTED_PDF[pdf_name]
 
     assert result["period"] == exp["period"]
     assert result["project_name"] == exp["project_name"]

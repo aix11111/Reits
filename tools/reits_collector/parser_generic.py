@@ -46,7 +46,7 @@ PERIOD_ANCHOR = r"主要(?:运营|经营)数据"
 ARABIC_PERIOD_RE = re.compile(r"(\d{4})\s*年\s*(\d{1,2})\s*月")
 CN_DIGITS = "〇零一二三四五六七八九十"
 CN_PERIOD_RE = re.compile(rf"([{CN_DIGITS}]{{4}})年([{CN_DIGITS}]+)月")
-LABEL_CHARS = set("当月环比同比变动累计年")
+LABEL_CHARS = set("当月环比同比变动累计年化")
 NUMBER_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
 NAME_NUMBER_RE = re.compile(r"^(.*?)(-?\d[\d,]*(?:\.\d+)?%?)$")
 

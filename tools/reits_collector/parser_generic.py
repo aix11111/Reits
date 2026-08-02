@@ -158,6 +158,11 @@ def parse_generic_monthly(text: str) -> dict:
     while index < len(lines) and not _has_number(lines[index]):
         project_parts.append("".join(lines[index].split()))
         index += 1
+    if index < len(lines):
+        first = NUMBER_RE.search(lines[index])
+        prefix = "".join(lines[index][:first.start()].split())
+        if prefix:
+            project_parts.append(prefix)
     project_name = "".join(project_parts)
     if not project_name:
         raise ValueError("未找到数据行项目名")

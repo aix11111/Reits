@@ -85,6 +85,34 @@ EXPECTED = {
         "revenue_cum": 35975,
         "revenue_cum_yoy": -1.22,
     },
+    "monthly_180202_202605.pdf": {
+        "period": "2026-05",
+        "project_name": "湖北汉孝高速",
+        "daily_traffic": 27250,
+        "traffic_mom": -10.5,
+        "traffic_yoy": -3.9,
+        "traffic_cum": 34326,
+        "traffic_cum_yoy": -0.9,
+        "toll_revenue_wan": 1651,
+        "revenue_mom": -6.4,
+        "revenue_yoy": -1.1,
+        "revenue_cum": 9515,
+        "revenue_cum_yoy": 0.6,
+    },
+    "monthly_180202_202310.pdf": {
+        "period": "2023-09",
+        "project_name": "湖北汉孝高速",
+        "daily_traffic": 31714,
+        "traffic_mom": -14.5,
+        "traffic_yoy": 24.0,
+        "traffic_cum": 33674,
+        "traffic_cum_yoy": 17.1,
+        "toll_revenue_wan": 2014,
+        "revenue_mom": -12.0,
+        "revenue_yoy": 19.7,
+        "revenue_cum": 18682,
+        "revenue_cum_yoy": 16.8,
+    },
 }
 
 VALUE_KEYS = (
@@ -173,6 +201,36 @@ def test_note_numbers_are_not_mixed_into_values():
     assert result["traffic_cum"] == pytest.approx(49136)
     assert result["toll_revenue_wan"] == pytest.approx(4389.39)
     assert result["revenue_cum_yoy"] == pytest.approx(20.10)
+
+
+def test_parse_generic_monthly_with_project_name_on_value_line():
+    """项目名与第一个数值在同一行（如“湖北汉孝高速 27,250”）也能正确解析。"""
+    text = (
+        "关于二〇二六年六月主要运营数据的公告\n"
+        "项目\n"
+        "日均收费车流量（辆次）\n"
+        "路费收入（人民币，万元，含增值税）\n"
+        "当月\n当月环比\n变动\n当月同比\n变动\n2026年\n累计\n累计同比\n变动\n"
+        "当月\n当月环比\n变动\n当月同比\n变动\n2026年\n累计\n累计同比\n变动\n"
+        "测试高速 100,000\n"
+        "5.0% -1.0% 90,000 3.0%\n"
+        "5,000 10.0% -4.0% 40,000 -2.5%\n"
+        "备注："
+    )
+
+    result = parser_generic.parse_generic_monthly(text)
+
+    assert result["project_name"] == "测试高速"
+    assert result["daily_traffic"] == pytest.approx(100000)
+    assert result["traffic_mom"] == pytest.approx(5.0)
+    assert result["traffic_yoy"] == pytest.approx(-1.0)
+    assert result["traffic_cum"] == pytest.approx(90000)
+    assert result["traffic_cum_yoy"] == pytest.approx(3.0)
+    assert result["toll_revenue_wan"] == pytest.approx(5000)
+    assert result["revenue_mom"] == pytest.approx(10.0)
+    assert result["revenue_yoy"] == pytest.approx(-4.0)
+    assert result["revenue_cum"] == pytest.approx(40000)
+    assert result["revenue_cum_yoy"] == pytest.approx(-2.5)
 
 
 def test_parse_generic_monthly_raises_without_table_headers():

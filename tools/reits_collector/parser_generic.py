@@ -20,7 +20,7 @@ import fitz
 TRAFFIC_HEADER = "日均收费车流量（辆次）"
 REVENUE_HEADER = "路费收入（人民币，万元，含增值税）"
 TRAFFIC_HEADER_RE = re.compile(r"日均(?:收费|自然)车流量（辆次）")
-REVENUE_HEADER_RE = re.compile(r"(?:路费|通行费)收入（人民币，万元，含增值税）")
+REVENUE_HEADER_RE = re.compile(r"(?:路费|通行费)收入（人民币，万元，含增值税）?")
 VALUE_TOKEN_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
 BARE_YEAR_RE = re.compile(r"20\d{2}$")
 LABEL_TOKENS = {
@@ -41,7 +41,7 @@ LABEL_TOKENS = {
     "年",
 }
 NOTE_MARKERS = ("备注", "注：")
-PERIOD_ANCHOR = "主要运营数据"
+PERIOD_ANCHOR = r"主要(?:运营|经营)数据"
 ARABIC_PERIOD_RE = re.compile(r"(\d{4})\s*年\s*(\d{1,2})\s*月")
 CN_DIGITS = "〇零一二三四五六七八九十"
 CN_PERIOD_RE = re.compile(rf"([{CN_DIGITS}]{{4}})年([{CN_DIGITS}]+)月")
@@ -227,6 +227,16 @@ def _is_label_token(token: str) -> bool:
     return all(ch in LABEL_CHARS for ch in s)
 
 
+def _is_label_fragment(s: str) -> bool:
+    """判断是否为纯表头标签碎片（如 年/月/当/累 等单个表头用字）。"""
+    return bool(s) and all(ch in LABEL_CHARS for ch in s)
+
+
+def _is_data_value(token: str) -> bool:
+    """是否为真实数据数值（排除被当作表头标签的裸年份，如 2026/2024）。"""
+    return bool(VALUE_TOKEN_RE.fullmatch(token)) and not re.fullmatch(r"20\d{2}", token)
+
+
 def _split_name_number(token: str):
     """拆分“名称+数值”黏连的 token（如 6月45237 → (“6月”, “45237”)）。
 
@@ -236,6 +246,44 @@ def _split_name_number(token: str):
     if m and m.group(1):
         return m.group(1), m.group(2)
     return None, None
+
+
+NAME_ENUM_RE = re.compile(r"[（(][一二三四五六七八九十]{1,3}[）)]")
+NAME_FRAGMENT_RE = re.compile(
+    r"(?<![\u4e00-\u9fa5])([\u4e00-\u9fa5]{1,8}(?:高速|公路|大桥|隧道))(?![一-龥])"
+)
+
+
+def _extract_name_fragment(text: str):
+    """从文本中提取含 高速/公路/大桥/隧道 且去空白后长度 ≤ 12 的名称片段。
+
+    仅接受以中文连续片段且关键词位于边界处的候选（避免误取正文长句），
+    并剔除“（一）”等章节编号前缀（如「（一）杭徽高速2026…」→「杭徽高速」）。
+    """
+    cleaned = NAME_ENUM_RE.sub("", text)
+    for m in NAME_FRAGMENT_RE.finditer(cleaned):
+        fragment = m.group(1)
+        if len(fragment) <= 12:
+            return fragment
+    return None
+
+
+def _fallback_project_name(blocks, header_page: int, data_start_y: float):
+    """全块范围检索含 高速/公路/大桥/隧道 的名称片段作为项目名兜底。
+
+    用于项目名未直接出现在数据行（如浙商沪杭甬 508001 公告把项目名放在表头
+    上方标题「（一）杭徽高速…主要经营数据」，或单独一行、跨块换行包绕）的格式。
+    跳过备注区，避免正文中的「杭徽全程」等片段误入。
+    """
+    for pno, block in reversed(blocks):
+        text = block[4]
+        note_idx = _find_note_start(text, 0)
+        if note_idx != len(text):
+            text = text[:note_idx]
+        fragment = _extract_name_fragment(text)
+        if fragment:
+            return fragment
+    return None
 
 
 def parse_pdf(pdf_path: Path) -> dict:
@@ -277,7 +325,7 @@ def parse_pdf(pdf_path: Path) -> dict:
         revenue_header_block[3] if revenue_header_page == header_page else 0,
     )
 
-    project_name = None
+    project_parts = []
     numbers = []
     blocks = []
     with fitz.open(str(pdf_path)) as doc:
@@ -296,31 +344,71 @@ def parse_pdf(pdf_path: Path) -> dict:
         truncated = note_idx != len(block_text)
         if truncated:
             block_text = block_text[:note_idx]
-        for token in block_text.split():
-            if _is_label_token(token):
+        block_tokens = block_text.split()
+        if not numbers and all(
+            _is_label_token(t) for t in block_tokens if t.strip()
+        ):
+            continue
+        pending_year = None
+        for token in block_tokens:
+            if not token.strip():
+                continue
+            if numbers:
+                if _is_data_value(token):
+                    numbers.append(token)
+                    if len(numbers) >= 12:
+                        break
                 continue
             name_part, num_part = _split_name_number(token)
             if num_part is not None:
-                if project_name is None and name_part and not _is_label_token(name_part):
-                    project_name = name_part
+                if name_part and _is_label_fragment(name_part):
+                    if not project_parts and pending_year:
+                        project_parts.append(pending_year)
+                        pending_year = None
+                    project_parts.append(token)
+                    continue
+                if not project_parts and name_part and not _is_label_token(name_part):
+                    project_parts.append(name_part)
                 numbers.append(num_part)
                 if len(numbers) >= 12:
                     break
                 continue
-            if project_name is None and not VALUE_TOKEN_RE.fullmatch(token):
-                project_name = token
+            if project_parts:
+                if _is_data_value(token):
+                    numbers.append(token)
+                    if len(numbers) >= 12:
+                        break
+                elif token == "月" and re.search(
+                    r"年\d{1,2}$", "".join(project_parts)
+                ):
+                    project_parts.append(token)
+                elif not _is_label_token(token):
+                    project_parts.append(token)
+                continue
+            if BARE_YEAR_RE.match(token):
+                pending_year = token
+                continue
+            if _is_label_token(token):
                 continue
             if VALUE_TOKEN_RE.fullmatch(token):
                 numbers.append(token)
                 if len(numbers) >= 12:
                     break
+                continue
+            if pending_year and ("年" in token or "月" in token):
+                project_parts.append(pending_year)
+            project_parts.append(token)
+            pending_year = None
         if truncated or len(numbers) >= 12:
             break
 
+    project_name = "".join(project_parts)
     if len(numbers) < 10:
         raise ValueError(
             f"运营数据数值不足，期望 10 个，实际 {len(numbers)} 个"
         )
+    if not project_name:
+        project_name = _fallback_project_name(blocks, header_page, data_start_y)
     if not project_name:
         raise ValueError("未找到数据行项目名")
 

@@ -186,6 +186,79 @@ EXPECTED_PDF = {
         "revenue_cum": 15711,
         "revenue_cum_yoy": 0.2,
     },
+    "monthly_508001_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "杭徽高速",
+        "daily_traffic": 25325,
+        "traffic_mom": 62.19,
+        "traffic_yoy": 5.34,
+        "traffic_cum": 25243,
+        "traffic_cum_yoy": 2.11,
+        "toll_revenue_wan": 6033.63,
+        "revenue_mom": 24.35,
+        "revenue_yoy": 12.41,
+        "revenue_cum": 35211.53,
+        "revenue_cum_yoy": 1.80,
+    },
+    "monthly_508001_202407.pdf": {
+        "period": "2024-06",
+        "project_name": "杭徽高速",
+        "project_name_in": True,
+        "daily_traffic": 26653,
+        "traffic_mom": 0.06,
+        "traffic_yoy": -2.66,
+        "traffic_cum": 29951,
+        "traffic_cum_yoy": -2.68,
+        "toll_revenue_wan": 6025.09,
+        "revenue_mom": 9.49,
+        "revenue_yoy": -4.24,
+        "revenue_cum": 36615.84,
+        "revenue_cum_yoy": 0.33,
+    },
+    "monthly_508001_202309.pdf": {
+        "period": "2023-09",
+        "project_name": "杭徽高速",
+        "project_name_in": True,
+        "daily_traffic": 27360,
+        "traffic_mom": -20.74,
+        "traffic_yoy": 11.59,
+        "traffic_cum": 29390,
+        "traffic_cum_yoy": 24.56,
+        "toll_revenue_wan": 6289.54,
+        "revenue_mom": -21.25,
+        "revenue_yoy": 10.77,
+        "revenue_cum": 57887,
+        "revenue_cum_yoy": 22.46,
+    },
+    "monthly_508033_202602.pdf": {
+        "period": "2026-02",
+        "project_name": "2026年2月",
+        "daily_traffic": 57259,
+        "traffic_mom": 20.9,
+        "traffic_yoy": 19.2,
+        "traffic_cum": 52053,
+        "traffic_cum_yoy": -5.5,
+        "toll_revenue_wan": 3265.27,
+        "revenue_mom": 4.9,
+        "revenue_yoy": 20.0,
+        "revenue_cum": 6377.32,
+        "revenue_cum_yoy": -2.5,
+    },
+    "monthly_508033_202605.pdf": {
+        "period": "2026-05",
+        "project_name": "5月",
+        "project_name_in": True,
+        "daily_traffic": 36715,
+        "traffic_mom": -6.4,
+        "traffic_yoy": -5.0,
+        "traffic_cum": 45913,
+        "traffic_cum_yoy": -0.6,
+        "toll_revenue_wan": 2507.10,
+        "revenue_mom": -2.0,
+        "revenue_yoy": -4.2,
+        "revenue_cum": 14813.81,
+        "revenue_cum_yoy": 1.8,
+    },
 }
 
 VALUE_KEYS = (
@@ -220,12 +293,15 @@ def test_parse_generic_monthly_real_pdf(pdf_name):
 
 @pytest.mark.parametrize("pdf_name", list(EXPECTED_PDF))
 def test_parse_pdf_real_pdf(pdf_name):
-    """坐标版 parse_pdf 覆盖 5 种新公告格式（含“自然/通行费”表头与单项目月份列）。"""
+    """坐标版 parse_pdf 覆盖多种新公告格式（含“自然/通行费”表头与单项目月份列）。"""
     result = parser_generic.parse_pdf(FIXTURES_DIR / pdf_name)
     exp = EXPECTED_PDF[pdf_name]
 
     assert result["period"] == exp["period"]
-    assert result["project_name"] == exp["project_name"]
+    if exp.get("project_name_in"):
+        assert exp["project_name"] in result["project_name"]
+    else:
+        assert result["project_name"] == exp["project_name"]
     for key in VALUE_KEYS:
         assert result[key] == pytest.approx(exp[key])
 

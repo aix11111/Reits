@@ -96,7 +96,7 @@ def test_list_announcements_returns_items_with_required_keys(monkeypatch):
     assert payload.get("stock") == "180201,gssz0180201"
     assert payload.get("seDate") == "2026-06-01~2026-06-30"
     assert payload.get("pageNum") == 1
-    assert payload.get("pageSize") == 100
+    assert payload.get("pageSize") == 30
     assert payload.get("tabName") == "fulltext"
     assert sent["headers"].get("Referer") == REFERER
     assert sent["headers"].get("User-Agent")
@@ -113,11 +113,49 @@ def test_list_announcements_accepts_custom_page_size(monkeypatch):
     monkeypatch.setattr(requests, "post", fake_post)
 
     cninfo.list_announcements(
-        "180201", "gssz0180201", "2026-06-01", "2026-06-30", page_size=50
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30", page_size=20
     )
 
     payload = sent["data"] or sent["params"] or {}
-    assert payload.get("pageSize") == 50
+    assert payload.get("pageSize") == 20
+
+
+def test_list_announcements_clamps_page_size_to_30(monkeypatch):
+    """巨潮单页上限 30：page_size 超限时必须 clamp，否则翻页数据全部重复。"""
+    sent = {}
+
+    def fake_post(url, **kwargs):
+        sent["params"] = kwargs.get("params")
+        sent["data"] = kwargs.get("data")
+        return FakeResponse(json_data={"announcements": []})
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30", page_size=100
+    )
+
+    payload = sent["data"] or sent["params"] or {}
+    assert payload.get("pageSize") == 30
+
+
+def test_list_announcements_page_size_30_not_clamped_down(monkeypatch):
+    """边界值 30 应原样下发，不做无谓的 clamp。"""
+    sent = {}
+
+    def fake_post(url, **kwargs):
+        sent["params"] = kwargs.get("params")
+        sent["data"] = kwargs.get("data")
+        return FakeResponse(json_data={"announcements": []})
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30", page_size=30
+    )
+
+    payload = sent["data"] or sent["params"] or {}
+    assert payload.get("pageSize") == 30
 
 
 def test_list_announcements_paginates_over_pages(monkeypatch):
@@ -171,6 +209,108 @@ def test_list_announcements_paginates_over_pages(monkeypatch):
         "公告三",
     ]
     assert sent_pages == [1, 2]
+
+
+def test_list_announcements_fetches_beyond_unreliable_totalpages(monkeypatch):
+    """接口 totalpages 向下取整不可靠（实为 2 页却返回 1）时仍应拉全所有页。"""
+    sent_pages = []
+
+    def make_item(i):
+        return {
+            "announcementTitle": f"公告{i}",
+            "adjunctUrl": f"/new/details/{i}.html",
+            "announcementTime": 1780000000000 + i,
+        }
+
+    def fake_post(url, **kwargs):
+        payload = kwargs.get("data") or kwargs.get("params") or {}
+        page_num = payload.get("pageNum")
+        sent_pages.append(page_num)
+        if page_num == 1:
+            return FakeResponse(
+                json_data={
+                    "totalpages": 1,
+                    "announcements": [make_item(i) for i in range(1, 31)],
+                }
+            )
+        return FakeResponse(
+            json_data={"announcements": [make_item(i) for i in range(31, 33)]}
+        )
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    items = cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30"
+    )
+
+    assert len(items) == 32
+    assert sent_pages == [1, 2]
+
+
+def test_list_announcements_stops_on_empty_page(monkeypatch):
+    """某页返回空列表即代表已到最后一页，不应继续按 totalpages 翻页。"""
+    sent_pages = []
+
+    def fake_post(url, **kwargs):
+        payload = kwargs.get("data") or kwargs.get("params") or {}
+        page_num = payload.get("pageNum")
+        sent_pages.append(page_num)
+        if page_num == 1:
+            return FakeResponse(
+                json_data={
+                    "totalpages": 99,
+                    "announcements": [
+                        {
+                            "announcementTitle": f"公告{i}",
+                            "adjunctUrl": f"/new/details/{i}.html",
+                            "announcementTime": 1780000000000 + i,
+                        }
+                        for i in range(1, 31)
+                    ],
+                }
+            )
+        return FakeResponse(json_data={"announcements": []})
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    items = cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30"
+    )
+
+    assert len(items) == 30
+    assert sent_pages == [1, 2]
+
+
+def test_list_announcements_stops_at_max_pages(monkeypatch):
+    """响应异常（每页都满、totalpages 虚高）时翻页不得死循环，最多 50 页。"""
+    sent_pages = []
+
+    def fake_post(url, **kwargs):
+        payload = kwargs.get("data") or kwargs.get("params") or {}
+        page_num = payload.get("pageNum")
+        sent_pages.append(page_num)
+        return FakeResponse(
+            json_data={
+                "totalpages": 999,
+                "announcements": [
+                    {
+                        "announcementTitle": f"公告{page_num}",
+                        "adjunctUrl": "/new/details/1.html",
+                        "announcementTime": 1780000000000,
+                    }
+                    for _ in range(30)
+                ],
+            }
+        )
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    items = cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30"
+    )
+
+    assert len(sent_pages) == 50
+    assert len(items) == 50 * 30
 
 
 def test_list_announcements_raises_on_network_error(monkeypatch):

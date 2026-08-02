@@ -8,6 +8,8 @@ from pathlib import Path
 
 import requests
 
+MAX_PAGES = 50
+
 BASE_URL = "http://www.cninfo.com.cn"
 HEADERS = {
     "User-Agent": (
@@ -42,19 +44,24 @@ def list_announcements(
     """按代码、机构与日期区间查询公告列表，返回公告 dict 列表。
 
     每项含 announcementTitle / adjunctUrl / announcementTime（毫秒）。
-    巨潮接口单页最多约 30 条，需按 totalpages 逐页拉取后合并。
+    巨潮单页上限 30 条：pageSize 超过 30 时服务端分页失效
+    （pageNum 被忽略，每页都返回第一页内容），故 page_size 内部 clamp 到 30。
+    翻页终止采用自适应：逐页拉取直到某页返回空列表或条数不足一页
+    （不足一页说明已到最后一页），不依赖 totalpages 字段——该字段向下取整，
+    在末页不满时会漏拉。最多翻 MAX_PAGES 页以防响应异常时死循环。
     """
+    effective_page_size = min(page_size, 30)
     url = f"{BASE_URL}/new/hisAnnouncement/query"
     base_params = {
         "stock": f"{code},{org_id}",
         "seDate": f"{date_from}~{date_to}",
-        "pageSize": page_size,
+        "pageSize": effective_page_size,
         "tabName": "fulltext",
     }
     items: list[dict] = []
-    total_pages = 1
+    total_pages_hint = 1
     page_num = 1
-    while page_num <= total_pages:
+    while page_num <= MAX_PAGES:
         params = dict(base_params, pageNum=page_num)
         try:
             resp = requests.post(url, params=params, headers=HEADERS, timeout=30)
@@ -62,9 +69,14 @@ def list_announcements(
         except (requests.RequestException, ValueError) as exc:
             raise RuntimeError(f"查询公告列表失败：{exc}") from exc
 
-        items.extend(data.get("announcements", []))
         if page_num == 1:
-            total_pages = int(data.get("totalpages") or 1)
+            total_pages_hint = int(data.get("totalpages") or 1)
+        announcements = data.get("announcements", [])
+        if not announcements:
+            break
+        items.extend(announcements)
+        if len(announcements) < effective_page_size and page_num >= total_pages_hint:
+            break
         page_num += 1
 
     return items

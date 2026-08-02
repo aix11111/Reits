@@ -42,22 +42,32 @@ def list_announcements(
     """按代码、机构与日期区间查询公告列表，返回公告 dict 列表。
 
     每项含 announcementTitle / adjunctUrl / announcementTime（毫秒）。
+    巨潮接口单页最多约 30 条，需按 totalpages 逐页拉取后合并。
     """
     url = f"{BASE_URL}/new/hisAnnouncement/query"
-    params = {
+    base_params = {
         "stock": f"{code},{org_id}",
         "seDate": f"{date_from}~{date_to}",
-        "pageNum": 1,
         "pageSize": page_size,
         "tabName": "fulltext",
     }
-    try:
-        resp = requests.post(url, params=params, headers=HEADERS, timeout=30)
-        data = resp.json()
-    except (requests.RequestException, ValueError) as exc:
-        raise RuntimeError(f"查询公告列表失败：{exc}") from exc
+    items: list[dict] = []
+    total_pages = 1
+    page_num = 1
+    while page_num <= total_pages:
+        params = dict(base_params, pageNum=page_num)
+        try:
+            resp = requests.post(url, params=params, headers=HEADERS, timeout=30)
+            data = resp.json()
+        except (requests.RequestException, ValueError) as exc:
+            raise RuntimeError(f"查询公告列表失败：{exc}") from exc
 
-    return data.get("announcements", [])
+        items.extend(data.get("announcements", []))
+        if page_num == 1:
+            total_pages = int(data.get("totalpages") or 1)
+        page_num += 1
+
+    return items
 
 
 def download_pdf(url: str, dest: Path) -> Path:

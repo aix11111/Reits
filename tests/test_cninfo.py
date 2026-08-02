@@ -120,6 +120,59 @@ def test_list_announcements_accepts_custom_page_size(monkeypatch):
     assert payload.get("pageSize") == 50
 
 
+def test_list_announcements_paginates_over_pages(monkeypatch):
+    """跨多页公告应逐页拉取并合并，而非只取第一页。"""
+    sent_pages = []
+
+    def fake_post(url, **kwargs):
+        payload = kwargs.get("data") or kwargs.get("params") or {}
+        page_num = payload.get("pageNum")
+        sent_pages.append(page_num)
+        if page_num == 1:
+            return FakeResponse(
+                json_data={
+                    "totalAnnouncement": 3,
+                    "totalpages": 2,
+                    "announcements": [
+                        {
+                            "announcementTitle": "公告一",
+                            "adjunctUrl": "/new/details/1.html",
+                            "announcementTime": 1780000000000,
+                        },
+                        {
+                            "announcementTitle": "公告二",
+                            "adjunctUrl": "/new/details/2.html",
+                            "announcementTime": 1780000001000,
+                        },
+                    ],
+                }
+            )
+        return FakeResponse(
+            json_data={
+                "announcements": [
+                    {
+                        "announcementTitle": "公告三",
+                        "adjunctUrl": "/new/details/3.html",
+                        "announcementTime": 1780000002000,
+                    }
+                ]
+            }
+        )
+
+    monkeypatch.setattr(requests, "post", fake_post)
+
+    items = cninfo.list_announcements(
+        "180201", "gssz0180201", "2026-06-01", "2026-06-30"
+    )
+
+    assert [item["announcementTitle"] for item in items] == [
+        "公告一",
+        "公告二",
+        "公告三",
+    ]
+    assert sent_pages == [1, 2]
+
+
 def test_list_announcements_raises_on_network_error(monkeypatch):
     def boom(url, **kwargs):
         raise requests.exceptions.Timeout("请求超时")

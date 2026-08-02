@@ -116,6 +116,20 @@ EXPECTED = {
 }
 
 EXPECTED_PDF = {
+    "monthly_180203_202606.pdf": {
+        "period": "2026-06",
+        "project_name": "6月",
+        "daily_traffic": 17086,
+        "traffic_mom": 14.8,
+        "traffic_yoy": 20.7,
+        "traffic_cum": 18073,
+        "traffic_cum_yoy": 17.9,
+        "toll_revenue_wan": 4088,
+        "revenue_mom": 3.5,
+        "revenue_yoy": 16.5,
+        "revenue_cum": 25086,
+        "revenue_cum_yoy": 15.0,
+    },
     "monthly_508009_202606.pdf": {
         "period": "2026-06",
         "project_name": "沿江高速",

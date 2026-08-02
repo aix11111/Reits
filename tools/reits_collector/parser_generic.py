@@ -28,6 +28,7 @@ LABEL_TOKENS = {
     "环比",
     "同比",
     "变动",
+    "变化",
     "累计",
     "月份",
     "项目",
@@ -237,6 +238,14 @@ def _is_data_value(token: str) -> bool:
     return bool(VALUE_TOKEN_RE.fullmatch(token)) and not re.fullmatch(r"20\d{2}", token)
 
 
+MONTH_INT_RE = re.compile(r"\d{1,2}")
+
+
+def _is_month_int(token: str) -> bool:
+    """裸整数月份名片段（如 6/12）判断；20xx 年份仍按年份处理，不算月份。"""
+    return bool(MONTH_INT_RE.fullmatch(token)) and not BARE_YEAR_RE.match(token)
+
+
 def _split_name_number(token: str):
     """拆分“名称+数值”黏连的 token（如 6月45237 → (“6月”, “45237”)）。
 
@@ -354,6 +363,15 @@ def parse_pdf(pdf_path: Path) -> dict:
             if not token.strip():
                 continue
             if numbers:
+                if (
+                    token == "月"
+                    and not project_parts
+                    and len(numbers) == 1
+                    and _is_month_int(numbers[0])
+                ):
+                    project_parts.append(numbers.pop())
+                    project_parts.append(token)
+                    continue
                 if _is_data_value(token):
                     numbers.append(token)
                     if len(numbers) >= 12:

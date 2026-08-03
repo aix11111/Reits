@@ -3,16 +3,20 @@
 Phase 1：面向高速公路 REITs 的投后分析看板。
 经营数据来自本地模板 Excel（data/REITsMonitor_数据模板_v1.xlsx），
 行情数据来自 akshare（网络异常时自动降级为空数据）。
+分析规则页签基于 src.rules 的规则引擎展示可供分配对标与背离检测。
 """
 
 from pathlib import Path
 
+import pandas as pd
+import plotly.graph_objects as go
 import streamlit as st
 
 from src.charts import bar_chart, line_chart
 from src.data_loader import load_all
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
+from src.rules import detect_divergence, distribution_rate_benchmark, distributable_yoy
 
 # 数据文件路径：位于本文件同级的 data 目录下
 DATA_PATH = Path(__file__).parent / "data" / "REITsMonitor_数据模板_v1.xlsx"
@@ -27,6 +31,34 @@ _QUARTERLY_COLUMNS = [
     ("ebitda_wan", "EBITDA"),
     ("nav_wan", "NAV"),
 ]
+
+# 分析规则页签：可供分配对标展示列
+_RULES_BENCHMARK_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("distributable_wan", "可供分配(万元)"),
+    ("distributable_yoy", "同比(%)"),
+    ("median_distributable_wan", "行业中位数(万元)"),
+    ("below_peer_distributable", "低于行业中位数"),
+    ("decline_flag", "下滑标记"),
+]
+
+# 分析规则页签：背离检测展示列
+_RULES_DIVERGENCE_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("period", "月份"),
+    ("toll_revenue_yoy", "收入同比(%)"),
+    ("traffic_yoy", "车流量同比(%)"),
+    ("divergence_pct", "背离幅度(百分点)"),
+    ("direction", "方向"),
+]
+
+# 背离方向：英文标记 → 中文说明
+_DIRECTION_LABELS = {
+    "revenue_above": "收入显著高于流量",
+    "traffic_above": "流量显著高于收入",
+}
 
 
 def render_operations(code, name, monthly_df, quarterly_df):
@@ -100,6 +132,97 @@ def render_market(code):
         st.info("暂无历史行情数据。")
 
 
+def _tristate_label(value):
+    """三态布尔转中文：True → 是，False → 否，NaN → 一。"""
+    if pd.isna(value):
+        return "—"
+    return "是" if value else "否"
+
+
+def render_rules(monthly_df, quarterly_df):
+    """分析规则页签：全行业可供分配对标、月度背离检测与空数据降级。"""
+    st.subheader("分析规则引擎")
+    st.caption(
+        "基于季度数据：可供分配金额同比与同行对标；基于月度数据：收入/车流量背离检测。"
+    )
+
+    st.markdown("### 1. 全行业可供分配对标（最新季度）")
+    if quarterly_df.empty:
+        st.info("暂无季度数据，可供分配对标跳过。")
+    else:
+        latest_period = sorted(quarterly_df["period"].unique())[-1]
+        yoy_result = distributable_yoy(quarterly_df)
+        bench_result = distribution_rate_benchmark(quarterly_df)
+        latest = bench_result[bench_result["period"] == latest_period].merge(
+            yoy_result[["code", "period", "distributable_yoy", "decline_flag"]],
+            on=["code", "period"],
+            how="left",
+        )
+        latest = latest.sort_values(
+            "distributable_yoy", ascending=False, na_position="last"
+        )
+
+        # 横向条形图：按可供分配金额升序，最大者位于顶部；低于行业中位数标红
+        chart_df = latest.sort_values("distributable_wan", ascending=True)
+        fig = go.Figure(
+            go.Bar(
+                x=chart_df["distributable_wan"],
+                y=chart_df["name"],
+                orientation="h",
+                marker_color=[
+                    "#d62728" if below else "#2ca02c"
+                    for below in chart_df["below_peer_distributable"]
+                    .fillna(False)
+                    .astype(bool)
+                ],
+            )
+        )
+        fig.update_layout(
+            title=f"最新季度（{latest_period}）可供分配金额对标",
+            xaxis_title="可供分配金额（万元）",
+            template="plotly_white",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+        st.markdown(f"**{latest_period} 行业明细**")
+        display = latest.copy()
+        display["below_peer_distributable"] = display["below_peer_distributable"].map(
+            _tristate_label
+        )
+        display["decline_flag"] = display["decline_flag"].map(
+            lambda v: "下滑" if v else ""
+        )
+        display = display.rename(columns=dict(_RULES_BENCHMARK_COLUMNS))
+        st.dataframe(
+            display[[label for _, label in _RULES_BENCHMARK_COLUMNS]],
+            hide_index=True,
+            width="stretch",
+        )
+
+    st.markdown("### 2. 背离检测（最新月度）")
+    if monthly_df.empty:
+        st.info("暂无月度数据，背离检测跳过。")
+    else:
+        latest_month = sorted(monthly_df["period"].unique())[-1]
+        diverged = detect_divergence(monthly_df)
+        flagged = diverged[
+            (diverged["period"] == latest_month) & diverged["divergence"]
+        ]
+        if flagged.empty:
+            st.info(f"最新月度（{latest_month}）无收入/车流量背离记录。")
+        else:
+            display = flagged.copy()
+            display["direction"] = display["direction"].map(_DIRECTION_LABELS)
+            display = display.rename(columns=dict(_RULES_DIVERGENCE_COLUMNS))
+            st.markdown(f"**{latest_month} 背离记录**")
+            st.dataframe(
+                display[[label for _, label in _RULES_DIVERGENCE_COLUMNS]],
+                hide_index=True,
+                width="stretch",
+            )
+
+
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与两个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
@@ -133,7 +256,7 @@ def main():
         )
         st.caption("行情数据来自 akshare，网络异常时自动降级。")
 
-    tab_ops, tab_mkt = st.tabs(["📈 经营数据", "📉 行情走势"])
+    tab_ops, tab_mkt, tab_rules = st.tabs(["📈 经营数据", "📉 行情走势", "📐 分析规则"])
 
     with tab_ops:
         render_operations(
@@ -142,6 +265,9 @@ def main():
 
     with tab_mkt:
         render_market(selected_code)
+
+    with tab_rules:
+        render_rules(monthly_df, quarterly_df)
 
 
 if __name__ == "__main__":

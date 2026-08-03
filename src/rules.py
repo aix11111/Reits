@@ -3,9 +3,11 @@
 基于月度数据 DataFrame 实现投后管理分析规则：
 - 规则 1：流量/收入背离检测 detect_divergence
 - 规则 2：同类基金月度同比对标 peer_compare
+- 规则 3：可供分配金额同比增速 distributable_yoy
+- 规则 4：可供分配金额同行对标 distribution_rate_benchmark
 
-输入列名与 src.data_loader.load_monthly 的输出保持一致。
-注意：月度数据无环比列，环比异动检测（规则 3）暂不实现。
+月度输入列名与 src.data_loader.load_monthly、季度输入列名与
+load_quarterly 的输出保持一致。注意：月度数据无环比列，环比异动检测暂不实现。
 """
 
 import pandas as pd
@@ -56,4 +58,65 @@ def peer_compare(df: pd.DataFrame) -> pd.DataFrame:
     result["below_peer_revenue"] = (
         result["toll_revenue_yoy"] < result["median_revenue_yoy"]
     ).where(group_counts >= 3)
+    return result
+
+
+def distributable_yoy(quarterly_df: pd.DataFrame, threshold: float = 20.0) -> pd.DataFrame:
+    """计算可供分配金额同比增速。
+
+    同基金、同季度序号（period 的 QN 相同）对比上年同期
+    （YYYYQN → (YYYY-1)QN）：yoy = (本期 / 上年同期 - 1) * 100。
+    上年同期缺失或任一方为 None → 该行 distributable_yoy 为 None，不做标记。
+
+    返回 DataFrame：原列 + distributable_yoy(float) + decline_flag(bool，
+    yoy < -threshold) + growth_flag(bool，yoy > +threshold)，按 yoy 降序排序。
+    """
+    result = quarterly_df.copy()
+    if result.empty:
+        return result
+
+    period = result["period"].astype(str)
+    result["_prior_period"] = (period.str[:4].astype(int) - 1).astype(str) + period.str[4:]
+
+    prior = result[["code", "period", "distributable_wan"]].rename(
+        columns={
+            "period": "_prior_period",
+            "distributable_wan": "_prior_distributable_wan",
+        }
+    )
+    result = result.merge(prior, on=["code", "_prior_period"], how="left")
+
+    current = result["distributable_wan"]
+    prior_val = result["_prior_distributable_wan"]
+    yoy = (current / prior_val - 1) * 100
+    yoy = yoy.where(current.notna() & prior_val.notna())
+
+    result["distributable_yoy"] = yoy
+    result["decline_flag"] = (yoy < -threshold).fillna(False)
+    result["growth_flag"] = (yoy > threshold).fillna(False)
+    return result.drop(columns=["_prior_period", "_prior_distributable_wan"]).sort_values(
+        "distributable_yoy", ascending=False, na_position="last"
+    )
+
+
+def distribution_rate_benchmark(quarterly_df: pd.DataFrame) -> pd.DataFrame:
+    """按报告期分组，与同行业可供分配金额中位数对标。
+
+    每组至少 3 只基金（按 code 去重计数）才计算可供分配金额中位数；
+    不足 3 只时 median_distributable_wan 为 NaN。可供分配为 None 的行
+    不参与中位数计算，其 below_peer_distributable 为 NaN。
+
+    返回 DataFrame：原列 + median_distributable_wan + below_peer_distributable(bool)。
+    """
+    result = quarterly_df.copy()
+    if result.empty:
+        return result
+
+    group_counts = result.groupby("period")["code"].transform("nunique")
+    median = result.groupby("period")["distributable_wan"].transform("median")
+
+    result["median_distributable_wan"] = median.where(group_counts >= 3)
+    result["below_peer_distributable"] = (
+        result["distributable_wan"] < result["median_distributable_wan"]
+    ).where((group_counts >= 3) & result["distributable_wan"].notna())
     return result

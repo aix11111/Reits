@@ -11,6 +11,7 @@ import pytest
 
 from src.rules import (
     detect_divergence,
+    detect_mom_spikes,
     distribution_rate_benchmark,
     distributable_yoy,
     peer_compare,
@@ -389,5 +390,184 @@ def test_distribution_rate_benchmark_keeps_original_columns():
 
 def test_distribution_rate_benchmark_empty_dataframe_does_not_raise():
     result = distribution_rate_benchmark(make_quarterly([]))
+
+    assert len(result) == 0
+
+
+# ---------------------------------------------------------------------------
+# 规则 3：detect_mom_spikes（月度环比异动检测）
+# ---------------------------------------------------------------------------
+
+# 月度 fixture：3 只基金 × 4-6 月，含上涨/下跌/无标记/首月 None/缺月 None/单边 None
+MOM_ROWS = [
+    # 180201 平安广州广河REIT：6 个月，覆盖上涨/下跌/无标记/首月
+    ["2026-01", "180201", "平安广州广河REIT", 100, 10000],
+    ["2026-02", "180201", "平安广州广河REIT", 100, 10000],  # 0.0 / 0.0 → 无标记
+    ["2026-03", "180201", "平安广州广河REIT", 160, 10000],  # +60 / 0.0 → 收入上涨异动
+    ["2026-04", "180201", "平安广州广河REIT", 160, 15000],  # 0.0 / +50 → 车流量上涨异动
+    ["2026-05", "180201", "平安广州广河REIT", 80, 15000],   # -50 / 0.0 → 收入下跌异动
+    ["2026-06", "180201", "平安广州广河REIT", 80, 7500],    # 0.0 / -50 → 车流量下跌异动
+    # 180202 华夏越秀高速REIT：5 个月，2026-01 缺月（首月前无上月）
+    ["2026-02", "180202", "华夏越秀高速REIT", 100, 10000],
+    ["2026-03", "180202", "华夏越秀高速REIT", 100, 10000],  # 0.0 / 0.0 → 无标记
+    ["2026-04", "180202", "华夏越秀高速REIT", 125, 10000],  # +25 / 0.0 → 低于阈值
+    ["2026-05", "180202", "华夏越秀高速REIT", 125, 10000],  # 0.0 / 0.0 → 无标记
+    ["2026-06", "180202", "华夏越秀高速REIT", 225, 10000],  # +80 / 0.0 → 收入上涨异动
+    # 180203 华夏中国交建REIT：含缺月（2026-05 缺失）与单边 None
+    ["2026-04", "180203", "华夏中国交建REIT", 100, 10000],
+    ["2026-06", "180203", "华夏中国交建REIT", None, 10000],  # 缺月 + 收入 None → 收入 mom None
+    ["2026-07", "180203", "华夏中国交建REIT", 200, 20000],  # 收入 None→200 → 收入 mom None；+100 → 车流量异动
+    ["2026-08", "180203", "华夏中国交建REIT", 100, 10000],  # -50 / -50 → 双下跌异动
+]
+
+
+def make_mom_df(rows):
+    """将形如 [period, code, name, rev, traffic] 的行补全为月度 DataFrame。
+
+    其余数值列（toll_revenue_yoy / traffic_yoy）填入默认值 None，
+    source 填 "公告"。
+    """
+    entries = [[p, c, n, rev, traffic, None, None, "公告"] for p, c, n, rev, traffic in rows]
+    return pd.DataFrame(entries, columns=MONTHLY_COLUMNS)
+
+
+def test_mom_spikes_revenue_up_flag():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    assert row.loc[("180201", "2026-03"), "revenue_mom"] == pytest.approx(60.0)
+    assert row.loc[("180201", "2026-03"), "revenue_spike"]
+    assert not row.loc[("180201", "2026-03"), "traffic_spike"]
+
+
+def test_mom_spikes_revenue_down_flag():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    assert row.loc[("180201", "2026-05"), "revenue_mom"] == pytest.approx(-50.0)
+    assert row.loc[("180201", "2026-05"), "revenue_spike"]
+
+
+def test_mom_spikes_traffic_up_and_down_flags():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    assert row.loc[("180201", "2026-04"), "traffic_mom"] == pytest.approx(50.0)
+    assert row.loc[("180201", "2026-04"), "traffic_spike"]
+    assert row.loc[("180201", "2026-06"), "traffic_mom"] == pytest.approx(-50.0)
+    assert row.loc[("180201", "2026-06"), "traffic_spike"]
+
+
+def test_mom_spikes_within_threshold_not_flagged():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    # +25 与 0.0 均低于阈值 30
+    assert row.loc[("180202", "2026-04"), "revenue_mom"] == pytest.approx(25.0)
+    assert not row.loc[("180202", "2026-04"), "revenue_spike"]
+    assert not row.loc[("180201", "2026-02"), "revenue_spike"]
+    assert not row.loc[("180201", "2026-02"), "traffic_spike"]
+
+
+def test_mom_spikes_threshold_boundary_is_strict():
+    rows = [
+        ["2026-03", "180204", "华夏四川绕城REIT", 100, 10000],
+        ["2026-04", "180204", "华夏四川绕城REIT", 125, 10000],  # 恰为 +25 边界
+        ["2026-05", "180204", "华夏四川绕城REIT", 100, 10000],  # 回到基准
+        ["2026-06", "180204", "华夏四川绕城REIT", 75, 10000],   # 恰为 -25 边界
+        ["2026-07", "180204", "华夏四川绕城REIT", 100, 10000],  # 回到基准
+        ["2026-08", "180204", "华夏四川绕城REIT", 126, 10000],  # +26 高于阈值
+    ]
+    result = detect_mom_spikes(make_mom_df(rows), threshold=25.0)
+    row = result.set_index(["code", "period"])
+
+    assert row.loc[("180204", "2026-04"), "revenue_mom"] == pytest.approx(25.0)
+    assert not row.loc[("180204", "2026-04"), "revenue_spike"]
+    assert row.loc[("180204", "2026-06"), "revenue_mom"] == pytest.approx(-25.0)
+    assert not row.loc[("180204", "2026-06"), "revenue_spike"]
+    assert row.loc[("180204", "2026-08"), "revenue_mom"] == pytest.approx(26.0)
+    assert row.loc[("180204", "2026-08"), "revenue_spike"]
+
+
+def test_mom_spikes_custom_threshold():
+    rows = [
+        ["2026-03", "180204", "华夏四川绕城REIT", 100, 10000],
+        ["2026-04", "180204", "华夏四川绕城REIT", 105, 10000],  # +5 → 低于阈值 10
+        ["2026-05", "180204", "华夏四川绕城REIT", 120, 10000],  # +14.3 → 高于阈值 10
+    ]
+    result = detect_mom_spikes(make_mom_df(rows), threshold=10.0)
+    row = result.set_index(["code", "period"])
+
+    assert not row.loc[("180204", "2026-04"), "revenue_spike"]
+    assert row.loc[("180204", "2026-05"), "revenue_spike"]
+
+
+def test_mom_spikes_first_month_mom_is_none():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    assert pd.isna(row.loc[("180201", "2026-01"), "revenue_mom"])
+    assert pd.isna(row.loc[("180201", "2026-01"), "traffic_mom"])
+    assert not row.loc[("180201", "2026-01"), "revenue_spike"]
+    assert not row.loc[("180201", "2026-01"), "traffic_spike"]
+    # 180202 首月为 2026-02（2026-01 无数据）→ mom None
+    assert pd.isna(row.loc[("180202", "2026-02"), "revenue_mom"])
+    assert pd.isna(row.loc[("180202", "2026-02"), "traffic_mom"])
+
+
+def test_mom_spikes_missing_prior_month_mom_is_none():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    # 180203 缺 2026-05，2026-06 的上月（2026-05）缺失 → mom None
+    assert pd.isna(row.loc[("180203", "2026-06"), "revenue_mom"])
+    assert pd.isna(row.loc[("180203", "2026-06"), "traffic_mom"])
+    assert not row.loc[("180203", "2026-06"), "revenue_spike"]
+    assert not row.loc[("180203", "2026-06"), "traffic_spike"]
+
+
+def test_mom_spikes_none_side_mom_is_none():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+    row = result.set_index(["code", "period"])
+
+    # 180203 2026-06 收入 None → 收入 mom None；车流量 2026-04=10000 因缺月也 None
+    assert pd.isna(row.loc[("180203", "2026-06"), "revenue_mom"])
+    # 180203 2026-07 收入从 None→200 → 收入 mom None，车流量 10000→20000 → +100 异动
+    assert pd.isna(row.loc[("180203", "2026-07"), "revenue_mom"])
+    assert row.loc[("180203", "2026-07"), "traffic_mom"] == pytest.approx(100.0)
+    assert row.loc[("180203", "2026-07"), "traffic_spike"]
+
+
+def test_mom_spikes_sorted_by_max_abs_desc_none_last():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+
+    max_abs = result[["revenue_mom", "traffic_mom"]].abs().max(axis=1)
+    non_null = max_abs[result["code"].ne("")].dropna()
+    assert non_null.tolist() == sorted(non_null.tolist(), reverse=True)
+    # 首行应为最大异动幅度（180203 2026-07 车流量 +100）
+    assert result.iloc[0]["period"] == "2026-07"
+    assert result.iloc[0]["code"] == "180203"
+    # NaN 置于尾部：所有 NaN 行都应排在最后一个非 NaN 行之后
+    nan_positions = max_abs[max_abs.isna()].index
+    last_finite = result["revenue_mom"].last_valid_index()
+    finite_rows = result.index[: result.index.get_loc(last_finite) + 1]
+    assert all(idx not in finite_rows for idx in nan_positions)
+
+
+def test_mom_spikes_keeps_original_columns():
+    result = detect_mom_spikes(make_mom_df(MOM_ROWS))
+
+    for col in MONTHLY_COLUMNS:
+        assert col in result.columns
+    assert set(result.columns) == set(MONTHLY_COLUMNS) | {
+        "revenue_mom",
+        "traffic_mom",
+        "revenue_spike",
+        "traffic_spike",
+    }
+
+
+def test_mom_spikes_empty_dataframe_does_not_raise():
+    result = detect_mom_spikes(make_mom_df([]))
 
     assert len(result) == 0

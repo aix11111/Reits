@@ -99,6 +99,58 @@ def distributable_yoy(quarterly_df: pd.DataFrame, threshold: float = 20.0) -> pd
     )
 
 
+def detect_mom_spikes(monthly_df: pd.DataFrame, threshold: float = 30.0) -> pd.DataFrame:
+    """月度环比异动检测。
+
+    模板月度数据无环比列，需自行计算：同基金按 period 排序（YYYY-MM 字符串
+    天然有序），toll_revenue_wan 与 daily_traffic 的环比 =
+    (本月 / 上月 - 1) * 100。上月缺失（前一条记录非相邻月份）或任一方为
+    None → 该行对应的 mom 为 None，不做标记。
+
+    |mom| > threshold 的行标记异动：revenue_spike / traffic_spike。
+    方向由 mom 本身的正负表达（正值上涨、负值下跌）。
+
+    返回 DataFrame：原列 + revenue_mom(float) + traffic_mom(float)
+    + revenue_spike(bool) + traffic_spike(bool)，按 max(|revenue_mom|,
+    |traffic_mom|) 降序排序（NaN 置尾）。
+    """
+    result = monthly_df.copy()
+    if result.empty:
+        return result
+
+    result["_period_dt"] = pd.to_datetime(result["period"], format="%Y-%m")
+    result = result.sort_values(["code", "_period_dt"])
+
+    prior_dt = result.groupby("code")["_period_dt"].shift(1)
+    adjacent = prior_dt.notna() & (result["_period_dt"] == prior_dt + pd.DateOffset(months=1))
+    prior_rev = result.groupby("code")["toll_revenue_wan"].shift(1)
+    prior_traffic = result.groupby("code")["daily_traffic"].shift(1)
+
+    cur_rev = result["toll_revenue_wan"]
+    cur_traffic = result["daily_traffic"]
+    revenue_mom = ((cur_rev / prior_rev - 1) * 100).where(
+        adjacent & cur_rev.notna() & prior_rev.notna()
+    )
+    traffic_mom = ((cur_traffic / prior_traffic - 1) * 100).where(
+        adjacent & cur_traffic.notna() & prior_traffic.notna()
+    )
+
+    result["revenue_mom"] = revenue_mom
+    result["traffic_mom"] = traffic_mom
+    result["revenue_spike"] = revenue_mom.abs().gt(threshold).fillna(False)
+    result["traffic_spike"] = traffic_mom.abs().gt(threshold).fillna(False)
+
+    result["_max_abs"] = result[["revenue_mom", "traffic_mom"]].abs().max(
+        axis=1, skipna=True
+    )
+    result = result.sort_values(
+        ["_max_abs", "code", "period"],
+        ascending=[False, True, True],
+        na_position="last",
+    )
+    return result.drop(columns=["_period_dt", "_max_abs"])
+
+
 def distribution_rate_benchmark(quarterly_df: pd.DataFrame) -> pd.DataFrame:
     """按报告期分组，与同行业可供分配金额中位数对标。
 

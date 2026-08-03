@@ -16,7 +16,12 @@ from src.charts import bar_chart, line_chart
 from src.data_loader import load_all
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
-from src.rules import detect_divergence, distribution_rate_benchmark, distributable_yoy
+from src.rules import (
+    detect_divergence,
+    detect_mom_spikes,
+    distribution_rate_benchmark,
+    distributable_yoy,
+)
 
 # 数据文件路径：位于本文件同级的 data 目录下
 DATA_PATH = Path(__file__).parent / "data" / "REITsMonitor_数据模板_v1.xlsx"
@@ -59,6 +64,17 @@ _DIRECTION_LABELS = {
     "revenue_above": "收入显著高于流量",
     "traffic_above": "流量显著高于收入",
 }
+
+# 分析规则页签：环比异动展示列
+_RULES_MOM_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("period", "月份"),
+    ("revenue_mom", "收入环比(%)"),
+    ("traffic_mom", "车流量环比(%)"),
+    ("revenue_spike", "收入异动"),
+    ("traffic_spike", "车流量异动"),
+]
 
 
 def render_operations(code, name, monthly_df, quarterly_df):
@@ -143,7 +159,7 @@ def render_rules(monthly_df, quarterly_df):
     """分析规则页签：全行业可供分配对标、月度背离检测与空数据降级。"""
     st.subheader("分析规则引擎")
     st.caption(
-        "基于季度数据：可供分配金额同比与同行对标；基于月度数据：收入/车流量背离检测。"
+        "基于季度数据：可供分配金额同比与同行对标；基于月度数据：收入/车流量背离检测与环比异动检测。"
     )
 
     st.markdown("### 1. 全行业可供分配对标（最新季度）")
@@ -218,6 +234,34 @@ def render_rules(monthly_df, quarterly_df):
             st.markdown(f"**{latest_month} 背离记录**")
             st.dataframe(
                 display[[label for _, label in _RULES_DIVERGENCE_COLUMNS]],
+                hide_index=True,
+                width="stretch",
+            )
+
+    st.markdown("### 3. 环比异动（最新月度）")
+    if monthly_df.empty:
+        st.info("暂无月度数据，环比异动跳过。")
+    else:
+        latest_month = sorted(monthly_df["period"].unique())[-1]
+        spikes = detect_mom_spikes(monthly_df)
+        flagged = spikes[
+            (spikes["period"] == latest_month)
+            & (spikes["revenue_spike"] | spikes["traffic_spike"])
+        ]
+        if flagged.empty:
+            st.info(f"最新月度（{latest_month}）无环比异动记录。")
+        else:
+            display = flagged.copy()
+            display["revenue_spike"] = display["revenue_spike"].map(
+                lambda v: "收入异动" if v else ""
+            )
+            display["traffic_spike"] = display["traffic_spike"].map(
+                lambda v: "车流量异动" if v else ""
+            )
+            display = display.rename(columns=dict(_RULES_MOM_COLUMNS))
+            st.markdown(f"**{latest_month} 环比异动记录**")
+            st.dataframe(
+                display[[label for _, label in _RULES_MOM_COLUMNS]],
                 hide_index=True,
                 width="stretch",
             )

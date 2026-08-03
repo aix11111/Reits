@@ -13,6 +13,7 @@ from src.rules import (
     concession_decay,
     detect_divergence,
     detect_mom_spikes,
+    distributable_completion,
     distribution_rate_benchmark,
     distributable_yoy,
     peer_compare,
@@ -683,3 +684,78 @@ def test_concession_decay_empty_dataframe_does_not_raise():
 
     assert len(result) == 0
     assert "risk_level" in result.columns
+
+
+# ---------------------------------------------------------------------------
+# 规则 5：distributable_completion（可供分配完成度，实际 vs 招募说明书预测）
+# ---------------------------------------------------------------------------
+
+# 年报完成度输出列（与 data/annual_completion.json 的 completion 数组结构一致）
+COMPLETION_COLUMNS = [
+    "code",
+    "name",
+    "year",
+    "predicted_wan",
+    "actual_wan",
+    "completion_pct",
+]
+
+
+def make_completion(rows):
+    """将形如 [code, name, year, predicted_wan, actual_wan, completion_pct]
+    的行转为 DataFrame。"""
+    return pd.DataFrame(rows, columns=COMPLETION_COLUMNS)
+
+
+# distributable_completion 的 fixture：含达标 / 基本达标 / 未达标，
+# 边界恰为 100 → 达标、恰为 80 → 基本达标
+COMPLETION_ROWS = [
+    ["180201", "平安广州广河REIT", 2022, 62628.76, 47691.19, 76.15],  # 未达标
+    ["180202", "华夏越秀高速REIT", 2023, 50000.0, 51000.0, 102.0],  # 达标
+    ["180203", "华夏中国交建REIT", 2023, 60000.0, 48000.0, 80.0],  # 边界 80 → 基本达标
+    ["180204", "华夏四川绕城REIT", 2022, 40000.0, 42000.0, 105.0],  # 达标
+    ["180205", "中金安徽交控REIT", 2024, 55000.0, 55000.0, 100.0],  # 边界 100 → 达标
+    ["180206", "华夏中国交建REIT", 2022, 70000.0, 56000.0, 82.5],  # 基本达标
+]
+
+
+def test_completion_status_levels():
+    result = distributable_completion(make_completion(COMPLETION_ROWS))
+    row = result.set_index("code")
+
+    assert row.loc["180201", "status"] == "未达标"  # 76.15 < 80
+    assert row.loc["180202", "status"] == "达标"    # 102.0 >= 100
+    assert row.loc["180206", "status"] == "基本达标"  # 82.5 in [80, 100)
+
+
+def test_completion_threshold_boundaries():
+    """恰为 100 → 达标；恰为 80 → 基本达标（非未达标）。"""
+    result = distributable_completion(make_completion(COMPLETION_ROWS))
+    row = result.set_index("code")
+
+    assert row.loc["180205", "status"] == "达标"        # 100.0 >= 100
+    assert row.loc["180203", "status"] == "基本达标"    # 80.0 >= 80 且 < 100
+    assert not row.loc["180203", "status"] == "未达标"
+
+
+def test_completion_sorted_worst_first():
+    """按完成率升序，最差（最低）在前。"""
+    result = distributable_completion(make_completion(COMPLETION_ROWS))
+
+    pcts = result["completion_pct"].tolist()
+    assert pcts == sorted(pcts)
+
+
+def test_completion_keeps_original_columns():
+    result = distributable_completion(make_completion(COMPLETION_ROWS))
+
+    for col in COMPLETION_COLUMNS:
+        assert col in result.columns
+    assert set(result.columns) == set(COMPLETION_COLUMNS) | {"status"}
+
+
+def test_completion_empty_dataframe_does_not_raise():
+    result = distributable_completion(make_completion([]))
+
+    assert len(result) == 0
+    assert "status" in result.columns

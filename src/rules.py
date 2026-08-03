@@ -6,9 +6,11 @@
 - 规则 3：可供分配金额同比增速 distributable_yoy
 - 规则 4：可供分配金额同行对标 distribution_rate_benchmark
 - 规则 5：特许经营权衰减 concession_decay
+- 规则 6：可供分配完成度 distributable_completion
 
 月度输入列名与 src.data_loader.load_monthly、季度输入列名与
-load_quarterly、静态输入列名与 load_static 的输出保持一致。
+load_quarterly、静态输入列名与 load_static、年报完成度输入列名与
+data/annual_completion.json 的输出保持一致。
 注意：月度数据无环比列，环比异动检测由 detect_mom_spikes 自行计算。
 """
 
@@ -205,4 +207,35 @@ def concession_decay(
         return result
     return result.sort_values(
         "concession_years_left", ascending=True, na_position="last"
+    )
+
+
+def distributable_completion(completion_df: pd.DataFrame) -> pd.DataFrame:
+    """年报可供分配完成度规则：实际可供分配 vs 招募说明书预测。
+
+    按完成率划分状态：
+    - completion_pct >= 100 → "达标"
+    - 80 <= completion_pct < 100 → "基本达标"
+    - completion_pct < 80 → "未达标"
+    - 缺失（NaN）→ "未知"，排最后
+
+    返回 DataFrame：原列 + status(str)，按 completion_pct 升序排列
+    （完成率最低、最差在前）。空 DataFrame 不崩溃。
+    """
+    result = completion_df.copy()
+
+    def classify(pct):
+        if pd.isna(pct):
+            return "未知"
+        if pct >= 100:
+            return "达标"
+        if pct >= 80:
+            return "基本达标"
+        return "未达标"
+
+    result["status"] = result["completion_pct"].map(classify)
+    if result.empty:
+        return result
+    return result.sort_values(
+        "completion_pct", ascending=True, na_position="last"
     )

@@ -110,3 +110,13 @@ def test_analysis_rules_tab_degrades_gracefully_when_data_empty(no_network, monk
     infos = [i.value for i in rules_tab.info]
     assert any("暂无月度数据" in v for v in infos)
     assert any("暂无季度数据" in v for v in infos)
+
+
+def test_analysis_rules_tab_renders_completion_section(no_network):
+    """分析规则页签渲染「可供分配完成度」第 5 节标题。"""
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    rules_tab = at.tabs[2]
+    marks = [m.value for m in rules_tab.markdown]
+    assert any("可供分配完成度" in m for m in marks)

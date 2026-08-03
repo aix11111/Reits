@@ -6,6 +6,7 @@ Phase 1：面向高速公路 REITs 的投后分析看板。
 分析规则页签基于 src.rules 的规则引擎展示可供分配对标与背离检测。
 """
 
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -20,6 +21,7 @@ from src.rules import (
     concession_decay,
     detect_divergence,
     detect_mom_spikes,
+    distributable_completion,
     distribution_rate_benchmark,
     distributable_yoy,
 )
@@ -83,6 +85,20 @@ _RULES_CONCESSION_COLUMNS = [
     ("name", "基金简称"),
     ("concession_years_left", "剩余年限(年)"),
     ("risk_level", "风险等级"),
+]
+
+# 年报可供分配完成度数据文件路径
+_ANNUAL_COMPLETION_PATH = Path(__file__).parent / "data" / "annual_completion.json"
+
+# 分析规则页签：可供分配完成度展示列
+_RULES_COMPLETION_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("year", "年份"),
+    ("predicted_wan", "预测(万元)"),
+    ("actual_wan", "实际(万元)"),
+    ("completion_pct", "完成率(%)"),
+    ("status", "状态"),
 ]
 
 # 特许经营权衰减风险等级 → 条形图颜色
@@ -170,6 +186,35 @@ def _tristate_label(value):
     if pd.isna(value):
         return "—"
     return "是" if value else "否"
+
+
+def _load_annual_completion() -> pd.DataFrame:
+    """加载 data/annual_completion.json 的 completion 数组。
+
+    文件缺失、内容为空或损坏时返回空 DataFrame（看板降级提示）。
+    """
+    columns = [col for col, _ in _RULES_COMPLETION_COLUMNS]
+    if not _ANNUAL_COMPLETION_PATH.exists():
+        return pd.DataFrame(columns=columns)
+    try:
+        data = json.loads(_ANNUAL_COMPLETION_PATH.read_text(encoding="utf-8"))
+        rows = data.get("completion", [])
+    except (ValueError, OSError):
+        rows = []
+    if not rows:
+        return pd.DataFrame(columns=columns)
+    return pd.DataFrame(rows, columns=columns)
+
+
+def _completion_color(value):
+    """完成率着色：<80 红、<100 橙、其余绿；缺失灰色。"""
+    if pd.isna(value):
+        return "color: #7f7f7f"
+    if value < 80:
+        return "color: #d62728"
+    if value < 100:
+        return "color: #ff7f0e"
+    return "color: #2ca02c"
 
 
 def render_rules(monthly_df, quarterly_df, static_df):
@@ -320,6 +365,17 @@ def render_rules(monthly_df, quarterly_df, static_df):
             hide_index=True,
             width="stretch",
         )
+
+    st.markdown("### 5. 可供分配完成度（实际 vs 招募说明书预测）")
+    st.caption("完成率 = 年报披露口径：实际可供分配金额 / 招募说明书测算预测金额。")
+    completion_df = _load_annual_completion()
+    if completion_df.empty:
+        st.info("暂无年度可供分配完成度数据（data/annual_completion.json 缺失或为空）。")
+    else:
+        completion = distributable_completion(completion_df)
+        display = completion.rename(columns=dict(_RULES_COMPLETION_COLUMNS))
+        styled = display.style.map(_completion_color, subset=["完成率(%)"])
+        st.dataframe(styled, hide_index=True, width="stretch")
 
 
 def main():

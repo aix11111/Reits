@@ -54,6 +54,15 @@ EXPECTED = {
         "ebitda_wan": 12812.048081,
         "cash_distribution_rate": 2.38,
     },
+    "quarterly_180201_2024Q3.pdf": {
+        "period": "2024Q3",
+        "revenue_wan": 20958.508005,
+        "net_profit_wan": 7496.249847,
+        "distributable_wan": 17271.714174,
+        "unit_distributable": 0.2467,
+        "ebitda_wan": None,
+        "cash_distribution_rate": None,
+    },
 }
 
 VALUE_KEYS = (
@@ -73,7 +82,10 @@ def test_parse_quarterly_report_real_pdf(pdf_name):
 
     assert result["period"] == exp["period"]
     for key in VALUE_KEYS:
-        assert result[key] == pytest.approx(exp[key])
+        if exp[key] is None:
+            assert result[key] is None
+        else:
+            assert result[key] == pytest.approx(exp[key])
 
 
 @pytest.mark.parametrize(

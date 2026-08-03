@@ -23,6 +23,10 @@ import fitz
 
 NUMBER_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
 
+OLD_DISTRIBUTABLE_LABEL_RE = re.compile(r"本期可供分配金额(?!\S)")
+
+NEW_DISTRIBUTABLE_TITLE_RE = re.compile(r"本报告期(?:及近三年)?的可供分配金额")
+
 TITLE_PERIOD_RE = re.compile(r"(\d{4})\s*年第\s*([1-4一二三四])\s*季度")
 CN_YEAR_PERIOD_RE = re.compile(
     r"([〇零一二三四五六七八九]{4})\s*年第\s*([1-4一二三四])\s*季度"
@@ -128,14 +132,41 @@ def _value_after(text: str, label: str, limit: int = 120):
     return _to_number(m.group(0))
 
 
+def _parse_old_distributable(text: str, limit: int = 120):
+    """旧格式 fallback：取「本期可供分配金额」标签后的首个数值。
+
+    2025Q1 及以前的报告没有「3.3.1 本报告期的可供分配金额」表，而是
+    「3.3.3 本期可供分配金额计算过程」表中的完整标签行
+    「本期可供分配金额  <金额> [-脚注标记]」。仅当该标签独立成行时
+    才匹配（用 (?!\\S) 排除「本期可供分配金额计算过程」标题）。
+    返回 (可供分配金额元, None)；未匹配返回 (None, None)。
+    """
+    m = OLD_DISTRIBUTABLE_LABEL_RE.search(text)
+    if m is None:
+        return None, None
+    start = m.end()
+    end = start + limit
+    for marker in WINDOW_CUTS:
+        pos = text.find(marker, start)
+        if pos != -1:
+            end = min(end, pos)
+    num = NUMBER_RE.search(text[start:end])
+    if num is None:
+        return None, None
+    return _to_number(num.group(0)), None
+
+
 def _parse_distributable(text: str):
-    """解析「3.3.1 本报告期的可供分配金额」表格中“本期”行的两个数值。
+    """解析「3.3.1 本报告期的可供分配金额」/「3.3.1 本报告期及近三年的可供分配金额」
+    表格中“本期”行的两个数值。
 
     返回 (可供分配金额元, 单位可供分配金额元)；任一行缺失时返回 (None, None)。
+    新版表格缺失时回退到旧格式「本期可供分配金额」计算表（单位可供分配金额为 None）。
     """
-    start = text.find("本报告期的可供分配金额")
-    if start == -1:
-        return None, None
+    m = NEW_DISTRIBUTABLE_TITLE_RE.search(text)
+    if m is None:
+        return _parse_old_distributable(text)
+    start = m.start()
     end_candidates = [
         text.find("本报告期的实际分配金额", start),
         text.find("3.3.2", start),

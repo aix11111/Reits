@@ -18,12 +18,23 @@
 《招募说明书》预测值的91.40%。」与深市共用宽松正则（年份「预测本基金」/
 「预测的」、金额「为」可选、完成率「预测/预测值」及「的」可选）。
 
+深市 180202 2022 年报（格式 D）：「本报告期内，本基金实现可供分配金额为
+137,426,821.43 元，相较招募说明书中披露的2022 年可供分配金额（153,838,106.00
+元），偏离度为-10.67%。」走沪市「偏离度」分支（括号内无「为」的预测金额），
+年份从「披露的{YYYY} 年」提取，completion_pct = round(100 + (-10.67), 2) = 89.33。
+
+深市 180203 2024 年报（格式 E）：「本报告期，本基金实现可供分配金额为
+235,347,428.99 元，相较招募说明书中披露的可供分配同期目标数235,299,621.65 元，
+完成招募说明书预测的100.02%。」预测金额取「同期目标数{X} 元」备选，段落无
+年份 → year=None（调用方/页眉标题兜底）。
+
 extract_text 用 pymupdf 逐页抽取 PDF 全文（与 parser_generic 一致）；
 parse_annual_completion 定位「刊载的可供分配金额测算报告」段落（其后
 窗口）后交给纯函数 _parse_completion_text 解析，找不到段落抛 ValueError。
-年份：深市从段落「预测本基金{YYYY} 年度」提取；沪市段落无年份，可由
-调用方经 year 参数传入，未传时从全文「{YYYY} 年年度报告」/「{YYYY}
-年度报告」标题兜底，找不到 → year=None。
+年份：深市从段落「预测本基金{YYYY} 年度」/「预测的{YYYY} 年度」提取；沪市
+「偏离度」段落从「披露的{YYYY} 年」提取（180202 格式），180203 格式段落无
+年份可由调用方经 year 参数传入，未传时从全文「{YYYY} 年年度报告」/「{YYYY}
+年度报告」标题兜底，仍找不到 → year=None。
 金额统一 元→万元 除以 10000。
 """
 
@@ -36,12 +47,20 @@ SECTION_MARKER = "刊载的可供分配金额测算报告"
 SECTION_LIMIT = 800
 
 YEAR_RE = re.compile(r"(?:预测本基金|预测的?)\s*(\d{4})\s*年度")
-PREDICTED_RE = re.compile(r"(?<!实现)可供\s*分配金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*元")
+PREDICTED_RE = re.compile(
+    r"(?:"
+    r"(?<!实现)可供\s*分配金额\s*为?\s*(?P<predicted>\d[\d,]*(?:\.\d+)?)\s*元"
+    r"|同期目标数\s*(?P<target>\d[\d,]*(?:\.\d+)?)\s*元"
+    r")"
+)
 ACTUAL_RE = re.compile(r"实现可供\s*分配金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*元")
 COMPLETION_RE = re.compile(r"完成[^%\d]{0,14}预测值?\s*的?\s*(\d+(?:\.\d+)?)\s*%")
 
 SH_ACTUAL_RE = re.compile(r"实现可供分配金额为\s*(\d[\d,]*(?:\.\d+)?)\s*元")
-SH_PREDICTED_RE = re.compile(r"为\s*(\d[\d,]*(?:\.\d+)?)\s*元\s*[）)]")
+SH_PREDICTED_RE = re.compile(
+    r"[（(][^（()]{0,100}?(\d[\d,]*(?:\.\d+)?)\s*元\s*[）)]"
+)
+SH_YEAR_RE = re.compile(r"披露的\s*(\d{4})\s*年")
 DEVIATION_RE = re.compile(r"偏离度为\s*(-?\d+(?:\.\d+)?)\s*%")
 
 REPORT_YEAR_RE = re.compile(r"(\d{4})\s*年\s*年度报告")
@@ -76,8 +95,10 @@ def _find_completion_section(text: str, limit: int = SECTION_LIMIT) -> str:
 def _parse_shanghai_completion(text: str, year) -> dict:
     """解析沪市「偏离度」格式段落，返回 {year, predicted_wan, actual_wan, completion_pct}。
 
-    实际金额取「实现可供分配金额为{X} 元」，预测金额取括号内「为{Y} 元)」，
-    completion_pct = round(100 + 偏离度, 2)；year 由调用方传入（可为 None）。
+    实际金额取「实现可供分配金额为{X} 元」，预测金额取括号内「{X} 元)」
+    （「为」可省略，如「（153,838,106.00 元）」或「（…为290,818,170.72 元）」），
+    completion_pct = round(100 + 偏离度, 2)；year 由调用方传入，为 None 时从
+    「披露的{YYYY} 年」（180202 格式）提取，找不到保持 None。
     """
     actual_match = SH_ACTUAL_RE.search(text)
     if actual_match is None:
@@ -90,6 +111,11 @@ def _parse_shanghai_completion(text: str, year) -> dict:
     deviation_match = DEVIATION_RE.search(text)
     if deviation_match is None:
         raise ValueError("未找到偏离度")
+
+    if year is None:
+        year_match = SH_YEAR_RE.search(text)
+        if year_match is not None:
+            year = int(year_match.group(1))
 
     return {
         "year": year,
@@ -119,13 +145,15 @@ def _parse_completion_text(text: str, year=None) -> dict:
 
     if year is None:
         year_match = YEAR_RE.search(text)
-        if year_match is None:
+        if year_match is not None:
+            year = int(year_match.group(1))
+        elif "年度" in text:
             raise ValueError("未找到预测年份")
-        year = int(year_match.group(1))
 
     predicted_match = PREDICTED_RE.search(text)
     if predicted_match is None:
         raise ValueError("未找到预测可供分配金额")
+    predicted_raw = predicted_match.group("predicted") or predicted_match.group("target")
 
     actual_match = ACTUAL_RE.search(text)
     if actual_match is None:
@@ -137,7 +165,7 @@ def _parse_completion_text(text: str, year=None) -> dict:
 
     return {
         "year": year,
-        "predicted_wan": _to_number(predicted_match.group(1)) / 10000.0,
+        "predicted_wan": _to_number(predicted_raw) / 10000.0,
         "actual_wan": _to_number(actual_match.group(1)) / 10000.0,
         "completion_pct": _to_number(completion_match.group(1)),
     }

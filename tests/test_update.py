@@ -187,10 +187,14 @@ def test_fetch_new_monthly_routes_sz_to_cninfo_and_sh_to_sse(
     monkeypatch, tmp_path
 ):
     """深市 3 只走 cninfo（含 search_org_id），沪市 11 只走 sse；
-    日期范围从最新 period 次月 1 日开始。"""
+    日期范围逐基金：有数据的从该基金最新 period 次月 1 日起，
+    无数据的从 2023-01-01 起。"""
     _patch_downloads(monkeypatch, tmp_path)
     monthly_df = _monthly_df(
-        [["2026-06", "180201", "平安广州广河REIT", 8000, 120000, 1.0, 2.0, "公告"]]
+        [
+            ["2026-06", "180201", "平安广州广河REIT", 8000, 120000, 1.0, 2.0, "公告"],
+            ["2026-03", "508001", "浙商沪杭甬REIT", 7000, 110000, 0.5, 1.5, "公告"],
+        ]
     )
 
     org_calls = []
@@ -217,7 +221,15 @@ def test_fetch_new_monthly_routes_sz_to_cninfo_and_sh_to_sse(
     assert sorted(org_calls) == SZ_CODES
     assert sorted(c["code"] for c in cninfo_calls) == SZ_CODES
     assert sorted(c["code"] for c in sse_calls) == sorted(SH_CODES)
-    assert all(c["from"] == "2026-07-01" for c in cninfo_calls + sse_calls)
+
+    from_by_code = {c["code"]: c["from"] for c in cninfo_calls + sse_calls}
+    assert from_by_code["180201"] == "2026-07-01"
+    assert from_by_code["508001"] == "2026-04-01"
+    assert all(
+        date_from == "2023-01-01"
+        for code, date_from in from_by_code.items()
+        if code not in ("180201", "508001")
+    )
 
 
 def test_fetch_new_monthly_collects_errors_and_continues(monkeypatch, tmp_path):
@@ -257,7 +269,8 @@ def test_fetch_new_monthly_collects_errors_and_continues(monkeypatch, tmp_path):
 
 def test_fetch_new_quarterly_filters_advisory_and_dedups(monkeypatch, tmp_path):
     """过滤「季度报告」并排除提示性公告；已存在 (code, period) 跳过；
-    沪市走 sse，日期范围从最新季度末次日开始。"""
+    沪市走 sse，日期范围逐基金（有数据的从最新季度末次日起，无数据从
+    2023-01-01 起）。"""
     _patch_downloads(monkeypatch, tmp_path)
     quarterly_df = _quarterly_df(
         [["2026Q2", "508001", "浙商沪杭甬REIT", 17000, None, 4000, 14000, 7000, None, "季报"]]
@@ -325,7 +338,13 @@ def test_fetch_new_quarterly_filters_advisory_and_dedups(monkeypatch, tmp_path):
 
     # 提示性公告与中期报告既不下载也不解析
     assert sorted(downloaded) == ["q2.pdf", "q3.pdf"]
-    assert all(c["from"] == "2026-07-01" for c in sse_calls)
+    from_by_code = {c["code"]: c["from"] for c in sse_calls}
+    assert from_by_code["508001"] == "2026-07-01"
+    assert all(
+        date_from == "2023-01-01"
+        for code, date_from in from_by_code.items()
+        if code != "508001"
+    )
 
 
 # ---------------------------------------------------------------------------

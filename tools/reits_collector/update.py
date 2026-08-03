@@ -69,11 +69,12 @@ def _period_date_from(period: str, kind: str) -> str:
     return f"{year}-{month:02d}-01"
 
 
-def _date_from(df, kind: str) -> str:
-    """无数据从 2023-01-01 起；否则从最新报告期之后起。"""
-    if df.empty:
+def _date_from(code: str, last_period: dict, kind: str) -> str:
+    """逐基金查询起始日：无数据从 2023-01-01 起；否则从该基金最新报告期之后起。"""
+    last = last_period.get(code)
+    if last is None:
         return "2023-01-01"
-    return _period_date_from(str(df["period"].max()), kind)
+    return _period_date_from(last, kind)
 
 
 def _list_for(code: str, date_from: str, date_to: str) -> list:
@@ -96,16 +97,22 @@ def _announcement_rows(df, kind, errors, title_filter, parse_fn, source):
     """通用抓取管线：逐基金拉公告→过滤→下载→解析→去重→组装新行。"""
     if errors is None:
         errors = []
-    codes = df["code"].astype(str).tolist() if not df.empty else []
-    existing = set(zip(codes, df["period"].astype(str)))
-    code_to_name = dict(zip(codes, df["name"].astype(str)))
-    date_from = _date_from(df, kind)
+    existing = set()
+    code_to_name = {}
+    last_period = {}
+    for _, record in df.iterrows():
+        code = str(record["code"])
+        period = str(record["period"])
+        existing.add((code, period))
+        code_to_name[code] = str(record["name"])
+        if period > last_period.get(code, ""):
+            last_period[code] = period
     date_to = date.today().isoformat()
 
     rows = []
     for code in FUND_CODES:
         try:
-            announcements = _list_for(code, date_from, date_to)
+            announcements = _list_for(code, _date_from(code, last_period, kind), date_to)
         except Exception as exc:
             errors.append(f"{code}：{exc}")
             continue

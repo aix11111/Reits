@@ -10,6 +10,7 @@ import pandas as pd
 import pytest
 
 from src.rules import (
+    concession_decay,
     detect_divergence,
     detect_mom_spikes,
     distribution_rate_benchmark,
@@ -571,3 +572,114 @@ def test_mom_spikes_empty_dataframe_does_not_raise():
     result = detect_mom_spikes(make_mom_df([]))
 
     assert len(result) == 0
+
+
+# ---------------------------------------------------------------------------
+# 规则 4：concession_decay（特许经营权衰减）
+# ---------------------------------------------------------------------------
+
+# 静态信息输出列（与 src.data_loader.load_static 保持一致）
+STATIC_COLUMNS = [
+    "code",
+    "name",
+    "asset",
+    "region",
+    "mileage_km",
+    "listing_date",
+    "issue_scale_yi",
+    "concession_years_left",
+    "asset_type",
+]
+
+
+def make_static(rows):
+    """将形如 [code, name, concession_years_left] 的行补全为静态信息 DataFrame。
+
+    其余列填入默认值（asset="高速", region="广东", mileage_km=100,
+    listing_date="2021-01-01", issue_scale_yi=10, asset_type="特许经营权"）。
+    """
+    entries = [
+        [code, name, "高速", "广东", 100, "2021-01-01", 10, years, "特许经营权"]
+        for code, name, years in rows
+    ]
+    return pd.DataFrame(entries, columns=STATIC_COLUMNS)
+
+
+# concession_decay 的 fixture：含临近到期 / 关注 / 正常 / NaN /
+# 边界 warn_years=10 恰为 10 → 关注、恰为 15 → 正常
+CONCESSION_ROWS = [
+    ["180201", "平安广州广河REIT", 20.0],    # >= 15 → 正常
+    ["180202", "华夏越秀高速REIT", 5.0],     # < 10 → 临近到期
+    ["180203", "招商高速公路REIT", 10.0],    # 恰为 warn_years=10 → 关注
+    ["508001", "浙商沪杭甬REIT", 12.0],      # 10 <= x < 15 → 关注
+    ["508018", "华夏中国交建REIT", 15.0],    # 恰为 15 → 正常
+    ["508008", "国金中国铁建REIT", None],    # NaN → 未知，排最后
+]
+
+
+def test_concession_decay_risk_levels():
+    result = concession_decay(make_static(CONCESSION_ROWS))
+    row = result.set_index("code")
+
+    assert row.loc["180202", "risk_level"] == "临近到期"
+    assert row.loc["508001", "risk_level"] == "关注"
+    assert row.loc["180201", "risk_level"] == "正常"
+
+
+def test_concession_decay_boundary_warn_years_is_watch():
+    """恰为 warn_years=10 → 关注（非临近到期）；恰为 15 → 正常（非关注）。"""
+    result = concession_decay(make_static(CONCESSION_ROWS))
+    row = result.set_index("code")
+
+    assert row.loc["180203", "risk_level"] == "关注"
+    assert row.loc["508018", "risk_level"] == "正常"
+
+
+def test_concession_decay_nan_is_unknown():
+    result = concession_decay(make_static(CONCESSION_ROWS))
+    row = result.set_index("code")
+
+    assert row.loc["508008", "risk_level"] == "未知"
+
+
+def test_concession_decay_sorted_ascending_nan_last():
+    """按剩余年限升序（最短在前，风险最高），NaN 排最后。"""
+    result = concession_decay(make_static(CONCESSION_ROWS))
+
+    assert result["code"].tolist() == [
+        "180202",  # 5
+        "180203",  # 10
+        "508001",  # 12
+        "508018",  # 15
+        "180201",  # 20
+        "508008",  # NaN → 最后
+    ]
+
+
+def test_concession_decay_custom_warn_years():
+    rows = [
+        ["180201", "平安广州广河REIT", 7.0],
+        ["180202", "华夏越秀高速REIT", 8.0],
+        ["180203", "招商高速公路REIT", 12.0],
+    ]
+    result = concession_decay(make_static(rows), warn_years=8)
+    row = result.set_index("code")
+
+    assert row.loc["180201", "risk_level"] == "临近到期"  # 7 < 8
+    assert row.loc["180202", "risk_level"] == "关注"      # 恰为 8
+    assert row.loc["180203", "risk_level"] == "关注"      # 8 <= 12 < 15
+
+
+def test_concession_decay_keeps_original_columns():
+    result = concession_decay(make_static(CONCESSION_ROWS))
+
+    for col in STATIC_COLUMNS:
+        assert col in result.columns
+    assert set(result.columns) == set(STATIC_COLUMNS) | {"risk_level"}
+
+
+def test_concession_decay_empty_dataframe_does_not_raise():
+    result = concession_decay(make_static([]))
+
+    assert len(result) == 0
+    assert "risk_level" in result.columns

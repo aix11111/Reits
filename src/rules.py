@@ -1,13 +1,15 @@
 """投后分析规则引擎。
 
-基于月度数据 DataFrame 实现投后管理分析规则：
+基于月度/季度/静态数据 DataFrame 实现投后管理分析规则：
 - 规则 1：流量/收入背离检测 detect_divergence
 - 规则 2：同类基金月度同比对标 peer_compare
 - 规则 3：可供分配金额同比增速 distributable_yoy
 - 规则 4：可供分配金额同行对标 distribution_rate_benchmark
+- 规则 5：特许经营权衰减 concession_decay
 
 月度输入列名与 src.data_loader.load_monthly、季度输入列名与
-load_quarterly 的输出保持一致。注意：月度数据无环比列，环比异动检测暂不实现。
+load_quarterly、静态输入列名与 load_static 的输出保持一致。
+注意：月度数据无环比列，环比异动检测由 detect_mom_spikes 自行计算。
 """
 
 import pandas as pd
@@ -172,3 +174,35 @@ def distribution_rate_benchmark(quarterly_df: pd.DataFrame) -> pd.DataFrame:
         result["distributable_wan"] < result["median_distributable_wan"]
     ).where((group_counts >= 3) & result["distributable_wan"].notna())
     return result
+
+
+def concession_decay(
+    static_df: pd.DataFrame, warn_years: float = 10, normal_years: float = 15
+) -> pd.DataFrame:
+    """特许经营权衰减规则：按剩余年限划分风险等级。
+
+    按 concession_years_left 升序排序（剩余年限最短在前，风险最高）：
+    - remaining < warn_years → risk_level="临近到期"
+    - warn_years <= remaining < normal_years → risk_level="关注"
+    - remaining >= normal_years → risk_level="正常"
+    - 缺失（NaN）→ risk_level="未知"，排最后
+
+    返回 DataFrame：原列 + risk_level(str)。空 DataFrame 不崩溃。
+    """
+    result = static_df.copy()
+
+    def classify(remaining):
+        if pd.isna(remaining):
+            return "未知"
+        if remaining < warn_years:
+            return "临近到期"
+        if remaining < normal_years:
+            return "关注"
+        return "正常"
+
+    result["risk_level"] = result["concession_years_left"].map(classify)
+    if result.empty:
+        return result
+    return result.sort_values(
+        "concession_years_left", ascending=True, na_position="last"
+    )

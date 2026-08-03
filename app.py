@@ -17,6 +17,7 @@ from src.data_loader import load_all
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
 from src.rules import (
+    concession_decay,
     detect_divergence,
     detect_mom_spikes,
     distribution_rate_benchmark,
@@ -75,6 +76,22 @@ _RULES_MOM_COLUMNS = [
     ("revenue_spike", "收入异动"),
     ("traffic_spike", "车流量异动"),
 ]
+
+# 分析规则页签：特许经营权衰减展示列
+_RULES_CONCESSION_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("concession_years_left", "剩余年限(年)"),
+    ("risk_level", "风险等级"),
+]
+
+# 特许经营权衰减风险等级 → 条形图颜色
+_RISK_LEVEL_COLORS = {
+    "临近到期": "#d62728",
+    "关注": "#ff7f0e",
+    "正常": "#2ca02c",
+    "未知": "#7f7f7f",
+}
 
 
 def render_operations(code, name, monthly_df, quarterly_df):
@@ -155,11 +172,12 @@ def _tristate_label(value):
     return "是" if value else "否"
 
 
-def render_rules(monthly_df, quarterly_df):
-    """分析规则页签：全行业可供分配对标、月度背离检测与空数据降级。"""
+def render_rules(monthly_df, quarterly_df, static_df):
+    """分析规则页签：全行业可供分配对标、月度背离检测、环比异动与特许经营权衰减。"""
     st.subheader("分析规则引擎")
     st.caption(
-        "基于季度数据：可供分配金额同比与同行对标；基于月度数据：收入/车流量背离检测与环比异动检测。"
+        "基于季度数据：可供分配金额同比与同行对标；基于月度数据：收入/车流量背离检测与环比异动检测；"
+        "基于静态数据：特许经营权剩余年限衰减。"
     )
 
     st.markdown("### 1. 全行业可供分配对标（最新季度）")
@@ -266,6 +284,43 @@ def render_rules(monthly_df, quarterly_df):
                 width="stretch",
             )
 
+    st.markdown("### 4. 特许经营权衰减（剩余年限）")
+    if static_df.empty:
+        st.info("暂无静态数据，特许经营权衰减分析跳过。")
+    else:
+        decay = concession_decay(static_df)
+
+        # 横向条形图：剩余年限最短者（风险最高）位于顶部；
+        # 临近到期红色、关注橙色、正常绿色，未知不参与绘图
+        chart_df = decay[decay["concession_years_left"].notna()].sort_values(
+            "concession_years_left", ascending=False
+        )
+        if not chart_df.empty:
+            fig = go.Figure(
+                go.Bar(
+                    x=chart_df["concession_years_left"],
+                    y=chart_df["name"],
+                    orientation="h",
+                    marker_color=[
+                        _RISK_LEVEL_COLORS[level] for level in chart_df["risk_level"]
+                    ],
+                )
+            )
+            fig.update_layout(
+                title="特许经营权剩余年限（年）",
+                xaxis_title="剩余年限（年）",
+                template="plotly_white",
+                font=dict(family="Microsoft YaHei, SimHei, sans-serif"),
+            )
+            st.plotly_chart(fig, width="stretch")
+
+        display = decay.rename(columns=dict(_RULES_CONCESSION_COLUMNS))
+        st.dataframe(
+            display[[label for _, label in _RULES_CONCESSION_COLUMNS]],
+            hide_index=True,
+            width="stretch",
+        )
+
 
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与两个页签。"""
@@ -311,7 +366,7 @@ def main():
         render_market(selected_code)
 
     with tab_rules:
-        render_rules(monthly_df, quarterly_df)
+        render_rules(monthly_df, quarterly_df, static_df)
 
 
 if __name__ == "__main__":

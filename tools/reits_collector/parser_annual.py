@@ -13,6 +13,11 @@
 中披露的可供分配金额同期目标数（……为290,818,170.72 元），偏离度
 为-13.83%。」→ completion_pct = round(100 + 偏离度, 2) = 86.17。
 
+另一深市措辞（508008 2022 年报）：「预测的2022 年度可供分配金额为
+427,054,548.82 元，本报告期实现可供分配金额为390,321,619.58 元，完成
+《招募说明书》预测值的91.40%。」与深市共用宽松正则（年份「预测本基金」/
+「预测的」、金额「为」可选、完成率「预测/预测值」及「的」可选）。
+
 extract_text 用 pymupdf 逐页抽取 PDF 全文（与 parser_generic 一致）；
 parse_annual_completion 定位「刊载的可供分配金额测算报告」段落（其后
 窗口）后交给纯函数 _parse_completion_text 解析，找不到段落抛 ValueError。
@@ -30,10 +35,10 @@ import fitz
 SECTION_MARKER = "刊载的可供分配金额测算报告"
 SECTION_LIMIT = 800
 
-YEAR_RE = re.compile(r"预测本基金(\d{4})\s*年度")
-PREDICTED_RE = re.compile(r"(?<!实现)可供分配金额\s*(\d[\d,]*(?:\.\d+)?)\s*元")
-ACTUAL_RE = re.compile(r"实现可供分配金额\s*(\d[\d,]*(?:\.\d+)?)\s*元")
-COMPLETION_RE = re.compile(r"完成[\s\S]{0,6}预测的\s*(\d+(?:\.\d+)?)\s*%")
+YEAR_RE = re.compile(r"(?:预测本基金|预测的?)\s*(\d{4})\s*年度")
+PREDICTED_RE = re.compile(r"(?<!实现)可供\s*分配金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*元")
+ACTUAL_RE = re.compile(r"实现可供\s*分配金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*元")
+COMPLETION_RE = re.compile(r"完成[^%\d]{0,14}预测值?\s*的?\s*(\d+(?:\.\d+)?)\s*%")
 
 SH_ACTUAL_RE = re.compile(r"实现可供分配金额为\s*(\d[\d,]*(?:\.\d+)?)\s*元")
 SH_PREDICTED_RE = re.compile(r"为\s*(\d[\d,]*(?:\.\d+)?)\s*元\s*[）)]")

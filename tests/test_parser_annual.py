@@ -48,6 +48,17 @@ SH_EXPECTED = {
     "completion_pct": 86.17,
 }
 
+C_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508008_2022_completion.txt"
+).read_text(encoding="utf-8")
+
+C_EXPECTED = {
+    "year": 2022,
+    "predicted_wan": 42705.454882,
+    "actual_wan": 39032.161958,
+    "completion_pct": 91.40,
+}
+
 EMPTY_RESULT = {}
 
 
@@ -157,6 +168,30 @@ def test_parse_completion_text_short_wording():
     result = parser_annual._parse_completion_text(text)
 
     assert result["completion_pct"] == pytest.approx(76.15)
+
+
+def test_parse_completion_text_format_c_fixture():
+    """格式 C（508008 2022 年报）：「预测的{YYYY} 年度…可供分配金额为…元，
+    本报告期实现可供分配金额为…元，完成《招募说明书》预测值的91.40%。」"""
+    result = parser_annual._parse_completion_text(C_FIXTURE_TEXT)
+
+    assert result["year"] == C_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(C_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(C_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(C_EXPECTED["completion_pct"])
+
+
+def test_parse_completion_text_format_c_without_thousands_separator():
+    text = C_FIXTURE_TEXT.replace("427,054,548.82", "427054548.82").replace(
+        "390,321,619.58", "390321619.58"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2022
+    assert result["predicted_wan"] == pytest.approx(42705.454882)
+    assert result["actual_wan"] == pytest.approx(39032.161958)
+    assert result["completion_pct"] == pytest.approx(91.40)
 
 
 def test_parse_completion_text_missing_marker_raises_value_error():

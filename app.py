@@ -181,6 +181,13 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
 """
 
 
+def _fmt_pct(v) -> str:
+    """数值为 nan/None 时显示 \"—\"，否则格式化为百分比。"""
+    if pd.isna(v):
+        return "—"
+    return f"{v:.1%}"
+
+
 def _kpi_card(label: str, value: str, note: str) -> str:
     """终端读数 KPI 卡：标签（三级灰）→ 大号等宽青绿数值 → 单位说明（三级灰）。"""
     return (
@@ -203,10 +210,10 @@ def render_operations(code, name, monthly_df, quarterly_df):
         cards = "".join(
             [
                 _kpi_card("最新季度", str(metrics["period"]), "报告期"),
-                _kpi_card("NOI利润率", f"{metrics['noi_margin']:.1%}",
+                _kpi_card("NOI利润率", _fmt_pct(metrics["noi_margin"]),
                           "(营业总收入-营业成本)/营业总收入"),
-                _kpi_card("净利润率", f"{metrics['net_margin']:.1%}", "净利润/营业总收入"),
-                _kpi_card("年化可供分配收益率", f"{metrics['distributable_yield']:.1%}",
+                _kpi_card("净利润率", _fmt_pct(metrics["net_margin"]), "净利润/营业总收入"),
+                _kpi_card("年化可供分配收益率", _fmt_pct(metrics["distributable_yield"]),
                           "可供分配×4/NAV（年化）"),
             ]
         )

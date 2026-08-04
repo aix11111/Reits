@@ -25,6 +25,14 @@
    "name": "招商高速公路REIT"
   },
   {
+   "year": 2023,
+   "predicted_wan": 32187.389444,
+   "actual_wan": 35617.733507,
+   "completion_pct": 110.66,
+   "code": "508007",
+   "name": "中金山高集团REIT"
+  },
+  {
    "year": 2022,
    "predicted_wan": 42705.454882,
    "actual_wan": 39032.161958,
@@ -39,6 +47,38 @@
    "completion_pct": 104.68,
    "code": "508008",
    "name": "国金中国铁建REIT"
+  },
+  {
+   "year": 2023,
+   "predicted_wan": 88871.81,
+   "actual_wan": 78044.6,
+   "completion_pct": 87.82,
+   "code": "508009",
+   "name": "中金安徽交控REIT"
+  },
+  {
+   "year": 2022,
+   "predicted_wan": 29081.817072,
+   "actual_wan": 25059.791987,
+   "completion_pct": 86.17,
+   "code": "508018",
+   "name": "华夏中国交建REIT"
+  },
+  {
+   "year": 2023,
+   "predicted_wan": 22512.32,
+   "actual_wan": 22777.860249,
+   "completion_pct": 101.18,
+   "code": "508066",
+   "name": "华泰江苏交控REIT"
+  },
+  {
+   "year": 2024,
+   "predicted_wan": 60001.728671000004,
+   "actual_wan": 58976.982308000006,
+   "completion_pct": 98.29,
+   "code": "508086",
+   "name": "工银河北高速REIT"
   }
  ]
 }

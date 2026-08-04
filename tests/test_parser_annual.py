@@ -136,6 +136,10 @@ LINEBREAK_EXPECTED = {
     "completion_pct": 72.90,
 }
 
+NAV_FIXTURE_TEXT = (FIXTURES_DIR / "annual_180201_2022_nav.txt").read_text(
+    encoding="utf-8"
+)
+
 EMPTY_RESULT = {}
 
 
@@ -470,3 +474,52 @@ def test_parse_annual_completion_missing_paragraph_raises_value_error(monkeypatc
 
     with pytest.raises(ValueError):
         parser_annual.parse_annual_completion("180201 2022 年报.pdf")
+
+
+def test_extract_nav_fields_nav_fixture():
+    """nav fixture（3.2 节完整片段）→ nav_unit_price=12.2867、
+    nav_wan=860066.41（期末基金净资产 8,600,664,096.81 元 ÷10000 保留两位）。"""
+    result = parser_annual._extract_nav_fields(NAV_FIXTURE_TEXT)
+
+    assert result["nav_unit_price"] == 12.2867
+    assert result["nav_wan"] == 860066.41
+
+
+def test_extract_nav_fields_missing_returns_none():
+    """早期年报无净值披露 → 字段为 None，不抛错。"""
+    result = parser_annual._extract_nav_fields("早期年报无净值披露的文本")
+
+    assert result["nav_unit_price"] is None
+    assert result["nav_wan"] is None
+
+
+def test_extract_nav_fields_linebreak_thousands():
+    """净资产值跨行 + 千分位 → 拼回完整数值换算万元。"""
+    text = NAV_FIXTURE_TEXT.replace("8,600,664,096.81", "8,600,66\n4,096.81")
+
+    result = parser_annual._extract_nav_fields(text)
+
+    assert result["nav_wan"] == 860066.41
+
+
+def test_parse_annual_completion_nav_fixture(monkeypatch):
+    """parse_annual_completion 端到端：nav fixture + completion 段落 → 全部字段。"""
+    full_text = FIXTURE_TEXT + "\n\n" + NAV_FIXTURE_TEXT
+    monkeypatch.setattr(parser_annual, "extract_text", lambda path: full_text)
+
+    result = parser_annual.parse_annual_completion("180201 2022 年报.pdf")
+
+    assert result["year"] == 2022
+    assert result["completion_pct"] == pytest.approx(76.15)
+    assert result["nav_unit_price"] == 12.2867
+    assert result["nav_wan"] == 860066.41
+
+
+def test_parse_annual_completion_no_nav_is_none(monkeypatch):
+    """全文无净值披露 → nav 字段为 None，不抛错。"""
+    monkeypatch.setattr(parser_annual, "extract_text", lambda path: SH_FIXTURE_TEXT)
+
+    result = parser_annual.parse_annual_completion("508018 2022 年报.pdf")
+
+    assert result["nav_unit_price"] is None
+    assert result["nav_wan"] is None

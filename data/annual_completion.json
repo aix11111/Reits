@@ -6,7 +6,9 @@
    "actual_wan": 47691.186489,
    "completion_pct": 76.15,
    "code": "180201",
-   "name": "平安广州广河REIT"
+   "name": "平安广州广河REIT",
+   "nav_unit_price": 12.2867,
+   "nav_wan": 860066.41
   },
   {
    "year": 2022,
@@ -14,7 +16,9 @@
    "actual_wan": 13742.682143,
    "completion_pct": 89.33,
    "code": "180202",
-   "name": "华夏越秀高速REIT"
+   "name": "华夏越秀高速REIT",
+   "nav_unit_price": 6.9408,
+   "nav_wan": 208223.78
   },
   {
    "year": 2024,
@@ -22,7 +26,9 @@
    "actual_wan": 23534.742899,
    "completion_pct": 100.02,
    "code": "180203",
-   "name": "招商高速公路REIT"
+   "name": "招商高速公路REIT",
+   "nav_unit_price": 6.6127,
+   "nav_wan": 330634.18
   },
   {
    "year": 2022,
@@ -30,7 +36,9 @@
    "actual_wan": 31508.74,
    "completion_pct": 72.9,
    "code": "508001",
-   "name": "浙商沪杭甬REIT"
+   "name": "浙商沪杭甬REIT",
+   "nav_unit_price": 7.4327,
+   "nav_wan": 371633.97
   },
   {
    "year": 2023,
@@ -38,7 +46,9 @@
    "actual_wan": 35617.733507,
    "completion_pct": 110.66,
    "code": "508007",
-   "name": "中金山高集团REIT"
+   "name": "中金山高集团REIT",
+   "nav_unit_price": 6.9279,
+   "nav_wan": 277117.76
   },
   {
    "year": 2022,
@@ -46,7 +56,9 @@
    "actual_wan": 39032.161958,
    "completion_pct": 91.4,
    "code": "508008",
-   "name": "国金中国铁建REIT"
+   "name": "国金中国铁建REIT",
+   "nav_unit_price": 9.5749,
+   "nav_wan": 478747.48
   },
   {
    "year": 2023,
@@ -54,7 +66,9 @@
    "actual_wan": 48832.843239999995,
    "completion_pct": 104.68,
    "code": "508008",
-   "name": "国金中国铁建REIT"
+   "name": "国金中国铁建REIT",
+   "nav_unit_price": 9.0706,
+   "nav_wan": 453528.66
   },
   {
    "year": 2023,
@@ -62,7 +76,9 @@
    "actual_wan": 78044.6,
    "completion_pct": 87.82,
    "code": "508009",
-   "name": "中金安徽交控REIT"
+   "name": "中金安徽交控REIT",
+   "nav_unit_price": 9.7271,
+   "nav_wan": 972712.38
   },
   {
    "year": 2022,
@@ -70,7 +86,9 @@
    "actual_wan": 25059.791987,
    "completion_pct": 86.17,
    "code": "508018",
-   "name": "华夏中国交建REIT"
+   "name": "华夏中国交建REIT",
+   "nav_unit_price": 9.2751,
+   "nav_wan": 927505.37
   },
   {
    "year": 2023,
@@ -78,7 +96,9 @@
    "actual_wan": 22777.860249,
    "completion_pct": 101.18,
    "code": "508066",
-   "name": "华泰江苏交控REIT"
+   "name": "华泰江苏交控REIT",
+   "nav_unit_price": 5.0567,
+   "nav_wan": 202266.19
   },
   {
    "year": 2024,
@@ -86,7 +106,9 @@
    "actual_wan": 58976.982308000006,
    "completion_pct": 98.29,
    "code": "508086",
-   "name": "工银河北高速REIT"
+   "name": "工银河北高速REIT",
+   "nav_unit_price": 5.3417,
+   "nav_wan": 534166.17
   }
  ]
 }

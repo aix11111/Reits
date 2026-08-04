@@ -53,6 +53,9 @@ import fitz
 SECTION_MARKER = "刊载的可供分配金额测算报告"
 SECTION_LIMIT = 800
 
+NAV_PRICE_LABEL = "期末基金份额净值"
+NAV_ASSET_LABEL = "期末基金净资产"
+
 YEAR_RE = re.compile(r"(?:预测本基金|预测的?)\s*(\d{4})\s*年度")
 PREDICTED_RE = re.compile(
     r"(?:"
@@ -108,6 +111,50 @@ def _to_wan(raw: str, unit: str) -> float:
     if unit == "元":
         return value / 10000.0
     return float(value)
+
+
+_NUM_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+
+def _extract_nav_value(text: str, label: str) -> float | None:
+    """返回 label 后的第一个数值；早期年报无净值披露时返回 None。
+
+    按行取 label 后的首个数字：完整数值行含小数点即停止；值跨行（数字被
+    换行截断，如 508001「3,438,945,95\\n5.16」）时上一行无小数点、续接下一行
+    数字直到出现小数点，绝不与相邻年份数值合并。千分位逗号由 _to_number
+    去除。
+    """
+    idx = text.find(label)
+    if idx == -1:
+        return None
+    tail = text[idx + len(label) : idx + len(label) + 200]
+    parts = []
+    for line in tail.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        match = _NUM_RE.match(line)
+        if match is None:
+            break
+        parts.append(match.group(0))
+        if "." in parts[-1]:
+            break
+    if not parts:
+        return None
+    return _to_number("".join(parts))
+
+
+def _extract_nav_fields(text: str) -> dict:
+    """从全文提取净值字段：nav_unit_price（元/份）、nav_wan（万元）。
+
+    早期年报无净值披露 → 字段为 None 不抛错。nav_wan 为「期末基金净资产」元值
+    除以 10000 并保留两位。
+    """
+    nav_unit_price = _extract_nav_value(text, NAV_PRICE_LABEL)
+    nav_wan = _extract_nav_value(text, NAV_ASSET_LABEL)
+    if nav_wan is not None:
+        nav_wan = round(nav_wan / 10000.0, 2)
+    return {"nav_unit_price": nav_unit_price, "nav_wan": nav_wan}
 
 
 def _find_completion_section(text: str, limit: int = SECTION_LIMIT) -> str:
@@ -255,8 +302,12 @@ def parse_annual_completion(pdf_path: str, year=None) -> dict:
 
     year 可选：沪市段落无年份时传入；为 None 时从全文页眉标题
     「{YYYY} 年年度报告」/「{YYYY} 年度报告」兜底，找不到 → year=None。
+    返回字典额外含 nav_unit_price（元/份）、nav_wan（万元）两个净值字段
+    （早期年报无净值披露 → None）。
     """
     text = extract_text(pdf_path)
     if year is None:
         year = _find_report_year(text)
-    return _parse_completion_text(_find_completion_section(text), year)
+    result = _parse_completion_text(_find_completion_section(text), year)
+    result.update(_extract_nav_fields(text))
+    return result

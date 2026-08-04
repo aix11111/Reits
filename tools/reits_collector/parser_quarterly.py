@@ -197,16 +197,53 @@ def _to_wan(value):
     return value / 10000.0
 
 
+def _value_after_any(text: str, labels: tuple[str, ...], limit: int = 120):
+    """取任一标签后窗口内第一个数值；全部不存在或无数值时返回 None。
+
+    按标签顺序取第一个有数值的标签（「本期收入」优先于「营业总收入」），
+    兼容不同管理人对 3.1 主要财务指标收入行的不同表述。
+    """
+    for label in labels:
+        value = _value_after(text, label, limit)
+        if value is not None:
+            return value
+    return None
+
+
+def _parse_ebitda(text: str, limit: int = 80):
+    """取财务分析表中「EBITDA」行的当期值（元）。
+
+    EBITDA 一词可能出现在叙述句中（如「收入和EBITDA同比下降超过10%」），
+    需跳过：仅在「EBITDA」标签后跟表格数字（行内首个数值）时取值。
+    采用扫所有出现位置、取首个「标签后紧跟数字」的匹配。
+    """
+    pos = -1
+    while True:
+        pos = text.find("EBITDA", pos + 1)
+        if pos == -1:
+            return None
+        window = text[pos + len("EBITDA") : pos + len("EBITDA") + limit]
+        m = NUMBER_RE.search(window)
+        if m is None:
+            continue
+        prefix = window[: m.start()]
+        if prefix.strip():
+            continue
+        return _to_number(m.group(0))
+
+
 def parse_quarterly(text: str) -> dict:
     """解析季度报告全文，返回含 7 个键的字典（缺失字段为 None）。"""
     result = {"period": _parse_period(text)}
-    result["revenue_wan"] = _to_wan(_value_after(text, "本期收入"))
+    result["revenue_wan"] = _to_wan(
+        _value_after_any(text, ("本期收入", "营业总收入"))
+    )
     result["net_profit_wan"] = _to_wan(_value_after(text, "本期净利润"))
     result["cash_distribution_rate"] = _value_after(text, "本期现金流分派率")
     distributable, unit = _parse_distributable(text)
     result["distributable_wan"] = _to_wan(distributable)
     result["unit_distributable"] = unit
-    result["ebitda_wan"] = _to_wan(_value_after(text, "EBITDA", limit=80))
+    result["ebitda_wan"] = _to_wan(_parse_ebitda(text))
     return result
 
 

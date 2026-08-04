@@ -113,3 +113,96 @@ def test_parse_quarterly_missing_fields_return_none():
     assert result["period"] == "2026Q2"
     for key in VALUE_KEYS:
         assert result[key] is None
+
+
+# ---------------------------------------------------------------------------
+# 全市场产业园模板（508000 华安张江产业园 2026Q2）
+# ---------------------------------------------------------------------------
+
+
+def test_parse_quarterly_508000_industrial_park_fixture():
+    """产业园季报：3.1 行标签带「1.」序号，收入列标签为「本期收入」；
+    「3.3.1 本报告期的可供分配金额」表给出 本期 可供分配金额/单位可供分配金额。
+    金额元→万换算正确。"""
+    text = (FIXTURES_DIR / "quarterly_508000_2026Q2.txt").read_text(encoding="utf-8")
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["period"] == "2026Q2"
+    assert result["revenue_wan"] == pytest.approx(3065.07, rel=1e-3)
+    assert result["net_profit_wan"] == pytest.approx(-1164.45, rel=1e-3)
+    assert result["distributable_wan"] == pytest.approx(2369.54, rel=1e-3)
+    assert result["unit_distributable"] == pytest.approx(0.0247, rel=1e-3)
+
+
+def test_distributable_title_variant_this_period_only():
+    """「3.3.1 本报告期的可供分配金额」标题变体：本期行两个数值正常解析。"""
+    text = (
+        "3.3.1 本报告期的可供分配金额\n"
+        "期间\n可供分配金额\n单位可供分配金额\n备注\n"
+        "本期\n23,695,441.92\n0.0247\n-\n"
+        "本年累计\n49,484,408.58\n0.0515\n-"
+    )
+    distributable, unit = parser_quarterly._parse_distributable(text)
+
+    assert distributable == pytest.approx(23695441.92)
+    assert unit == pytest.approx(0.0247)
+
+
+def test_distributable_title_variant_three_years():
+    """「3.3.1 本报告期及近三年的可供分配金额」标题变体：本期行两个数值正常解析。"""
+    text = (
+        "3.3.1 本报告期及近三年的可供分配金额\n"
+        "期间\n可供分配金额\n单位可供分配金额\n备注\n"
+        "本期\n23,695,441.92\n0.0247\n-\n"
+        "本年累计\n49,484,408.58\n0.0515\n-"
+    )
+    distributable, unit = parser_quarterly._parse_distributable(text)
+
+    assert distributable == pytest.approx(23695441.92)
+    assert unit == pytest.approx(0.0247)
+
+
+def test_revenue_income_label_alias_zhaiwu_total_revenue():
+    """3.1 主要财务指标收入列标签可为「营业总收入」（部分管理人表述）；
+    「本期收入」缺省时回退到「营业总收入」。"""
+    text = (
+        "3.1 主要财务指标\n"
+        "1.营业总收入\n30,650,710.62\n"
+        "2.本期净利润\n-11,644,536.88"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["revenue_wan"] == pytest.approx(3065.07)
+
+
+def test_revenue_income_label_prefers_period_income():
+    """同一文本同时含「本期收入」与「营业总收入」时，优先取「本期收入」。"""
+    text = (
+        "3.1 主要财务指标\n"
+        "1.本期收入\n31,111,111.11\n"
+        "2.营业总收入\n30,650,710.62"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["revenue_wan"] == pytest.approx(3111.11)
+
+
+def test_ebitda_skips_narrative_mention_and_uses_table_value():
+    """EBITDA 叙述段（如「收入和EBITDA同比下降超过10%」）不应被当作财务值；
+    应取财务表格行的当期 EBITDA。"""
+    text = (
+        "可供分配金额较上年同期下降超过10%，使得基金收入和EBITDA同比\n"
+        "下降超过10%。\n"
+        "序号\n科目名称\n报告期金额（元）\n上年同期金额（元）\n"
+        "3\nEBITDA\n264,743,937.70\n311,638,399.00\n-16.39\n"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["ebitda_wan"] == pytest.approx(26474.39)
+
+
+def test_ebitda_missing_returns_none():
+    """无 EBITDA 表格（且无叙述提及）→ ebitda_wan 为 None。"""
+    result = parser_quarterly.parse_quarterly("3.1 主要财务指标\n1.本期收入\n30,650,710.62")
+
+    assert result["ebitda_wan"] is None

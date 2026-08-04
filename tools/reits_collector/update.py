@@ -25,7 +25,7 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-from src import data_loader
+from src import data_loader, market_data
 from tools.reits_collector import (
     cninfo,
     parser_annual,
@@ -62,6 +62,10 @@ DEFAULT_TEMPLATE = (
 
 # PDF 下载临时目录：由 main() 创建并在结束后清理；测试中由测试替身替换。
 PDF_DIR = None
+
+# 市值快照与份额数据文件路径
+SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "market_snapshot.json"
+FUND_SHARES_PATH = Path(__file__).resolve().parents[2] / "data" / "fund_shares.json"
 
 
 def _period_date_from(period: str, kind: str) -> str:
@@ -360,9 +364,95 @@ def _update_completion_file(completion_path, code_to_name, errors):
     return new_rows
 
 
+def _load_snapshot():
+    """读 SNAPSHOT_PATH；文件缺失/损坏返回空结构 {"snapshots": [], "latest": {}}。"""
+    try:
+        data = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        data = {}
+    if not isinstance(data, dict):
+        data = {}
+    return {
+        "snapshots": data.get("snapshots") or [],
+        "latest": data.get("latest") or {},
+    }
+
+
+def _load_fund_shares():
+    """读 data/fund_shares.json 的 shares 映射（code → 份额）；缺失/损坏返回空 dict。"""
+    try:
+        data = json.loads(FUND_SHARES_PATH.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        data = {}
+    shares = data.get("shares") if isinstance(data, dict) else None
+    return shares if isinstance(shares, dict) else {}
+
+
+def fetch_market_snapshot(shares, errors=None):
+    """抓取全市场 REIT 实时价生成市值快照，追加历史并按 date+code 去重。
+
+    shares：code → 份额总额 映射。成功基金新增当日快照行（price × shares /
+    10000，round 2）并覆盖 latest；失败基金沿用旧快照 latest 并记录 errors。
+    全失败（行情为空）返回旧快照内容不变；无旧快照时返回空结构，均不抛错。
+    """
+    if errors is None:
+        errors = []
+    old = _load_snapshot()
+    old_snapshots = old["snapshots"]
+    old_latest = old["latest"]
+    today = date.today().isoformat()
+
+    quotes = market_data.get_realtime_quotes()
+    prices = {}
+    if quotes is not None:
+        for _, row in quotes.iterrows():
+            try:
+                price = float(row["price"])
+            except (TypeError, ValueError):
+                continue
+            if price == price:
+                prices[str(row["code"])] = price
+
+    new_snapshots = []
+    latest = dict(old_latest)
+    for code in FUND_CODES:
+        if code not in prices:
+            errors.append(f"{code}：实时行情缺失")
+            continue
+        if shares.get(code) is None:
+            errors.append(f"{code}：份额缺失")
+            continue
+        price = prices[code]
+        market_cap_wan = round(price * shares[code] / 10000, 2)
+        new_snapshots.append(
+            {
+                "date": today,
+                "code": code,
+                "price": price,
+                "market_cap_wan": market_cap_wan,
+            }
+        )
+        latest[code] = {"price": price, "market_cap_wan": market_cap_wan}
+
+    if not new_snapshots:
+        return {"snapshots": old_snapshots, "latest": old_latest}
+
+    seen = {(row["date"], row["code"]) for row in old_snapshots}
+    snapshots = old_snapshots + [
+        row for row in new_snapshots if (row["date"], row["code"]) not in seen
+    ]
+    snapshots.sort(key=lambda row: (row["date"], row["code"]))
+    result = {"snapshots": snapshots, "latest": latest}
+    SNAPSHOT_PATH.write_text(
+        json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
+    return result
+
+
 def update_template(template_path, completion_path=None):
     """读取模板 → 抓取增量 → 重写月度/季度 Sheet；completion_path 非 None 时
-    同步更新 annual_completion.json。返回摘要 dict（含 completion_added）。"""
+    同步更新 annual_completion.json；市值快照追加最新收盘价。
+    返回摘要 dict（含 completion_added / snapshot_updated）。"""
     errors = []
     monthly_df = data_loader.load_monthly(template_path)
     quarterly_df = data_loader.load_quarterly(template_path)
@@ -375,6 +465,12 @@ def update_template(template_path, completion_path=None):
             completion_path, _code_to_name_from_df(monthly_df), errors
         )
 
+    snapshot_result = fetch_market_snapshot(_load_fund_shares(), errors=errors)
+    today = date.today().isoformat()
+    snapshot_updated = any(
+        row.get("date") == today for row in snapshot_result.get("snapshots", [])
+    )
+
     wb = load_workbook(template_path)
     _rewrite_sheet(wb, "月度数据", monthly_df, monthly_new, _monthly_row_values)
     _rewrite_sheet(wb, "季度数据", quarterly_df, quarterly_new, _quarterly_row_values)
@@ -384,6 +480,7 @@ def update_template(template_path, completion_path=None):
         "monthly_added": len(monthly_new),
         "quarterly_added": len(quarterly_new),
         "completion_added": len(completion_new),
+        "snapshot_updated": snapshot_updated,
         "errors": errors,
     }
 

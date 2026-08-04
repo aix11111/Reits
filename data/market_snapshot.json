@@ -1,0 +1,146 @@
+{
+ "snapshots": [
+  {
+   "date": "2026-08-04",
+   "code": "180201",
+   "price": 7.542,
+   "market_cap_wan": 527940.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "180202",
+   "price": 4.746,
+   "market_cap_wan": 142380.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "180203",
+   "price": 7.115,
+   "market_cap_wan": 355750.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508001",
+   "price": 4.802,
+   "market_cap_wan": 240100.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508007",
+   "price": 8.1,
+   "market_cap_wan": 324000.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508008",
+   "price": 7.644,
+   "market_cap_wan": 382200.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508009",
+   "price": 5.779,
+   "market_cap_wan": 577900.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508018",
+   "price": 5.928,
+   "market_cap_wan": 592800.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508020",
+   "price": 5.12,
+   "market_cap_wan": 512000.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508033",
+   "price": 6.31,
+   "market_cap_wan": 189300.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508036",
+   "price": 7.589,
+   "market_cap_wan": 758900.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508066",
+   "price": 5.849,
+   "market_cap_wan": 233960.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508069",
+   "price": 5.346,
+   "market_cap_wan": 267300.0
+  },
+  {
+   "date": "2026-08-04",
+   "code": "508086",
+   "price": 4.408,
+   "market_cap_wan": 440800.0
+  }
+ ],
+ "latest": {
+  "180201": {
+   "price": 7.542,
+   "market_cap_wan": 527940.0
+  },
+  "180202": {
+   "price": 4.746,
+   "market_cap_wan": 142380.0
+  },
+  "180203": {
+   "price": 7.115,
+   "market_cap_wan": 355750.0
+  },
+  "508001": {
+   "price": 4.802,
+   "market_cap_wan": 240100.0
+  },
+  "508018": {
+   "price": 5.928,
+   "market_cap_wan": 592800.0
+  },
+  "508008": {
+   "price": 7.644,
+   "market_cap_wan": 382200.0
+  },
+  "508066": {
+   "price": 5.849,
+   "market_cap_wan": 233960.0
+  },
+  "508009": {
+   "price": 5.779,
+   "market_cap_wan": 577900.0
+  },
+  "508007": {
+   "price": 8.1,
+   "market_cap_wan": 324000.0
+  },
+  "508033": {
+   "price": 6.31,
+   "market_cap_wan": 189300.0
+  },
+  "508086": {
+   "price": 4.408,
+   "market_cap_wan": 440800.0
+  },
+  "508069": {
+   "price": 5.346,
+   "market_cap_wan": 267300.0
+  },
+  "508036": {
+   "price": 7.589,
+   "market_cap_wan": 758900.0
+  },
+  "508020": {
+   "price": 5.12,
+   "market_cap_wan": 512000.0
+  }
+ }
+}

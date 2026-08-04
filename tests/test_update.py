@@ -12,6 +12,8 @@ parser_annual 的列表、下载与解析函数，全程不发起真实网络请
 """
 
 import json
+from datetime import date
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -583,6 +585,184 @@ def test_fetch_new_completion_sh_retries_list_failure_three_times(
 
 
 # ---------------------------------------------------------------------------
+# fetch_market_snapshot
+# ---------------------------------------------------------------------------
+
+
+def _read_fund_shares():
+    """读取仓库 data/fund_shares.json 的 shares 映射（14 只）。"""
+    path = Path(__file__).resolve().parents[1] / "data" / "fund_shares.json"
+    return json.loads(path.read_text(encoding="utf-8"))["shares"]
+
+
+def _quotes_df(prices):
+    """构造 get_realtime_quotes 风格 DataFrame（code→price 映射）。"""
+    return pd.DataFrame(
+        [
+            {
+                "code": code,
+                "name": f"REIT{code}",
+                "price": price,
+                "pct_change": 0.0,
+                "volume": 0,
+                "amount": 0.0,
+            }
+            for code, price in prices.items()
+        ]
+    )
+
+
+def test_fetch_market_snapshot_full_success(tmp_path, monkeypatch):
+    """mock get_realtime_quotes 全量 14 只 → 快照 14 条、市值精确
+    （价 × 份额 / 10000）、latest 覆盖、写回 SNAPSHOT_PATH。"""
+    shares = _read_fund_shares()
+    prices = {code: round(7.5 + i * 0.25, 2) for i, code in enumerate(sorted(shares))}
+    monkeypatch.setattr(update, "SNAPSHOT_PATH", tmp_path / "market_snapshot.json")
+    monkeypatch.setattr(
+        update.market_data, "get_realtime_quotes", lambda: _quotes_df(prices)
+    )
+
+    result = update.fetch_market_snapshot(shares)
+
+    snapshots = result["snapshots"]
+    assert len(snapshots) == 14
+    today = date.today().isoformat()
+    by_code = {row["code"]: row for row in snapshots}
+    for code, price in prices.items():
+        row = by_code[code]
+        assert row["date"] == today
+        assert row["price"] == price
+        assert row["market_cap_wan"] == round(price * shares[code] / 10000, 2)
+    assert len(result["latest"]) == 14
+    assert result["latest"]["180201"]["price"] == prices["180201"]
+    # 持久化写回文件
+    saved = json.loads((tmp_path / "market_snapshot.json").read_text(encoding="utf-8"))
+    assert len(saved["snapshots"]) == 14
+    assert saved["latest"]["180201"]["price"] == prices["180201"]
+
+
+def test_fetch_market_snapshot_partial_failure_keeps_old(tmp_path, monkeypatch):
+    """mock 只返回 12 只 → 缺失 2 只沿用旧快照 latest + errors 2 条。"""
+    shares = _read_fund_shares()
+    old_latest = {
+        "508033": {"price": 9.11, "market_cap_wan": 273300.0},
+        "508086": {"price": 4.2, "market_cap_wan": 420000.0},
+    }
+    old_snapshots = [
+        {
+            "date": "2026-08-03",
+            "code": "508033",
+            "price": 9.11,
+            "market_cap_wan": 273300.0,
+        },
+        {
+            "date": "2026-08-03",
+            "code": "508086",
+            "price": 4.2,
+            "market_cap_wan": 420000.0,
+        },
+    ]
+    (tmp_path / "market_snapshot.json").write_text(
+        json.dumps({"snapshots": old_snapshots, "latest": old_latest}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(update, "SNAPSHOT_PATH", tmp_path / "market_snapshot.json")
+    prices = {
+        code: round(7.5 + i * 0.25, 2)
+        for i, code in enumerate(sorted(c for c in shares if c not in old_latest))
+    }
+    monkeypatch.setattr(
+        update.market_data, "get_realtime_quotes", lambda: _quotes_df(prices)
+    )
+
+    errors = []
+    result = update.fetch_market_snapshot(shares, errors=errors)
+
+    # 本次 12 条新行 + 旧快照 2 行；latest 含全部 14 只
+    assert len(result["snapshots"]) == 14
+    assert len(result["latest"]) == 14
+    assert result["latest"]["508033"] == old_latest["508033"]
+    assert result["latest"]["508086"] == old_latest["508086"]
+    assert len(errors) == 2
+    error_codes = {err.split("：")[0] for err in errors}
+    assert error_codes == {"508033", "508086"}
+
+
+def test_fetch_market_snapshot_all_failed_returns_old(tmp_path, monkeypatch):
+    """全失败（空行情）→ 返回旧快照内容不变 + errors 14 条，不抛、不写回。"""
+    shares = _read_fund_shares()
+    old = {
+        "snapshots": [
+            {
+                "date": "2026-08-03",
+                "code": "508033",
+                "price": 9.11,
+                "market_cap_wan": 273300.0,
+            }
+        ],
+        "latest": {"508033": {"price": 9.11, "market_cap_wan": 273300.0}},
+    }
+    path = tmp_path / "market_snapshot.json"
+    path.write_text(json.dumps(old), encoding="utf-8")
+    monkeypatch.setattr(update, "SNAPSHOT_PATH", path)
+    monkeypatch.setattr(
+        update.market_data, "get_realtime_quotes", lambda: _quotes_df({})
+    )
+
+    errors = []
+    result = update.fetch_market_snapshot(shares, errors=errors)
+
+    assert result == old
+    assert len(errors) == 14
+    # 文件内容未变
+    assert json.loads(path.read_text(encoding="utf-8")) == old
+
+
+def test_fetch_market_snapshot_first_run_all_failed(tmp_path, monkeypatch):
+    """无旧快照 + 全失败 → 返回空结构 {"snapshots": [], "latest": {}} + errors
+    14 条，不抛。"""
+    shares = _read_fund_shares()
+    monkeypatch.setattr(update, "SNAPSHOT_PATH", tmp_path / "market_snapshot.json")
+    monkeypatch.setattr(
+        update.market_data, "get_realtime_quotes", lambda: _quotes_df({})
+    )
+
+    errors = []
+    result = update.fetch_market_snapshot(shares, errors=errors)
+
+    assert result == {"snapshots": [], "latest": {}}
+    assert len(errors) == 14
+
+
+def test_update_template_summary_includes_snapshot_updated(tmp_path, monkeypatch):
+    """mock fetch_market_snapshot 有变化 → 摘要含 snapshot_updated=True。"""
+    path = tmp_path / "tpl.xlsx"
+    _build_template(path)
+    monkeypatch.setattr(update, "fetch_new_monthly", lambda df, errors=None: [])
+    monkeypatch.setattr(update, "fetch_new_quarterly", lambda df, errors=None: [])
+    today = date.today().isoformat()
+    monkeypatch.setattr(
+        update,
+        "fetch_market_snapshot",
+        lambda shares, errors=None: {
+            "snapshots": [
+                {
+                    "date": today,
+                    "code": "180201",
+                    "price": 7.56,
+                    "market_cap_wan": 529200.0,
+                }
+            ],
+            "latest": {"180201": {"price": 7.56, "market_cap_wan": 529200.0}},
+        },
+    )
+
+    summary = update.update_template(path)
+
+    assert summary["snapshot_updated"] is True
+
+
+# ---------------------------------------------------------------------------
 # update_template
 # ---------------------------------------------------------------------------
 
@@ -681,6 +861,11 @@ def test_update_template_appends_rows_and_reloads(tmp_path, monkeypatch):
     monkeypatch.setattr(
         update, "fetch_new_completion", lambda lst, code_to_name=None, errors=None: []
     )
+    monkeypatch.setattr(
+        update,
+        "fetch_market_snapshot",
+        lambda shares, errors=None: {"snapshots": [], "latest": {}},
+    )
 
     summary = update.update_template(path, completion_path=completion_path)
 
@@ -688,6 +873,7 @@ def test_update_template_appends_rows_and_reloads(tmp_path, monkeypatch):
         "monthly_added": 1,
         "quarterly_added": 1,
         "completion_added": 0,
+        "snapshot_updated": False,
         "errors": [],
     }
 
@@ -726,6 +912,11 @@ def test_update_template_empty_increment(tmp_path, monkeypatch):
 
     monkeypatch.setattr(update, "fetch_new_monthly", lambda df, errors=None: [])
     monkeypatch.setattr(update, "fetch_new_quarterly", lambda df, errors=None: [])
+    monkeypatch.setattr(
+        update,
+        "fetch_market_snapshot",
+        lambda shares, errors=None: {"snapshots": [], "latest": {}},
+    )
 
     summary = update.update_template(path)
 
@@ -733,6 +924,7 @@ def test_update_template_empty_increment(tmp_path, monkeypatch):
         "monthly_added": 0,
         "quarterly_added": 0,
         "completion_added": 0,
+        "snapshot_updated": False,
         "errors": [],
     }
     assert len(data_loader.load_monthly(path)) == 1
@@ -747,6 +939,11 @@ def test_update_template_writes_back_annual_completion_json(tmp_path, monkeypatc
 
     monkeypatch.setattr(update, "fetch_new_monthly", lambda df, errors=None: [])
     monkeypatch.setattr(update, "fetch_new_quarterly", lambda df, errors=None: [])
+    monkeypatch.setattr(
+        update,
+        "fetch_market_snapshot",
+        lambda shares, errors=None: {"snapshots": [], "latest": {}},
+    )
 
     existing = [
         {

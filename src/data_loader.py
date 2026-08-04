@@ -4,7 +4,9 @@
 并将中文表头统一转换为英文列名。
 """
 
+import json
 import os
+from pathlib import Path
 
 import pandas as pd
 
@@ -145,3 +147,28 @@ def load_all(path):
         "monthly": load_monthly(path),
         "quarterly": load_quarterly(path),
     }
+
+
+def _load_json_dict(path):
+    """读取 JSON 文件为 dict；文件缺失或内容损坏时返回空 dict（不抛错）。"""
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def load_market_snapshot(path):
+    """读取市场快照 JSON（{"snapshots": [...], "latest": {...}}）。
+
+    文件缺失或损坏返回空 dict，看板侧据此降级。
+    """
+    return _load_json_dict(path)
+
+
+def load_fund_shares(path):
+    """读取基金份额 JSON（{"shares": {code: 份}}）。
+
+    文件缺失或损坏返回空 dict，市值计算侧据此降级。
+    """
+    return _load_json_dict(path)

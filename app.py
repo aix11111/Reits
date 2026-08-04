@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.charts import bar_chart, line_chart
-from src.data_loader import load_all
+from src.data_loader import load_all, load_fund_shares, load_market_snapshot
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
 from src.rules import (
@@ -25,6 +25,12 @@ from src.rules import (
     distributable_completion,
     distribution_rate_benchmark,
     distributable_yoy,
+)
+from src.valuation import (
+    distribution_yield,
+    nav_premium,
+    risk_flags,
+    ttm_distributable,
 )
 
 # 数据文件路径：位于本文件同级的 data 目录下
@@ -90,6 +96,35 @@ _RULES_CONCESSION_COLUMNS = [
 
 # 年报可供分配完成度数据文件路径
 _ANNUAL_COMPLETION_PATH = Path(__file__).parent / "data" / "annual_completion.json"
+
+# 估值对标页签数据文件路径
+_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "market_snapshot.json"
+_FUND_SHARES_PATH = Path(__file__).parent / "data" / "fund_shares.json"
+
+# 估值对标页签：收益率排名展示列
+_VALUATION_RANK_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("yield_pct", "分派率收益率"),
+    ("caliber", "口径"),
+]
+
+# 估值对标页签：NAV 折溢价展示列
+_VALUATION_PREMIUM_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("price", "市价(元)"),
+    ("nav_unit_price", "单位净值(元)"),
+    ("premium_pct", "折溢价"),
+]
+
+# risk_flags 英文标记 → 中文风险提示
+_RISK_FLAG_LABELS = {
+    "completion_risk": "完成度未达标",
+    "completion_watch": "完成度偏低",
+    "premium_risk": "折溢价过高",
+    "concession_risk": "剩余年限不足10年",
+}
 
 # 分析规则页签：可供分配完成度展示列
 _RULES_COMPLETION_COLUMNS = [
@@ -311,8 +346,12 @@ def _load_annual_completion() -> pd.DataFrame:
     """加载 data/annual_completion.json 的 completion 数组。
 
     文件缺失、内容为空或损坏时返回空 DataFrame（看板降级提示）。
+    除完成度列外，还保留 nav_unit_price / nav_wan 供估值对标页签使用。
     """
-    columns = [col for col, _ in _RULES_COMPLETION_COLUMNS]
+    columns = [col for col, _ in _RULES_COMPLETION_COLUMNS] + [
+        "nav_unit_price",
+        "nav_wan",
+    ]
     if not _ANNUAL_COMPLETION_PATH.exists():
         return pd.DataFrame(columns=columns)
     try:
@@ -334,6 +373,17 @@ def _completion_color(value):
     if value < 100:
         return f"color: {_WARN_ORANGE}"
     return f"color: {_MET_GREEN}"
+
+
+def _premium_color(value):
+    """NAV 折溢价着色：溢价红（风险语义）、折价绿、平水三级灰；缺失灰色。"""
+    if pd.isna(value):
+        return f"color: {_NO_RECORD_GRAY}"
+    if value > 0:
+        return f"color: {_RISK_RED}"
+    if value < 0:
+        return f"color: {_MET_GREEN}"
+    return f"color: {_TEXT_TERTIARY}"
 
 
 def render_status_wall(static_df, completion_df):
@@ -553,8 +603,170 @@ def render_rules(monthly_df, quarterly_df, static_df):
         st.dataframe(styled, hide_index=True, width="stretch")
 
 
+def _ttm_display_table(ttm_df, name_map):
+    """降级态：仅展示 TTM 可供分配金额（无市值快照，无收益率）。"""
+    if ttm_df.empty:
+        st.info("暂无季度可供分配数据，无法计算 TTM。")
+        return
+    display = ttm_df.reset_index()
+    display["name"] = display["code"].map(name_map)
+    display["口径"] = display["is_annualized"].map(
+        lambda v: "年化" if pd.notna(v) and v else "TTM"
+    )
+    display = display.rename(
+        columns={
+            "code": "基金代码",
+            "name": "基金简称",
+            "dist_ttm_wan": "TTM可供分配(万元)",
+        }
+    )
+    st.dataframe(
+        display[["基金代码", "基金简称", "TTM可供分配(万元)", "口径"]],
+        hide_index=True,
+        width="stretch",
+    )
+
+
+def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_df):
+    """估值对标页签：分派率收益率排名、NAV 折溢价与风险聚合提示。
+
+    市值数据来自本地快照（market_snapshot.json），不依赖运行时网络。
+    快照缺失时降级为 st.info + 仅显示 TTM 分派表。
+    """
+    st.subheader("估值对标")
+    st.caption(
+        "分派率收益率=TTM 可供分配（近4季）/最新市值；NAV 折溢价=市价/最新年报单位净值-1。"
+    )
+
+    snapshot_latest = snapshot_data.get("latest") or {}
+    shares_map = shares.get("shares") or {}
+    name_map = dict(zip(static_df["code"], static_df["name"]))
+
+    ttm = ttm_distributable(quarterly_df)
+
+    if not snapshot_latest:
+        st.info("市值数据缺失（等待下月 cron 更新）")
+        _ttm_display_table(ttm, name_map)
+        return
+
+    yield_series = distribution_yield(ttm, snapshot_latest, shares_map)
+
+    # ---- 1. 分派率收益率排名 ----
+    st.markdown("### 1. 分派率收益率排名（TTM）")
+    rank_rows = []
+    for code, info in snapshot_latest.items():
+        if "price" not in info:
+            continue
+        rank_rows.append(
+            {
+                "code": code,
+                "name": name_map.get(code, ""),
+                "yield": yield_series.get(code, float("nan")),
+                "is_annualized": (
+                    ttm.loc[code, "is_annualized"] if code in ttm.index else None
+                ),
+            }
+        )
+    rank = pd.DataFrame(rank_rows)
+
+    chart = rank.dropna(subset=["yield"]).sort_values("yield", ascending=True)
+    if not chart.empty:
+        median_yield = chart["yield"].median()
+        fig = go.Figure(
+            go.Bar(
+                x=chart["yield"],
+                y=chart["name"],
+                orientation="h",
+                marker_color=_ACCENT,
+            )
+        )
+        fig.add_vline(
+            x=median_yield,
+            line_dash="dash",
+            line_color=_TEXT_TERTIARY,
+            annotation_text="行业中位数",
+            annotation_font_color=_TEXT_TERTIARY,
+        )
+        fig.update_layout(
+            title="分派率收益率排名",
+            xaxis_title="分派率收益率",
+            xaxis_tickformat=".0%",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+    display = rank.sort_values("yield", ascending=False, na_position="last").copy()
+    display["yield_pct"] = display["yield"].map(_fmt_pct)
+    display["caliber"] = display["is_annualized"].map(
+        lambda v: "年化" if pd.notna(v) and v else "TTM"
+    )
+    display = display.rename(columns=dict(_VALUATION_RANK_COLUMNS))
+    st.dataframe(
+        display[[label for _, label in _VALUATION_RANK_COLUMNS]],
+        hide_index=True,
+        width="stretch",
+    )
+
+    # ---- 2. NAV 折溢价 ----
+    st.markdown("### 2. NAV 折溢价（最新年报单位净值）")
+    price_series = pd.Series(
+        {code: info["price"] for code, info in snapshot_latest.items() if "price" in info}
+    )
+    if completion_df.empty:
+        nav_series = pd.Series(dtype=float)
+    else:
+        latest_comp = completion_df.sort_values("year").groupby("code").tail(1)
+        nav_series = latest_comp.set_index("code")["nav_unit_price"]
+    premium = nav_premium(price_series, nav_series)
+
+    prem_rows = []
+    for code, info in snapshot_latest.items():
+        price = info.get("price")
+        nav = nav_series.get(code, float("nan"))
+        prem_rows.append(
+            {
+                "code": code,
+                "name": name_map.get(code, ""),
+                "price": price,
+                "nav_unit_price": nav,
+                "premium_pct": premium.get(code, float("nan")),
+            }
+        )
+    prem_df = pd.DataFrame(prem_rows)
+    prem_display = prem_df.rename(columns=dict(_VALUATION_PREMIUM_COLUMNS))
+    styled = prem_display.style.map(_premium_color, subset=["折溢价"]).format(
+        {"市价(元)": "{:.3f}", "单位净值(元)": "{:.4f}", "折溢价": _fmt_pct},
+        na_rep="—",
+    )
+    st.dataframe(styled, hide_index=True, width="stretch")
+
+    # ---- 3. 风险聚合提示 ----
+    st.markdown("### 3. 风险聚合提示")
+    years_left = static_df.set_index("code")["concession_years_left"]
+    if completion_df.empty:
+        flags = pd.DataFrame(columns=["code", "flags"])
+    else:
+        latest_comp = completion_df.sort_values("year").groupby("code").tail(1)
+        flags = risk_flags(latest_comp, premium, years_left)
+
+    lines = []
+    for row in flags.itertuples():
+        labels = " / ".join(_RISK_FLAG_LABELS[f] for f in row.flags)
+        lines.append(f"{row.code} {name_map.get(row.code, '')}：{labels}")
+
+    if lines:
+        st.warning("；\n".join(lines))
+    else:
+        st.info("暂无风险标记：各基金完成度、折溢价与剩余年限均在正常区间。")
+
+
 def main():
-    """看板主流程：加载数据、渲染侧边栏选择器与三个页签。"""
+    """看板主流程：加载数据、渲染侧边栏选择器与四个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
     st.markdown(f"<style>{_GLOBAL_CSS}</style>", unsafe_allow_html=True)
     st.title("📊 REITsMonitor — 公募REITs投后分析看板")
@@ -578,7 +790,8 @@ def main():
     quarterly_df = data["quarterly"]
     name_map = dict(zip(static_df["code"], static_df["name"]))
 
-    render_status_wall(static_df, _load_annual_completion())
+    completion_df = _load_annual_completion()
+    render_status_wall(static_df, completion_df)
 
     with st.sidebar:
         st.header("选择REIT")
@@ -589,7 +802,9 @@ def main():
         )
         st.caption("行情数据来自 akshare，网络异常时自动降级。")
 
-    tab_ops, tab_mkt, tab_rules = st.tabs(["📈 经营数据", "📉 行情走势", "📐 分析规则"])
+    tab_ops, tab_mkt, tab_rules, tab_val = st.tabs(
+        ["📈 经营数据", "📉 行情走势", "📐 分析规则", "📊 估值对标"]
+    )
 
     with tab_ops:
         render_operations(
@@ -601,6 +816,11 @@ def main():
 
     with tab_rules:
         render_rules(monthly_df, quarterly_df, static_df)
+
+    with tab_val:
+        snapshot_data = load_market_snapshot(_MARKET_SNAPSHOT_PATH)
+        shares_data = load_fund_shares(_FUND_SHARES_PATH)
+        render_valuation(quarterly_df, completion_df, snapshot_data, shares_data, static_df)
 
 
 if __name__ == "__main__":

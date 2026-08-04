@@ -2,13 +2,15 @@
 
 通过 streamlit.testing.v1.AppTest 直接运行看板脚本，验证：
 - 应用可无异常运行；
-- 三个页签存在：经营数据 / 行情走势 / 分析规则；
-- 分析规则页签正常渲染（可供分配对标与背离检测表格）。
+- 四个页签存在：经营数据 / 行情走势 / 分析规则 / 估值对标；
+- 分析规则页签正常渲染（可供分配对标与背离检测表格）；
+- 估值对标页签渲染收益率排名 / NAV 折溢价 / 风险提示，快照缺失时降级不崩溃。
 
 网络行情通过 monkeypatch 让 akshare 调用失败，走 market_data 的降级路径，
 避免冒烟测试触发真实网络请求。
 """
 
+import json
 from pathlib import Path
 
 import pytest
@@ -18,7 +20,9 @@ import src.market_data as md
 
 APP_PATH = Path(__file__).resolve().parents[1] / "app.py"
 
-TAB_LABELS = ["📈 经营数据", "📉 行情走势", "📐 分析规则"]
+DATA_PATH = Path(__file__).resolve().parents[1] / "data"
+
+TAB_LABELS = ["📈 经营数据", "📉 行情走势", "📐 分析规则", "📊 估值对标"]
 
 
 @pytest.fixture
@@ -32,7 +36,7 @@ def no_network(monkeypatch):
     monkeypatch.setattr(md.ak, "reits_hist_em", boom)
 
 
-def test_app_runs_with_three_tabs(no_network):
+def test_app_runs_with_four_tabs(no_network):
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
     assert not at.exception
@@ -171,3 +175,47 @@ def test_operations_tab_renders_terminal_kpi_cards(no_network):
     assert len(cards) == 1
     assert cards[0].count("reit-kpi-card") == 4
     assert "JetBrains Mono" in cards[0]
+
+
+def test_valuation_tab_renders_ranking_premium_and_risk(no_network):
+    """估值对标页签：有市值快照时渲染收益率排名 / NAV 折溢价 / 风险提示区。"""
+    import streamlit as st
+
+    snapshot_file = DATA_PATH / "market_snapshot.json"
+    expected_rows = len(
+        json.loads(snapshot_file.read_text(encoding="utf-8"))["latest"]
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+    assert len(rank) == expected_rows
+
+    premium = next(f for f in frames if "折溢价" in f.columns)
+    assert not premium.empty
+
+    warnings = [w.value for w in val_tab.warning]
+    infos = [i.value for i in val_tab.info]
+    assert warnings or any("暂无风险" in v for v in infos)
+
+
+def test_valuation_tab_degrades_when_snapshot_missing(no_network, monkeypatch):
+    """估值对标页签：市值快照缺失时降级为 st.info，不抛异常。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(dl, "load_market_snapshot", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+    infos = [i.value for i in val_tab.info]
+    assert any("市值数据缺失" in v for v in infos)

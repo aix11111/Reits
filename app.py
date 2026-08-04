@@ -27,6 +27,7 @@ from src.rules import (
     distributable_yoy,
 )
 from src.valuation import (
+    composite_score,
     concession_irr,
     distribution_yield,
     nav_premium,
@@ -109,6 +110,7 @@ _VALUATION_RANK_COLUMNS = [
     ("yield_pct", "分派率收益率"),
     ("caliber", "口径"),
     ("irr_pct", "特许经营IRR"),
+    ("score_fmt", "性价比"),
 ]
 
 # 估值对标页签：NAV 折溢价展示列
@@ -681,6 +683,29 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         )
     rank = pd.DataFrame(rank_rows)
 
+    # ---- 性价比评分：完成度 × 收益率排名 × IRR（缺失因子自动归一）----
+    if completion_df.empty:
+        completion_map = {}
+    else:
+        latest_comp = completion_df.sort_values("year").groupby("code").tail(1)
+        completion_map = latest_comp.set_index("code")["completion_pct"].to_dict()
+    n_yield = int(rank["yield"].notna().sum())
+    yield_ranks = rank["yield"].rank(ascending=False, method="min")
+    scores = []
+    for row in rank.itertuples():
+        r = yield_ranks.get(row.Index)
+        scores.append(
+            composite_score(
+                completion_map.get(row.code),
+                int(r) if pd.notna(r) and n_yield > 0 else None,
+                row.irr,
+                n_yield,
+            )
+        )
+    rank["completion_pct"] = [completion_map.get(c) for c in rank["code"]]
+    rank["yield_rank"] = yield_ranks.to_list()
+    rank["score"] = scores
+
     chart = rank.dropna(subset=["yield"]).sort_values("yield", ascending=True)
     if not chart.empty:
         median_yield = chart["yield"].median()
@@ -746,12 +771,56 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         )
         st.plotly_chart(scat, width="stretch")
 
+    quad = rank.dropna(subset=["yield_rank", "completion_pct", "irr"]).copy()
+    if not quad.empty:
+        st.markdown("### 1.2 性价比象限（收益率排名 × 完成度，气泡=IRR）")
+        quad_fig = go.Figure(
+            go.Scatter(
+                x=quad["yield_rank"],
+                y=quad["completion_pct"],
+                mode="markers+text",
+                text=quad["name"],
+                textposition="top center",
+                textfont=dict(size=10, color=_TEXT_SECONDARY),
+                marker=dict(
+                    color=_ACCENT,
+                    size=(quad["irr"] * 1200).clip(lower=8),
+                    opacity=0.7,
+                ),
+            )
+        )
+        quad_fig.add_vline(
+            x=quad["yield_rank"].median(),
+            line_dash="dash",
+            line_color=_TEXT_TERTIARY,
+        )
+        quad_fig.add_hline(
+            y=quad["completion_pct"].median(),
+            line_dash="dash",
+            line_color=_TEXT_TERTIARY,
+        )
+        quad_fig.update_layout(
+            title="性价比象限",
+            xaxis_title="分派率收益率排名(1=最高)",
+            yaxis_title="完成度(%)",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(quad_fig, width="stretch")
+
     display = rank.sort_values("yield", ascending=False, na_position="last").copy()
     display["yield_pct"] = display["yield"].map(_fmt_pct)
     display["caliber"] = display["is_annualized"].map(
         lambda v: "年化" if pd.notna(v) and v else "TTM"
     )
     display["irr_pct"] = display["irr"].map(_fmt_pct)
+    display["score_fmt"] = display["score"].map(
+        lambda v: f"{v:.1f}" if pd.notna(v) else "—"
+    )
     display = display.rename(columns=dict(_VALUATION_RANK_COLUMNS))
     st.dataframe(
         display[[label for _, label in _VALUATION_RANK_COLUMNS]],

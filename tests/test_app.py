@@ -195,6 +195,7 @@ def test_valuation_tab_renders_ranking_premium_and_risk(no_network):
     frames = [df.value for df in val_tab.dataframe]
     rank = next(f for f in frames if "分派率收益率" in f.columns)
     assert len(rank) == expected_rows
+    assert "性价比" in rank.columns
 
     premium = next(f for f in frames if "折溢价" in f.columns)
     assert not premium.empty

@@ -16,6 +16,7 @@ import pandas as pd
 import pytest
 
 from src.valuation import (
+    composite_score,
     concession_irr,
     distribution_yield,
     nav_premium,
@@ -258,3 +259,61 @@ def test_concession_irr_nan_or_none_inputs_do_not_crash():
     assert concession_irr(10, None, 10000, 10) is None
     assert concession_irr(10, 1e8, None, 10) is None
     assert concession_irr(10, 1e8, 10000, None) is None
+
+
+def test_composite_score_full_factors_exact():
+    """全三因子：0.4×100 + 0.3×100×(1−1/14) + 0.3×min(0.1/0.15,1)×100。"""
+    result = composite_score(
+        completion_pct=100.0, yield_rank=1, irr=0.1, n_funds=14
+    )
+    expected = (
+        0.4 * 100
+        + 0.3 * 100 * (1 - 1 / 14)
+        + 0.3 * min(0.1 / 0.15, 1) * 100
+    )
+    assert result == pytest.approx(expected)
+
+
+def test_composite_score_missing_one_factor_renormalizes():
+    """completion 缺失 → 剩余两因子权重归一（0.3/0.6 = 0.5 各）。"""
+    result = composite_score(
+        completion_pct=None, yield_rank=2, irr=0.15, n_funds=10
+    )
+    rank_score = 100 * (1 - 2 / 10)
+    irr_score = 100
+    expected = 0.5 * rank_score + 0.5 * irr_score
+    assert result == pytest.approx(expected)
+
+
+def test_composite_score_only_completion():
+    """缺两因子、仅 completion → 单因子归一，得满分 100。"""
+    result = composite_score(completion_pct=100.0, yield_rank=None, irr=None, n_funds=10)
+    assert result == pytest.approx(100.0)
+
+
+def test_composite_score_all_missing_returns_none():
+    assert composite_score(None, None, None, 10) is None
+
+
+def test_composite_score_completion_above_100_clamped():
+    """completion>100 截断为 100。"""
+    result = composite_score(completion_pct=120.0, yield_rank=None, irr=None, n_funds=10)
+    assert result == pytest.approx(100.0)
+
+
+def test_composite_score_irr_above_0_15_clamped():
+    """irr>0.15 截断为满分 100；completion 缺失 → rank/irr 各 0.5。"""
+    result = composite_score(completion_pct=None, yield_rank=1, irr=0.5, n_funds=10)
+    expected = 0.5 * 100 * (1 - 1 / 10) + 0.5 * 100
+    assert result == pytest.approx(expected)
+
+
+def test_composite_score_rank_zero_treated_as_missing():
+    result = composite_score(completion_pct=100.0, yield_rank=0, irr=None, n_funds=10)
+    assert result == pytest.approx(100.0)
+
+
+def test_composite_score_rank_beyond_n_funds_treated_as_missing():
+    """rank>n_funds → 视为缺失；仅剩 irr=0 → 得分 0。"""
+    result = composite_score(completion_pct=None, yield_rank=11, irr=0.0, n_funds=10)
+    assert result == pytest.approx(0.0)

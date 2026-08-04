@@ -94,6 +94,56 @@ def _valid_above_minus_one(value) -> bool:
     )
 
 
+def composite_score(
+    completion_pct: float | None,
+    yield_rank: int | None,
+    irr: float | None,
+    n_funds: int,
+) -> float | None:
+    """计算性价比评分（完成度 × 收益率排名 × IRR 三因子加权，0-100）。
+
+    单因子标准化：
+    - 完成度：completion_pct 本身（0-100 尺度），>100 截断为 100；
+    - 收益率排名：100×(1 − rank/n_funds)，rank=1 最优得最高分；
+    - IRR：min(irr/0.15, 1)×100，15% 满分，超 15% 截断为 100。
+
+    权重 0.4 / 0.3 / 0.3；缺失因子 → 剩余因子按原权重归一（重缩放）；
+    全缺 → None。非数值 / NaN 输入视为缺失。
+    """
+    factor_weights = {"completion": 0.4, "rank": 0.3, "irr": 0.3}
+    scores: list[float] = []
+    weights: list[float] = []
+
+    if _valid_finite(completion_pct):
+        scores.append(min(max(completion_pct, 0.0), 100.0))
+        weights.append(factor_weights["completion"])
+    if _valid_rank(yield_rank, n_funds):
+        scores.append(100.0 * (1 - yield_rank / n_funds))
+        weights.append(factor_weights["rank"])
+    if _valid_finite(irr):
+        scores.append(min(max(irr / 0.15, 0.0), 1.0) * 100.0)
+        weights.append(factor_weights["irr"])
+
+    if not weights:
+        return None
+    total = sum(weights)
+    return sum(w * s for w, s in zip(weights, scores)) / total
+
+
+def _valid_finite(value) -> bool:
+    return isinstance(value, (int, float)) and not math.isnan(value)
+
+
+def _valid_rank(value, n_funds) -> bool:
+    return (
+        _valid_finite(value)
+        and isinstance(n_funds, (int, float))
+        and not math.isnan(n_funds)
+        and n_funds > 0
+        and 1 <= value <= n_funds
+    )
+
+
 def ttm_distributable(quarterly_df: pd.DataFrame) -> pd.DataFrame:
     """计算每只基金近 4 个季度的可供分配金额之和（TTM，万元）。
 

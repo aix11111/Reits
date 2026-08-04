@@ -27,6 +27,7 @@ from src.rules import (
     distributable_yoy,
 )
 from src.valuation import (
+    concession_irr,
     distribution_yield,
     nav_premium,
     risk_flags,
@@ -107,6 +108,7 @@ _VALUATION_RANK_COLUMNS = [
     ("name", "基金简称"),
     ("yield_pct", "分派率收益率"),
     ("caliber", "口径"),
+    ("irr_pct", "特许经营IRR"),
 ]
 
 # 估值对标页签：NAV 折溢价展示列
@@ -641,6 +643,7 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
     snapshot_latest = snapshot_data.get("latest") or {}
     shares_map = shares.get("shares") or {}
     name_map = dict(zip(static_df["code"], static_df["name"]))
+    years_left = static_df.set_index("code")["concession_years_left"]
 
     ttm = ttm_distributable(quarterly_df)
 
@@ -657,6 +660,13 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
     for code, info in snapshot_latest.items():
         if "price" not in info:
             continue
+        annual = ttm.loc[code, "dist_ttm_wan"] if code in ttm.index else None
+        left = years_left.get(code) if code in years_left.index else None
+        irr = (
+            concession_irr(info["price"], shares_map.get(code), annual, left)
+            if pd.notna(annual) and pd.notna(left)
+            else None
+        )
         rank_rows.append(
             {
                 "code": code,
@@ -665,6 +675,8 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
                 "is_annualized": (
                     ttm.loc[code, "is_annualized"] if code in ttm.index else None
                 ),
+                "years_left": left,
+                "irr": irr,
             }
         )
     rank = pd.DataFrame(rank_rows)
@@ -700,11 +712,46 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         )
         st.plotly_chart(fig, width="stretch")
 
+    scatter_df = rank.dropna(subset=["irr", "years_left"])
+    if not scatter_df.empty:
+        st.markdown("### 1.1 特许经营 IRR 与剩余年限")
+        scat = go.Figure(
+            go.Scatter(
+                x=scatter_df["years_left"],
+                y=scatter_df["irr"],
+                mode="markers+text",
+                text=scatter_df["name"],
+                textposition="top center",
+                marker=dict(color=_ACCENT, size=11),
+            )
+        )
+        scat.add_vline(
+            x=10,
+            line_dash="dash",
+            line_color=_WARN_ORANGE,
+            annotation_text="到期临近",
+            annotation_font_color=_WARN_ORANGE,
+        )
+        scat.update_layout(
+            title="特许经营 IRR 与剩余年限",
+            xaxis_title="剩余年限(年)",
+            yaxis_title="特许经营 IRR",
+            yaxis_tickformat=".1%",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(scat, width="stretch")
+
     display = rank.sort_values("yield", ascending=False, na_position="last").copy()
     display["yield_pct"] = display["yield"].map(_fmt_pct)
     display["caliber"] = display["is_annualized"].map(
         lambda v: "年化" if pd.notna(v) and v else "TTM"
     )
+    display["irr_pct"] = display["irr"].map(_fmt_pct)
     display = display.rename(columns=dict(_VALUATION_RANK_COLUMNS))
     st.dataframe(
         display[[label for _, label in _VALUATION_RANK_COLUMNS]],
@@ -747,7 +794,6 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
 
     # ---- 3. 风险聚合提示 ----
     st.markdown("### 3. 风险聚合提示")
-    years_left = static_df.set_index("code")["concession_years_left"]
     if completion_df.empty:
         flags = pd.DataFrame(columns=["code", "flags"])
     else:

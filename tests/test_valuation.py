@@ -16,6 +16,7 @@ import pandas as pd
 import pytest
 
 from src.valuation import (
+    concession_irr,
     distribution_yield,
     nav_premium,
     risk_flags,
@@ -183,3 +184,77 @@ def test_risk_flags_all_nan_does_not_crash():
     result = risk_flags(completion_df, premium, years_left)
 
     assert result.empty
+
+
+def test_concession_irr_one_year_hand_calc():
+    """手算案例：买价 10 亿、1 年后收回 1 亿、到期归零 → 现金流 [-10亿, +1亿]。
+
+    1 年期单现金回收：IRR = 分派/投入 - 1 = 0.1 - 1 = -0.9。
+    """
+    result = concession_irr(
+        price=10, shares=1e8, annual_distributable_wan=10000, years_left=1
+    )
+
+    assert result == pytest.approx(-0.9, abs=1e-4)
+
+
+def test_concession_irr_perpetual_degenerates_to_distribution_yield():
+    """years 很大且 growth=0 → IRR 逼近分派率（1亿/10亿 = 10%）。"""
+    result = concession_irr(
+        price=10, shares=1e8, annual_distributable_wan=10000, years_left=100
+    )
+
+    assert result == pytest.approx(0.1, abs=1e-3)
+
+
+def test_concession_irr_zero_when_distribution_equals_buy_cost():
+    """years=1 且当年分派=买入市值 → IRR = 0（分派恰好覆盖全部本金）。"""
+    result = concession_irr(
+        price=5, shares=4e7, annual_distributable_wan=20000, years_left=1
+    )
+
+    assert result == pytest.approx(0.0, abs=1e-6)
+
+
+def test_concession_irr_growth_raises_irr():
+    """growth>0 时未来现金流更高，IRR 应高于 growth=0。"""
+    base = concession_irr(
+        price=10, shares=1e8, annual_distributable_wan=10000, years_left=10, growth=0.0
+    )
+    grown = concession_irr(
+        price=10, shares=1e8, annual_distributable_wan=10000, years_left=10, growth=0.05
+    )
+
+    assert base is not None
+    assert grown is not None
+    assert grown > base
+
+
+def test_concession_irr_invalid_shares_returns_none():
+    assert (
+        concession_irr(
+            price=10, shares=0, annual_distributable_wan=10000, years_left=10
+        )
+        is None
+    )
+
+
+def test_concession_irr_no_root_returns_none():
+    """分派为 0 → NPV 恒负，区间内无解 → None。"""
+    assert (
+        concession_irr(
+            price=10, shares=1e8, annual_distributable_wan=0, years_left=10
+        )
+        is None
+    )
+
+
+def test_concession_irr_nan_or_none_inputs_do_not_crash():
+    assert concession_irr(float("nan"), 1e8, 10000, 10) is None
+    assert concession_irr(10, float("nan"), 10000, 10) is None
+    assert concession_irr(10, 1e8, float("nan"), 10) is None
+    assert concession_irr(10, 1e8, 10000, float("nan")) is None
+    assert concession_irr(None, 1e8, 10000, 10) is None
+    assert concession_irr(10, None, 10000, 10) is None
+    assert concession_irr(10, 1e8, None, 10) is None
+    assert concession_irr(10, 1e8, 10000, None) is None

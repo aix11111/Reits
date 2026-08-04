@@ -11,7 +11,87 @@
 缺失数据一律以 NaN 表达，不抛异常。
 """
 
+import math
+
 import pandas as pd
+
+
+def concession_irr(
+    price: float,
+    shares: float,
+    annual_distributable_wan: float,
+    years_left: float,
+    growth: float = 0.0,
+) -> float | None:
+    """计算特许经营到期前的内含收益率（IRR）。
+
+    现金流模型：期初 t=0 支出 price×shares 买入；此后每年 t=1..years_left
+    收回 annual_distributable_wan×10000×(1+growth)^t 元（万元换算为元）；
+    特许经营到期价值归零，无终值。剩余年限非整数时，最后一个不满年份
+    按比例 prorate（当年分派 × 剩余分数）。
+
+    用二分法在 [−0.99, 1.0] 内解 NPV(r)=Σ CF_t/(1+r)^t=0（NPV 对 r 单调
+    递减保证收敛）；精度 1e-6、最大迭代 100 次。输入非法（price/shares/
+    years_left 非正数、annual<0、growth≤−1、任一为 NaN/None）或区间内无解
+    → 返回 None。
+
+    纯函数，手写二分，不依赖 scipy。
+    """
+    if not _valid_positive(price):
+        return None
+    if not _valid_positive(shares):
+        return None
+    if not _valid_nonnegative(annual_distributable_wan):
+        return None
+    if not _valid_positive(years_left):
+        return None
+    if not _valid_above_minus_one(growth):
+        return None
+
+    annual_yuan = annual_distributable_wan * 10000
+    flows = [-price * shares]
+    n_full = int(years_left)
+    frac = years_left - n_full
+    for t in range(1, n_full + 1):
+        flows.append(annual_yuan * (1 + growth) ** t)
+    if frac > 0:
+        flows.append(annual_yuan * (1 + growth) ** years_left * frac)
+
+    def npv(rate: float) -> float:
+        return sum(cf / (1 + rate) ** t for t, cf in enumerate(flows))
+
+    lo, hi = -0.99, 1.0
+    f_lo, f_hi = npv(lo), npv(hi)
+    if f_lo * f_hi > 0:
+        return None
+
+    for _ in range(100):
+        mid = (lo + hi) / 2
+        if hi - lo < 1e-6:
+            return mid
+        f_mid = npv(mid)
+        if f_mid == 0.0:
+            return mid
+        if f_lo * f_mid < 0:
+            hi = mid
+        else:
+            lo = mid
+            f_lo = f_mid
+    return (lo + hi) / 2
+
+
+def _valid_positive(value) -> bool:
+    return isinstance(value, (int, float)) and not math.isnan(value) and value > 0
+
+
+def _valid_nonnegative(value) -> bool:
+    return isinstance(value, (int, float)) and not math.isnan(value) and value >= 0
+
+
+def _valid_above_minus_one(value) -> bool:
+    return (
+        isinstance(value, (int, float)) and not math.isnan(value) and value > -1
+    )
 
 
 def ttm_distributable(quarterly_df: pd.DataFrame) -> pd.DataFrame:

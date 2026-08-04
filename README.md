@@ -84,8 +84,10 @@ tests/                  pytest suite
 
 - [x] **Phase 1** — Highway REITs: single-fund operational dashboard + dataset foundation
 - [x] **Phase 2** — Rule engine: peer benchmarking, divergence detection, distributable YoY, concession decay
-- [x] **Phase 3 (partial)** — Distributable amount vs. prospectus forecast (10 funds, 11 rows)
-- [ ] **Phase 3 (rest)** — Full market (70+ funds), NAV premium/discount
+- [x] **Phase 3** — Distributable amount vs. prospectus forecast (10 funds, 11 rows)
+- [x] **Phase 4 (一期)** — Valuation benchmark: TTM yield ranking, NAV premium, risk flags, market snapshot
+- [x] **Phase 4 (二期)** — Concession IRR (bisection solver, expiry-aware valuation)
+- [ ] **Phase 3 (rest)** — Full market (70+ funds)
 
 ---
 

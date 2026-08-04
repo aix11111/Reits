@@ -154,24 +154,9 @@
 
 ---
 
-### Task 7: 性价比评分（二期）
+### Task 7: 性价比评分（**已取消** — 2026-08-04 用户决定不做）
 
-**Files:**
-- Modify: `src/valuation.py`、`app.py`
-- Test: `tests/test_valuation.py`
-
-**Interfaces:**
-- `composite_score(completion_pct: float | None, yield_rank: int | None, irr: float | None, n_funds: int) -> float | None`：
-  - 三因子标准化：完成度（min-max 到 0-100）、收益率排名（rank/n → 100×(1−rank/n)）、IRR（min-max）
-  - 缺因子 → 剩余因子加权归一；全缺 → None
-- 看板：象限图（x=分派率收益率排名，y=完成度，气泡=IRR）+ Top/Bottom 5 评分卡
-
-**测试意图：**
-- 已知三因子 → 分数计算精确
-- 缺 1-2 因子 → 归一化后仍 0-100
-- 全缺 → None
-
-**完成后**：commit `feat: composite value score (completion × yield × IRR)`。
+~~三因子合成评分 + 象限图~~ → 取消。保留既有排名表/IRR 散点。
 
 ---
 

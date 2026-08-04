@@ -13,7 +13,7 @@
 | 指标 | 口径 | 说明 |
 |---|---|---|
 | 分派率收益率 | **TTM**：近 4 个季度实际可供分配之和 ÷ 最新市值 | 投后机构惯例；次新基金（<4 季数据）降级为最新季度年化（×4）并在表格标注「年化口径」 |
-| NAV 折溢价 | 市价 ÷ 单位净值 − 1 | 溢价红（风险语义）/折价绿；单位净值 = 报告期末基金净资产 ÷ 期末基金份额总额（**两者同一季度报告提取，口径自洽**；份额数不从外部推断） |
+| NAV 折溢价 | 市价 ÷ 单位净值 − 1 | 溢价红（风险语义）/折价绿；**单位净值优先取季报直接披露的「期末基金份额净值」**（无则用 期末基金净资产 ÷ 期末基金份额总额 推算，两者同一报告提取口径自洽） |
 | 市值 | `data/market_snapshot.json` 本地快照 | cron/update.py 每月抓取 14 只最新收盘价×份额存入；看板只读快照不依赖运行时网络；快照含月度历史（价格变动可追溯） |
 | 特许经营 IRR（二期） | 当前市值买入 → 持有至特许经营到期（concession_years_left 年）→ 每年 TTM 分派（增长率假设 0%）→ 到期归零 → 解 IRR | 高速 REITs 特有估值（区别于永续型）；IRR < 分派率收益率 说明本金回收压力 |
 | 性价比评分（二期） | 完成度 × 分派率排名 × IRR 合成 | 象限图（x=分派率排名，y=完成度）+ 评分卡 |
@@ -32,7 +32,8 @@ akshare（cron 内）──update.py 扩展──> market_snapshot.json（价格
 
 ## 第一期任务分解
 
-1. **NAV 解析扩展**：`parser_quarterly.py` 增加报告期末基金净资产 + 期末基金份额总额提取（季报「报告期末基金净资产」/资产负债表定位，TDD + 真实季报 fixture）；模板季度 Sheet NAV 列回填；`data_loader.load_quarterly` 输出不变（列已存在）
+1. **NAV 解析扩展**：`parser_quarterly.py` 增加三个字段提取——期末基金份额净值（优先）、期末基金净资产、期末基金份额总额（季报「主要财务指标/基金份额净值」区域定位，TDD + 真实季报 fixture）；模板季度 Sheet NAV 列回填（净资产口径），份额净值另存 `data/quarterly_nav.json`（模板结构不变铁律）；`data_loader.load_quarterly` 输出不变
+1a. **NAV 侦察前置**：先下载 2-3 份季报确认「期末基金份额净值」披露位置与措辞（180201/508018 2026Q2 已有 PDF 可复用）→ 据此定 fixture
 2. **市值快照**：`update.py` 扩展——cron 运行时用 akshare 抓 14 只最新收盘价（失败降级：保留上次快照 + errors 记录）；`data/market_snapshot.json` 结构 `{"snapshots": [{date, code, price, market_cap_wan}], "latest": {...}}`；**市值 = 收盘价 × 期末基金份额总额（与 NAV 同源，来自季度报告）**
 3. **估值模块**：`src/valuation.py`（新）——`ttm_distributable(quarterly_df)`、`distribution_yield(df, snapshot)`、`nav_premium(df, snapshot, static)`、`risk_flags(...)`；纯函数可 TDD
 4. **看板 Tab**：`app.py` 新增「📊 估值对标」Tab——排名条形图（青绿主线/中位数虚线）+ 折溢价表（语义色）+ 风险提示；快照缺失/NAV 缺失 → 列显示「—」降级不崩溃

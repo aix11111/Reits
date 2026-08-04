@@ -103,6 +103,9 @@ def test_analysis_rules_tab_degrades_gracefully_when_data_empty(no_network, monk
 
     monkeypatch.setattr(dl, "load_all", empty_load)
 
+    import streamlit as st
+    st.cache_data.clear()
+
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
     assert not at.exception

@@ -160,7 +160,7 @@ def render_operations(code, name, monthly_df, quarterly_df):
 
 def render_market(code):
     """行情走势页签：实时行情 KPI 与历史收盘价走势图。"""
-    quotes = get_realtime_quotes()
+    quotes = _quotes_cached()
     row = quotes[quotes["code"] == code]
     if not row.empty:
         q = row.iloc[0]
@@ -171,7 +171,7 @@ def render_market(code):
     else:
         st.warning("未获取到实时行情（网络异常已降级），本页签行情数据跳过。")
 
-    hist = get_hist(code)
+    hist = _hist_cached(code)
     if not hist.empty:
         st.plotly_chart(
             line_chart(hist, "date", "close", "收盘价走势", "收盘价"),
@@ -186,6 +186,24 @@ def _tristate_label(value):
     if pd.isna(value):
         return "—"
     return "是" if value else "否"
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def _load_all_cached():
+    """缓存加载本地模板数据，ttl 1 小时。"""
+    return load_all(DATA_PATH)
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def _quotes_cached():
+    """缓存全市场实时行情，ttl 5 分钟。"""
+    return get_realtime_quotes()
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def _hist_cached(code):
+    """缓存单只 REIT 历史日线，ttl 5 分钟。"""
+    return get_hist(code)
 
 
 def _load_annual_completion() -> pd.DataFrame:
@@ -387,7 +405,7 @@ def main():
     )
 
     try:
-        data = load_all(DATA_PATH)
+        data = _load_all_cached()
     except FileNotFoundError:
         st.error(f"未找到数据文件：{DATA_PATH}")
         st.info("请按模板填写数据并保存至 data/REITsMonitor_数据模板_v1.xlsx 后重试。")

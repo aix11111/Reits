@@ -4,6 +4,8 @@
 避免真实调用 akshare 网络接口。
 """
 
+import time
+
 import pandas as pd
 import pytest
 
@@ -106,6 +108,51 @@ def test_get_hist_returns_empty_with_columns_on_error(monkeypatch, capsys):
     assert df.empty
     assert list(df.columns) == HIST_COLS
     assert "网络连接失败" in capsys.readouterr().out
+
+
+def test_call_with_timeout_returns_degraded_on_timeout():
+    """慢函数超过 5s 未返回时，_call_with_timeout 返回降级值 None。"""
+
+    def slow():
+        time.sleep(10)
+        return "done"
+
+    result = md._call_with_timeout(slow, timeout=5)
+
+    assert result is None
+
+
+def test_call_with_timeout_returns_result_on_success():
+    """快函数正常返回时，_call_with_timeout 原样返回其结果。"""
+
+    result = md._call_with_timeout(lambda: "fast", timeout=5)
+
+    assert result == "fast"
+
+
+def test_call_with_timeout_returns_degraded_none_when_fn_slow():
+    """慢函数（10s）超过 5s 超时 → _call_with_timeout 降级返回 None，不等满 10s。"""
+
+    import time
+
+    def slow():
+        time.sleep(10)
+        return "unexpected"
+
+    start = time.monotonic()
+    result = md._call_with_timeout(slow, timeout=5)
+    elapsed = time.monotonic() - start
+
+    assert result is None
+    assert elapsed < 9
+
+
+def test_call_with_timeout_returns_result_when_fn_fast():
+    """快速函数在超时前返回 → _call_with_timeout 原样返回结果。"""
+
+    result = md._call_with_timeout(lambda: {"code": "180201"}, timeout=5)
+
+    assert result == {"code": "180201"}
 
 
 def test_error_returns_independent_copies(monkeypatch):

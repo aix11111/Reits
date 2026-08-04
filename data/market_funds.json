@@ -1,0 +1,791 @@
+{
+ "funds": [
+  {
+   "code": "180101",
+   "name": "博时蛇口产园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2021-06-21",
+   "manager": "博时基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180102",
+   "name": "华夏合肥高新REIT",
+   "asset_type": "产业园",
+   "listed_date": "2022-10-10",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180103",
+   "name": "华夏和达高科REIT",
+   "asset_type": "产业园",
+   "listed_date": "2022-12-27",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180105",
+   "name": "易方达广开产园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-09-23",
+   "manager": "易方达基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180106",
+   "name": "广发成都高投产业园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-12-19",
+   "manager": "广发基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180201",
+   "name": "平安广州广河REIT",
+   "asset_type": "高速",
+   "listed_date": "2021-06-21",
+   "manager": "平安基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180202",
+   "name": "华夏越秀高速REIT",
+   "asset_type": "高速",
+   "listed_date": "2021-12-14",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180203",
+   "name": "招商高速公路REIT",
+   "asset_type": "高速",
+   "listed_date": "2024-11-21",
+   "manager": "招商基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180301",
+   "name": "红土创新盐田港REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2021-06-21",
+   "manager": "红土创新基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180302",
+   "name": "华夏深国际REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2024-07-09",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180303",
+   "name": "华泰宝湾物流REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2024-10-29",
+   "manager": "华泰证券(上海)资产管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180305",
+   "name": "南方顺丰物流REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2025-04-21",
+   "manager": "南方基金管理股份有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180306",
+   "name": "华夏安博仓储REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2025-12-19",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180401",
+   "name": "鹏华深圳能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2022-07-26",
+   "manager": "鹏华基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180402",
+   "name": "工银蒙能清洁能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2024-12-10",
+   "manager": "工银瑞信基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180501",
+   "name": "红土创新深圳安居REIT",
+   "asset_type": "保障房",
+   "listed_date": "2022-08-31",
+   "manager": "红土创新基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180502",
+   "name": "招商基金蛇口租赁住房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2024-10-23",
+   "manager": "招商基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180503",
+   "name": "中航北京昌保租赁住房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2026-04-29",
+   "manager": "中航基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180601",
+   "name": "华夏华润消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-03-14",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180602",
+   "name": "中金印力消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-04-30",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180603",
+   "name": "华夏大悦城消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-09-20",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180605",
+   "name": "易方达华威市场REIT",
+   "asset_type": "消费",
+   "listed_date": "2025-01-24",
+   "manager": "易方达基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180606",
+   "name": "中金中国绿发消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2025-06-27",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180607",
+   "name": "华夏中海消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2025-10-31",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180701",
+   "name": "银华绍兴原水水利REIT",
+   "asset_type": "生态环保",
+   "listed_date": "2024-11-08",
+   "manager": "银华基金管理股份有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180801",
+   "name": "中航首钢绿能REIT",
+   "asset_type": "生态环保",
+   "listed_date": "2021-06-21",
+   "manager": "中航基金管理有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "180901",
+   "name": "南方润泽科技数据中心REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-08-08",
+   "manager": "南方基金管理股份有限公司",
+   "exchange": "SZSE",
+   "source": "cninfo"
+  },
+  {
+   "code": "508000",
+   "name": "华安张江产业园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2021-06-21",
+   "manager": "华安基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508001",
+   "name": "浙商沪杭甬REIT",
+   "asset_type": "高速",
+   "listed_date": "2021-06-21",
+   "manager": "浙江浙商证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508002",
+   "name": "华安百联消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-08-16",
+   "manager": "华安基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508003",
+   "name": "中金联东科创REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-11-05",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508005",
+   "name": "华夏首创奥莱REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-08-28",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508006",
+   "name": "富国首创水务REIT",
+   "asset_type": "生态环保",
+   "listed_date": "2021-06-21",
+   "manager": "富国基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508007",
+   "name": "中金山东高速REIT",
+   "asset_type": "高速",
+   "listed_date": "2023-10-27",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508008",
+   "name": "国金中国铁建REIT",
+   "asset_type": "高速",
+   "listed_date": "2022-07-08",
+   "manager": "国金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508009",
+   "name": "中金安徽交控REIT",
+   "asset_type": "高速",
+   "listed_date": "2022-11-22",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508010",
+   "name": "中金重庆两江REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-12-11",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508011",
+   "name": "嘉实物美消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-03-12",
+   "manager": "嘉实基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508012",
+   "name": "招商科创REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-12-31",
+   "manager": "招商基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508015",
+   "name": "中信建投明阳智能新能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2024-07-23",
+   "manager": "中信建投基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508016",
+   "name": "华夏华电清洁能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2025-08-01",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508017",
+   "name": "华夏金茂消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2024-03-12",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508018",
+   "name": "华夏中国交建REIT",
+   "asset_type": "高速",
+   "listed_date": "2022-04-28",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508019",
+   "name": "中金湖北科投光谷REIT",
+   "asset_type": "产业园",
+   "listed_date": "2023-06-30",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508020",
+   "name": "东方红隧道股份高速公路REIT",
+   "asset_type": "高速",
+   "listed_date": "2026-04-22",
+   "manager": "上海东方证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508021",
+   "name": "国泰海通临港创新产业园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2022-10-13",
+   "manager": "上海国泰海通证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508022",
+   "name": "博时津开产园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-09-19",
+   "manager": "博时基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508026",
+   "name": "嘉实中国电建清洁能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2024-03-28",
+   "manager": "嘉实基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508027",
+   "name": "东吴苏园产业REIT",
+   "asset_type": "产业园",
+   "listed_date": "2021-06-21",
+   "manager": "东吴基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508028",
+   "name": "中信建投国家电投新能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2023-03-29",
+   "manager": "中信建投基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508029",
+   "name": "中信建投沈阳国际软件园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-11-06",
+   "manager": "中信建投基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508030",
+   "name": "中航中核汇能新能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2026-07-28",
+   "manager": "中航基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508031",
+   "name": "国泰海通城投宽庭保租房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2024-01-12",
+   "manager": "上海国泰海通证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508033",
+   "name": "易方达深高速REIT",
+   "asset_type": "高速",
+   "listed_date": "2024-03-29",
+   "manager": "易方达基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508036",
+   "name": "平安宁波交投REIT",
+   "asset_type": "高速",
+   "listed_date": "2024-12-26",
+   "manager": "平安基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508039",
+   "name": "创金合信首农REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-07-25",
+   "manager": "创金合信基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508048",
+   "name": "华安外高桥REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2024-12-25",
+   "manager": "华安基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508050",
+   "name": "华夏中核清洁能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2026-02-02",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508055",
+   "name": "汇添富上海地产租赁住房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2025-03-31",
+   "manager": "汇添富基金管理股份有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508056",
+   "name": "中金普洛斯REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2021-06-21",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508058",
+   "name": "中金厦门安居REIT",
+   "asset_type": "保障房",
+   "listed_date": "2022-08-31",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508060",
+   "name": "南方万国数据中心REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-08-08",
+   "manager": "南方基金管理股份有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508066",
+   "name": "华泰江苏交控REIT",
+   "asset_type": "高速",
+   "listed_date": "2022-11-15",
+   "manager": "华泰证券（上海）资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508068",
+   "name": "华夏北京保障房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2022-08-31",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508069",
+   "name": "华夏南京交通高速公路REIT",
+   "asset_type": "高速",
+   "listed_date": "2024-11-01",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508077",
+   "name": "华夏基金华润有巢REIT",
+   "asset_type": "保障房",
+   "listed_date": "2022-12-09",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508078",
+   "name": "中航易商仓储物流REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2025-01-24",
+   "manager": "中航基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508080",
+   "name": "中金亦庄产业园REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-06-26",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508082",
+   "name": "中金唯品会奥莱REIT",
+   "asset_type": "消费",
+   "listed_date": "2025-09-12",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508084",
+   "name": "汇添富九州通医药REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2025-02-27",
+   "manager": "汇添富基金管理股份有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508085",
+   "name": "华泰苏州恒泰租赁住房REIT",
+   "asset_type": "保障房",
+   "listed_date": "2025-05-21",
+   "manager": "华泰证券（上海）资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508086",
+   "name": "工银河北高速REIT",
+   "asset_type": "高速",
+   "listed_date": "2024-06-28",
+   "manager": "工银瑞信基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508087",
+   "name": "国泰海通济南能源供热REIT",
+   "asset_type": "能源",
+   "listed_date": "2025-02-17",
+   "manager": "上海国泰海通证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508088",
+   "name": "国泰海通东久新经济REIT",
+   "asset_type": "产业园",
+   "listed_date": "2022-10-14",
+   "manager": "上海国泰海通证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508089",
+   "name": "华夏特变电工新能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2024-07-02",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508090",
+   "name": "中银中外运仓储物流REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2025-07-29",
+   "manager": "中银基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508091",
+   "name": "华夏凯德消费REIT",
+   "asset_type": "消费",
+   "listed_date": "2025-09-29",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508092",
+   "name": "华夏金隅智造工场REIT",
+   "asset_type": "产业园",
+   "listed_date": "2025-02-26",
+   "manager": "华夏基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508093",
+   "name": "易方达广西北投高速REIT",
+   "asset_type": "高速",
+   "listed_date": "2026-05-26",
+   "manager": "易方达基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508096",
+   "name": "中航京能国际能源REIT",
+   "asset_type": "能源",
+   "listed_date": "2023-03-29",
+   "manager": "中航基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508097",
+   "name": "华泰南京建邺REIT",
+   "asset_type": "产业园",
+   "listed_date": "2024-12-03",
+   "manager": "华泰证券（上海）资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508098",
+   "name": "嘉实京东仓储基础设施REIT",
+   "asset_type": "仓储物流",
+   "listed_date": "2023-02-08",
+   "manager": "嘉实基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508099",
+   "name": "建信中关村REIT",
+   "asset_type": "产业园",
+   "listed_date": "2021-12-17",
+   "manager": "建信基金管理有限责任公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508600",
+   "name": "汇添富上海地产商业REIT",
+   "asset_type": "商业不动产",
+   "listed_date": "2026-06-18",
+   "manager": "汇添富基金管理股份有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508601",
+   "name": "中信建投首农商业REIT",
+   "asset_type": "商业不动产",
+   "listed_date": "2026-06-18",
+   "manager": "中信建投基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508602",
+   "name": "国泰海通砂之船商业REIT",
+   "asset_type": "商业不动产",
+   "listed_date": "2026-06-18",
+   "manager": "上海国泰海通证券资产管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  },
+  {
+   "code": "508603",
+   "name": "中金唯品会商业REIT",
+   "asset_type": "商业不动产",
+   "listed_date": "2026-06-18",
+   "manager": "中金基金管理有限公司",
+   "exchange": "SSE",
+   "source": "sse"
+  }
+ ],
+ "meta": {
+  "count": 87,
+  "updated": "2026-08-04"
+ }
+}

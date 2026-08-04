@@ -56,6 +56,9 @@ SECTION_LIMIT = 800
 NAV_PRICE_LABEL = "期末基金份额净值"
 NAV_ASSET_LABEL = "期末基金净资产"
 
+SHARES_LABEL = "报告期末基金份额总额"
+SHARES_LABEL_PAT = re.compile(r"报告\s*期\s*末\s*基\s*金\s*份\s*额\s*总\s*额")
+
 YEAR_RE = re.compile(r"(?:预测本基金|预测的?)\s*(\d{4})\s*年度")
 PREDICTED_RE = re.compile(
     r"(?:"
@@ -295,6 +298,65 @@ def _find_report_year(text: str):
     if match is not None:
         return int(match.group(1))
     return None
+
+
+def _extract_fund_shares(text: str) -> float | None:
+    """返回「报告期末基金份额总额」后的份额数值（份）；找不到返回 None。
+
+    label 本身可能跨行（如「报告期末基金份额\\n总额」），用容空白正则定位；
+    数字可含千分位逗号、值跨行（数字被换行截断，如 700,000,00\\n0.00）——
+    将 label 后窗口内全部空白折叠后再以「数字+份」正则匹配，避免与相邻
+    字段数值合并。
+    """
+    match = SHARES_LABEL_PAT.search(text)
+    if match is None:
+        return None
+    tail = text[match.end() : match.end() + 200]
+    collapsed = re.sub(r"\s+", "", tail)
+    match = re.search(r"(\d[\d,]*(?:\.\d+)?)\s*份", collapsed)
+    if match is None:
+        return None
+    return float(_to_number(match.group(1)))
+
+
+def parse_fund_shares(pdf_path: str) -> float | None:
+    """解析年报 PDF 的「报告期末基金份额总额」（份）；找不到返回 None。"""
+    return _extract_fund_shares(extract_text(pdf_path))
+
+
+def build_fund_shares_snapshot(annual_dir: str, fund_codes) -> tuple[dict, list]:
+    """遍历年报缓存目录，每基金取报告年份最新的一条份额值。
+
+    文件名 {code}_annual_{公告年}.pdf；公告年≠报告年，报告年从 PDF 标题
+    「{YYYY} 年年度报告」解析（_find_report_year）。返回 (shares, missing)：
+    shares 为 {code: 份额}；missing 为无年报文件或无法解析份额的基金代码。
+    """
+    shares = {}
+    missing = []
+    by_code = {}
+    for f in sorted(Path(annual_dir).glob("*.pdf")):
+        code = f.name.split("_")[0]
+        if code not in fund_codes:
+            continue
+        try:
+            text = extract_text(f)
+        except Exception:
+            continue
+        year = _find_report_year(text)
+        if year is None:
+            continue
+        value = _extract_fund_shares(text)
+        if value is None:
+            continue
+        cur = by_code.get(code)
+        if cur is None or year > cur[0]:
+            by_code[code] = (year, value)
+    for code in fund_codes:
+        if code in by_code:
+            shares[code] = by_code[code][1]
+        else:
+            missing.append(code)
+    return shares, missing
 
 
 def parse_annual_completion(pdf_path: str, year=None) -> dict:

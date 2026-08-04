@@ -142,6 +142,10 @@ NAV_FIXTURE_TEXT = (FIXTURES_DIR / "annual_180201_2022_nav.txt").read_text(
 
 EMPTY_RESULT = {}
 
+ANNUAL_DIR = Path(__file__).resolve().parents[1] / "data" / "_cache" / "annual"
+
+SHARES_180201_2022_PDF = ANNUAL_DIR / "180201_annual_2022.pdf"
+
 
 def test_parse_completion_text_fixture():
     result = parser_annual._parse_completion_text(FIXTURE_TEXT)
@@ -523,3 +527,63 @@ def test_parse_annual_completion_no_nav_is_none(monkeypatch):
 
     assert result["nav_unit_price"] is None
     assert result["nav_wan"] is None
+
+
+def test_parse_fund_shares_180201_2022_real_pdf():
+    """真实 180201 2022 年报 PDF → 报告期末基金份额总额 700,000,000.00 份 = 700000000.0。"""
+    if not SHARES_180201_2022_PDF.exists():
+        pytest.skip("年报 PDF 缓存缺失（data/_cache 不入库），跳过真实文件断言")
+    shares = parser_annual.parse_fund_shares(str(SHARES_180201_2022_PDF))
+
+    assert shares == 700000000.0
+
+
+def test_extract_fund_shares_linebreak_variant():
+    """断行变体：数字中间插 \n → 仍解析正确（700,000,00\\n0.00）。"""
+    text = "报告期末基金份额总额\n700,000,00\n0.00 份"
+
+    assert parser_annual._extract_fund_shares(text) == 700000000.0
+
+
+def test_extract_fund_shares_thousands_no_space():
+    """无空格变体：「500,000,000.00份」（508001 沪市格式）。"""
+    text = "报告期末基金份额总额\n500,000,000.00份\n基金合同存续期"
+
+    assert parser_annual._extract_fund_shares(text) == 500000000.0
+
+
+def test_extract_fund_shares_split_label():
+    """label 自身跨行（180202 2025 年报「报告期末基金份额\\n总额」）→ 仍解析。"""
+    text = "报告期末基金份额\n总额\n300,000,000.00 份\n基金合同存续期"
+
+    assert parser_annual._extract_fund_shares(text) == 300000000.0
+
+
+def test_extract_fund_shares_missing_label_returns_none():
+    assert parser_annual._extract_fund_shares("无份额总额披露的文本") is None
+
+
+def test_build_fund_shares_snapshot_picks_latest_report_year(monkeypatch, tmp_path):
+    """批量：每基金取报告年最新文件；报告年从标题解析而非文件名。
+
+    180201_annual_2026.pdf（标题 2025 年度报告）覆盖 180201_annual_2022.pdf
+    （标题 2022 年度报告）→ 取 2025 报告年的份额值；508020 无年报 → missing。"""
+    texts = {
+        "180201_annual_2022.pdf": "180201 2022 年年度报告\n报告期末基金份额总额\n600,000,000.00 份",
+        "180201_annual_2026.pdf": "180201 2025 年年度报告\n报告期末基金份额总额\n700,000,000.00 份",
+    }
+
+    for name in texts:
+        (tmp_path / name).touch()
+
+    def fake_extract(path):
+        return texts[Path(path).name]
+
+    monkeypatch.setattr(parser_annual, "extract_text", fake_extract)
+
+    shares, missing = parser_annual.build_fund_shares_snapshot(
+        str(tmp_path), ["180201", "508020"]
+    )
+
+    assert shares == {"180201": 700000000.0}
+    assert missing == ["508020"]

@@ -25,6 +25,14 @@
    "name": "招商高速公路REIT"
   },
   {
+   "year": 2022,
+   "predicted_wan": 43219.12,
+   "actual_wan": 31508.74,
+   "completion_pct": 72.9,
+   "code": "508001",
+   "name": "浙商沪杭甬REIT"
+  },
+  {
    "year": 2023,
    "predicted_wan": 32187.389444,
    "actual_wan": 35617.733507,

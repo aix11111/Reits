@@ -28,6 +28,13 @@
 完成招募说明书预测的100.02%。」预测金额取「同期目标数{X} 元」备选，段落无
 年份 → year=None（调用方/页眉标题兜底）。
 
+508066 2023 年报（格式 F）：混合单位——预测「22,512.32 万元」、实际
+「227,778,602.49 元」；508009 2023 偏离度双万元（预测「同期目标数88,871.81 万元」
+无括号）；508007 2023（格式 G）：「实际可供分配金额{X} 元，与招募说明书中刊载的
+{YYYY} 年度可供分配预测金额{Y} 元相比，实际金额约为预测金额的{Z}%」；508086 2025
+偏离度但预测「同期目标数600,017,286.71 元」无括号。所有金额正则统一捕获单位
+（元|万元），经 _to_wan 换算为万元。
+
 extract_text 用 pymupdf 逐页抽取 PDF 全文（与 parser_generic 一致）；
 parse_annual_completion 定位「刊载的可供分配金额测算报告」段落（其后
 窗口）后交给纯函数 _parse_completion_text 解析，找不到段落抛 ValueError。
@@ -49,19 +56,30 @@ SECTION_LIMIT = 800
 YEAR_RE = re.compile(r"(?:预测本基金|预测的?)\s*(\d{4})\s*年度")
 PREDICTED_RE = re.compile(
     r"(?:"
-    r"(?<!实现)可供\s*分配金额\s*为?\s*(?P<predicted>\d[\d,]*(?:\.\d+)?)\s*元"
-    r"|同期目标数\s*(?P<target>\d[\d,]*(?:\.\d+)?)\s*元"
+    r"(?<!实现)可供\s*分\s*配\s*金\s*额\s*为?\s*(?P<predicted>\d[\d,]*(?:\.\d+)?)\s*(?P<predicted_unit>万元|元)"
+    r"|同期目标数\s*(?P<target>\d[\d,]*(?:\.\d+)?)\s*(?P<target_unit>万元|元)"
     r")"
 )
-ACTUAL_RE = re.compile(r"实现可供\s*分配金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*元")
+ACTUAL_RE = re.compile(r"实现\s*可供\s*分配\s*金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
 COMPLETION_RE = re.compile(r"完成[^%\d]{0,14}预测值?\s*的?\s*(\d+(?:\.\d+)?)\s*%")
 
-SH_ACTUAL_RE = re.compile(r"实现可供分配金额为\s*(\d[\d,]*(?:\.\d+)?)\s*元")
+SH_ACTUAL_RE = re.compile(r"实现可供分配金额为\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
 SH_PREDICTED_RE = re.compile(
-    r"[（(][^（()]{0,100}?(\d[\d,]*(?:\.\d+)?)\s*元\s*[）)]"
+    r"(?:"
+    r"[（(][^（）()]{0,100}?(\d[\d,]*(?:\.\d+)?)\s*(万元|元)\s*[）)]"
+    r"|同期目标数\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)"
+    r")"
 )
 SH_YEAR_RE = re.compile(r"披露的\s*(\d{4})\s*年")
 DEVIATION_RE = re.compile(r"偏离度为\s*(-?\d+(?:\.\d+)?)\s*%")
+
+G_ACTUAL_RE = re.compile(
+    r"实际\s*可供\s*分配\s*金额\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)"
+)
+G_PREDICTED_RE = re.compile(
+    r"(\d{4})\s*年度\s*可供\s*分配\s*预\s*测\s*金额\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)"
+)
+G_COMPLETION_RE = re.compile(r"约为预测金额的\s*(\d+(?:\.\d+)?)\s*%")
 
 REPORT_YEAR_RE = re.compile(r"(\d{4})\s*年\s*年度报告")
 REPORT_YEAR_SHORT_RE = re.compile(r"(\d{4})\s*年度报告")
@@ -82,6 +100,14 @@ def _to_number(raw: str):
     if "." in normalized:
         return float(normalized)
     return int(normalized)
+
+
+def _to_wan(raw: str, unit: str) -> float:
+    """按捕获单位将数值换算为万元：万元原值、元除以 10000。"""
+    value = _to_number(raw)
+    if unit == "元":
+        return value / 10000.0
+    return float(value)
 
 
 def _find_completion_section(text: str, limit: int = SECTION_LIMIT) -> str:
@@ -112,6 +138,13 @@ def _parse_shanghai_completion(text: str, year) -> dict:
     if deviation_match is None:
         raise ValueError("未找到偏离度")
 
+    if predicted_match.group(1) is not None:
+        predicted_raw = predicted_match.group(1)
+        predicted_unit = predicted_match.group(2)
+    else:
+        predicted_raw = predicted_match.group(3)
+        predicted_unit = predicted_match.group(4)
+
     if year is None:
         year_match = SH_YEAR_RE.search(text)
         if year_match is not None:
@@ -119,9 +152,38 @@ def _parse_shanghai_completion(text: str, year) -> dict:
 
     return {
         "year": year,
-        "predicted_wan": _to_number(predicted_match.group(1)) / 10000.0,
-        "actual_wan": _to_number(actual_match.group(1)) / 10000.0,
+        "predicted_wan": _to_wan(predicted_raw, predicted_unit),
+        "actual_wan": _to_wan(actual_match.group(1), actual_match.group(2)),
         "completion_pct": round(100 + _to_number(deviation_match.group(1)), 2),
+    }
+
+
+def _parse_g_completion(text: str, year) -> dict:
+    """解析「约为预测金额的」格式段落（508007），返回同构字典。
+
+    实际金额取「实际可供分配金额{X} 元」，预测金额取「{YYYY} 年度可供分配
+    预测金额{Y} 元」，完成率取「约为预测金额的{Z}%」，年份从预测正则提取。
+    """
+    actual_match = G_ACTUAL_RE.search(text)
+    if actual_match is None:
+        raise ValueError("未找到实际可供分配金额")
+
+    predicted_match = G_PREDICTED_RE.search(text)
+    if predicted_match is None:
+        raise ValueError("未找到预测可供分配金额")
+
+    completion_match = G_COMPLETION_RE.search(text)
+    if completion_match is None:
+        raise ValueError("未找到完成率")
+
+    if year is None:
+        year = int(predicted_match.group(1))
+
+    return {
+        "year": year,
+        "predicted_wan": _to_wan(predicted_match.group(2), predicted_match.group(3)),
+        "actual_wan": _to_wan(actual_match.group(1), actual_match.group(2)),
+        "completion_pct": _to_number(completion_match.group(1)),
     }
 
 
@@ -143,6 +205,9 @@ def _parse_completion_text(text: str, year=None) -> dict:
     if "偏离度" in text:
         return _parse_shanghai_completion(text, year)
 
+    if "约为预测金额的" in text:
+        return _parse_g_completion(text, year)
+
     if year is None:
         year_match = YEAR_RE.search(text)
         if year_match is not None:
@@ -154,6 +219,9 @@ def _parse_completion_text(text: str, year=None) -> dict:
     if predicted_match is None:
         raise ValueError("未找到预测可供分配金额")
     predicted_raw = predicted_match.group("predicted") or predicted_match.group("target")
+    predicted_unit = predicted_match.group("predicted_unit") or predicted_match.group(
+        "target_unit"
+    )
 
     actual_match = ACTUAL_RE.search(text)
     if actual_match is None:
@@ -165,8 +233,8 @@ def _parse_completion_text(text: str, year=None) -> dict:
 
     return {
         "year": year,
-        "predicted_wan": _to_number(predicted_raw) / 10000.0,
-        "actual_wan": _to_number(actual_match.group(1)) / 10000.0,
+        "predicted_wan": _to_wan(predicted_raw, predicted_unit),
+        "actual_wan": _to_wan(actual_match.group(1), actual_match.group(2)),
         "completion_pct": _to_number(completion_match.group(1)),
     }
 

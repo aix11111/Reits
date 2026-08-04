@@ -7,6 +7,38 @@
    "completion_pct": 76.15,
    "code": "180201",
    "name": "平安广州广河REIT"
+  },
+  {
+   "year": 2022,
+   "predicted_wan": 15383.8106,
+   "actual_wan": 13742.682143,
+   "completion_pct": 89.33,
+   "code": "180202",
+   "name": "华夏越秀高速REIT"
+  },
+  {
+   "year": 2024,
+   "predicted_wan": 23529.962165,
+   "actual_wan": 23534.742899,
+   "completion_pct": 100.02,
+   "code": "180203",
+   "name": "招商高速公路REIT"
+  },
+  {
+   "year": 2022,
+   "predicted_wan": 42705.454882,
+   "actual_wan": 39032.161958,
+   "completion_pct": 91.4,
+   "code": "508008",
+   "name": "国金中国铁建REIT"
+  },
+  {
+   "year": 2023,
+   "predicted_wan": 46040.645978,
+   "actual_wan": 48832.843239999995,
+   "completion_pct": 104.68,
+   "code": "508008",
+   "name": "国金中国铁建REIT"
   }
  ]
 }

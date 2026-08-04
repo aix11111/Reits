@@ -81,6 +81,50 @@ E_EXPECTED = {
     "completion_pct": 100.02,
 }
 
+MIXED_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508066_2023_completion.txt"
+).read_text(encoding="utf-8")
+
+MIXED_EXPECTED = {
+    "year": 2023,
+    "predicted_wan": 22512.32,
+    "actual_wan": 22777.860249,
+    "completion_pct": 101.18,
+}
+
+DEVIATION_WAN_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508009_2023_completion.txt"
+).read_text(encoding="utf-8")
+
+DEVIATION_WAN_EXPECTED = {
+    "year": 2023,
+    "predicted_wan": 88871.81,
+    "actual_wan": 78044.60,
+    "completion_pct": 87.82,
+}
+
+G_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508007_2023_completion.txt"
+).read_text(encoding="utf-8")
+
+G_EXPECTED = {
+    "year": 2023,
+    "predicted_wan": 32187.389444,
+    "actual_wan": 35617.733507,
+    "completion_pct": 110.66,
+}
+
+NOBRACKET_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508086_2025_completion.txt"
+).read_text(encoding="utf-8")
+
+NOBRACKET_EXPECTED = {
+    "year": 2025,
+    "predicted_wan": 60001.728671,
+    "actual_wan": 58976.982308,
+    "completion_pct": 98.29,
+}
+
 EMPTY_RESULT = {}
 
 
@@ -263,6 +307,95 @@ def test_parse_completion_text_format_e_without_thousands_separator():
     assert result["predicted_wan"] == pytest.approx(23529.962165)
     assert result["actual_wan"] == pytest.approx(23534.742899)
     assert result["completion_pct"] == pytest.approx(100.02)
+
+
+def test_parse_completion_text_mixed_unit_fixture():
+    """508066 2023：预测「22,512.32 万元」、实际「227,778,602.49 元」——混合单位。"""
+    result = parser_annual._parse_completion_text(MIXED_FIXTURE_TEXT)
+
+    assert result["year"] == MIXED_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(MIXED_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(MIXED_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(MIXED_EXPECTED["completion_pct"])
+
+
+def test_parse_completion_text_mixed_unit_without_thousands_separator():
+    text = MIXED_FIXTURE_TEXT.replace("22,512.32", "22512.32").replace(
+        "227,778,602.49", "227778602.49"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2023
+    assert result["predicted_wan"] == pytest.approx(22512.32)
+    assert result["actual_wan"] == pytest.approx(22777.860249)
+    assert result["completion_pct"] == pytest.approx(101.18)
+
+
+def test_parse_completion_text_deviation_wan_fixture():
+    """508009 2023：偏离度双万元——预测「同期目标数88,871.81 万元」、实际
+    「78,044.60 万元」，completion_pct = round(100 - 12.18, 2) = 87.82。"""
+    result = parser_annual._parse_completion_text(
+        DEVIATION_WAN_FIXTURE_TEXT, year=2023
+    )
+
+    assert result["year"] == DEVIATION_WAN_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(
+        DEVIATION_WAN_EXPECTED["predicted_wan"]
+    )
+    assert result["actual_wan"] == pytest.approx(DEVIATION_WAN_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(
+        DEVIATION_WAN_EXPECTED["completion_pct"]
+    )
+
+
+def test_parse_completion_text_format_g_fixture():
+    """格式 G（508007 2023）：无「实现」的实际、无「完成…预测的」完成率——
+    「实际可供分配金额356,177,335.07 元，与招募说明书中刊载的2023 年度可供分配
+    预测金额321,873,894.44 元相比，实际金额约为预测金额的110.66%」。"""
+    result = parser_annual._parse_completion_text(G_FIXTURE_TEXT)
+
+    assert result["year"] == G_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(G_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(G_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(G_EXPECTED["completion_pct"])
+
+
+def test_parse_completion_text_format_g_without_thousands_separator():
+    text = G_FIXTURE_TEXT.replace("356,177,335.07", "356177335.07").replace(
+        "321,873,894.44", "321873894.44"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2023
+    assert result["predicted_wan"] == pytest.approx(32187.389444)
+    assert result["actual_wan"] == pytest.approx(35617.733507)
+    assert result["completion_pct"] == pytest.approx(110.66)
+
+
+def test_parse_completion_text_nobracket_target_fixture():
+    """508086 2025：有「偏离度」（走 B 分支）但预测「同期目标数600,017,286.71 元」
+    无括号 → SH_PREDICTED_RE 需无括号备选。"""
+    result = parser_annual._parse_completion_text(NOBRACKET_FIXTURE_TEXT, year=2025)
+
+    assert result["year"] == NOBRACKET_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(NOBRACKET_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(NOBRACKET_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(NOBRACKET_EXPECTED["completion_pct"])
+
+
+def test_parse_completion_text_nobracket_target_without_thousands_separator():
+    text = NOBRACKET_FIXTURE_TEXT.replace("589,769,823.08", "589769823.08").replace(
+        "600,017,286.71", "600017286.71"
+    )
+
+    result = parser_annual._parse_completion_text(text, year=2025)
+
+    assert result["year"] == 2025
+    assert result["predicted_wan"] == pytest.approx(60001.728671)
+    assert result["actual_wan"] == pytest.approx(58976.982308)
+    assert result["completion_pct"] == pytest.approx(98.29)
 
 
 def test_parse_completion_text_missing_marker_raises_value_error():

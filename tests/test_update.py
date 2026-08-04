@@ -1,20 +1,31 @@
 """tools.reits_collector.update 模块（增量数据更新管线）的单元测试。
 
-通过 monkeypatch 替换 cninfo / sse / parser_generic / parser_quarterly
-的列表、下载与解析函数，全程不发起真实网络请求。覆盖：
-- 已存在 period 跳过、新 period 追加（月度 + 季度）
+通过 monkeypatch 替换 cninfo / sse / parser_generic / parser_quarterly /
+parser_annual 的列表、下载与解析函数，全程不发起真实网络请求。覆盖：
+- 已存在 period 跳过、新 period 追加（月度 + 季度 + 年报完成度）
 - 深市走 cninfo、沪市走 sse 的分支路由
 - 单基金网络失败 → 收集到 errors 不崩溃
-- update_template 写回模板后 load 验证行数增加
-- 空增量（无新公告）→ 摘要全 0
+- 沪市列表失败 time.sleep(90) 重试 3 次（限流防护）、沪市基金间 15s 间隔
+- 年报「摘要」「提示性」公告过滤、下载复用（已存在 PDF 跳过）
+- update_template 写回模板后 load 验证行数增加、写回 annual_completion.json
+- 空增量（无新公告）→ 摘要全 0、completion_added=0
 """
+
+import json
 
 import pandas as pd
 import pytest
 from openpyxl import Workbook
 
 from src import data_loader
-from tools.reits_collector import cninfo, parser_generic, parser_quarterly, sse, update
+from tools.reits_collector import (
+    cninfo,
+    parser_annual,
+    parser_generic,
+    parser_quarterly,
+    sse,
+    update,
+)
 
 MONTHLY_NUMERIC_KEYS = [
     "daily_traffic",
@@ -348,6 +359,230 @@ def test_fetch_new_quarterly_filters_advisory_and_dedups(monkeypatch, tmp_path):
 
 
 # ---------------------------------------------------------------------------
+# fetch_new_completion
+# ---------------------------------------------------------------------------
+
+
+def test_fetch_new_completion_skips_existing_and_appends_new_year(
+    monkeypatch, tmp_path
+):
+    """已存在 (code, year) 跳过、新 year 追加；「摘要」公告被过滤；
+    深市走 cninfo；新记录含 year/predicted_wan/actual_wan/completion_pct + code/name。"""
+    _patch_downloads(monkeypatch, tmp_path)
+    monkeypatch.setattr(update.time, "sleep", lambda s: None)
+    existing = [
+        {
+            "year": 2022,
+            "predicted_wan": 62628.76,
+            "actual_wan": 47691.19,
+            "completion_pct": 76.15,
+            "code": "180201",
+            "name": "平安广州广河REIT",
+        }
+    ]
+    monkeypatch.setattr(sse, "list_announcements", lambda *a, **k: [])
+    monkeypatch.setattr(cninfo, "search_org_id", lambda code: f"org-{code}")
+
+    def fake_cninfo_list(code, org_id, date_from, date_to, page_size=100):
+        if code != "180201":
+            return []
+        return [
+            _cninfo_item("平安广州广河REIT 2022年年度报告", "180201_2022.pdf"),
+            _cninfo_item("平安广州广河REIT 2025年年度报告", "180201_2025.pdf"),
+            _cninfo_item("平安广州广河REIT 2025年年度报告摘要", "180201_2025_summary.pdf"),
+        ]
+
+    monkeypatch.setattr(cninfo, "list_announcements", fake_cninfo_list)
+
+    parsed = {
+        "180201_2022.pdf": {
+            "year": 2022,
+            "predicted_wan": 62628.76,
+            "actual_wan": 47691.19,
+            "completion_pct": 76.15,
+        },
+        "180201_2025.pdf": {
+            "year": 2025,
+            "predicted_wan": 70000.0,
+            "actual_wan": 68000.0,
+            "completion_pct": 97.14,
+        },
+    }
+    parse_calls = []
+
+    def fake_parse(path):
+        parse_calls.append(path.name)
+        return parsed[path.name]
+
+    monkeypatch.setattr(parser_annual, "parse_annual_completion", fake_parse)
+
+    rows = update.fetch_new_completion(existing)
+
+    assert len(rows) == 1
+    row = rows[0]
+    assert row["code"] == "180201"
+    assert row["name"] == "平安广州广河REIT"
+    assert row["year"] == 2025
+    assert row["predicted_wan"] == 70000.0
+    assert row["actual_wan"] == 68000.0
+    assert row["completion_pct"] == 97.14
+
+    # 已存在 year 的公告仍下载解析（判定 year）；「摘要」公告既不下载也不解析
+    assert sorted(parse_calls) == ["180201_2022.pdf", "180201_2025.pdf"]
+
+
+def test_fetch_new_completion_filters_summary_and_notice(monkeypatch, tmp_path):
+    """「摘要」「提示性」公告既不下载也不解析；沪市走 sse；
+    已存在 PDF 跳过下载但仍解析。"""
+    _patch_downloads(monkeypatch, tmp_path)
+    monkeypatch.setattr(update.time, "sleep", lambda s: None)
+    existing = [
+        {
+            "year": 2022,
+            "predicted_wan": 29081.817072,
+            "actual_wan": 25059.791987,
+            "completion_pct": 86.17,
+            "code": "508018",
+            "name": "华夏中国交建REIT",
+        }
+    ]
+    monkeypatch.setattr(cninfo, "search_org_id", lambda code: f"org-{code}")
+    monkeypatch.setattr(cninfo, "list_announcements", lambda *a, **k: [])
+    # 2025 年报 PDF 已存在 → 跳过下载
+    (tmp_path / "508018_2025.pdf").write_bytes(b"%PDF-exists")
+
+    def fake_sse_list(code, date_from, date_to, page_size=25):
+        if code != "508018":
+            return []
+        return [
+            _sse_item("华夏中国交建REIT 2025年年度报告", "508018_2025.pdf"),
+            _sse_item("华夏中国交建REIT 2025年年度报告摘要", "508018_2025_summary.pdf"),
+            _sse_item("关于2025年年度报告披露的提示性公告", "508018_2025_notice.pdf"),
+        ]
+
+    monkeypatch.setattr(sse, "list_announcements", fake_sse_list)
+
+    downloaded = []
+    real_download = sse.download_pdf
+
+    def recording_download(url, dest):
+        downloaded.append(dest.name)
+        return real_download(url, dest)
+
+    monkeypatch.setattr(sse, "download_pdf", recording_download)
+
+    parse_calls = []
+
+    def fake_parse(path):
+        parse_calls.append(path.name)
+        return {
+            "year": 2025,
+            "predicted_wan": 29081.0,
+            "actual_wan": 25059.0,
+            "completion_pct": 86.17,
+        }
+
+    monkeypatch.setattr(parser_annual, "parse_annual_completion", fake_parse)
+
+    rows = update.fetch_new_completion(existing)
+
+    assert len(rows) == 1
+    assert rows[0]["code"] == "508018"
+    assert rows[0]["year"] == 2025
+    assert downloaded == []
+    assert parse_calls == ["508018_2025.pdf"]
+
+
+def test_fetch_new_completion_collects_errors_and_continues(monkeypatch, tmp_path):
+    """单基金列表失败 → 错误收集到 errors，其余基金正常返回，不崩溃。"""
+    _patch_downloads(monkeypatch, tmp_path)
+    monkeypatch.setattr(update.time, "sleep", lambda s: None)
+    existing = [
+        {
+            "year": 2022,
+            "predicted_wan": 62628.76,
+            "actual_wan": 47691.19,
+            "completion_pct": 76.15,
+            "code": "180201",
+            "name": "平安广州广河REIT",
+        }
+    ]
+    monkeypatch.setattr(sse, "list_announcements", lambda *a, **k: [])
+    monkeypatch.setattr(cninfo, "search_org_id", lambda code: f"org-{code}")
+
+    def fake_cninfo_list(code, org_id, date_from, date_to, page_size=100):
+        if code == "180202":
+            raise RuntimeError("网络超时")
+        if code == "180201":
+            return [_cninfo_item("平安广州广河REIT 2025年年度报告", "180201_2025.pdf")]
+        return []
+
+    monkeypatch.setattr(cninfo, "list_announcements", fake_cninfo_list)
+    monkeypatch.setattr(
+        parser_annual,
+        "parse_annual_completion",
+        lambda path: {
+            "year": 2025,
+            "predicted_wan": 70000.0,
+            "actual_wan": 68000.0,
+            "completion_pct": 97.14,
+        },
+    )
+
+    errors = []
+    rows = update.fetch_new_completion(existing, errors=errors)
+
+    assert len(rows) == 1
+    assert rows[0]["code"] == "180201"
+    assert len(errors) == 1
+    assert "180202" in errors[0]
+
+
+def test_fetch_new_completion_sh_retries_list_failure_three_times(
+    monkeypatch, tmp_path
+):
+    """沪市列表失败 → time.sleep(90) 重试 3 次后成功；沪市基金间 15s 间隔。"""
+    _patch_downloads(monkeypatch, tmp_path)
+    existing = []
+    sleeps = []
+    monkeypatch.setattr(update.time, "sleep", lambda s: sleeps.append(s))
+    monkeypatch.setattr(cninfo, "search_org_id", lambda code: f"org-{code}")
+    monkeypatch.setattr(cninfo, "list_announcements", lambda *a, **k: [])
+
+    calls = {}
+
+    def fake_sse_list(code, date_from, date_to, page_size=25):
+        calls[code] = calls.get(code, 0) + 1
+        if code == "508018":
+            if calls[code] < 3:
+                raise RuntimeError("接口限流")
+            return [_sse_item("华夏中国交建REIT 2025年年度报告", "508018_2025.pdf")]
+        return []
+
+    monkeypatch.setattr(sse, "list_announcements", fake_sse_list)
+    monkeypatch.setattr(
+        parser_annual,
+        "parse_annual_completion",
+        lambda path: {
+            "year": 2025,
+            "predicted_wan": 29081.0,
+            "actual_wan": 25059.0,
+            "completion_pct": 86.17,
+        },
+    )
+
+    rows = update.fetch_new_completion(existing)
+
+    assert len(rows) == 1
+    assert rows[0]["code"] == "508018"
+    assert rows[0]["year"] == 2025
+    assert calls["508018"] == 3
+    # 3 次尝试间 2 次 90s 等待；沪市 11 只基金间 10 次 15s 间隔
+    assert sleeps.count(90) == 2
+    assert sleeps.count(15) == 10
+
+
+# ---------------------------------------------------------------------------
 # update_template
 # ---------------------------------------------------------------------------
 
@@ -439,9 +674,22 @@ def test_update_template_appends_rows_and_reloads(tmp_path, monkeypatch):
         update, "fetch_new_quarterly", lambda df, errors=None: new_quarterly
     )
 
-    summary = update.update_template(path)
+    completion_path = tmp_path / "annual_completion.json"
+    completion_path.write_text(
+        json.dumps({"completion": []}), encoding="utf-8"
+    )
+    monkeypatch.setattr(
+        update, "fetch_new_completion", lambda lst, code_to_name=None, errors=None: []
+    )
 
-    assert summary == {"monthly_added": 1, "quarterly_added": 1, "errors": []}
+    summary = update.update_template(path, completion_path=completion_path)
+
+    assert summary == {
+        "monthly_added": 1,
+        "quarterly_added": 1,
+        "completion_added": 0,
+        "errors": [],
+    }
 
     monthly = data_loader.load_monthly(path)
     assert len(monthly) == 2
@@ -481,6 +729,59 @@ def test_update_template_empty_increment(tmp_path, monkeypatch):
 
     summary = update.update_template(path)
 
-    assert summary == {"monthly_added": 0, "quarterly_added": 0, "errors": []}
+    assert summary == {
+        "monthly_added": 0,
+        "quarterly_added": 0,
+        "completion_added": 0,
+        "errors": [],
+    }
     assert len(data_loader.load_monthly(path)) == 1
     assert len(data_loader.load_quarterly(path)) == 1
+
+
+def test_update_template_writes_back_annual_completion_json(tmp_path, monkeypatch):
+    """update_template 经 completion_path 把新完成度记录合并写回
+    annual_completion.json（原记录保留 + 新记录追加），摘要 completion_added=1。"""
+    path = tmp_path / "tpl.xlsx"
+    _build_template(path)
+
+    monkeypatch.setattr(update, "fetch_new_monthly", lambda df, errors=None: [])
+    monkeypatch.setattr(update, "fetch_new_quarterly", lambda df, errors=None: [])
+
+    existing = [
+        {
+            "year": 2022,
+            "predicted_wan": 62628.76,
+            "actual_wan": 47691.19,
+            "completion_pct": 76.15,
+            "code": "180201",
+            "name": "平安广州广河REIT",
+        }
+    ]
+    new_row = {
+        "year": 2025,
+        "predicted_wan": 70000.0,
+        "actual_wan": 68000.0,
+        "completion_pct": 97.14,
+        "code": "180201",
+        "name": "平安广州广河REIT",
+    }
+    completion_path = tmp_path / "annual_completion.json"
+    completion_path.write_text(
+        json.dumps({"completion": existing}, ensure_ascii=False), encoding="utf-8"
+    )
+
+    seen = {}
+
+    def fake_fetch(lst, code_to_name=None, errors=None):
+        seen["existing"] = lst
+        return [new_row]
+
+    monkeypatch.setattr(update, "fetch_new_completion", fake_fetch)
+
+    summary = update.update_template(path, completion_path=completion_path)
+
+    assert summary["completion_added"] == 1
+    assert [r["code"] for r in seen["existing"]] == ["180201"]
+    written = json.loads(completion_path.read_text(encoding="utf-8"))
+    assert written["completion"] == existing + [new_row]

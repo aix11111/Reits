@@ -60,10 +60,10 @@ PREDICTED_RE = re.compile(
     r"|同期目标数\s*(?P<target>\d[\d,]*(?:\.\d+)?)\s*(?P<target_unit>万元|元)"
     r")"
 )
-ACTUAL_RE = re.compile(r"实现\s*可供\s*分配\s*金额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
+ACTUAL_RE = re.compile(r"实现\s*可\s*供\s*分\s*配\s*金\s*额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
 COMPLETION_RE = re.compile(r"完成[^%\d]{0,14}预测值?\s*的?\s*(\d+(?:\.\d+)?)\s*%")
 
-SH_ACTUAL_RE = re.compile(r"实现可供分配金额为\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
+SH_ACTUAL_RE = re.compile(r"实现\s*可\s*供\s*分\s*配\s*金\s*额\s*为?\s*(\d[\d,]*(?:\.\d+)?)\s*(万元|元)")
 SH_PREDICTED_RE = re.compile(
     r"(?:"
     r"[（(][^（）()]{0,100}?(\d[\d,]*(?:\.\d+)?)\s*(万元|元)\s*[）)]"

@@ -125,6 +125,17 @@ NOBRACKET_EXPECTED = {
     "completion_pct": 98.29,
 }
 
+LINEBREAK_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508001_2022_completion.txt"
+).read_text(encoding="utf-8")
+
+LINEBREAK_EXPECTED = {
+    "year": 2022,
+    "predicted_wan": 43219.12,
+    "actual_wan": 31508.74,
+    "completion_pct": 72.90,
+}
+
 EMPTY_RESULT = {}
 
 
@@ -396,6 +407,17 @@ def test_parse_completion_text_nobracket_target_without_thousands_separator():
     assert result["predicted_wan"] == pytest.approx(60001.728671)
     assert result["actual_wan"] == pytest.approx(58976.982308)
     assert result["completion_pct"] == pytest.approx(98.29)
+
+
+def test_parse_completion_text_linebreak_actual_fixture():
+    """508001 2022：断行在「可供分」与「配金额」之间——「分配」两字被换行
+    分开，ACTUAL_RE 需字间全容忍；段落无年份标记 → year=2022 由调用方传入。"""
+    result = parser_annual._parse_completion_text(LINEBREAK_FIXTURE_TEXT, year=2022)
+
+    assert result["year"] == LINEBREAK_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(LINEBREAK_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(LINEBREAK_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(LINEBREAK_EXPECTED["completion_pct"])
 
 
 def test_parse_completion_text_missing_marker_raises_value_error():

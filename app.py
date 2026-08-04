@@ -549,7 +549,7 @@ def render_rules(monthly_df, quarterly_df, static_df):
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与三个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
-    st.markdown(_GLOBAL_CSS, unsafe_allow_html=True)
+    st.markdown(f"<style>{_GLOBAL_CSS}</style>", unsafe_allow_html=True)
     st.title("📊 REITsMonitor — 公募REITs投后分析看板")
     st.caption(
         "Phase 1：高速公路 REITs | 经营数据来自本地模板，行情数据来自 akshare"

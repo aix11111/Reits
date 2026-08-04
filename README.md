@@ -36,6 +36,7 @@ Structured, standardized, free — collected automatically from exchange PDF ann
 
 Analytics rules that generic market trackers cannot produce, because they require hands-on post-investment (投后管理) experience:
 
+- **Distributable amount completion vs. prospectus forecast** — actual annual distributable amount vs. the prospectus forecast, straight from the annual report's mandated disclosure (10 funds, 11 rows: 72.9% ~ 110.7%)
 - **Distributable amount YoY & peer benchmark** — quarterly distributable amount growth vs. prior-year quarter, and ranking against the industry median per period
 - **Traffic/revenue divergence detection** — traffic up but toll revenue flat signals anomalies (waivers, tariff changes, route diversion)
 - **Monthly MoM spike detection** — abnormal month-over-month jumps in revenue or traffic
@@ -60,6 +61,7 @@ streamlit run app.py
 | Layer | Source | Frequency |
 |---|---|---|
 | Operational data | Exchange monthly/quarterly announcements (cninfo + SSE) → `data/REITsMonitor_数据模板_v1.xlsx` | Incremental updater (`tools/reits_collector/update.py`), monthly |
+| Annual completion | Annual report 3.3.3 disclosure (actual vs. forecast) → `data/annual_completion.json` | Annual |
 | Market data | `akshare` (realtime + daily history) | Automatic |
 
 The Excel template (`data/`) is the dataset's maintenance interface: fill it once, reuse forever.
@@ -82,7 +84,8 @@ tests/                  pytest suite
 
 - [x] **Phase 1** — Highway REITs: single-fund operational dashboard + dataset foundation
 - [x] **Phase 2** — Rule engine: peer benchmarking, divergence detection, distributable YoY, concession decay
-- [ ] **Phase 3** — Distributable amount vs. prospectus forecast, full market (70+ funds), NAV premium/discount
+- [x] **Phase 3a** — Distributable amount vs. prospectus forecast (annual completion)
+- [ ] **Phase 3b** — Full market (70+ funds), NAV premium/discount
 
 ---
 

@@ -4,6 +4,7 @@ Phase 1：面向高速公路 REITs 的投后分析看板。
 经营数据来自本地模板 Excel（data/REITsMonitor_数据模板_v1.xlsx），
 行情数据来自 akshare（网络异常时自动降级为空数据）。
 分析规则页签基于 src.rules 的规则引擎展示可供分配对标与背离检测。
+UI 为「彭博×苹果」深色金融终端风格（Linear 暗色系统）。
 """
 
 import json
@@ -101,13 +102,96 @@ _RULES_COMPLETION_COLUMNS = [
     ("status", "状态"),
 ]
 
-# 特许经营权衰减风险等级 → 条形图颜色
+# ---- 深色金融终端配色（Linear 暗色系统：亮度分层，不做 box-shadow）----
+_BG = "#0A0E17"                 # 页面背景
+_SIDEBAR_BG = "#0F121C"         # 侧边栏背景
+_TEXT_PRIMARY = "#F7F8F8"       # 主文本
+_TEXT_SECONDARY = "#D0D6E0"     # 次文本
+_TEXT_TERTIARY = "#8A8F98"      # 三级灰（标签、说明）
+_ACCENT = "#2DD4BF"             # 强调青绿（KPI 高亮、图表主线、链接）
+_CARD_BG = "rgba(255,255,255,0.03)"
+_CARD_BORDER = "rgba(255,255,255,0.08)"
+_MET_GREEN = "#10B981"          # 达标
+_WARN_ORANGE = "#FBBF24"        # 警告
+_RISK_RED = "#F87171"           # 风险
+_NO_RECORD_GRAY = "#4B5563"     # 无记录
+_MONO_FONT = "'JetBrains Mono', ui-monospace, monospace"
+
+# 特许经营权衰减风险等级 → 条形图颜色（三态语义色）
 _RISK_LEVEL_COLORS = {
-    "临近到期": "#d62728",
-    "关注": "#ff7f0e",
-    "正常": "#2ca02c",
-    "未知": "#7f7f7f",
+    "临近到期": _RISK_RED,
+    "关注": _WARN_ORANGE,
+    "正常": _MET_GREEN,
+    "未知": _NO_RECORD_GRAY,
 }
+
+# 全局深色终端样式（经 st.markdown unsafe_allow_html 注入）
+_GLOBAL_CSS = f"""
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+html, body, .stApp, [data-testid="stAppViewContainer"] {{
+    background-color: {_BG};
+}}
+
+[data-testid="stHeader"] {{
+    background: transparent;
+}}
+
+[data-testid="stSidebar"] {{
+    background-color: {_SIDEBAR_BG};
+    border-right: 1px solid {_CARD_BORDER};
+}}
+
+[data-testid="stMarkdownContainer"] {{
+    color: {_TEXT_PRIMARY};
+}}
+
+[data-testid="stCaptionContainer"], [data-testid="stWidgetLabel"] p {{
+    color: {_TEXT_TERTIARY};
+}}
+
+[data-testid="stApp"] a {{
+    color: {_ACCENT};
+}}
+
+/* 表格：数字/代码列等宽（JetBrains Mono + 本地回退，中文走系统字体） */
+[data-testid="stDataFrame"] td,
+[data-testid="stDataFrame"] th {{
+    font-family: {_MONO_FONT};
+    font-size: 13px;
+}}
+
+/* 原生指标卡与终端卡对齐：亮度分层（无阴影） */
+[data-testid="stMetric"] {{
+    background: {_CARD_BG};
+    border: 1px solid {_CARD_BORDER};
+    border-radius: 8px;
+    padding: 12px 16px;
+}}
+
+[data-testid="stMetricLabel"] p {{
+    color: {_TEXT_TERTIARY};
+    font-size: 12px;
+}}
+
+[data-testid="stMetricValue"] {{
+    font-family: {_MONO_FONT};
+    color: {_ACCENT};
+}}
+"""
+
+
+def _kpi_card(label: str, value: str, note: str) -> str:
+    """终端读数 KPI 卡：标签（三级灰）→ 大号等宽青绿数值 → 单位说明（三级灰）。"""
+    return (
+        '<div class="reit-kpi-card" style="background:rgba(255,255,255,0.03);'
+        'border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px;">'
+        f'<div style="font-size:12px;color:#8A8F98;margin-bottom:8px;">{label}</div>'
+        f'<div style="font-family:\'JetBrains Mono\',ui-monospace,monospace;font-size:28px;'
+        f'color:#2DD4BF;font-weight:600;line-height:1.2;">{value}</div>'
+        f'<div style="font-size:12px;color:#8A8F98;margin-top:8px;">{note}</div>'
+        "</div>"
+    )
 
 
 def render_operations(code, name, monthly_df, quarterly_df):
@@ -116,11 +200,21 @@ def render_operations(code, name, monthly_df, quarterly_df):
 
     metrics = latest_metrics(quarterly_df, code)
     if metrics:
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("最新季度", metrics["period"])
-        c2.metric("NOI利润率", f"{metrics['noi_margin']:.1%}")
-        c3.metric("净利润率", f"{metrics['net_margin']:.1%}")
-        c4.metric("年化可供分配收益率", f"{metrics['distributable_yield']:.1%}")
+        cards = "".join(
+            [
+                _kpi_card("最新季度", str(metrics["period"]), "报告期"),
+                _kpi_card("NOI利润率", f"{metrics['noi_margin']:.1%}",
+                          "(营业总收入-营业成本)/营业总收入"),
+                _kpi_card("净利润率", f"{metrics['net_margin']:.1%}", "净利润/营业总收入"),
+                _kpi_card("年化可供分配收益率", f"{metrics['distributable_yield']:.1%}",
+                          "可供分配×4/NAV（年化）"),
+            ]
+        )
+        st.markdown(
+            '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
+            'margin:8px 0 16px;">' + cards + "</div>",
+            unsafe_allow_html=True,
+        )
     else:
         st.warning("暂无季度数据，无法计算经营指标。")
 
@@ -225,14 +319,62 @@ def _load_annual_completion() -> pd.DataFrame:
 
 
 def _completion_color(value):
-    """完成率着色：<80 红、<100 橙、其余绿；缺失灰色。"""
+    """完成率着色：<80 风险红、<100 警告橙、其余达标绿；缺失灰色。"""
     if pd.isna(value):
-        return "color: #7f7f7f"
+        return f"color: {_NO_RECORD_GRAY}"
     if value < 80:
-        return "color: #d62728"
+        return f"color: {_RISK_RED}"
     if value < 100:
-        return "color: #ff7f0e"
-    return "color: #2ca02c"
+        return f"color: {_WARN_ORANGE}"
+    return f"color: {_MET_GREEN}"
+
+
+def render_status_wall(static_df, completion_df):
+    """签名元素 1：行业状态墙——title 下方一行基金完成度色点带。
+
+    每只基金 = 圆点 12px + 4 位代码 10px 三级灰小字（flex 一行）。
+    状态取每基金最新年份 completion_pct：>=100 达标绿、>=80 警告橙、<80
+    风险红、无记录灰。title 属性携带「{code} {name}：完成率 {pct}%（{year}）」。
+    空数据降级为 st.info。
+    """
+    if completion_df.empty:
+        st.info("暂无年度可供分配完成度数据，行业状态墙跳过。")
+        return
+
+    latest = distributable_completion(completion_df).sort_values("year")
+    latest = latest.groupby("code").tail(1)
+    by_code = {str(r.code): r for r in latest.itertuples(index=False)}
+
+    dots = []
+    for _, fund in static_df.iterrows():
+        code = str(fund["code"])
+        name = fund["name"]
+        rec = by_code.get(code)
+        if rec is None or pd.isna(rec.completion_pct):
+            color, title = _NO_RECORD_GRAY, "暂无完成度数据"
+        else:
+            color = (
+                _MET_GREEN if rec.completion_pct >= 100
+                else (_WARN_ORANGE if rec.completion_pct >= 80 else _RISK_RED)
+            )
+            title = f"{code} {name}：完成率 {rec.completion_pct:g}%（{rec.year}）"
+        dots.append(
+            f'<div title="{title}" style="display:flex;align-items:center;gap:6px;'
+            f'cursor:default;">'
+            f'<span class="reit-dot" style="width:12px;height:12px;border-radius:50%;'
+            f'background-color:{color};display:inline-block;flex:none;"></span>'
+            f'<span style="font-family:\'JetBrains Mono\',ui-monospace,monospace;'
+            f'font-size:10px;color:#8A8F98;">{code[-4:]}</span>'
+            "</div>"
+        )
+
+    st.markdown(
+        '<div class="reit-status-wall" style="display:flex;flex-wrap:wrap;align-items:center;'
+        'gap:12px 18px;padding:16px;background:rgba(255,255,255,0.03);'
+        'border:1px solid rgba(255,255,255,0.08);border-radius:8px;'
+        'margin:8px 0 16px;">' + "".join(dots) + "</div>",
+        unsafe_allow_html=True,
+    )
 
 
 def render_rules(monthly_df, quarterly_df, static_df):
@@ -259,7 +401,7 @@ def render_rules(monthly_df, quarterly_df, static_df):
             "distributable_yoy", ascending=False, na_position="last"
         )
 
-        # 横向条形图：按可供分配金额升序，最大者位于顶部；低于行业中位数标红
+        # 横向条形图：按可供分配金额升序，最大者位于顶部；低于行业中位数标风险红
         chart_df = latest.sort_values("distributable_wan", ascending=True)
         fig = go.Figure(
             go.Bar(
@@ -267,7 +409,7 @@ def render_rules(monthly_df, quarterly_df, static_df):
                 y=chart_df["name"],
                 orientation="h",
                 marker_color=[
-                    "#d62728" if below else "#2ca02c"
+                    _RISK_RED if below else _MET_GREEN
                     for below in chart_df["below_peer_distributable"]
                     .fillna(False)
                     .astype(bool)
@@ -277,8 +419,12 @@ def render_rules(monthly_df, quarterly_df, static_df):
         fig.update_layout(
             title=f"最新季度（{latest_period}）可供分配金额对标",
             xaxis_title="可供分配金额（万元）",
-            template="plotly_white",
-            font=dict(family="Microsoft YaHei, SimHei, sans-serif"),
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
         )
         st.plotly_chart(fig, width="stretch")
 
@@ -354,7 +500,7 @@ def render_rules(monthly_df, quarterly_df, static_df):
         decay = concession_decay(static_df)
 
         # 横向条形图：剩余年限最短者（风险最高）位于顶部；
-        # 临近到期红色、关注橙色、正常绿色，未知不参与绘图
+        # 临近到期风险红、关注警告橙、正常达标绿，未知不参与绘图
         chart_df = decay[decay["concession_years_left"].notna()].sort_values(
             "concession_years_left", ascending=False
         )
@@ -372,8 +518,12 @@ def render_rules(monthly_df, quarterly_df, static_df):
             fig.update_layout(
                 title="特许经营权剩余年限（年）",
                 xaxis_title="剩余年限（年）",
-                template="plotly_white",
-                font=dict(family="Microsoft YaHei, SimHei, sans-serif"),
+                template="plotly_dark",
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+                xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+                yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
             )
             st.plotly_chart(fig, width="stretch")
 
@@ -397,8 +547,9 @@ def render_rules(monthly_df, quarterly_df, static_df):
 
 
 def main():
-    """看板主流程：加载数据、渲染侧边栏选择器与两个页签。"""
+    """看板主流程：加载数据、渲染侧边栏选择器与三个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
+    st.markdown(_GLOBAL_CSS, unsafe_allow_html=True)
     st.title("📊 REITsMonitor — 公募REITs投后分析看板")
     st.caption(
         "Phase 1：高速公路 REITs | 经营数据来自本地模板，行情数据来自 akshare"
@@ -419,6 +570,8 @@ def main():
     monthly_df = data["monthly"]
     quarterly_df = data["quarterly"]
     name_map = dict(zip(static_df["code"], static_df["name"]))
+
+    render_status_wall(static_df, _load_annual_completion())
 
     with st.sidebar:
         st.header("选择REIT")

@@ -123,3 +123,51 @@ def test_analysis_rules_tab_renders_completion_section(no_network):
     rules_tab = at.tabs[2]
     marks = [m.value for m in rules_tab.markdown]
     assert any("可供分配完成度" in m for m in marks)
+
+
+def test_status_wall_renders_color_dots(no_network):
+    """签名元素 1：状态墙用真实 annual_completion.json 渲染 14 只基金色点。
+
+    完成度有记录的基金为三态色（达标绿/警告橙/风险红），无记录基金为灰。
+    期望「有状态」数量按数据文件去重基金代码实时计算，避免硬编码漂移。
+    """
+    import json
+    import streamlit as st
+
+    completion_file = (
+        Path(__file__).resolve().parents[1] / "data" / "annual_completion.json"
+    )
+    expected_status = len(
+        {
+            str(row["code"])
+            for row in json.loads(completion_file.read_text(encoding="utf-8"))[
+                "completion"
+            ]
+        }
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    wall = next(m.value for m in at.markdown if "reit-status-wall" in m.value)
+    assert wall.count("reit-dot") == 14
+    colored = sum(
+        wall.count(c) for c in ("#10B981", "#FBBF24", "#F87171")
+    )
+    assert colored == expected_status
+    assert "暂无完成度数据" in wall
+
+
+def test_operations_tab_renders_terminal_kpi_cards(no_network):
+    """签名元素 2：经营数据页签以 JetBrains Mono 终端读数 HTML 卡片渲染 4 个 KPI。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert cards[0].count("reit-kpi-card") == 4
+    assert "JetBrains Mono" in cards[0]

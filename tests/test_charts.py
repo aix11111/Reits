@@ -56,11 +56,11 @@ def test_charts_title_and_y_axis_label():
     assert fig_bar.layout.yaxis.title.text == Y_LABEL
 
 
-def test_charts_use_plotly_white_and_chinese_font():
+def test_charts_use_plotly_dark_and_chinese_font():
     df = make_df()
     for fig in (line_chart(df, "period", "revenue", TITLE, Y_LABEL),
                 bar_chart(df, "period", "revenue", TITLE, Y_LABEL)):
-        assert fig.layout.template == pio.templates["plotly_white"]
+        assert fig.layout.template == pio.templates["plotly_dark"]
         assert fig.layout.font.family == "Microsoft YaHei, SimHei, sans-serif"
 
 

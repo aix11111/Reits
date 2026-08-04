@@ -397,18 +397,24 @@ def main(argv=None):
         default=str(DEFAULT_TEMPLATE),
         help="模板 xlsx 路径（默认 data/REITsMonitor_数据模板_v1.xlsx）",
     )
+    parser.add_argument(
+        "--completion",
+        default=str(DEFAULT_TEMPLATE.parent / "annual_completion.json"),
+        help="annual_completion.json 路径",
+    )
     args = parser.parse_args(argv)
 
     global PDF_DIR
     PDF_DIR = Path(tempfile.mkdtemp(prefix="reits_pdf_"))
     try:
-        summary = update_template(args.template)
+        summary = update_template(args.template, completion_path=args.completion)
     finally:
         shutil.rmtree(PDF_DIR, ignore_errors=True)
 
     print(
         f"月度新增 {summary['monthly_added']} 行，"
-        f"季度新增 {summary['quarterly_added']} 行"
+        f"季度新增 {summary['quarterly_added']} 行，"
+        f"年度完成度新增 {summary['completion_added']} 条"
     )
     for err in summary["errors"]:
         print(f"  [错误] {err}")

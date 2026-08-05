@@ -10,3 +10,4 @@ build/
 *.bak
 .wayfinder/
 data/_cache/
+data/REITsMonitor_数据模板_v1.xlsx.bak*

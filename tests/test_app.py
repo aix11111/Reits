@@ -223,6 +223,78 @@ def test_valuation_tab_degrades_when_snapshot_missing(no_network, monkeypatch):
 
 
 # ---------------------------------------------------------------------------
+# Task 5（M5）：租赁类基金经营数据 Tab 出租率 KPI
+# ---------------------------------------------------------------------------
+
+
+def test_operations_tab_rental_kpi_renders_for_rental_fund(no_network, monkeypatch):
+    """租赁类基金（有出租率数据）在经营数据页签渲染「出租率」KPI 卡；
+    其余 Tab 不崩；无出租率数据的基金不显示占位。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static = pd.DataFrame(
+        {
+            "code": ["180201", "508000"],
+            "name": ["平安广州广河REIT", "华安张江产业园REIT"],
+            "asset": ["高速", "产业园"],
+            "region": ["广东", "上海"],
+            "mileage_km": [100, None],
+            "listing_date": ["2021-01-01", "2021-06-21"],
+            "issue_scale_yi": [90, 15],
+            "concession_years_left": [20, None],
+            "asset_type": ["高速", "产业园"],
+        }
+    )
+    empty = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": empty, "quarterly": empty},
+        raising=False,
+    )
+
+    rental = pd.DataFrame(
+        {
+            "code": ["508000", "508000"],
+            "period": ["2026Q1", "2026Q2"],
+            "occupancy_pct": [93.03, 88.12],
+            "avg_rent_yuan": [5.48, 5.44],
+            "collection_pct": [98.56, 100.0],
+            "remaining_lease_days": [684.0, 554.0],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_rental", lambda path=None: rental, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("508000").run()
+
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "出租率" in cards[0]
+    assert "88.12%" in cards[0]
+
+    # 无出租率数据（高速基金）→ 不显示出租率占位、不崩
+    box.select("180201").run()
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert all("出租率" not in c for c in cards)
+
+
+# ---------------------------------------------------------------------------
 # Task 4（M4）：看板全市场视图
 # ---------------------------------------------------------------------------
 

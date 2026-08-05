@@ -719,6 +719,70 @@ def test_match_fund_code_handles_rename_and_ambiguity():
     assert market_fetch._match_fund_code("华夏合肥高新创新产业园", tied) is None
 
 
+# ---- fetch_market_ops_rental（Task 5：租赁类出租率运营指标） ----
+
+
+def _rental_report_text(period_title, occupancy="88.12"):
+    """构造租赁类季报文本：标题含基金全名 + 报告期 + 4.1.2 运营指标表。"""
+    return (
+        f"华安张江产业园封闭式基础设施证券投资基金\n{period_title}\n\n"
+        "4.1.2 报告期以及上年同期不动产项目整体运营指标\n"
+        "3\n期末出租率\n%\n"
+        f"{occupancy}\n"
+        "4\n平均租金单价\n元/平/天\n5.44\n"
+        "5\n期末剩余租期\n天\n554.00\n"
+        "6\n期末租金收缴率\n%\n100.00\n"
+    )
+
+
+def test_fetch_market_ops_rental_filters_rental_types_and_writes_ops(
+    monkeypatch, tmp_path
+):
+    """仅产业园/保障房/消费/仓储物流类基金入库；非租赁类跳过；
+    解析为 None 的行丢弃；沪市按文件名前缀、深市按名称匹配 code；
+    写回 market_ops_rental.json {"ops": [...]}。"""
+    ops_path = tmp_path / "market_ops_rental.json"
+    monkeypatch.setattr(market_fetch, "MARKET_OPS_RENTAL_PATH", ops_path)
+    _patch_shares_cache(
+        monkeypatch,
+        tmp_path,
+        {
+            "508000_2026Q2.pdf": _rental_report_text("2026年第2季度报告"),
+            "508000_2026Q1.pdf": _rental_report_text("2026年第1季度报告", "91.50"),
+            "508001_2026Q2.pdf": _rental_report_text("2026年第2季度报告"),
+            "1211111111.PDF": (
+                "博时蛇口产园封闭式基础设施证券投资基金\n"
+                "2026年第2季度报告\n\n"
+                "4.1.2 报告期以及上年同期不动产项目整体运营指标\n"
+                "3\n期末出租率\n%\n95.00\n"
+            ),
+            "508000_2027Q1.pdf": "华安张江产业园2027年第1季度报告\n3.1 主要财务指标\n",
+        },
+    )
+
+    funds = [
+        {"code": "508000", "name": "华安张江产业园REIT", "asset_type": "产业园"},
+        {"code": "508001", "name": "浙商沪杭甬REIT", "asset_type": "高速"},
+        {"code": "180101", "name": "博时蛇口产园REIT", "asset_type": "产业园"},
+    ]
+    rows = market_fetch.fetch_market_ops_rental(funds)
+
+    # 508001（高速）跳过；508000_2027Q1 无出租率字段 → None 行丢弃
+    assert [r["code"] for r in rows] == ["180101", "508000", "508000"]
+    assert [r["period"] for r in rows] == ["2026Q2", "2026Q1", "2026Q2"]
+
+    by_key = {f"{r['code']} {r['period']}": r for r in rows}
+    assert by_key["508000 2026Q2"]["occupancy_pct"] == pytest.approx(88.12)
+    assert by_key["508000 2026Q2"]["avg_rent_yuan"] == pytest.approx(5.44)
+    assert by_key["508000 2026Q2"]["collection_pct"] == pytest.approx(100.0)
+    assert by_key["508000 2026Q2"]["remaining_lease_days"] == pytest.approx(554.0)
+    assert by_key["180101 2026Q2"]["occupancy_pct"] == pytest.approx(95.0)
+    assert by_key["180101 2026Q2"]["collection_pct"] is None
+
+    written = json.loads(ops_path.read_text(encoding="utf-8"))
+    assert written == {"ops": rows}
+
+
 def test_fetch_market_quarterly_missing_fields_are_none(monkeypatch, tmp_path):
     """解析结果缺失字段如实为 None；period 缺失行丢弃。"""
     mq_path = tmp_path / "market_quarterly.json"

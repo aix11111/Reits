@@ -17,7 +17,13 @@ import time
 from datetime import date
 from pathlib import Path
 
-from tools.reits_collector import cninfo, parser_annual, parser_quarterly, sse
+from tools.reits_collector import (
+    cninfo,
+    parser_annual,
+    parser_ops_rental,
+    parser_quarterly,
+    sse,
+)
 
 ROW_KEYS = (
     "code",
@@ -55,6 +61,22 @@ COMPLETION_ROW_KEYS = (
     "completion_pct",
     "nav_unit_price",
     "nav_wan",
+)
+
+# 租赁类运营指标（Task 5）：仅有出租率类指标的资产类型
+RENTAL_ASSET_TYPES = {"产业园", "保障房", "消费", "仓储物流"}
+
+RENTAL_OPS_ROW_KEYS = (
+    "code",
+    "period",
+    "occupancy_pct",
+    "avg_rent_yuan",
+    "collection_pct",
+    "remaining_lease_days",
+)
+
+MARKET_OPS_RENTAL_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "market_ops_rental.json"
 )
 
 REPORT_FUND_NAME_RE = re.compile(
@@ -317,6 +339,76 @@ def fetch_market_shares(market_funds, errors=None) -> dict:
         encoding="utf-8",
     )
     return {"shares": shares_map, "missing": missing}
+
+
+def fetch_market_ops_rental(market_funds, errors=None) -> list[dict]:
+    """逐基金从季度报告 PDF 缓存取租赁类运营指标（出租率等）。
+
+    仅处理 market_funds 中产业园/保障房/消费/仓储物流类基金：遍历 CACHE_DIR
+    季度报告缓存每个 PDF，沪市文件名以代码开头直接取 code，深市数字文件名
+    按报告标题基金全名与深市基金简称唯一匹配 code；非租赁类或解析为 None
+    （无出租率字段）的行跳过。写回 data/market_ops_rental.json
+    {"ops": [code/period/occupancy_pct/avg_rent_yuan/collection_pct/
+    remaining_lease_days]}（保留全部期，(code, period) 去重，升序），返回全部行。
+    """
+    if errors is None:
+        errors = []
+    rental_codes = {
+        str(f.get("code") or "").strip()
+        for f in market_funds
+        if str(f.get("asset_type") or "") in RENTAL_ASSET_TYPES
+    }
+    # 数字文件名来自 cninfo 公告（adjunctUrl），仅深市（180xxx）走名称匹配
+    szse_funds = [
+        f for f in market_funds if str(f.get("code") or "").startswith("180")
+    ]
+    rows = []
+    seen_pairs = set()
+    pdf_paths = [
+        p for p in Path(CACHE_DIR).iterdir() if p.is_file() and p.suffix.lower() == ".pdf"
+    ]
+    for path in sorted(pdf_paths, key=lambda p: p.name):
+        code = _code_from_filename(path.name)
+        text = None
+        if code is None:
+            try:
+                text = parser_annual.extract_text(path)
+            except Exception as exc:
+                errors.append(f"{path.name}：{exc}")
+                continue
+            full_name = _report_fund_name(text)
+            if full_name is None:
+                errors.append(f"{path.name}：无法识别基金全名")
+                continue
+            code = _match_fund_code(full_name, szse_funds)
+            if code is None:
+                errors.append(f"{path.name}：无法唯一匹配基金代码")
+                continue
+        if code not in rental_codes:
+            continue
+        if text is None:
+            try:
+                text = parser_annual.extract_text(path)
+            except Exception as exc:
+                errors.append(f"{path.name}：{exc}")
+                continue
+        period = parser_quarterly._parse_period(text)
+        if period is None:
+            continue
+        pair = (code, period)
+        if pair in seen_pairs:
+            continue
+        parsed = parser_ops_rental.parse_rental_ops_text(text)
+        if parsed is None:
+            continue
+        seen_pairs.add(pair)
+        rows.append({"code": code, "period": period, **parsed})
+
+    rows.sort(key=lambda r: (str(r["code"]), str(r["period"])))
+    MARKET_OPS_RENTAL_PATH.write_text(
+        json.dumps({"ops": rows}, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
+    return rows
 
 
 def _annual_title_filter(title: str) -> bool:

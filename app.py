@@ -20,6 +20,7 @@ from src.data_loader import (
     load_fund_shares,
     load_market_completion,
     load_market_funds,
+    load_market_ops_rental,
     load_market_quarterly,
     load_market_shares,
     load_market_snapshot,
@@ -116,6 +117,7 @@ _MARKET_FUNDS_PATH = Path(__file__).parent / "data" / "market_funds.json"
 _MARKET_QUARTERLY_PATH = Path(__file__).parent / "data" / "market_quarterly.json"
 _MARKET_COMPLETION_PATH = Path(__file__).parent / "data" / "market_completion.json"
 _MARKET_SHARES_PATH = Path(__file__).parent / "data" / "market_shares.json"
+_MARKET_OPS_RENTAL_PATH = Path(__file__).parent / "data" / "market_ops_rental.json"
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -283,8 +285,80 @@ def _kpi_card(label: str, value: str, note: str) -> str:
     )
 
 
-def render_operations(code, name, monthly_df, quarterly_df):
-    """经营数据页签：最新指标 KPI、月度图表与季度明细表。"""
+def _render_rental_ops(rental_df):
+    """租赁类运营指标区块：出租率/平均租金/收缴率/剩余租期 KPI 卡 + 出租率趋势图。
+
+    数据来自 data/market_ops_rental.json（租赁类季报 4.1.2/4.1.3 节）。
+    KPI 取最新报告期；趋势图按报告期升序画出租率折线（plotly 深色）。
+    """
+    latest = rental_df.sort_values("period").iloc[-1]
+
+    def fmt(v, render):
+        if pd.isna(v):
+            return "—"
+        return render(v)
+
+    cards = "".join(
+        [
+            _kpi_card(
+                "出租率",
+                fmt(latest["occupancy_pct"], lambda v: f"{v:.2f}%"),
+                f"报告期 {latest['period']}",
+            ),
+            _kpi_card(
+                "平均租金",
+                fmt(latest["avg_rent_yuan"], lambda v: f"{v:.2f}"),
+                "元/平/天",
+            ),
+            _kpi_card(
+                "租金收缴率",
+                fmt(latest["collection_pct"], lambda v: f"{v:.2f}%"),
+                "期末",
+            ),
+            _kpi_card(
+                "剩余租期",
+                fmt(latest["remaining_lease_days"], lambda v: f"{v:,.0f}"),
+                "天",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    chart_df = rental_df.sort_values("period")
+    if chart_df["occupancy_pct"].notna().any():
+        fig = go.Figure(
+            go.Scatter(
+                x=chart_df["period"],
+                y=chart_df["occupancy_pct"],
+                mode="lines+markers",
+                line=dict(color=_ACCENT, width=2),
+                marker=dict(color=_ACCENT),
+            )
+        )
+        fig.update_layout(
+            title="出租率趋势",
+            xaxis_title="报告期",
+            yaxis_title="出租率（%）",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+
+def render_operations(code, name, monthly_df, quarterly_df, rental_df=None):
+    """经营数据页签：最新指标 KPI、月度图表与季度明细表。
+
+    选中基金有租赁类运营指标（data/market_ops_rental.json）时，在 KPI 区下方
+    追加出租率 KPI 卡与出租率趋势图；无数据（非租赁类）保持原视图不变。
+    """
     st.subheader(f"基金：{code} {name}")
 
     metrics = latest_metrics(quarterly_df, code)
@@ -306,6 +380,12 @@ def render_operations(code, name, monthly_df, quarterly_df):
         )
     else:
         st.warning("暂无季度数据，无法计算经营指标。")
+
+    if rental_df is not None and not rental_df.empty:
+        rental = rental_df[rental_df["code"] == code]
+        if not rental.empty:
+            st.markdown("### 租赁运营指标（出租率）")
+            _render_rental_ops(rental)
 
     monthly = monthly_df[monthly_df["code"] == code].sort_values("period")
     if not monthly.empty:
@@ -993,6 +1073,7 @@ def main():
     market_quarterly = load_market_quarterly(_MARKET_QUARTERLY_PATH)
     market_completion = load_market_completion(_MARKET_COMPLETION_PATH)
     market_shares = load_market_shares(_MARKET_SHARES_PATH)
+    market_ops_rental = load_market_ops_rental(_MARKET_OPS_RENTAL_PATH)
 
     with st.sidebar:
         st.header("市场筛选")
@@ -1016,7 +1097,11 @@ def main():
 
     with tab_ops:
         render_operations(
-            selected_code, name_map.get(selected_code, ""), monthly_df, quarterly_df
+            selected_code,
+            name_map.get(selected_code, ""),
+            monthly_df,
+            quarterly_df,
+            rental_df=market_ops_rental,
         )
 
     with tab_mkt:

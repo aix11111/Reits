@@ -1,0 +1,3684 @@
+{
+ "ops": [
+  {
+   "code": "180101",
+   "period": "2021Q3",
+   "occupancy_pct": 86.59,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2021Q4",
+   "occupancy_pct": 86.48,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.57,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q1",
+   "occupancy_pct": 87.16,
+   "avg_rent_yuan": null,
+   "collection_pct": 87.16,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q2",
+   "occupancy_pct": 85,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q3",
+   "occupancy_pct": 85,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q4",
+   "occupancy_pct": 83,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q1",
+   "occupancy_pct": 82,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q2",
+   "occupancy_pct": 85.39,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q3",
+   "occupancy_pct": 92,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q4",
+   "occupancy_pct": 94,
+   "avg_rent_yuan": null,
+   "collection_pct": 99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q1",
+   "occupancy_pct": 94,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q2",
+   "occupancy_pct": 93,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q3",
+   "occupancy_pct": 92,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q4",
+   "occupancy_pct": 91,
+   "avg_rent_yuan": 87.37,
+   "collection_pct": 99,
+   "remaining_lease_days": 542
+  },
+  {
+   "code": "180101",
+   "period": "2025Q1",
+   "occupancy_pct": 88.74,
+   "avg_rent_yuan": 79.14,
+   "collection_pct": 94.74,
+   "remaining_lease_days": 626.0
+  },
+  {
+   "code": "180101",
+   "period": "2025Q2",
+   "occupancy_pct": 83.85,
+   "avg_rent_yuan": 82.44,
+   "collection_pct": 96.03,
+   "remaining_lease_days": 705.0
+  },
+  {
+   "code": "180101",
+   "period": "2025Q3",
+   "occupancy_pct": 85.42,
+   "avg_rent_yuan": 78.44,
+   "collection_pct": 95.96,
+   "remaining_lease_days": 677.0
+  },
+  {
+   "code": "180101",
+   "period": "2025Q4",
+   "occupancy_pct": 87.83,
+   "avg_rent_yuan": 77.86,
+   "collection_pct": 99.13,
+   "remaining_lease_days": 651.0
+  },
+  {
+   "code": "180101",
+   "period": "2026Q1",
+   "occupancy_pct": 85.15,
+   "avg_rent_yuan": 71.99,
+   "collection_pct": 96.57,
+   "remaining_lease_days": 637.0
+  },
+  {
+   "code": "180101",
+   "period": "2026Q2",
+   "occupancy_pct": 83.28,
+   "avg_rent_yuan": 74.49,
+   "collection_pct": 97.13,
+   "remaining_lease_days": 628.0
+  },
+  {
+   "code": "180102",
+   "period": "2022Q4",
+   "occupancy_pct": 85.4,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q1",
+   "occupancy_pct": 87.64,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q2",
+   "occupancy_pct": 89.73,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q3",
+   "occupancy_pct": 90.28,
+   "avg_rent_yuan": null,
+   "collection_pct": 92.49,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q4",
+   "occupancy_pct": 89.16,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.01,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q1",
+   "occupancy_pct": 88.18,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q2",
+   "occupancy_pct": 87.12,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q3",
+   "occupancy_pct": 84.27,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q4",
+   "occupancy_pct": 81.66,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2025Q1",
+   "occupancy_pct": 78.6,
+   "avg_rent_yuan": 34.25,
+   "collection_pct": 75.3,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2025Q2",
+   "occupancy_pct": 74.81,
+   "avg_rent_yuan": 34.34,
+   "collection_pct": 86.11,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2025Q3",
+   "occupancy_pct": 71.63,
+   "avg_rent_yuan": 33.49,
+   "collection_pct": 65.47,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2025Q4",
+   "occupancy_pct": 70.3,
+   "avg_rent_yuan": 28.17,
+   "collection_pct": 84.21,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2026Q1",
+   "occupancy_pct": 64.28,
+   "avg_rent_yuan": 27.59,
+   "collection_pct": 59.91,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180102",
+   "period": "2026Q2",
+   "occupancy_pct": 65.45,
+   "avg_rent_yuan": 24.15,
+   "collection_pct": 80.34,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q1",
+   "occupancy_pct": 99.94,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q2",
+   "occupancy_pct": 99.94,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q3",
+   "occupancy_pct": 99.84,
+   "avg_rent_yuan": null,
+   "collection_pct": 77.11,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q4",
+   "occupancy_pct": 99.37,
+   "avg_rent_yuan": null,
+   "collection_pct": 89.18,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q1",
+   "occupancy_pct": 96.87,
+   "avg_rent_yuan": null,
+   "collection_pct": 88.25,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q2",
+   "occupancy_pct": 94.14,
+   "avg_rent_yuan": null,
+   "collection_pct": 83.19,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q3",
+   "occupancy_pct": 91.67,
+   "avg_rent_yuan": null,
+   "collection_pct": 75.09,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q4",
+   "occupancy_pct": 90.91,
+   "avg_rent_yuan": null,
+   "collection_pct": 4.2,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2025Q1",
+   "occupancy_pct": 77.36,
+   "avg_rent_yuan": 1.4,
+   "collection_pct": 51.31,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2025Q2",
+   "occupancy_pct": 74.83,
+   "avg_rent_yuan": 1.37,
+   "collection_pct": 82.72,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2025Q3",
+   "occupancy_pct": 75.0,
+   "avg_rent_yuan": 1.31,
+   "collection_pct": 82.59,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2025Q4",
+   "occupancy_pct": 76.33,
+   "avg_rent_yuan": 1.24,
+   "collection_pct": 90.65,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180103",
+   "period": "2026Q1",
+   "occupancy_pct": 76.39,
+   "avg_rent_yuan": 1.21,
+   "collection_pct": 73.32,
+   "remaining_lease_days": 22.22
+  },
+  {
+   "code": "180103",
+   "period": "2026Q2",
+   "occupancy_pct": 75.94,
+   "avg_rent_yuan": 1.18,
+   "collection_pct": 80.94,
+   "remaining_lease_days": 22.86
+  },
+  {
+   "code": "180105",
+   "period": "2024Q4",
+   "occupancy_pct": 78.18,
+   "avg_rent_yuan": 1.94,
+   "collection_pct": 96.86,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2025Q1",
+   "occupancy_pct": 74.93,
+   "avg_rent_yuan": 52.5,
+   "collection_pct": 91.78,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2025Q2",
+   "occupancy_pct": 72.44,
+   "avg_rent_yuan": 52.61,
+   "collection_pct": 90.24,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2025Q3",
+   "occupancy_pct": 71.38,
+   "avg_rent_yuan": 50.77,
+   "collection_pct": 85.78,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2025Q4",
+   "occupancy_pct": 72.23,
+   "avg_rent_yuan": 48.97,
+   "collection_pct": 93.5,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2026Q1",
+   "occupancy_pct": 68.01,
+   "avg_rent_yuan": 47.72,
+   "collection_pct": 89.12,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180105",
+   "period": "2026Q2",
+   "occupancy_pct": 67.26,
+   "avg_rent_yuan": 46.05,
+   "collection_pct": 89.8,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2025Q1",
+   "occupancy_pct": 89.74,
+   "avg_rent_yuan": 67.3,
+   "collection_pct": 90.62,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2025Q2",
+   "occupancy_pct": 85.25,
+   "avg_rent_yuan": 68.61,
+   "collection_pct": 92.21,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2025Q3",
+   "occupancy_pct": 83.73,
+   "avg_rent_yuan": 67.65,
+   "collection_pct": 93.76,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2025Q4",
+   "occupancy_pct": 85.68,
+   "avg_rent_yuan": 66.84,
+   "collection_pct": 98.64,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2026Q1",
+   "occupancy_pct": 84.41,
+   "avg_rent_yuan": 66.74,
+   "collection_pct": 88.27,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180106",
+   "period": "2026Q2",
+   "occupancy_pct": 83.8,
+   "avg_rent_yuan": 59.04,
+   "collection_pct": 93.02,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2021Q3",
+   "occupancy_pct": 4.2,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2021Q4",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q1",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q2",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q3",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q4",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q1",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q2",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q3",
+   "occupancy_pct": 99,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q4",
+   "occupancy_pct": 95.23,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q1",
+   "occupancy_pct": 91.16,
+   "avg_rent_yuan": 1,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q2",
+   "occupancy_pct": 91.5,
+   "avg_rent_yuan": 1,
+   "collection_pct": 97.92,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q3",
+   "occupancy_pct": 88.26,
+   "avg_rent_yuan": 1,
+   "collection_pct": 99.11,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q4",
+   "occupancy_pct": 93.0,
+   "avg_rent_yuan": 0.09,
+   "collection_pct": 98.24,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180301",
+   "period": "2025Q1",
+   "occupancy_pct": 96.06,
+   "avg_rent_yuan": 2037,
+   "collection_pct": 99.73,
+   "remaining_lease_days": 550
+  },
+  {
+   "code": "180301",
+   "period": "2025Q2",
+   "occupancy_pct": 96.7,
+   "avg_rent_yuan": 2027,
+   "collection_pct": 99.91,
+   "remaining_lease_days": 476.0
+  },
+  {
+   "code": "180301",
+   "period": "2025Q3",
+   "occupancy_pct": 94.09,
+   "avg_rent_yuan": 2037,
+   "collection_pct": 99.9,
+   "remaining_lease_days": 487.0
+  },
+  {
+   "code": "180301",
+   "period": "2025Q4",
+   "occupancy_pct": 92.6,
+   "avg_rent_yuan": 100,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 456.0
+  },
+  {
+   "code": "180301",
+   "period": "2026Q1",
+   "occupancy_pct": 93.09,
+   "avg_rent_yuan": 38.37,
+   "collection_pct": 93.0,
+   "remaining_lease_days": 390.0
+  },
+  {
+   "code": "180301",
+   "period": "2026Q2",
+   "occupancy_pct": 94.64,
+   "avg_rent_yuan": 38.22,
+   "collection_pct": 94.6,
+   "remaining_lease_days": 340.0
+  },
+  {
+   "code": "180302",
+   "period": "2024Q3",
+   "occupancy_pct": 88.65,
+   "avg_rent_yuan": 36.66,
+   "collection_pct": 99.65,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2024Q4",
+   "occupancy_pct": 4.2,
+   "avg_rent_yuan": 36.1,
+   "collection_pct": 4.2,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2025Q1",
+   "occupancy_pct": 92.07,
+   "avg_rent_yuan": 31.52,
+   "collection_pct": 92.66,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2025Q2",
+   "occupancy_pct": 92.94,
+   "avg_rent_yuan": 32.13,
+   "collection_pct": 96.4,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2025Q3",
+   "occupancy_pct": 81.26,
+   "avg_rent_yuan": 29.05,
+   "collection_pct": 99.9,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2025Q4",
+   "occupancy_pct": 89.35,
+   "avg_rent_yuan": 27.35,
+   "collection_pct": 99.63,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2026Q1",
+   "occupancy_pct": 85.51,
+   "avg_rent_yuan": 27.77,
+   "collection_pct": 96.6,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180302",
+   "period": "2026Q2",
+   "occupancy_pct": 90.18,
+   "avg_rent_yuan": 27.98,
+   "collection_pct": 99.7,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180303",
+   "period": "2024Q4",
+   "occupancy_pct": 97.45,
+   "avg_rent_yuan": 517.04,
+   "collection_pct": 98.03,
+   "remaining_lease_days": 98.03
+  },
+  {
+   "code": "180303",
+   "period": "2025Q1",
+   "occupancy_pct": 94.62,
+   "avg_rent_yuan": 29.74,
+   "collection_pct": 94.37,
+   "remaining_lease_days": 94.37
+  },
+  {
+   "code": "180303",
+   "period": "2025Q2",
+   "occupancy_pct": 95.99,
+   "avg_rent_yuan": 28.62,
+   "collection_pct": 95.99,
+   "remaining_lease_days": 98.4
+  },
+  {
+   "code": "180303",
+   "period": "2025Q3",
+   "occupancy_pct": 96.59,
+   "avg_rent_yuan": 27.93,
+   "collection_pct": 97.81,
+   "remaining_lease_days": 97.81
+  },
+  {
+   "code": "180303",
+   "period": "2025Q4",
+   "occupancy_pct": 97.64,
+   "avg_rent_yuan": 27.6,
+   "collection_pct": 99.28,
+   "remaining_lease_days": 99.28
+  },
+  {
+   "code": "180303",
+   "period": "2026Q1",
+   "occupancy_pct": 98.07,
+   "avg_rent_yuan": 27.36,
+   "collection_pct": 99.0,
+   "remaining_lease_days": 100
+  },
+  {
+   "code": "180303",
+   "period": "2026Q2",
+   "occupancy_pct": 96.1,
+   "avg_rent_yuan": 26.81,
+   "collection_pct": 100.91,
+   "remaining_lease_days": 100.91
+  },
+  {
+   "code": "180305",
+   "period": "2025Q2",
+   "occupancy_pct": 96.3,
+   "avg_rent_yuan": 48.15,
+   "collection_pct": 21.62,
+   "remaining_lease_days": 931.53
+  },
+  {
+   "code": "180305",
+   "period": "2025Q3",
+   "occupancy_pct": 96.47,
+   "avg_rent_yuan": 48.11,
+   "collection_pct": 20.69,
+   "remaining_lease_days": 669.38
+  },
+  {
+   "code": "180305",
+   "period": "2025Q4",
+   "occupancy_pct": 95.91,
+   "avg_rent_yuan": 48.11,
+   "collection_pct": 23.72,
+   "remaining_lease_days": 579.48
+  },
+  {
+   "code": "180305",
+   "period": "2026Q1",
+   "occupancy_pct": 95.23,
+   "avg_rent_yuan": 44.41,
+   "collection_pct": 22.9,
+   "remaining_lease_days": 503.94
+  },
+  {
+   "code": "180305",
+   "period": "2026Q2",
+   "occupancy_pct": 92.41,
+   "avg_rent_yuan": 50.09,
+   "collection_pct": 24.63,
+   "remaining_lease_days": 439.62
+  },
+  {
+   "code": "180306",
+   "period": "2026Q1",
+   "occupancy_pct": 96.66,
+   "avg_rent_yuan": 1.37,
+   "collection_pct": 99.39,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180306",
+   "period": "2026Q2",
+   "occupancy_pct": 92.47,
+   "avg_rent_yuan": 1.33,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2022Q4",
+   "occupancy_pct": 98.16,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q1",
+   "occupancy_pct": 98.69,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q2",
+   "occupancy_pct": 98.16,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.77,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q3",
+   "occupancy_pct": 98.16,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q4",
+   "occupancy_pct": 97.33,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.42,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q1",
+   "occupancy_pct": 98.28,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.89,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q2",
+   "occupancy_pct": 98.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q3",
+   "occupancy_pct": 96.49,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q4",
+   "occupancy_pct": 95.82,
+   "avg_rent_yuan": 60.73,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 60
+  },
+  {
+   "code": "180501",
+   "period": "2025Q1",
+   "occupancy_pct": 97.78,
+   "avg_rent_yuan": 61.49,
+   "collection_pct": 99.52,
+   "remaining_lease_days": 1065
+  },
+  {
+   "code": "180501",
+   "period": "2025Q2",
+   "occupancy_pct": 95.65,
+   "avg_rent_yuan": 61.09,
+   "collection_pct": 99.7,
+   "remaining_lease_days": 975
+  },
+  {
+   "code": "180501",
+   "period": "2025Q3",
+   "occupancy_pct": 95.86,
+   "avg_rent_yuan": 61.1,
+   "collection_pct": 99.99,
+   "remaining_lease_days": 887.52
+  },
+  {
+   "code": "180501",
+   "period": "2025Q4",
+   "occupancy_pct": 95.96,
+   "avg_rent_yuan": 61.09,
+   "collection_pct": 99.99,
+   "remaining_lease_days": 790
+  },
+  {
+   "code": "180501",
+   "period": "2026Q1",
+   "occupancy_pct": 94.57,
+   "avg_rent_yuan": 36.04,
+   "collection_pct": 100,
+   "remaining_lease_days": 700
+  },
+  {
+   "code": "180501",
+   "period": "2026Q2",
+   "occupancy_pct": 97.1,
+   "avg_rent_yuan": 36.26,
+   "collection_pct": 100,
+   "remaining_lease_days": 599
+  },
+  {
+   "code": "180502",
+   "period": "2024Q4",
+   "occupancy_pct": 78.97,
+   "avg_rent_yuan": 104.53,
+   "collection_pct": 98.9,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2025Q1",
+   "occupancy_pct": 92.4,
+   "avg_rent_yuan": 103.93,
+   "collection_pct": 96.96,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2025Q2",
+   "occupancy_pct": 95.08,
+   "avg_rent_yuan": 102.96,
+   "collection_pct": 98.47,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2025Q3",
+   "occupancy_pct": 95.9,
+   "avg_rent_yuan": 102.46,
+   "collection_pct": 99.46,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2025Q4",
+   "occupancy_pct": 95.44,
+   "avg_rent_yuan": 102.53,
+   "collection_pct": 99.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2026Q1",
+   "occupancy_pct": 94.3,
+   "avg_rent_yuan": 103.61,
+   "collection_pct": 95.52,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180502",
+   "period": "2026Q2",
+   "occupancy_pct": 95.17,
+   "avg_rent_yuan": 103.9,
+   "collection_pct": 99.45,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180503",
+   "period": "2026Q2",
+   "occupancy_pct": 95.84,
+   "avg_rent_yuan": 41,
+   "collection_pct": 98.89,
+   "remaining_lease_days": 525.36
+  },
+  {
+   "code": "180601",
+   "period": "2024Q1",
+   "occupancy_pct": 99.16,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.03,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q2",
+   "occupancy_pct": 99.04,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q3",
+   "occupancy_pct": 99.3,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q4",
+   "occupancy_pct": 99.0,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2025Q1",
+   "occupancy_pct": 99.1,
+   "avg_rent_yuan": 421.03,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2025Q2",
+   "occupancy_pct": 99.03,
+   "avg_rent_yuan": 418.4,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2025Q3",
+   "occupancy_pct": 98.73,
+   "avg_rent_yuan": 430.07,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2025Q4",
+   "occupancy_pct": 99.09,
+   "avg_rent_yuan": 436.44,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2026Q1",
+   "occupancy_pct": 98.37,
+   "avg_rent_yuan": 459.0,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180601",
+   "period": "2026Q2",
+   "occupancy_pct": 99.08,
+   "avg_rent_yuan": 444.53,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q2",
+   "occupancy_pct": 98.4,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q3",
+   "occupancy_pct": 98.98,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.6,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q4",
+   "occupancy_pct": 97.85,
+   "avg_rent_yuan": 3.1,
+   "collection_pct": 99.96,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2025Q1",
+   "occupancy_pct": 98.12,
+   "avg_rent_yuan": 2.9,
+   "collection_pct": 99.84,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2025Q2",
+   "occupancy_pct": 98.88,
+   "avg_rent_yuan": 2.85,
+   "collection_pct": 99.8,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2025Q3",
+   "occupancy_pct": 99.13,
+   "avg_rent_yuan": 2.64,
+   "collection_pct": 99.85,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2025Q4",
+   "occupancy_pct": 98.4,
+   "avg_rent_yuan": 2.53,
+   "collection_pct": 99.89,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2026Q1",
+   "occupancy_pct": 95.87,
+   "avg_rent_yuan": 277.09,
+   "collection_pct": 98.75,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180602",
+   "period": "2026Q2",
+   "occupancy_pct": 98.66,
+   "avg_rent_yuan": 264.29,
+   "collection_pct": 98.93,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2024Q4",
+   "occupancy_pct": 98.1,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.97,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2025Q1",
+   "occupancy_pct": 98.38,
+   "avg_rent_yuan": 363.52,
+   "collection_pct": 98.56,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2025Q2",
+   "occupancy_pct": 98.44,
+   "avg_rent_yuan": 350.56,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2025Q3",
+   "occupancy_pct": 97.05,
+   "avg_rent_yuan": 359.49,
+   "collection_pct": 99.61,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2025Q4",
+   "occupancy_pct": 98.1,
+   "avg_rent_yuan": 377.29,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2026Q1",
+   "occupancy_pct": 96.13,
+   "avg_rent_yuan": 389.79,
+   "collection_pct": 98.2,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180603",
+   "period": "2026Q2",
+   "occupancy_pct": 97.17,
+   "avg_rent_yuan": 374.35,
+   "collection_pct": 99.53,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2025Q1",
+   "occupancy_pct": 87.71,
+   "avg_rent_yuan": 134.42,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2025Q2",
+   "occupancy_pct": 93.55,
+   "avg_rent_yuan": 130.39,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2025Q3",
+   "occupancy_pct": 94.83,
+   "avg_rent_yuan": 125.28,
+   "collection_pct": 94.83,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2025Q4",
+   "occupancy_pct": 94.95,
+   "avg_rent_yuan": 128.49,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2026Q1",
+   "occupancy_pct": 93.78,
+   "avg_rent_yuan": 127.84,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180605",
+   "period": "2026Q2",
+   "occupancy_pct": 93.35,
+   "avg_rent_yuan": 127.75,
+   "collection_pct": 99.55,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180606",
+   "period": "2025Q3",
+   "occupancy_pct": 97.01,
+   "avg_rent_yuan": 3.24,
+   "collection_pct": 99.85,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180606",
+   "period": "2025Q4",
+   "occupancy_pct": 96.8,
+   "avg_rent_yuan": 3.32,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180606",
+   "period": "2026Q1",
+   "occupancy_pct": 97.15,
+   "avg_rent_yuan": 3.32,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180606",
+   "period": "2026Q2",
+   "occupancy_pct": 86.17,
+   "avg_rent_yuan": 2.4,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180607",
+   "period": "2025Q4",
+   "occupancy_pct": 99.27,
+   "avg_rent_yuan": 161.63,
+   "collection_pct": 99.85,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180607",
+   "period": "2026Q1",
+   "occupancy_pct": 98.88,
+   "avg_rent_yuan": 158.56,
+   "collection_pct": 99.67,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "180607",
+   "period": "2026Q2",
+   "occupancy_pct": 100.0,
+   "avg_rent_yuan": 156.39,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2021Q3",
+   "occupancy_pct": 99.54,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2021Q4",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q2",
+   "occupancy_pct": 99.51,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q3",
+   "occupancy_pct": 96.28,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q4",
+   "occupancy_pct": 92.6,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q1",
+   "occupancy_pct": 70.57,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q2",
+   "occupancy_pct": 82.31,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q3",
+   "occupancy_pct": 67.6,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.77,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q4",
+   "occupancy_pct": 72.0,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.96,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q1",
+   "occupancy_pct": 81.03,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.77,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q2",
+   "occupancy_pct": 81.88,
+   "avg_rent_yuan": null,
+   "collection_pct": 99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q3",
+   "occupancy_pct": 85.2,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.65,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q4",
+   "occupancy_pct": 91.9,
+   "avg_rent_yuan": 784,
+   "collection_pct": 99.42,
+   "remaining_lease_days": 99.42
+  },
+  {
+   "code": "508000",
+   "period": "2025Q1",
+   "occupancy_pct": 81.03,
+   "avg_rent_yuan": 717,
+   "collection_pct": 81.03,
+   "remaining_lease_days": 717
+  },
+  {
+   "code": "508000",
+   "period": "2025Q3",
+   "occupancy_pct": 37.79,
+   "avg_rent_yuan": null,
+   "collection_pct": 37.79,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508000",
+   "period": "2025Q4",
+   "occupancy_pct": 87.38,
+   "avg_rent_yuan": 5.45,
+   "collection_pct": 99.26,
+   "remaining_lease_days": 645.0
+  },
+  {
+   "code": "508000",
+   "period": "2026Q1",
+   "occupancy_pct": 88.03,
+   "avg_rent_yuan": 5.51,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 590.0
+  },
+  {
+   "code": "508000",
+   "period": "2026Q2",
+   "occupancy_pct": 88.12,
+   "avg_rent_yuan": 5.44,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 554.0
+  },
+  {
+   "code": "508002",
+   "period": "2024Q3",
+   "occupancy_pct": 93.11,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2024Q4",
+   "occupancy_pct": 95.56,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2025Q1",
+   "occupancy_pct": 95.04,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.66,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2025Q2",
+   "occupancy_pct": 95.39,
+   "avg_rent_yuan": null,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2025Q3",
+   "occupancy_pct": 95.03,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2025Q4",
+   "occupancy_pct": 95.55,
+   "avg_rent_yuan": 221.0,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2026Q1",
+   "occupancy_pct": 95.16,
+   "avg_rent_yuan": 209.0,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508002",
+   "period": "2026Q2",
+   "occupancy_pct": 94.56,
+   "avg_rent_yuan": 199.0,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508003",
+   "period": "2024Q4",
+   "occupancy_pct": 96.07,
+   "avg_rent_yuan": 1.8,
+   "collection_pct": 99.92,
+   "remaining_lease_days": 927
+  },
+  {
+   "code": "508003",
+   "period": "2025Q1",
+   "occupancy_pct": 97.72,
+   "avg_rent_yuan": 99.09,
+   "collection_pct": 99.09,
+   "remaining_lease_days": 857
+  },
+  {
+   "code": "508003",
+   "period": "2025Q2",
+   "occupancy_pct": 95.98,
+   "avg_rent_yuan": 99.22,
+   "collection_pct": 99.22,
+   "remaining_lease_days": 794.21
+  },
+  {
+   "code": "508003",
+   "period": "2025Q3",
+   "occupancy_pct": 95.88,
+   "avg_rent_yuan": 99.96,
+   "collection_pct": 99.96,
+   "remaining_lease_days": 845.16
+  },
+  {
+   "code": "508003",
+   "period": "2025Q4",
+   "occupancy_pct": 96.71,
+   "avg_rent_yuan": 99.71,
+   "collection_pct": 99.71,
+   "remaining_lease_days": 744.43
+  },
+  {
+   "code": "508003",
+   "period": "2026Q1",
+   "occupancy_pct": 95.53,
+   "avg_rent_yuan": 98.74,
+   "collection_pct": 98.74,
+   "remaining_lease_days": 707.49
+  },
+  {
+   "code": "508003",
+   "period": "2026Q2",
+   "occupancy_pct": 95.97,
+   "avg_rent_yuan": 99.3,
+   "collection_pct": 99.3,
+   "remaining_lease_days": 679.26
+  },
+  {
+   "code": "508005",
+   "period": "2024Q4",
+   "occupancy_pct": 97.06,
+   "avg_rent_yuan": 1.75,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2025Q1",
+   "occupancy_pct": 97.46,
+   "avg_rent_yuan": 199.07,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2025Q2",
+   "occupancy_pct": 97.11,
+   "avg_rent_yuan": 153.03,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2025Q3",
+   "occupancy_pct": 98.67,
+   "avg_rent_yuan": 128.2,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2025Q4",
+   "occupancy_pct": 98.96,
+   "avg_rent_yuan": 193.88,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2026Q1",
+   "occupancy_pct": 97.73,
+   "avg_rent_yuan": 226.39,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508005",
+   "period": "2026Q2",
+   "occupancy_pct": 97.85,
+   "avg_rent_yuan": 153.1,
+   "collection_pct": 99.83,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508010",
+   "period": "2025Q1",
+   "occupancy_pct": 90.0,
+   "avg_rent_yuan": 51.16,
+   "collection_pct": 82.1,
+   "remaining_lease_days": 1336
+  },
+  {
+   "code": "508010",
+   "period": "2025Q2",
+   "occupancy_pct": 88.11,
+   "avg_rent_yuan": 51.21,
+   "collection_pct": 86.55,
+   "remaining_lease_days": 1265
+  },
+  {
+   "code": "508010",
+   "period": "2025Q3",
+   "occupancy_pct": 87.81,
+   "avg_rent_yuan": 48.56,
+   "collection_pct": 66.95,
+   "remaining_lease_days": 1229
+  },
+  {
+   "code": "508010",
+   "period": "2025Q4",
+   "occupancy_pct": 87.81,
+   "avg_rent_yuan": 48.32,
+   "collection_pct": 90.6,
+   "remaining_lease_days": 1203
+  },
+  {
+   "code": "508010",
+   "period": "2026Q1",
+   "occupancy_pct": 87.81,
+   "avg_rent_yuan": 46.93,
+   "collection_pct": 86.95,
+   "remaining_lease_days": 1162
+  },
+  {
+   "code": "508010",
+   "period": "2026Q2",
+   "occupancy_pct": 88.12,
+   "avg_rent_yuan": 46.32,
+   "collection_pct": 96.32,
+   "remaining_lease_days": 96.32
+  },
+  {
+   "code": "508011",
+   "period": "2024Q1",
+   "occupancy_pct": 98.33,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q2",
+   "occupancy_pct": 98.13,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.9,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q3",
+   "occupancy_pct": 96.69,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.06,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q4",
+   "occupancy_pct": 96.43,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.35,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508012",
+   "period": "2025Q1",
+   "occupancy_pct": 80.91,
+   "avg_rent_yuan": 3.14,
+   "collection_pct": 96.44,
+   "remaining_lease_days": 333.0
+  },
+  {
+   "code": "508012",
+   "period": "2025Q2",
+   "occupancy_pct": 79.7,
+   "avg_rent_yuan": 3.14,
+   "collection_pct": 98.76,
+   "remaining_lease_days": 656.0
+  },
+  {
+   "code": "508012",
+   "period": "2025Q3",
+   "occupancy_pct": 75.09,
+   "avg_rent_yuan": 3.13,
+   "collection_pct": 91.72,
+   "remaining_lease_days": 701.0
+  },
+  {
+   "code": "508012",
+   "period": "2025Q4",
+   "occupancy_pct": 75.13,
+   "avg_rent_yuan": 3.06,
+   "collection_pct": 99.97,
+   "remaining_lease_days": 672.0
+  },
+  {
+   "code": "508012",
+   "period": "2026Q1",
+   "occupancy_pct": 74.05,
+   "avg_rent_yuan": 2.89,
+   "collection_pct": 89.52,
+   "remaining_lease_days": 427.0
+  },
+  {
+   "code": "508012",
+   "period": "2026Q2",
+   "occupancy_pct": 74.56,
+   "avg_rent_yuan": 2.72,
+   "collection_pct": 98.69,
+   "remaining_lease_days": 742.0
+  },
+  {
+   "code": "508017",
+   "period": "2024Q1",
+   "occupancy_pct": 98.26,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.48,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q2",
+   "occupancy_pct": 98.3,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.43,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q3",
+   "occupancy_pct": 98.3,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.06,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q4",
+   "occupancy_pct": 98.73,
+   "avg_rent_yuan": 161.18,
+   "collection_pct": 99.4,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2025Q1",
+   "occupancy_pct": 98.76,
+   "avg_rent_yuan": 92.11,
+   "collection_pct": 97.91,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2025Q2",
+   "occupancy_pct": 99.03,
+   "avg_rent_yuan": 90.79,
+   "collection_pct": 97.88,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2025Q3",
+   "occupancy_pct": 98.64,
+   "avg_rent_yuan": 91.53,
+   "collection_pct": 99.13,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2025Q4",
+   "occupancy_pct": 99.2,
+   "avg_rent_yuan": 92.01,
+   "collection_pct": 99.57,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2026Q1",
+   "occupancy_pct": 99.22,
+   "avg_rent_yuan": 153.19,
+   "collection_pct": 99.32,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508017",
+   "period": "2026Q2",
+   "occupancy_pct": 99.67,
+   "avg_rent_yuan": 92.77,
+   "collection_pct": 99.51,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2023Q3",
+   "occupancy_pct": 1,
+   "avg_rent_yuan": null,
+   "collection_pct": 1,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2023Q4",
+   "occupancy_pct": 1,
+   "avg_rent_yuan": null,
+   "collection_pct": 1,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q1",
+   "occupancy_pct": 1,
+   "avg_rent_yuan": 1,
+   "collection_pct": 1,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q2",
+   "occupancy_pct": 1,
+   "avg_rent_yuan": 50.96,
+   "collection_pct": 1,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q3",
+   "occupancy_pct": 1,
+   "avg_rent_yuan": 50.96,
+   "collection_pct": 1,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q4",
+   "occupancy_pct": 80.06,
+   "avg_rent_yuan": 61.38,
+   "collection_pct": 94.76,
+   "remaining_lease_days": 739
+  },
+  {
+   "code": "508019",
+   "period": "2025Q1",
+   "occupancy_pct": 76.65,
+   "avg_rent_yuan": 61.56,
+   "collection_pct": 80.67,
+   "remaining_lease_days": 1043
+  },
+  {
+   "code": "508019",
+   "period": "2025Q2",
+   "occupancy_pct": 72.66,
+   "avg_rent_yuan": 59.9,
+   "collection_pct": 91.84,
+   "remaining_lease_days": 1076
+  },
+  {
+   "code": "508019",
+   "period": "2025Q3",
+   "occupancy_pct": 74.78,
+   "avg_rent_yuan": 57.43,
+   "collection_pct": 99.41,
+   "remaining_lease_days": 1059
+  },
+  {
+   "code": "508019",
+   "period": "2025Q4",
+   "occupancy_pct": 76.91,
+   "avg_rent_yuan": 56.72,
+   "collection_pct": 98.2,
+   "remaining_lease_days": 1049
+  },
+  {
+   "code": "508019",
+   "period": "2026Q1",
+   "occupancy_pct": 72.27,
+   "avg_rent_yuan": 56.23,
+   "collection_pct": 73.6,
+   "remaining_lease_days": 1069
+  },
+  {
+   "code": "508019",
+   "period": "2026Q2",
+   "occupancy_pct": 80.54,
+   "avg_rent_yuan": 53.4,
+   "collection_pct": 92.26,
+   "remaining_lease_days": 1045
+  },
+  {
+   "code": "508021",
+   "period": "2022Q4",
+   "occupancy_pct": 99.21,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q1",
+   "occupancy_pct": 98.85,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q3",
+   "occupancy_pct": 97.63,
+   "avg_rent_yuan": null,
+   "collection_pct": 94.02,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q4",
+   "occupancy_pct": 97.63,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.59,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q1",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.39,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q2",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 95.75,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q3",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q4",
+   "occupancy_pct": 94.36,
+   "avg_rent_yuan": null,
+   "collection_pct": 88.02,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508021",
+   "period": "2025Q1",
+   "occupancy_pct": 98.38,
+   "avg_rent_yuan": 1.21,
+   "collection_pct": 89.8,
+   "remaining_lease_days": 1499.9
+  },
+  {
+   "code": "508021",
+   "period": "2025Q2",
+   "occupancy_pct": 97.8,
+   "avg_rent_yuan": 1.2,
+   "collection_pct": 89.35,
+   "remaining_lease_days": 1411.85
+  },
+  {
+   "code": "508021",
+   "period": "2025Q3",
+   "occupancy_pct": 96.49,
+   "avg_rent_yuan": 2.0,
+   "collection_pct": 93.85,
+   "remaining_lease_days": 1225.44
+  },
+  {
+   "code": "508021",
+   "period": "2025Q4",
+   "occupancy_pct": 94.03,
+   "avg_rent_yuan": 1.9,
+   "collection_pct": 99.98,
+   "remaining_lease_days": 1206.5
+  },
+  {
+   "code": "508021",
+   "period": "2026Q1",
+   "occupancy_pct": 92.02,
+   "avg_rent_yuan": 1.96,
+   "collection_pct": 88.5,
+   "remaining_lease_days": 1106.4
+  },
+  {
+   "code": "508021",
+   "period": "2026Q2",
+   "occupancy_pct": 87.97,
+   "avg_rent_yuan": 1.1,
+   "collection_pct": 92.82,
+   "remaining_lease_days": 1053.13
+  },
+  {
+   "code": "508022",
+   "period": "2024Q4",
+   "occupancy_pct": 88,
+   "avg_rent_yuan": 50.9,
+   "collection_pct": 100,
+   "remaining_lease_days": 1642.19
+  },
+  {
+   "code": "508022",
+   "period": "2025Q1",
+   "occupancy_pct": 86.95,
+   "avg_rent_yuan": 50.51,
+   "collection_pct": 92.14,
+   "remaining_lease_days": 1608.76
+  },
+  {
+   "code": "508022",
+   "period": "2025Q2",
+   "occupancy_pct": 87.54,
+   "avg_rent_yuan": 50.55,
+   "collection_pct": 90.3,
+   "remaining_lease_days": 753.42
+  },
+  {
+   "code": "508022",
+   "period": "2025Q3",
+   "occupancy_pct": 86.78,
+   "avg_rent_yuan": 48.38,
+   "collection_pct": 95.55,
+   "remaining_lease_days": 1622.55
+  },
+  {
+   "code": "508022",
+   "period": "2025Q4",
+   "occupancy_pct": 2,
+   "avg_rent_yuan": 49.2,
+   "collection_pct": 97.52,
+   "remaining_lease_days": 1591.21
+  },
+  {
+   "code": "508022",
+   "period": "2026Q1",
+   "occupancy_pct": 2,
+   "avg_rent_yuan": 48.4,
+   "collection_pct": 89.63,
+   "remaining_lease_days": 1627.76
+  },
+  {
+   "code": "508022",
+   "period": "2026Q2",
+   "occupancy_pct": 2,
+   "avg_rent_yuan": 48.75,
+   "collection_pct": 92.96,
+   "remaining_lease_days": 1569.41
+  },
+  {
+   "code": "508027",
+   "period": "2021Q3",
+   "occupancy_pct": 72,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2021Q4",
+   "occupancy_pct": 67.37,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q1",
+   "occupancy_pct": 72.63,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q3",
+   "occupancy_pct": 84.54,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q4",
+   "occupancy_pct": 2.29,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q1",
+   "occupancy_pct": 3.94,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q2",
+   "occupancy_pct": 93.8,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q3",
+   "occupancy_pct": 2023,
+   "avg_rent_yuan": null,
+   "collection_pct": 2023,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q4",
+   "occupancy_pct": 88.5,
+   "avg_rent_yuan": null,
+   "collection_pct": 93.36,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508027",
+   "period": "2024Q1",
+   "occupancy_pct": 86.2,
+   "avg_rent_yuan": 1.45,
+   "collection_pct": 93.02,
+   "remaining_lease_days": 542.11
+  },
+  {
+   "code": "508027",
+   "period": "2024Q2",
+   "occupancy_pct": 86.63,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.11,
+   "remaining_lease_days": 582.75
+  },
+  {
+   "code": "508027",
+   "period": "2024Q3",
+   "occupancy_pct": 80.14,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.53,
+   "remaining_lease_days": 592.97
+  },
+  {
+   "code": "508027",
+   "period": "2024Q4",
+   "occupancy_pct": 2,
+   "avg_rent_yuan": 1.73,
+   "collection_pct": 2,
+   "remaining_lease_days": 576.87
+  },
+  {
+   "code": "508027",
+   "period": "2025Q1",
+   "occupancy_pct": 73.94,
+   "avg_rent_yuan": 2.5,
+   "collection_pct": 95.46,
+   "remaining_lease_days": 2.5
+  },
+  {
+   "code": "508027",
+   "period": "2025Q2",
+   "occupancy_pct": 72.92,
+   "avg_rent_yuan": 1.74,
+   "collection_pct": 95.95,
+   "remaining_lease_days": 500.8
+  },
+  {
+   "code": "508027",
+   "period": "2025Q3",
+   "occupancy_pct": 71.45,
+   "avg_rent_yuan": 1.74,
+   "collection_pct": 97.3,
+   "remaining_lease_days": 470.95
+  },
+  {
+   "code": "508027",
+   "period": "2025Q4",
+   "occupancy_pct": 68.66,
+   "avg_rent_yuan": 1.74,
+   "collection_pct": 98.34,
+   "remaining_lease_days": 427.43
+  },
+  {
+   "code": "508027",
+   "period": "2026Q1",
+   "occupancy_pct": 68.42,
+   "avg_rent_yuan": 1.73,
+   "collection_pct": 92.62,
+   "remaining_lease_days": 524.31
+  },
+  {
+   "code": "508027",
+   "period": "2026Q2",
+   "occupancy_pct": 66.65,
+   "avg_rent_yuan": 1.69,
+   "collection_pct": 96.98,
+   "remaining_lease_days": 554.86
+  },
+  {
+   "code": "508029",
+   "period": "2025Q4",
+   "occupancy_pct": 79.85,
+   "avg_rent_yuan": 44.99,
+   "collection_pct": 86.35,
+   "remaining_lease_days": 94.15
+  },
+  {
+   "code": "508029",
+   "period": "2026Q1",
+   "occupancy_pct": 77.29,
+   "avg_rent_yuan": 44.88,
+   "collection_pct": 84.33,
+   "remaining_lease_days": 94.31
+  },
+  {
+   "code": "508029",
+   "period": "2026Q2",
+   "occupancy_pct": 76.81,
+   "avg_rent_yuan": 44.71,
+   "collection_pct": 84.69,
+   "remaining_lease_days": 40
+  },
+  {
+   "code": "508031",
+   "period": "2024Q1",
+   "occupancy_pct": 91.02,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.82,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q2",
+   "occupancy_pct": 89.49,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.89,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q3",
+   "occupancy_pct": 91.29,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.69,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q4",
+   "occupancy_pct": 92.65,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.32,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508031",
+   "period": "2025Q1",
+   "occupancy_pct": 91.14,
+   "avg_rent_yuan": 132.44,
+   "collection_pct": 99.98,
+   "remaining_lease_days": 269.83
+  },
+  {
+   "code": "508031",
+   "period": "2025Q2",
+   "occupancy_pct": 93.26,
+   "avg_rent_yuan": 131.93,
+   "collection_pct": 99.98,
+   "remaining_lease_days": 303.25
+  },
+  {
+   "code": "508031",
+   "period": "2025Q3",
+   "occupancy_pct": 94.38,
+   "avg_rent_yuan": 131.61,
+   "collection_pct": 99.91,
+   "remaining_lease_days": 301.08
+  },
+  {
+   "code": "508031",
+   "period": "2025Q4",
+   "occupancy_pct": 92.37,
+   "avg_rent_yuan": 131.45,
+   "collection_pct": 99.96,
+   "remaining_lease_days": 275.07
+  },
+  {
+   "code": "508031",
+   "period": "2026Q1",
+   "occupancy_pct": 93.29,
+   "avg_rent_yuan": 130.92,
+   "collection_pct": 99.87,
+   "remaining_lease_days": 272.19
+  },
+  {
+   "code": "508031",
+   "period": "2026Q2",
+   "occupancy_pct": 94.16,
+   "avg_rent_yuan": 130.99,
+   "collection_pct": 99.93,
+   "remaining_lease_days": 334.41
+  },
+  {
+   "code": "508039",
+   "period": "2025Q3",
+   "occupancy_pct": 96.97,
+   "avg_rent_yuan": null,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508039",
+   "period": "2025Q4",
+   "occupancy_pct": 96.87,
+   "avg_rent_yuan": 6.49,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508039",
+   "period": "2026Q1",
+   "occupancy_pct": 96.8,
+   "avg_rent_yuan": 6.48,
+   "collection_pct": 100.13,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508048",
+   "period": "2025Q1",
+   "occupancy_pct": 95.57,
+   "avg_rent_yuan": 96.92,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508048",
+   "period": "2025Q2",
+   "occupancy_pct": 92.33,
+   "avg_rent_yuan": 97.98,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508048",
+   "period": "2025Q3",
+   "occupancy_pct": 96.83,
+   "avg_rent_yuan": 99.8,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508048",
+   "period": "2025Q4",
+   "occupancy_pct": 96.83,
+   "avg_rent_yuan": 99.75,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 860.01
+  },
+  {
+   "code": "508048",
+   "period": "2026Q1",
+   "occupancy_pct": 93.91,
+   "avg_rent_yuan": 99.74,
+   "collection_pct": 99.74,
+   "remaining_lease_days": 821.42
+  },
+  {
+   "code": "508048",
+   "period": "2026Q2",
+   "occupancy_pct": 93.91,
+   "avg_rent_yuan": 97.11,
+   "collection_pct": 97.11,
+   "remaining_lease_days": 730.42
+  },
+  {
+   "code": "508055",
+   "period": "2025Q2",
+   "occupancy_pct": 96.74,
+   "avg_rent_yuan": 2.79,
+   "collection_pct": 99.67,
+   "remaining_lease_days": 208.57
+  },
+  {
+   "code": "508055",
+   "period": "2025Q3",
+   "occupancy_pct": 95.47,
+   "avg_rent_yuan": 2.8,
+   "collection_pct": 99.48,
+   "remaining_lease_days": 234.75
+  },
+  {
+   "code": "508055",
+   "period": "2025Q4",
+   "occupancy_pct": 91.81,
+   "avg_rent_yuan": 2.8,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 225.72
+  },
+  {
+   "code": "508055",
+   "period": "2026Q1",
+   "occupancy_pct": 90.32,
+   "avg_rent_yuan": 2.78,
+   "collection_pct": 99.69,
+   "remaining_lease_days": 206.67
+  },
+  {
+   "code": "508055",
+   "period": "2026Q2",
+   "occupancy_pct": 96.43,
+   "avg_rent_yuan": 2.79,
+   "collection_pct": 99.32,
+   "remaining_lease_days": 212.78
+  },
+  {
+   "code": "508056",
+   "period": "2021Q3",
+   "occupancy_pct": 96.64,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2021Q4",
+   "occupancy_pct": 98.78,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q1",
+   "occupancy_pct": 98.33,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q2",
+   "occupancy_pct": 93.72,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q3",
+   "occupancy_pct": 96.22,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q4",
+   "occupancy_pct": 96.22,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q1",
+   "occupancy_pct": 96.22,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q2",
+   "occupancy_pct": 87.58,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q3",
+   "occupancy_pct": 88.46,
+   "avg_rent_yuan": 94.69,
+   "collection_pct": 94.69,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q4",
+   "occupancy_pct": 89.63,
+   "avg_rent_yuan": 98.54,
+   "collection_pct": 98.54,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q1",
+   "occupancy_pct": 85.79,
+   "avg_rent_yuan": 92.49,
+   "collection_pct": 92.49,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q2",
+   "occupancy_pct": 85.64,
+   "avg_rent_yuan": 97.3,
+   "collection_pct": 97.3,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q3",
+   "occupancy_pct": 84.94,
+   "avg_rent_yuan": 94.75,
+   "collection_pct": 94.75,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q4",
+   "occupancy_pct": 89.63,
+   "avg_rent_yuan": 99.7,
+   "collection_pct": 99.2,
+   "remaining_lease_days": 546.98
+  },
+  {
+   "code": "508056",
+   "period": "2025Q1",
+   "occupancy_pct": 85.79,
+   "avg_rent_yuan": 94.02,
+   "collection_pct": 92.49,
+   "remaining_lease_days": 480.93
+  },
+  {
+   "code": "508056",
+   "period": "2025Q2",
+   "occupancy_pct": 85.64,
+   "avg_rent_yuan": 98.45,
+   "collection_pct": 97.3,
+   "remaining_lease_days": 436.78
+  },
+  {
+   "code": "508056",
+   "period": "2025Q3",
+   "occupancy_pct": 30,
+   "avg_rent_yuan": 99.76,
+   "collection_pct": 30,
+   "remaining_lease_days": 445.61
+  },
+  {
+   "code": "508056",
+   "period": "2025Q4",
+   "occupancy_pct": 30,
+   "avg_rent_yuan": 100.91,
+   "collection_pct": 30,
+   "remaining_lease_days": 389.71
+  },
+  {
+   "code": "508056",
+   "period": "2026Q1",
+   "occupancy_pct": 30,
+   "avg_rent_yuan": 91.13,
+   "collection_pct": 30,
+   "remaining_lease_days": 441.72
+  },
+  {
+   "code": "508056",
+   "period": "2026Q2",
+   "occupancy_pct": 30,
+   "avg_rent_yuan": 31.01,
+   "collection_pct": 30,
+   "remaining_lease_days": 462.01
+  },
+  {
+   "code": "508058",
+   "period": "2022Q4",
+   "occupancy_pct": 99.15,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q1",
+   "occupancy_pct": 99.49,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q2",
+   "occupancy_pct": 99.64,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q3",
+   "occupancy_pct": 99.55,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q4",
+   "occupancy_pct": 99.83,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q1",
+   "occupancy_pct": 99.4,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q2",
+   "occupancy_pct": 99.51,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q3",
+   "occupancy_pct": 99.67,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q4",
+   "occupancy_pct": 99.71,
+   "avg_rent_yuan": 34.08,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 176.7
+  },
+  {
+   "code": "508058",
+   "period": "2025Q1",
+   "occupancy_pct": 99.26,
+   "avg_rent_yuan": 34.26,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 196.51
+  },
+  {
+   "code": "508058",
+   "period": "2025Q2",
+   "occupancy_pct": 99.3,
+   "avg_rent_yuan": 34.41,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 172.21
+  },
+  {
+   "code": "508058",
+   "period": "2025Q3",
+   "occupancy_pct": 99.25,
+   "avg_rent_yuan": 34.74,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 211.59
+  },
+  {
+   "code": "508058",
+   "period": "2025Q4",
+   "occupancy_pct": 99.72,
+   "avg_rent_yuan": 34.86,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 179.69
+  },
+  {
+   "code": "508058",
+   "period": "2026Q1",
+   "occupancy_pct": 99.07,
+   "avg_rent_yuan": 35.02,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 193.97
+  },
+  {
+   "code": "508058",
+   "period": "2026Q2",
+   "occupancy_pct": 99.45,
+   "avg_rent_yuan": 36.43,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 249.44
+  },
+  {
+   "code": "508068",
+   "period": "2022Q4",
+   "occupancy_pct": 97.7,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.59,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q1",
+   "occupancy_pct": 97.62,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.17,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q2",
+   "occupancy_pct": 96.67,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q3",
+   "occupancy_pct": 96.88,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.68,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q4",
+   "occupancy_pct": 97.28,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.96,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q1",
+   "occupancy_pct": 94.72,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.73,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q2",
+   "occupancy_pct": 97.05,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.12,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q3",
+   "occupancy_pct": 94.99,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.75,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q4",
+   "occupancy_pct": 94.39,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.08,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2025Q1",
+   "occupancy_pct": 96.86,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.34,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2025Q2",
+   "occupancy_pct": 95.17,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.37,
+   "remaining_lease_days": 2024
+  },
+  {
+   "code": "508068",
+   "period": "2025Q3",
+   "occupancy_pct": 95.52,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.31,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2025Q4",
+   "occupancy_pct": 94.45,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.28,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2026Q1",
+   "occupancy_pct": 94.75,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.54,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508068",
+   "period": "2026Q2",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.3,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q1",
+   "occupancy_pct": 96.99,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q2",
+   "occupancy_pct": 96.52,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q3",
+   "occupancy_pct": 94.54,
+   "avg_rent_yuan": null,
+   "collection_pct": 94.68,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q4",
+   "occupancy_pct": 92.88,
+   "avg_rent_yuan": null,
+   "collection_pct": 95.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q1",
+   "occupancy_pct": 94.38,
+   "avg_rent_yuan": null,
+   "collection_pct": 95.96,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q2",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.25,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q3",
+   "occupancy_pct": 90.59,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.73,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q4",
+   "occupancy_pct": 94.07,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.85,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2025Q1",
+   "occupancy_pct": 94.83,
+   "avg_rent_yuan": 2.16,
+   "collection_pct": 99.76,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2025Q2",
+   "occupancy_pct": 95.87,
+   "avg_rent_yuan": 2.17,
+   "collection_pct": 99.74,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2025Q3",
+   "occupancy_pct": 93.42,
+   "avg_rent_yuan": 2.16,
+   "collection_pct": 99.94,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2025Q4",
+   "occupancy_pct": 94.95,
+   "avg_rent_yuan": 2.13,
+   "collection_pct": 99.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2026Q1",
+   "occupancy_pct": 95.4,
+   "avg_rent_yuan": 2.11,
+   "collection_pct": 99.99,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508077",
+   "period": "2026Q2",
+   "occupancy_pct": 94.95,
+   "avg_rent_yuan": 2.12,
+   "collection_pct": 99.92,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508078",
+   "period": "2025Q1",
+   "occupancy_pct": 85.57,
+   "avg_rent_yuan": 1.29,
+   "collection_pct": 84.34,
+   "remaining_lease_days": 730.48
+  },
+  {
+   "code": "508078",
+   "period": "2025Q2",
+   "occupancy_pct": 87.68,
+   "avg_rent_yuan": 1,
+   "collection_pct": 97.93,
+   "remaining_lease_days": 618.99
+  },
+  {
+   "code": "508078",
+   "period": "2025Q3",
+   "occupancy_pct": 86.54,
+   "avg_rent_yuan": 553.59,
+   "collection_pct": 99.99,
+   "remaining_lease_days": 553.59
+  },
+  {
+   "code": "508078",
+   "period": "2025Q4",
+   "occupancy_pct": 88.16,
+   "avg_rent_yuan": 458.75,
+   "collection_pct": 99.75,
+   "remaining_lease_days": 458.75
+  },
+  {
+   "code": "508078",
+   "period": "2026Q1",
+   "occupancy_pct": 89.08,
+   "avg_rent_yuan": 376.16,
+   "collection_pct": 96.03,
+   "remaining_lease_days": 376.16
+  },
+  {
+   "code": "508078",
+   "period": "2026Q2",
+   "occupancy_pct": 88.78,
+   "avg_rent_yuan": 477.01,
+   "collection_pct": 98.77,
+   "remaining_lease_days": 477.01
+  },
+  {
+   "code": "508080",
+   "period": "2025Q3",
+   "occupancy_pct": 85.62,
+   "avg_rent_yuan": 2.62,
+   "collection_pct": 89.06,
+   "remaining_lease_days": 1137
+  },
+  {
+   "code": "508080",
+   "period": "2025Q4",
+   "occupancy_pct": 86.83,
+   "avg_rent_yuan": 2.62,
+   "collection_pct": 90.93,
+   "remaining_lease_days": 1078
+  },
+  {
+   "code": "508080",
+   "period": "2026Q1",
+   "occupancy_pct": 84.53,
+   "avg_rent_yuan": 2.64,
+   "collection_pct": 87.25,
+   "remaining_lease_days": 1000
+  },
+  {
+   "code": "508080",
+   "period": "2026Q2",
+   "occupancy_pct": 87.74,
+   "avg_rent_yuan": 2.62,
+   "collection_pct": 90.11,
+   "remaining_lease_days": 957
+  },
+  {
+   "code": "508082",
+   "period": "2025Q4",
+   "occupancy_pct": 100.0,
+   "avg_rent_yuan": 439.53,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508082",
+   "period": "2026Q1",
+   "occupancy_pct": 100.0,
+   "avg_rent_yuan": 460.71,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508082",
+   "period": "2026Q2",
+   "occupancy_pct": 100.0,
+   "avg_rent_yuan": 351.45,
+   "collection_pct": 100.0,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508084",
+   "period": "2025Q2",
+   "occupancy_pct": 78.63,
+   "avg_rent_yuan": 21.42,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 1460.0
+  },
+  {
+   "code": "508084",
+   "period": "2025Q3",
+   "occupancy_pct": 81.68,
+   "avg_rent_yuan": 21.42,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 1368.0
+  },
+  {
+   "code": "508084",
+   "period": "2025Q4",
+   "occupancy_pct": 82.23,
+   "avg_rent_yuan": 21.42,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 1276.0
+  },
+  {
+   "code": "508084",
+   "period": "2026Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 22.17,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 1186.0
+  },
+  {
+   "code": "508084",
+   "period": "2026Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 22.17,
+   "collection_pct": 100.0,
+   "remaining_lease_days": 1095.0
+  },
+  {
+   "code": "508085",
+   "period": "2025Q2",
+   "occupancy_pct": 95.49,
+   "avg_rent_yuan": 26.45,
+   "collection_pct": 99.87,
+   "remaining_lease_days": 214.69
+  },
+  {
+   "code": "508085",
+   "period": "2025Q3",
+   "occupancy_pct": 97.56,
+   "avg_rent_yuan": 26.28,
+   "collection_pct": 99.39,
+   "remaining_lease_days": 222.71
+  },
+  {
+   "code": "508085",
+   "period": "2025Q4",
+   "occupancy_pct": 97.97,
+   "avg_rent_yuan": 26.31,
+   "collection_pct": 99.41,
+   "remaining_lease_days": 205.11
+  },
+  {
+   "code": "508085",
+   "period": "2026Q1",
+   "occupancy_pct": 96.67,
+   "avg_rent_yuan": 26.84,
+   "collection_pct": 99.81,
+   "remaining_lease_days": 194.99
+  },
+  {
+   "code": "508085",
+   "period": "2026Q2",
+   "occupancy_pct": 97.95,
+   "avg_rent_yuan": 26.43,
+   "collection_pct": 99.67,
+   "remaining_lease_days": 210.12
+  },
+  {
+   "code": "508088",
+   "period": "2022Q4",
+   "occupancy_pct": 98.83,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q3",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.9,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q4",
+   "occupancy_pct": 96.51,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.24,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q1",
+   "occupancy_pct": 97.48,
+   "avg_rent_yuan": null,
+   "collection_pct": 97.13,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q2",
+   "occupancy_pct": 95.73,
+   "avg_rent_yuan": null,
+   "collection_pct": 98.8,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q3",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": 96.6,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q4",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 1.74,
+   "collection_pct": 97.9,
+   "remaining_lease_days": 8.13
+  },
+  {
+   "code": "508088",
+   "period": "2025Q1",
+   "occupancy_pct": 94.62,
+   "avg_rent_yuan": 30.39,
+   "collection_pct": 95.45,
+   "remaining_lease_days": 1083.24
+  },
+  {
+   "code": "508088",
+   "period": "2025Q2",
+   "occupancy_pct": 95.47,
+   "avg_rent_yuan": 30.43,
+   "collection_pct": 99.54,
+   "remaining_lease_days": 1048.55
+  },
+  {
+   "code": "508088",
+   "period": "2025Q3",
+   "occupancy_pct": 95.77,
+   "avg_rent_yuan": 30.34,
+   "collection_pct": 99.75,
+   "remaining_lease_days": 963.55
+  },
+  {
+   "code": "508088",
+   "period": "2025Q4",
+   "occupancy_pct": 100.0,
+   "avg_rent_yuan": 29.47,
+   "collection_pct": 99.37,
+   "remaining_lease_days": 915.94
+  },
+  {
+   "code": "508088",
+   "period": "2026Q1",
+   "occupancy_pct": 96.49,
+   "avg_rent_yuan": 29.38,
+   "collection_pct": 97.78,
+   "remaining_lease_days": 923.24
+  },
+  {
+   "code": "508088",
+   "period": "2026Q2",
+   "occupancy_pct": 96.9,
+   "avg_rent_yuan": 29.08,
+   "collection_pct": 97.15,
+   "remaining_lease_days": 904.99
+  },
+  {
+   "code": "508090",
+   "period": "2025Q3",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 1.09,
+   "collection_pct": null,
+   "remaining_lease_days": 526.0
+  },
+  {
+   "code": "508090",
+   "period": "2025Q4",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 1.08,
+   "collection_pct": null,
+   "remaining_lease_days": 477.11
+  },
+  {
+   "code": "508090",
+   "period": "2026Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 1.08,
+   "collection_pct": null,
+   "remaining_lease_days": 417.96
+  },
+  {
+   "code": "508090",
+   "period": "2026Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 1.09,
+   "collection_pct": null,
+   "remaining_lease_days": 360.33
+  },
+  {
+   "code": "508091",
+   "period": "2025Q4",
+   "occupancy_pct": 98.52,
+   "avg_rent_yuan": 213.67,
+   "collection_pct": 99.25,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508091",
+   "period": "2026Q1",
+   "occupancy_pct": 98.04,
+   "avg_rent_yuan": 218.58,
+   "collection_pct": 97.27,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508091",
+   "period": "2026Q2",
+   "occupancy_pct": 97.27,
+   "avg_rent_yuan": 219.93,
+   "collection_pct": 98.53,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2025Q1",
+   "occupancy_pct": 89.63,
+   "avg_rent_yuan": 5.17,
+   "collection_pct": 86.79,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2025Q2",
+   "occupancy_pct": 85.78,
+   "avg_rent_yuan": 4.96,
+   "collection_pct": 95.24,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2025Q3",
+   "occupancy_pct": 89.43,
+   "avg_rent_yuan": 4.76,
+   "collection_pct": 94.92,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2025Q4",
+   "occupancy_pct": 90.27,
+   "avg_rent_yuan": 4.74,
+   "collection_pct": 95.92,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2026Q1",
+   "occupancy_pct": 91.72,
+   "avg_rent_yuan": 4.65,
+   "collection_pct": 70.22,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508092",
+   "period": "2026Q2",
+   "occupancy_pct": 92.07,
+   "avg_rent_yuan": 4.68,
+   "collection_pct": 85.68,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508097",
+   "period": "2025Q1",
+   "occupancy_pct": 74.06,
+   "avg_rent_yuan": 71.51,
+   "collection_pct": 80.81,
+   "remaining_lease_days": 598.82
+  },
+  {
+   "code": "508097",
+   "period": "2025Q2",
+   "occupancy_pct": 70.67,
+   "avg_rent_yuan": 71.9,
+   "collection_pct": 83.68,
+   "remaining_lease_days": 613.26
+  },
+  {
+   "code": "508097",
+   "period": "2025Q3",
+   "occupancy_pct": 71.64,
+   "avg_rent_yuan": 67.93,
+   "collection_pct": 86.75,
+   "remaining_lease_days": 709.04
+  },
+  {
+   "code": "508097",
+   "period": "2025Q4",
+   "occupancy_pct": 72.1,
+   "avg_rent_yuan": 67.21,
+   "collection_pct": 91.1,
+   "remaining_lease_days": 755.78
+  },
+  {
+   "code": "508097",
+   "period": "2026Q1",
+   "occupancy_pct": 65.88,
+   "avg_rent_yuan": 66.73,
+   "collection_pct": 83.56,
+   "remaining_lease_days": 918.97
+  },
+  {
+   "code": "508097",
+   "period": "2026Q2",
+   "occupancy_pct": 71.31,
+   "avg_rent_yuan": 62.96,
+   "collection_pct": 93.53,
+   "remaining_lease_days": 832.34
+  },
+  {
+   "code": "508098",
+   "period": "2023Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": null,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q3",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q4",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 2024,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508098",
+   "period": "2024Q1",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 0.92,
+   "collection_pct": 100,
+   "remaining_lease_days": 0.92
+  },
+  {
+   "code": "508098",
+   "period": "2024Q2",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 0.92,
+   "collection_pct": 100,
+   "remaining_lease_days": 0.92
+  },
+  {
+   "code": "508098",
+   "period": "2024Q3",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": 0.92,
+   "collection_pct": 100,
+   "remaining_lease_days": 0.92
+  },
+  {
+   "code": "508098",
+   "period": "2024Q4",
+   "occupancy_pct": 100,
+   "avg_rent_yuan": null,
+   "collection_pct": 100,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q1",
+   "occupancy_pct": 96.15,
+   "avg_rent_yuan": null,
+   "collection_pct": 100.9,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q2",
+   "occupancy_pct": 89.28,
+   "avg_rent_yuan": null,
+   "collection_pct": 104.07,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q3",
+   "occupancy_pct": 84.87,
+   "avg_rent_yuan": null,
+   "collection_pct": 109.28,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q4",
+   "occupancy_pct": 81.29,
+   "avg_rent_yuan": null,
+   "collection_pct": 103.07,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q1",
+   "occupancy_pct": 68.47,
+   "avg_rent_yuan": null,
+   "collection_pct": 100.18,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q2",
+   "occupancy_pct": 67.84,
+   "avg_rent_yuan": null,
+   "collection_pct": 102.78,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q3",
+   "occupancy_pct": 63.73,
+   "avg_rent_yuan": null,
+   "collection_pct": 100.7,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q4",
+   "occupancy_pct": 63.75,
+   "avg_rent_yuan": null,
+   "collection_pct": 99.56,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2024Q1",
+   "occupancy_pct": 72.0,
+   "avg_rent_yuan": 101.43,
+   "collection_pct": 101.43,
+   "remaining_lease_days": 101.43
+  },
+  {
+   "code": "508099",
+   "period": "2024Q2",
+   "occupancy_pct": 78.8,
+   "avg_rent_yuan": 102.15,
+   "collection_pct": 102.15,
+   "remaining_lease_days": 102.15
+  },
+  {
+   "code": "508099",
+   "period": "2024Q3",
+   "occupancy_pct": 72.49,
+   "avg_rent_yuan": 104.91,
+   "collection_pct": 104.91,
+   "remaining_lease_days": 104.91
+  },
+  {
+   "code": "508099",
+   "period": "2024Q4",
+   "occupancy_pct": 72.09,
+   "avg_rent_yuan": 2023,
+   "collection_pct": 104.03,
+   "remaining_lease_days": 2023
+  },
+  {
+   "code": "508099",
+   "period": "2025Q1",
+   "occupancy_pct": 74.2,
+   "avg_rent_yuan": 19.5,
+   "collection_pct": 100.2,
+   "remaining_lease_days": 19.5
+  },
+  {
+   "code": "508099",
+   "period": "2025Q2",
+   "occupancy_pct": 74.58,
+   "avg_rent_yuan": 14.74,
+   "collection_pct": 100.22,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2025Q3",
+   "occupancy_pct": 76.17,
+   "avg_rent_yuan": 11.18,
+   "collection_pct": 100.44,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2025Q4",
+   "occupancy_pct": 77.05,
+   "avg_rent_yuan": 8.49,
+   "collection_pct": 100.57,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2026Q1",
+   "occupancy_pct": 78.01,
+   "avg_rent_yuan": 4.8,
+   "collection_pct": 100.89,
+   "remaining_lease_days": null
+  },
+  {
+   "code": "508099",
+   "period": "2026Q2",
+   "occupancy_pct": 80.23,
+   "avg_rent_yuan": 4.94,
+   "collection_pct": 96.2,
+   "remaining_lease_days": null
+  }
+ ]
+}

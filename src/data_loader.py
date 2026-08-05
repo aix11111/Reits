@@ -220,3 +220,25 @@ def load_market_shares(path):
     data = _load_json_dict(path)
     shares = data.get("shares") if isinstance(data, dict) else None
     return shares if isinstance(shares, dict) else {}
+
+
+def load_market_ops_rental(path):
+    """读取全市场租赁类运营指标 JSON（{"ops": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / period / occupancy_pct / avg_rent_yuan / collection_pct /
+    remaining_lease_days（其余字段按 JSON 原样保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("ops") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(
+            columns=[
+                "code",
+                "period",
+                "occupancy_pct",
+                "avg_rent_yuan",
+                "collection_pct",
+                "remaining_lease_days",
+            ]
+        )
+    return pd.DataFrame(rows)

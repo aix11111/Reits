@@ -74,6 +74,7 @@ RENTAL_OPS_ROW_KEYS = (
     "avg_rent_yuan",
     "collection_pct",
     "remaining_lease_days",
+    "rent_unit",
 )
 
 MARKET_OPS_RENTAL_PATH = (

@@ -290,6 +290,8 @@ def _render_rental_ops(rental_df):
 
     数据来自 data/market_ops_rental.json（租赁类季报 4.1.2/4.1.3 节）。
     KPI 取最新报告期；趋势图按报告期升序画出租率折线（plotly 深色）。
+    平均租金卡按 rent_unit 标注单位口径（元/㎡/月 / 元/㎡/天），无单位时
+    保持默认「元/平/天」。
     """
     latest = rental_df.sort_values("period").iloc[-1]
 
@@ -297,6 +299,12 @@ def _render_rental_ops(rental_df):
         if pd.isna(v):
             return "—"
         return render(v)
+
+    rent_unit_labels = {
+        "yuan_per_sqm_day": "元/㎡/天",
+        "yuan_per_sqm_month": "元/㎡/月",
+    }
+    rent_note = rent_unit_labels.get(latest.get("rent_unit"), "元/平/天")
 
     cards = "".join(
         [
@@ -308,7 +316,7 @@ def _render_rental_ops(rental_df):
             _kpi_card(
                 "平均租金",
                 fmt(latest["avg_rent_yuan"], lambda v: f"{v:.2f}"),
-                "元/平/天",
+                rent_note,
             ),
             _kpi_card(
                 "租金收缴率",

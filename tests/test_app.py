@@ -293,6 +293,68 @@ def test_operations_tab_rental_kpi_renders_for_rental_fund(no_network, monkeypat
     assert all("出租率" not in c for c in cards)
 
 
+def test_operations_tab_rental_kpi_shows_rent_unit(no_network, monkeypatch):
+    """出租率 KPI 卡平均租金按 rent_unit 标注单位：消费类「元/㎡/月」、
+    产业园「元/㎡/天」；rent_unit 缺失时保持原「元/平/天」。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static = pd.DataFrame(
+        {
+            "code": ["180601", "508000"],
+            "name": ["华夏华润消费REIT", "华安张江产业园REIT"],
+            "asset": ["消费", "产业园"],
+            "region": ["山东", "上海"],
+            "mileage_km": [None, None],
+            "listing_date": ["2024-03-14", "2021-06-21"],
+            "issue_scale_yi": [30, 15],
+            "concession_years_left": [None, None],
+            "asset_type": ["消费", "产业园"],
+        }
+    )
+    empty = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": empty, "quarterly": empty},
+        raising=False,
+    )
+
+    rental = pd.DataFrame(
+        {
+            "code": ["180601", "508000"],
+            "period": ["2026Q2", "2026Q2"],
+            "occupancy_pct": [99.08, 88.12],
+            "avg_rent_yuan": [444.53, 5.44],
+            "collection_pct": [100.0, 100.0],
+            "remaining_lease_days": [None, 554.0],
+            "rent_unit": ["yuan_per_sqm_month", "yuan_per_sqm_day"],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_rental", lambda path=None: rental, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("180601").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "元/㎡/月" in cards[0]
+
+    box.select("508000").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "元/㎡/天" in cards[0]
+
+
 # ---------------------------------------------------------------------------
 # Task 4（M4）：看板全市场视图
 # ---------------------------------------------------------------------------

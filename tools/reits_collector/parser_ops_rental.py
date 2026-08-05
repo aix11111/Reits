@@ -5,9 +5,14 @@
 四项运营指标：
 
 - 期末出租率（%）
-- 平均租金单价（元/平/天）
+- 平均租金单价（元/平/天 或 元/平方米/月）
 - 期末剩余租期（天）
 - 期末租金收缴率（%）
+
+结果附 rent_unit 字段标注平均租金的单位口径：
+- "yuan_per_sqm_day"（元/平/天，产业园等常见）
+- "yuan_per_sqm_month"（元/平方米/月，消费类常见）
+- None（无法识别时间维度，如仅「元/平方米」）
 
 PDF 表格单元格会跨行断字（如「期末租金收缴/率」「期末剩余租/期」），
 且不同管理人对标签表述略有差异（「出租率」vs「期末出租率」、「平均合同
@@ -22,9 +27,9 @@ PDF 表格单元格会跨行断字（如「期末租金收缴/率」「期末剩
    为82.31%」），仅对出租率/收缴率开放。
 
 单位口径：出租率/收缴率为 %；租金接受各管理人披露口径（元/…/天 或
-元/…/月，如 元/平/天、元/平方米/月，值按披露数字如实取）；剩余租期为
-天（年口径不折算、如实 None）。无出租率字段（非租赁类资产，如高速/
-能源）→ 返回 None，供批量脚本跳过。
+元/…/月，如 元/平/天、元/平方米/月，值按披露数字如实取，单位随取值正则
+的匹配串识别出 rent_unit）；剩余租期为天（年口径不折算、如实 None）。无
+出租率字段（非租赁类资产，如高速/能源）→ 返回 None，供批量脚本跳过。
 """
 
 import re
@@ -74,7 +79,13 @@ RENTAL_NARRATIVE_PATTERNS = {
     "collection_pct": (r"(" + NUMBER + r")\s*%",),
 }
 
-RENTAL_KEYS = tuple(RENTAL_METRICS)
+RENTAL_KEYS = tuple(RENTAL_METRICS) + ("rent_unit",)
+
+# 平均租金单位 → rent_unit 枚举（时间维度「天/月」；无时间维度 → None）
+RENT_UNIT_BY_SYMBOL = {
+    "天": "yuan_per_sqm_day",
+    "月": "yuan_per_sqm_month",
+}
 
 # 标签后取值窗口长度（公式列 + 单位列 + 本期值），按最长的租金公式留余量
 _WINDOW = 300
@@ -111,28 +122,67 @@ def _scan_value(text: str, labels: tuple[str, ...], patterns: tuple[str, ...]):
     return None
 
 
-def _value_after_any(text: str, labels: tuple[str, ...], key: str):
-    """表格行取值优先；无表格行时（旧报告）回退叙述段取值。"""
-    value = _scan_value(text, labels, RENTAL_TABLE_PATTERNS[key])
-    if value is not None:
-        return value
-    narrative = RENTAL_NARRATIVE_PATTERNS.get(key)
-    if narrative is not None:
-        return _scan_value(text, labels, narrative)
+def _rent_unit_from_match(match_str: str) -> str | None:
+    """租金取值正则整段匹配串 → rent_unit 枚举。
+
+    匹配串形如「元/平/天 5.44」「元/平方 米/月 444.53」「元/平方米 46.05」，
+    按其中出现的时间维度字符（天/月）判定；两者皆无 → None。
+    """
+    for symbol, unit in RENT_UNIT_BY_SYMBOL.items():
+        if symbol in match_str:
+            return unit
     return None
 
 
-def parse_rental_ops_text(text: str) -> dict | None:
-    """解析季报全文，返回四项运营指标；无出租率字段时返回 None。
+def _scan_rent(text: str, labels: tuple[str, ...]) -> tuple:
+    """平均租金专用扫描：返回 (数值, rent_unit)；未命中 (None, None)。
 
-    返回 {occupancy_pct, avg_rent_yuan, collection_pct, remaining_lease_days}，
-    缺失/单位不符的字段如实为 None。以「期末出租率」为租赁类资产判定门：
-    无出租率字段（非租赁类资产）→ None。
+    单位随取值正则的整段匹配串识别（单位单元格紧邻本期值之前，匹配串中
+    必然含时间维度「天/月」或二者皆无）。
+    """
+    for label in labels:
+        for m in re.finditer(_label_pattern(label), text):
+            seg = text[m.end() : m.end() + _WINDOW]
+            for pat in RENTAL_TABLE_PATTERNS["avg_rent_yuan"]:
+                num = re.search(pat, seg)
+                if num is not None:
+                    value = _to_number(num.group(1))
+                    return value, _rent_unit_from_match(num.group(0))
+    return None, None
+
+
+def _value_after_any(text: str, labels: tuple[str, ...], key: str):
+    """表格行取值优先；无表格行时（旧报告）回退叙述段取值。
+
+    返回 (数值, rent_unit)：仅 avg_rent 携带单位（随取值正则匹配串识别），
+    其余字段单位为 None。
+    """
+    if key == "avg_rent_yuan":
+        value, unit = _scan_rent(text, labels)
+        return value, unit
+    value = _scan_value(text, labels, RENTAL_TABLE_PATTERNS[key])
+    if value is not None:
+        return value, None
+    narrative = RENTAL_NARRATIVE_PATTERNS.get(key)
+    if narrative is not None:
+        return _scan_value(text, labels, narrative), None
+    return None, None
+
+
+def parse_rental_ops_text(text: str) -> dict | None:
+    """解析季报全文，返回运营指标；无出租率字段时返回 None。
+
+    返回 {occupancy_pct, avg_rent_yuan, collection_pct, remaining_lease_days,
+    rent_unit}，缺失/单位不符的字段如实为 None（rent_unit 取值：
+    "yuan_per_sqm_day" / "yuan_per_sqm_month" / None）。以「期末出租率」为
+    租赁类资产判定门：无出租率字段（非租赁类资产）→ None。
     """
     flat = _normalize(text)
     result = {}
     for key, labels in RENTAL_METRICS.items():
-        result[key] = _value_after_any(flat, labels, key)
+        result[key], unit = _value_after_any(flat, labels, key)
+        if key == "avg_rent_yuan":
+            result["rent_unit"] = unit
     if result["occupancy_pct"] is None:
         return None
     return result

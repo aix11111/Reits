@@ -19,12 +19,16 @@ from tools.reits_collector import parser_ops_rental
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 REAL_PDF = DATA_DIR / "_cache" / "quarterly_market" / "508000_2026Q2.pdf"
+REAL_CONSUMPTION_PDF = (
+    DATA_DIR / "_cache" / "quarterly_market" / "1225434098.PDF"
+)
 
 RENTAL_KEYS = (
     "occupancy_pct",
     "avg_rent_yuan",
     "collection_pct",
     "remaining_lease_days",
+    "rent_unit",
 )
 
 
@@ -38,6 +42,59 @@ def test_parse_rental_ops_real_pdf():
     assert result["avg_rent_yuan"] == pytest.approx(5.44)
     assert result["collection_pct"] == pytest.approx(100.0)
     assert result["remaining_lease_days"] == pytest.approx(554.0)
+    assert result["rent_unit"] == "yuan_per_sqm_day"
+
+
+def test_parse_rental_ops_consumption_real_pdf():
+    """真实消费类季报 PDF（180601 青岛万象城 2026Q2，4.1.2 节整体运营指标）：
+    出租率 99.08 / 收缴率 100.00 / 平均租金 444.53 元/平方米/月；剩余租期按
+    年口径披露不折算 → None；rent_unit 识别为 yuan_per_sqm_month。"""
+    result = parser_ops_rental.parse_rental_ops(REAL_CONSUMPTION_PDF)
+
+    assert result is not None
+    assert set(result) == set(RENTAL_KEYS)
+    assert result["occupancy_pct"] == pytest.approx(99.08)
+    assert result["collection_pct"] == pytest.approx(100.0)
+    assert result["avg_rent_yuan"] == pytest.approx(444.53)
+    assert result["remaining_lease_days"] is None
+    assert result["rent_unit"] == "yuan_per_sqm_month"
+
+
+def test_parse_rental_ops_consumption_413_location():
+    """4.1.3 节（消费类另一种定位）同样可解析：出租率/收缴率取值正常，
+    平均租金按披露单位 元/平方米/月 识别。"""
+    text = (
+        "4.1.3 报告期及上年同期重要不动产项目运营指标\n"
+        "不动产项目名称：青岛万象城\n"
+        "3\n报告期末出租率\n%\n99.08\n"
+        "4\n报告期末收缴率\n%\n100.00\n"
+        "5\n报告期末加权平均剩余租期\n年\n1.74\n"
+        "6\n报告期内平均租金单价水平\n元/平方米/月\n444.53\n"
+    )
+    result = parser_ops_rental.parse_rental_ops_text(text)
+
+    assert result is not None
+    assert result["occupancy_pct"] == pytest.approx(99.08)
+    assert result["collection_pct"] == pytest.approx(100.0)
+    assert result["avg_rent_yuan"] == pytest.approx(444.53)
+    assert result["remaining_lease_days"] is None
+    assert result["rent_unit"] == "yuan_per_sqm_month"
+
+
+def test_parse_rental_ops_rent_unit_unrecognized_is_none():
+    """租金单位不含时间维度（如仅「元/平方米」，无 /天 或 /月）→ 无法识别，
+    rent_unit 为 None；值仍如实取。"""
+    text = (
+        "4.1.2 报告期以及上年同期不动产项目整体运营指标\n"
+        "3\n期末出租率\n%\n95.55\n"
+        "4\n平均租金单价\n元/平方米\n46.05\n"
+    )
+    result = parser_ops_rental.parse_rental_ops_text(text)
+
+    assert result is not None
+    assert result["occupancy_pct"] == pytest.approx(95.55)
+    assert result["avg_rent_yuan"] == pytest.approx(46.05)
+    assert result["rent_unit"] is None
 
 
 def test_parse_rental_ops_broken_line_labels():
@@ -171,5 +228,8 @@ def test_market_ops_rental_row_schema_from_real_pdf():
 
     assert row["code"] == "508000"
     assert row["period"] == "2026Q2"
+    assert row["rent_unit"] == "yuan_per_sqm_day"
     for key in RENTAL_KEYS:
+        if key == "rent_unit":
+            continue
         assert isinstance(row[key], (int, float))

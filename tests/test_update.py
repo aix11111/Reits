@@ -734,6 +734,33 @@ def test_fetch_market_snapshot_first_run_all_failed(tmp_path, monkeypatch):
     assert len(errors) == 14
 
 
+def test_fetch_market_snapshot_full_market_shares(tmp_path, monkeypatch):
+    """全市场份额 dict（>14 只）→ 快照覆盖全部份额基金（不假设 14 只）。
+
+    Task 3/4：market_shares.json 全市场 81 只输入正常，快照行数 = 份额基金数。
+    """
+    market_shares = json.loads(
+        (
+            Path(__file__).resolve().parents[1] / "data" / "market_shares.json"
+        ).read_text(encoding="utf-8")
+    )["shares"]
+    assert len(market_shares) > 14
+    prices = {
+        code: round(7.5 + i * 0.25, 2)
+        for i, code in enumerate(sorted(market_shares))
+    }
+    monkeypatch.setattr(update, "SNAPSHOT_PATH", tmp_path / "market_snapshot.json")
+    monkeypatch.setattr(
+        update.market_data, "get_realtime_quotes", lambda: _quotes_df(prices)
+    )
+
+    result = update.fetch_market_snapshot(market_shares)
+
+    assert len(result["snapshots"]) == len(market_shares)
+    assert len(result["latest"]) == len(market_shares)
+    assert len(result["latest"]) > 14
+
+
 def test_update_template_summary_includes_snapshot_updated(tmp_path, monkeypatch):
     """mock fetch_market_snapshot 有变化 → 摘要含 snapshot_updated=True。"""
     path = tmp_path / "tpl.xlsx"

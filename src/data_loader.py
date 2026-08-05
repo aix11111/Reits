@@ -172,3 +172,51 @@ def load_fund_shares(path):
     文件缺失或损坏返回空 dict，市值计算侧据此降级。
     """
     return _load_json_dict(path)
+
+
+def load_market_funds(path):
+    """读取全市场基金清单 JSON（{"funds": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / name / asset_type（其余字段按 JSON 原样保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("funds") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(columns=["code", "name", "asset_type"])
+    return pd.DataFrame(rows)
+
+
+def load_market_quarterly(path):
+    """读取全市场季度财务 JSON（{"quarters": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / period / distributable_wan（其余字段按 JSON 原样保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("quarters") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(columns=["code", "period", "distributable_wan"])
+    return pd.DataFrame(rows)
+
+
+def load_market_completion(path):
+    """读取全市场年报完成度 JSON（{"completion": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / name / year / completion_pct / nav_unit_price（其余字段保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("completion") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(
+            columns=["code", "name", "year", "completion_pct", "nav_unit_price"]
+        )
+    return pd.DataFrame(rows)
+
+
+def load_market_shares(path):
+    """读取全市场份额 JSON（{"shares": {code: 份}}），缺失/损坏返回空 dict。
+
+    返回内部 shares 映射（code → 份）。
+    """
+    data = _load_json_dict(path)
+    shares = data.get("shares") if isinstance(data, dict) else None
+    return shares if isinstance(shares, dict) else {}

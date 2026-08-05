@@ -415,12 +415,9 @@ def fetch_market_snapshot(shares, errors=None):
 
     new_snapshots = []
     latest = dict(old_latest)
-    for code in FUND_CODES:
+    for code in shares:
         if code not in prices:
             errors.append(f"{code}：实时行情缺失")
-            continue
-        if shares.get(code) is None:
-            errors.append(f"{code}：份额缺失")
             continue
         price = prices[code]
         market_cap_wan = round(price * shares[code] / 10000, 2)

@@ -15,7 +15,15 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.charts import bar_chart, line_chart
-from src.data_loader import load_all, load_fund_shares, load_market_snapshot
+from src.data_loader import (
+    load_all,
+    load_fund_shares,
+    load_market_completion,
+    load_market_funds,
+    load_market_quarterly,
+    load_market_shares,
+    load_market_snapshot,
+)
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
 from src.rules import (
@@ -103,10 +111,45 @@ _ANNUAL_COMPLETION_PATH = Path(__file__).parent / "data" / "annual_completion.js
 _MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "market_snapshot.json"
 _FUND_SHARES_PATH = Path(__file__).parent / "data" / "fund_shares.json"
 
+# 全市场数据文件路径（M4：看板全市场视图）
+_MARKET_FUNDS_PATH = Path(__file__).parent / "data" / "market_funds.json"
+_MARKET_QUARTERLY_PATH = Path(__file__).parent / "data" / "market_quarterly.json"
+_MARKET_COMPLETION_PATH = Path(__file__).parent / "data" / "market_completion.json"
+_MARKET_SHARES_PATH = Path(__file__).parent / "data" / "market_shares.json"
+
+# 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
+_ASSET_TYPES = [
+    "高速",
+    "产业园",
+    "仓储物流",
+    "能源",
+    "生态环保",
+    "保障房",
+    "消费",
+    "商业不动产",
+]
+_ASSET_TYPE_OPTIONS = ["全部"] + _ASSET_TYPES
+
+# 产权类（非特许经营）资产类型：IRR 列显示「不适用（产权类）」
+_PROPERTY_ASSET_TYPES = {"产业园", "仓储物流", "保障房", "消费", "商业不动产"}
+
+# 资产类型 → 条形图着色（plotly 离散色板 Dark24 子集，深色底可读）
+_ASSET_TYPE_COLORS = {
+    "高速": "#8dd3c7",
+    "产业园": "#fb8072",
+    "仓储物流": "#80b1d3",
+    "能源": "#fdb462",
+    "生态环保": "#b3de69",
+    "保障房": "#fccde5",
+    "消费": "#bc80bd",
+    "商业不动产": "#ffed6f",
+}
+
 # 估值对标页签：收益率排名展示列
 _VALUATION_RANK_COLUMNS = [
     ("code", "基金代码"),
     ("name", "基金简称"),
+    ("asset_type", "资产类型"),
     ("yield_pct", "分派率收益率"),
     ("caliber", "口径"),
     ("irr_pct", "特许经营IRR"),
@@ -631,10 +674,14 @@ def _ttm_display_table(ttm_df, name_map):
     )
 
 
-def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_df):
+def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_df,
+                     market_funds=None, market_quarterly=None, market_completion=None,
+                     market_shares=None, asset_type="全部"):
     """估值对标页签：分派率收益率排名、NAV 折溢价与风险聚合提示。
 
     市值数据来自本地快照（market_snapshot.json），不依赖运行时网络。
+    全市场模式（market_funds 非空）：排名/折溢价/风险用全市场 JSON 数据，
+    并按「资产类型」筛选；market JSON 缺失时回退现有 14 只高速视图。
     快照缺失时降级为 st.info + 仅显示 TTM 分派表。
     """
     st.subheader("估值对标")
@@ -643,11 +690,35 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
     )
 
     snapshot_latest = snapshot_data.get("latest") or {}
-    shares_map = shares.get("shares") or {}
-    name_map = dict(zip(static_df["code"], static_df["name"]))
     years_left = static_df.set_index("code")["concession_years_left"]
 
-    ttm = ttm_distributable(quarterly_df)
+    full_market = market_funds is not None and not market_funds.empty
+    if full_market:
+        funds = market_funds
+        if asset_type != "全部":
+            funds = funds[funds["asset_type"] == asset_type]
+        if funds.empty:
+            st.info(f"资产类型「{asset_type}」暂无基金数据。")
+            return
+        active_codes = set(funds["code"])
+        snapshot_latest = {
+            c: i for c, i in snapshot_latest.items() if c in active_codes
+        }
+        name_map = dict(zip(funds["code"], funds["name"]))
+        asset_type_map = dict(zip(funds["code"], funds["asset_type"]))
+        shares_map = market_shares or {}
+        ttm = (
+            ttm_distributable(market_quarterly)
+            if market_quarterly is not None and not market_quarterly.empty
+            else pd.DataFrame(columns=["dist_ttm_wan", "is_annualized"])
+        )
+        if market_completion is not None and not market_completion.empty:
+            completion_df = market_completion
+    else:
+        name_map = dict(zip(static_df["code"], static_df["name"]))
+        asset_type_map = dict(zip(static_df["code"], static_df["asset_type"]))
+        shares_map = shares.get("shares") or {}
+        ttm = ttm_distributable(quarterly_df)
 
     if not snapshot_latest:
         st.info("市值数据缺失（等待下月 cron 更新）")
@@ -664,21 +735,28 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
             continue
         annual = ttm.loc[code, "dist_ttm_wan"] if code in ttm.index else None
         left = years_left.get(code) if code in years_left.index else None
-        irr = (
-            concession_irr(info["price"], shares_map.get(code), annual, left)
-            if pd.notna(annual) and pd.notna(left)
-            else None
-        )
+        a_type = asset_type_map.get(code, "")
+        if a_type in _PROPERTY_ASSET_TYPES:
+            irr = None
+            irr_label = "不适用（产权类）"
+        elif pd.notna(annual) and pd.notna(left):
+            irr = concession_irr(info["price"], shares_map.get(code), annual, left)
+            irr_label = _fmt_pct(irr) if irr is not None else "—"
+        else:
+            irr = None
+            irr_label = "—"
         rank_rows.append(
             {
                 "code": code,
                 "name": name_map.get(code, ""),
+                "asset_type": a_type,
                 "yield": yield_series.get(code, float("nan")),
                 "is_annualized": (
                     ttm.loc[code, "is_annualized"] if code in ttm.index else None
                 ),
                 "years_left": left,
                 "irr": irr,
+                "irr_label": irr_label,
             }
         )
     rank = pd.DataFrame(rank_rows)
@@ -714,7 +792,9 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
                 x=chart["yield"],
                 y=chart["name"],
                 orientation="h",
-                marker_color=_ACCENT,
+                marker_color=[
+                    _ASSET_TYPE_COLORS.get(t, _ACCENT) for t in chart["asset_type"]
+                ],
             )
         )
         fig.add_vline(
@@ -817,7 +897,7 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
     display["caliber"] = display["is_annualized"].map(
         lambda v: "年化" if pd.notna(v) and v else "TTM"
     )
-    display["irr_pct"] = display["irr"].map(_fmt_pct)
+    display["irr_pct"] = display["irr_label"]
     display["score_fmt"] = display["score"].map(
         lambda v: f"{v:.1f}" if pd.notna(v) else "—"
     )
@@ -908,7 +988,20 @@ def main():
     completion_df = _load_annual_completion()
     render_status_wall(static_df, completion_df)
 
+    # 全市场数据层（M4）：缺失时各 load_ 返回空结构，估值对标回退 14 只高速视图
+    market_funds = load_market_funds(_MARKET_FUNDS_PATH)
+    market_quarterly = load_market_quarterly(_MARKET_QUARTERLY_PATH)
+    market_completion = load_market_completion(_MARKET_COMPLETION_PATH)
+    market_shares = load_market_shares(_MARKET_SHARES_PATH)
+
     with st.sidebar:
+        st.header("市场筛选")
+        asset_type = st.selectbox(
+            "资产类型",
+            options=_ASSET_TYPE_OPTIONS,
+            index=0,
+            help="估值对标页签全市场视图按资产类型筛选",
+        )
         st.header("选择REIT")
         selected_code = st.selectbox(
             "选择REIT",
@@ -935,7 +1028,18 @@ def main():
     with tab_val:
         snapshot_data = load_market_snapshot(_MARKET_SNAPSHOT_PATH)
         shares_data = load_fund_shares(_FUND_SHARES_PATH)
-        render_valuation(quarterly_df, completion_df, snapshot_data, shares_data, static_df)
+        render_valuation(
+            quarterly_df,
+            completion_df,
+            snapshot_data,
+            shares_data,
+            static_df,
+            market_funds=market_funds,
+            market_quarterly=market_quarterly,
+            market_completion=market_completion,
+            market_shares=market_shares,
+            asset_type=asset_type,
+        )
 
 
 if __name__ == "__main__":

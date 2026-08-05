@@ -220,3 +220,148 @@ def test_valuation_tab_degrades_when_snapshot_missing(no_network, monkeypatch):
     val_tab = at.tabs[3]
     infos = [i.value for i in val_tab.info]
     assert any("市值数据缺失" in v for v in infos)
+
+
+# ---------------------------------------------------------------------------
+# Task 4（M4）：看板全市场视图
+# ---------------------------------------------------------------------------
+
+
+def _patch_market_data(monkeypatch):
+    """把 data_loader 的市场 JSON 加载替换为全市场 fixture（2 产业园 + 1 高速）。"""
+    import pandas as pd
+
+    import src.data_loader as dl
+
+    funds = pd.DataFrame(
+        {
+            "code": ["180101", "508000", "508001"],
+            "name": ["博时蛇口产园REIT", "华安张江产业园REIT", "浙商沪杭甬REIT"],
+            "asset_type": ["产业园", "产业园", "高速"],
+        }
+    )
+    quarterly = pd.DataFrame(
+        {
+            "code": ["180101", "508000", "508001"],
+            "period": ["2026Q1", "2026Q1", "2026Q1"],
+            "distributable_wan": [2500.0, 3000.0, 4000.0],
+        }
+    )
+    completion = pd.DataFrame(
+        {
+            "code": ["180101", "508000", "508001"],
+            "name": ["博时蛇口产园REIT", "华安张江产业园REIT", "浙商沪杭甬REIT"],
+            "year": [2025, 2025, 2025],
+            "completion_pct": [95.0, 100.0, 90.0],
+            "nav_unit_price": [2.5, 3.0, 6.0],
+        }
+    )
+    shares = {"180101": 1000000000.0, "508000": 1000000000.0, "508001": 2000000000.0}
+    snapshot = {
+        "latest": {
+            "180101": {"price": 2.6, "market_cap_wan": 260000.0},
+            "508000": {"price": 3.1, "market_cap_wan": 310000.0},
+            "508001": {"price": 6.5, "market_cap_wan": 1300000.0},
+        },
+        "snapshots": [],
+    }
+    monkeypatch.setattr(dl, "load_market_funds", lambda path=None: funds, raising=False)
+    monkeypatch.setattr(
+        dl, "load_market_quarterly", lambda path=None: quarterly, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_completion", lambda path=None: completion, raising=False
+    )
+    monkeypatch.setattr(dl, "load_market_shares", lambda path=None: shares, raising=False)
+    monkeypatch.setattr(
+        dl, "load_market_snapshot", lambda path=None: snapshot, raising=False
+    )
+
+
+def test_valuation_tab_full_market_rank_all_types(no_network, monkeypatch):
+    """资产类型「全部」→ 估值排名表含全市场基金（含产业园 180101 / 508000）。"""
+    import streamlit as st
+
+    _patch_market_data(monkeypatch)
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+    codes = set(rank["基金代码"])
+    assert "180101" in codes
+    assert "508000" in codes
+    assert "508001" in codes
+
+
+def test_valuation_tab_asset_type_filter_park(no_network, monkeypatch):
+    """资产类型「产业园」→ 排名表仅产业园基金。"""
+    import streamlit as st
+
+    _patch_market_data(monkeypatch)
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "资产类型")
+    box.select("产业园").run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+    assert set(rank["基金代码"]) == {"180101", "508000"}
+    assert (rank["资产类型"] == "产业园").all()
+
+
+def test_valuation_tab_property_irr_not_applicable(no_network, monkeypatch):
+    """产权类（产业园）基金特许经营 IRR 列显示「不适用（产权类）」。"""
+    import streamlit as st
+
+    _patch_market_data(monkeypatch)
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+    park = rank[rank["基金代码"] == "180101"]
+    assert park["特许经营IRR"].iloc[0] == "不适用（产权类）"
+
+
+def test_valuation_tab_degraded_when_market_json_missing(no_network, monkeypatch):
+    """market_*.json 缺失 → 估值 Tab 回退现有快照视图，其余 Tab 不回归。"""
+    import pandas as pd
+
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    empty_funds = pd.DataFrame(columns=["code", "name", "asset_type"])
+    empty_quarterly = pd.DataFrame(columns=["code", "period", "distributable_wan"])
+    empty_completion = pd.DataFrame(
+        columns=["code", "name", "year", "completion_pct", "nav_unit_price"]
+    )
+    monkeypatch.setattr(
+        dl, "load_market_funds", lambda path=None: empty_funds, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_quarterly", lambda path=None: empty_quarterly, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_completion", lambda path=None: empty_completion, raising=False
+    )
+    monkeypatch.setattr(dl, "load_market_shares", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    assert [tab.label for tab in at.tabs] == TAB_LABELS
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+    assert not rank.empty

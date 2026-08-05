@@ -87,7 +87,8 @@ tests/                  pytest suite
 - [x] **Phase 3** — Distributable amount vs. prospectus forecast (10 funds, 11 rows)
 - [x] **Phase 4 (一期)** — Valuation benchmark: TTM yield ranking, NAV premium, risk flags, market snapshot
 - [x] **Phase 4 (二期)** — Concession IRR (bisection solver, expiry-aware valuation)
-- [ ] **Phase 3 (rest)** — Full market (70+ funds)
+- [x] **Phase 5** — Full market (87 funds, 8 types): quarterly financials (782 rows), annual completion/NAV (149 rows), market-wide valuation, type filter, rental ops (460 rows, 52 funds)
+- [ ] **Phase 6** — Energy/consumption ops metrics (发电量/客流), IRR for energy funds
 
 ---
 

@@ -1,0 +1,7042 @@
+{
+ "quarters": [
+  {
+   "code": "180101",
+   "period": "2021Q3",
+   "revenue_wan": 3729.7974289999997,
+   "net_profit_wan": 1334.890279,
+   "distributable_wan": 2245.2987120000003,
+   "unit_distributable": 0.02,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2021Q3",
+   "revenue_wan": 20607.766762,
+   "net_profit_wan": 5506.456843999999,
+   "distributable_wan": 15748.501194,
+   "unit_distributable": 0.225,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2021Q3",
+   "revenue_wan": 2740.578708,
+   "net_profit_wan": 790.510516,
+   "distributable_wan": 1953.340351,
+   "unit_distributable": 0.0244,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2021Q3",
+   "revenue_wan": 10945.24615,
+   "net_profit_wan": 1809.657564,
+   "distributable_wan": 4285.593556,
+   "unit_distributable": 0.4286,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2021Q3",
+   "revenue_wan": 2325.7313710000003,
+   "net_profit_wan": -570.817822,
+   "distributable_wan": 1553.545856,
+   "unit_distributable": 0.0311,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2021Q3",
+   "revenue_wan": 17803.432792,
+   "net_profit_wan": 4249.107834,
+   "distributable_wan": 14803.159131999999,
+   "unit_distributable": 0.3,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2021Q3",
+   "revenue_wan": 8564.044122,
+   "net_profit_wan": 2769.181919,
+   "distributable_wan": 3915.0627689999997,
+   "unit_distributable": 0.0783,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2021Q3",
+   "revenue_wan": 6141.957177,
+   "net_profit_wan": 1445.23401,
+   "distributable_wan": 5037.567007,
+   "unit_distributable": 0.056,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2021Q3",
+   "revenue_wan": 8733.77792,
+   "net_profit_wan": 678.231456,
+   "distributable_wan": 6297.687776,
+   "unit_distributable": 0.042,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2021Q4",
+   "revenue_wan": 3556.9319990000004,
+   "net_profit_wan": 1116.3180929999999,
+   "distributable_wan": 2427.567113,
+   "unit_distributable": 0.03,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2021Q4",
+   "revenue_wan": 19137.735816999997,
+   "net_profit_wan": 2181.42659,
+   "distributable_wan": 17161.787676,
+   "unit_distributable": 0.2452,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2021Q4",
+   "revenue_wan": 3123.88489,
+   "net_profit_wan": 1079.503085,
+   "distributable_wan": 2110.4426359999998,
+   "unit_distributable": 0.0264,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2021Q4",
+   "revenue_wan": 10303.872015,
+   "net_profit_wan": -4068.305775,
+   "distributable_wan": 5101.503465,
+   "unit_distributable": 0.5102,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2021Q4",
+   "revenue_wan": 2276.198796,
+   "net_profit_wan": -575.9045120000001,
+   "distributable_wan": 2042.652797,
+   "unit_distributable": 0.0409,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2021Q4",
+   "revenue_wan": 15588.656112,
+   "net_profit_wan": -5899.285345,
+   "distributable_wan": 4409.257329,
+   "unit_distributable": 0.0882,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2021Q4",
+   "revenue_wan": 7861.563804,
+   "net_profit_wan": 216.085372,
+   "distributable_wan": 2686.603721,
+   "unit_distributable": 0.0537,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2021Q4",
+   "revenue_wan": 7055.634573,
+   "net_profit_wan": 1334.002993,
+   "distributable_wan": 3975.4333189999998,
+   "unit_distributable": 0.0442,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2021Q4",
+   "revenue_wan": 8846.495328,
+   "net_profit_wan": 759.494602,
+   "distributable_wan": 6852.148643,
+   "unit_distributable": 0.0457,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q1",
+   "revenue_wan": 3415.8022060000003,
+   "net_profit_wan": 1094.3057939999999,
+   "distributable_wan": 1623.410451,
+   "unit_distributable": 0.02,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2022Q1",
+   "revenue_wan": 16970.816415999998,
+   "net_profit_wan": 3961.2573820000002,
+   "distributable_wan": 10593.442564,
+   "unit_distributable": 0.1513,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2022Q1",
+   "revenue_wan": 5668.96377,
+   "net_profit_wan": 1629.81914,
+   "distributable_wan": 3718.5626380000003,
+   "unit_distributable": 0.124,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q1",
+   "revenue_wan": 2944.2403489999997,
+   "net_profit_wan": 1156.475904,
+   "distributable_wan": 2301.366387,
+   "unit_distributable": 0.0288,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2022Q1",
+   "revenue_wan": 10382.96693,
+   "net_profit_wan": 1585.8245980000002,
+   "distributable_wan": 2319.009426,
+   "unit_distributable": 0.2319,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q1",
+   "revenue_wan": 2373.6944940000003,
+   "net_profit_wan": -607.519441,
+   "distributable_wan": 1699.4055280000002,
+   "unit_distributable": 0.034,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2022Q1",
+   "revenue_wan": 16354.186232,
+   "net_profit_wan": -134.091437,
+   "distributable_wan": 11523.441945999999,
+   "unit_distributable": 0.2305,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2022Q1",
+   "revenue_wan": 7107.259488,
+   "net_profit_wan": 1099.071199,
+   "distributable_wan": 3627.6626450000003,
+   "unit_distributable": 0.0726,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q1",
+   "revenue_wan": 7188.603645,
+   "net_profit_wan": 2349.8803120000002,
+   "distributable_wan": 3484.060504,
+   "unit_distributable": 0.0387,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q1",
+   "revenue_wan": 9305.310508,
+   "net_profit_wan": 1020.2552220000001,
+   "distributable_wan": 6765.112328,
+   "unit_distributable": 0.0451,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q1",
+   "revenue_wan": 6199.321322,
+   "net_profit_wan": 2027.572841,
+   "distributable_wan": 3864.6695090000003,
+   "unit_distributable": 0.0429,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q2",
+   "revenue_wan": 3125.723036,
+   "net_profit_wan": 1539.722189,
+   "distributable_wan": 1247.5761289999998,
+   "unit_distributable": 0.01,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2022Q2",
+   "revenue_wan": 15349.865702000001,
+   "net_profit_wan": 2185.265364,
+   "distributable_wan": 12663.511768,
+   "unit_distributable": 0.1809,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2022Q2",
+   "revenue_wan": 4994.7816840000005,
+   "net_profit_wan": 1184.448079,
+   "distributable_wan": 3309.446104,
+   "unit_distributable": 0.1103,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q2",
+   "revenue_wan": 2942.610082,
+   "net_profit_wan": 1077.21697,
+   "distributable_wan": 2205.225149,
+   "unit_distributable": 0.0276,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2022Q2",
+   "revenue_wan": 10987.729435,
+   "net_profit_wan": 2045.175801,
+   "distributable_wan": 1586.813758,
+   "unit_distributable": 0.1587,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q2",
+   "revenue_wan": 2215.6759739999998,
+   "net_profit_wan": -628.349153,
+   "distributable_wan": 1657.752026,
+   "unit_distributable": 0.0332,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2022Q2",
+   "revenue_wan": 12840.418086,
+   "net_profit_wan": -4651.348661999999,
+   "distributable_wan": 7502.39169,
+   "unit_distributable": 0.15,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2022Q2",
+   "revenue_wan": 7453.577465,
+   "net_profit_wan": 1004.702737,
+   "distributable_wan": 3791.4265630000004,
+   "unit_distributable": 0.0758,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2022Q2",
+   "revenue_wan": 10628.89926,
+   "net_profit_wan": 3316.443859,
+   "distributable_wan": 8290.45203,
+   "unit_distributable": 0.0829,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q2",
+   "revenue_wan": 2138.228318,
+   "net_profit_wan": -218.384109,
+   "distributable_wan": 1760.534539,
+   "unit_distributable": 0.0196,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q2",
+   "revenue_wan": 8794.182918,
+   "net_profit_wan": 550.955072,
+   "distributable_wan": 7057.447418000001,
+   "unit_distributable": 0.047,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q2",
+   "revenue_wan": 5801.572536,
+   "net_profit_wan": 2486.439514,
+   "distributable_wan": 3928.5423450000003,
+   "unit_distributable": 0.0437,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q3",
+   "revenue_wan": 1879.501804,
+   "net_profit_wan": -10.491881,
+   "distributable_wan": 2212.217234,
+   "unit_distributable": 0.02,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2022Q3",
+   "revenue_wan": 20742.905226,
+   "net_profit_wan": 7312.391219,
+   "distributable_wan": 17671.412291,
+   "unit_distributable": 0.2524,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2022Q3",
+   "revenue_wan": 5634.124686,
+   "net_profit_wan": 2298.1372300000003,
+   "distributable_wan": 3809.3601409999997,
+   "unit_distributable": 0.127,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q3",
+   "revenue_wan": 2948.472254,
+   "net_profit_wan": 945.7397369999999,
+   "distributable_wan": 2034.286548,
+   "unit_distributable": 0.0254,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2022Q3",
+   "revenue_wan": 64057.857649,
+   "net_profit_wan": 19467.06384,
+   "distributable_wan": 17984.052257,
+   "unit_distributable": 0.2997,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2022Q3",
+   "revenue_wan": 11467.05945,
+   "net_profit_wan": 2094.332645,
+   "distributable_wan": 1078.767703,
+   "unit_distributable": 0.1079,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q3",
+   "revenue_wan": 2091.10618,
+   "net_profit_wan": -802.638776,
+   "distributable_wan": 1688.9444850000002,
+   "unit_distributable": 0.0338,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2022Q3",
+   "revenue_wan": 17409.088121,
+   "net_profit_wan": -175.031605,
+   "distributable_wan": 10460.169273,
+   "unit_distributable": 0.2092,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2022Q3",
+   "revenue_wan": 7925.788029,
+   "net_profit_wan": 1624.9719289999998,
+   "distributable_wan": 4890.428403,
+   "unit_distributable": 0.0978,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2022Q3",
+   "revenue_wan": 16699.151576,
+   "net_profit_wan": 1591.739266,
+   "distributable_wan": 9111.702892,
+   "unit_distributable": 0.1822,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2022Q3",
+   "revenue_wan": 11493.667423,
+   "net_profit_wan": 2730.059357,
+   "distributable_wan": 9492.533386,
+   "unit_distributable": 0.0949,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q3",
+   "revenue_wan": 6379.940207,
+   "net_profit_wan": 2584.9176350000002,
+   "distributable_wan": 4131.153816,
+   "unit_distributable": 0.0459,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q3",
+   "revenue_wan": 8857.944661,
+   "net_profit_wan": 539.366944,
+   "distributable_wan": 6265.970829999999,
+   "unit_distributable": 0.0418,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q3",
+   "revenue_wan": 4111.15935,
+   "net_profit_wan": 175.98382,
+   "distributable_wan": 2350.135419,
+   "unit_distributable": 0.0261,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2022Q4",
+   "revenue_wan": 2888.920101,
+   "net_profit_wan": 997.9244359999999,
+   "distributable_wan": 3566.6079590000004,
+   "unit_distributable": 0.04,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2022Q4",
+   "revenue_wan": 2497.5984,
+   "net_profit_wan": 976.357934,
+   "distributable_wan": 1855.126102,
+   "unit_distributable": 0.0265,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2022Q4",
+   "revenue_wan": 13511.985047999999,
+   "net_profit_wan": 3280.0457739999997,
+   "distributable_wan": 9214.496437,
+   "unit_distributable": 0.1316,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2022Q4",
+   "revenue_wan": 4563.331407,
+   "net_profit_wan": -1975.6342949999998,
+   "distributable_wan": 2905.313261,
+   "unit_distributable": 0.0968,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2022Q4",
+   "revenue_wan": 2930.222077,
+   "net_profit_wan": 942.4618839999999,
+   "distributable_wan": 2153.883586,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2022Q4",
+   "revenue_wan": 43797.339716,
+   "net_profit_wan": -3813.840395,
+   "distributable_wan": 8852.043955,
+   "unit_distributable": 0.1475,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2022Q4",
+   "revenue_wan": 1385.4088550000001,
+   "net_profit_wan": 884.279564,
+   "distributable_wan": 1362.873883,
+   "unit_distributable": 0.0273,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2022Q4",
+   "revenue_wan": 10207.012187999999,
+   "net_profit_wan": -993.477176,
+   "distributable_wan": 8757.260937000001,
+   "unit_distributable": 0.8757,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2022Q4",
+   "revenue_wan": 2031.2480050000001,
+   "net_profit_wan": -1035.3968220000002,
+   "distributable_wan": 1201.174992,
+   "unit_distributable": 0.024,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2022Q4",
+   "revenue_wan": 13962.3095,
+   "net_profit_wan": -4972.64665,
+   "distributable_wan": 2383.021238,
+   "unit_distributable": 0.0477,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2022Q4",
+   "revenue_wan": 6961.427387999999,
+   "net_profit_wan": -561.0777860000001,
+   "distributable_wan": 4501.065811,
+   "unit_distributable": 0.09,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2022Q4",
+   "revenue_wan": 13796.945036000001,
+   "net_profit_wan": 1766.842907,
+   "distributable_wan": 7907.728994,
+   "unit_distributable": 0.1582,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2022Q4",
+   "revenue_wan": 9885.502411,
+   "net_profit_wan": 1911.78708,
+   "distributable_wan": 7276.806570999999,
+   "unit_distributable": 0.0728,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2022Q4",
+   "revenue_wan": 1430.345651,
+   "net_profit_wan": 467.845994,
+   "distributable_wan": 902.260693,
+   "unit_distributable": 0.0451,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2022Q4",
+   "revenue_wan": 7672.805353,
+   "net_profit_wan": 2712.670685,
+   "distributable_wan": 6603.033727,
+   "unit_distributable": 0.0734,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2022Q4",
+   "revenue_wan": 8826.416953,
+   "net_profit_wan": 778.334384,
+   "distributable_wan": 6132.041879,
+   "unit_distributable": 0.0409,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2022Q4",
+   "revenue_wan": 1882.6820280000002,
+   "net_profit_wan": 583.821667,
+   "distributable_wan": 1389.202204,
+   "unit_distributable": 0.0278,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2022Q4",
+   "revenue_wan": 1781.466216,
+   "net_profit_wan": 764.983287,
+   "distributable_wan": 1356.0890949999998,
+   "unit_distributable": 0.0271,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2022Q4",
+   "revenue_wan": 2697.937471,
+   "net_profit_wan": 412.721873,
+   "distributable_wan": 1877.7614190000002,
+   "unit_distributable": 0.0376,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2022Q4",
+   "revenue_wan": 4740.496413,
+   "net_profit_wan": 605.613297,
+   "distributable_wan": 2370.1474120000003,
+   "unit_distributable": 0.0263,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q1",
+   "revenue_wan": 2980.886156,
+   "net_profit_wan": 1109.450578,
+   "distributable_wan": 1465.077695,
+   "unit_distributable": 0.02,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q1",
+   "revenue_wan": 2383.767471,
+   "net_profit_wan": 801.803354,
+   "distributable_wan": 1851.579843,
+   "unit_distributable": 0.0265,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q1",
+   "revenue_wan": 2900.482603,
+   "net_profit_wan": 240.54588999999999,
+   "distributable_wan": 1476.8750109999999,
+   "unit_distributable": 0.0295,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2023Q1",
+   "revenue_wan": 19487.193974,
+   "net_profit_wan": 7152.209731,
+   "distributable_wan": 14803.055431,
+   "unit_distributable": 0.2115,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2023Q1",
+   "revenue_wan": 6531.596765,
+   "net_profit_wan": 1673.094288,
+   "distributable_wan": 4433.373457,
+   "unit_distributable": 0.1478,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q1",
+   "revenue_wan": 2990.087604,
+   "net_profit_wan": 1153.6154980000001,
+   "distributable_wan": 2348.246389,
+   "unit_distributable": 0.0294,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2023Q1",
+   "revenue_wan": 32419.47058,
+   "net_profit_wan": 6336.205532999999,
+   "distributable_wan": 3783.274633,
+   "unit_distributable": 0.0631,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q1",
+   "revenue_wan": 1377.623242,
+   "net_profit_wan": 634.354409,
+   "distributable_wan": 1261.681734,
+   "unit_distributable": 0.0252,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2023Q1",
+   "revenue_wan": 10204.254570000001,
+   "net_profit_wan": 1319.19119,
+   "distributable_wan": 3811.14124,
+   "unit_distributable": 0.3811,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q1",
+   "revenue_wan": 1603.985068,
+   "net_profit_wan": -1177.01984,
+   "distributable_wan": 1473.384955,
+   "unit_distributable": 0.0295,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2023Q1",
+   "revenue_wan": 18505.989057,
+   "net_profit_wan": 2698.783134,
+   "distributable_wan": 13946.008424000001,
+   "unit_distributable": 0.2789,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2023Q1",
+   "revenue_wan": 6876.817857999999,
+   "net_profit_wan": 777.753542,
+   "distributable_wan": 3321.329001,
+   "unit_distributable": 0.0664,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2023Q1",
+   "revenue_wan": 18692.149931,
+   "net_profit_wan": 4636.303825,
+   "distributable_wan": 14561.178041,
+   "unit_distributable": 0.2912,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2023Q1",
+   "revenue_wan": 26950.738655,
+   "net_profit_wan": 1859.0772539999998,
+   "distributable_wan": 23087.937896,
+   "unit_distributable": 0.2309,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2023Q1",
+   "revenue_wan": 11732.361901999999,
+   "net_profit_wan": 3385.112735,
+   "distributable_wan": 9339.85099,
+   "unit_distributable": 0.0934,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q1",
+   "revenue_wan": 1222.8926880000001,
+   "net_profit_wan": 697.281267,
+   "distributable_wan": 841.026698,
+   "unit_distributable": 0.0421,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q1",
+   "revenue_wan": 7251.496387,
+   "net_profit_wan": 2154.055244,
+   "distributable_wan": 3118.059971,
+   "unit_distributable": 0.0346,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q1",
+   "revenue_wan": 8971.451672,
+   "net_profit_wan": 732.5128,
+   "distributable_wan": 6685.086457,
+   "unit_distributable": 0.0446,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q1",
+   "revenue_wan": 1895.1947280000002,
+   "net_profit_wan": 671.088034,
+   "distributable_wan": 1401.586575,
+   "unit_distributable": 0.028,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2023Q1",
+   "revenue_wan": 9300.586177,
+   "net_profit_wan": 2996.404309,
+   "distributable_wan": 7654.407381999999,
+   "unit_distributable": 0.1914,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q1",
+   "revenue_wan": 1803.66513,
+   "net_profit_wan": 775.7809990000001,
+   "distributable_wan": 1371.809813,
+   "unit_distributable": 0.0274,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q1",
+   "revenue_wan": 1926.396454,
+   "net_profit_wan": 132.70418999999998,
+   "distributable_wan": 1591.088923,
+   "unit_distributable": 0.0318,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q1",
+   "revenue_wan": 2712.853469,
+   "net_profit_wan": 1417.461935,
+   "distributable_wan": 1993.36123,
+   "unit_distributable": 0.0399,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q1",
+   "revenue_wan": 2319.714426,
+   "net_profit_wan": 1155.148207,
+   "distributable_wan": 1753.62492,
+   "unit_distributable": 0.0351,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q1",
+   "revenue_wan": 4517.308118999999,
+   "net_profit_wan": 497.83359900000005,
+   "distributable_wan": 2361.223853,
+   "unit_distributable": 0.0262,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q2",
+   "revenue_wan": 3800.1839579999996,
+   "net_profit_wan": 1376.1528759999999,
+   "distributable_wan": 2279.522393,
+   "unit_distributable": 0.016,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q2",
+   "revenue_wan": 2345.877359,
+   "net_profit_wan": 711.897308,
+   "distributable_wan": 1891.3358489999998,
+   "unit_distributable": 0.027,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q2",
+   "revenue_wan": 2808.8868399999997,
+   "net_profit_wan": 400.103123,
+   "distributable_wan": 1527.593767,
+   "unit_distributable": 0.0306,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2023Q2",
+   "revenue_wan": 18816.820177,
+   "net_profit_wan": 6456.974967,
+   "distributable_wan": 10664.124272,
+   "unit_distributable": 0.1523,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2023Q2",
+   "revenue_wan": 5813.254242,
+   "net_profit_wan": 1208.399484,
+   "distributable_wan": 3779.1080030000003,
+   "unit_distributable": 0.126,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q2",
+   "revenue_wan": 3121.309279,
+   "net_profit_wan": 1120.294897,
+   "distributable_wan": 2280.2079940000003,
+   "unit_distributable": 0.0239,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2023Q2",
+   "revenue_wan": 55456.679600999996,
+   "net_profit_wan": 11470.20507,
+   "distributable_wan": 16715.34729,
+   "unit_distributable": 0.2786,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q2",
+   "revenue_wan": 1376.276629,
+   "net_profit_wan": 649.7951059999999,
+   "distributable_wan": 1433.292236,
+   "unit_distributable": 0.0287,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2023Q2",
+   "revenue_wan": 9859.627134,
+   "net_profit_wan": 1199.221484,
+   "distributable_wan": 1106.7162130000002,
+   "unit_distributable": 0.1107,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q2",
+   "revenue_wan": 2253.4279100000003,
+   "net_profit_wan": -1090.61422,
+   "distributable_wan": 1735.165884,
+   "unit_distributable": 0.0181,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2023Q2",
+   "revenue_wan": 17307.238512,
+   "net_profit_wan": -48.161328000000005,
+   "distributable_wan": 10861.875374,
+   "unit_distributable": 0.2172,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2023Q2",
+   "revenue_wan": 7792.79409,
+   "net_profit_wan": 1245.280161,
+   "distributable_wan": 2938.568425,
+   "unit_distributable": 0.0588,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2023Q2",
+   "revenue_wan": 20168.815088,
+   "net_profit_wan": 2692.5648260000003,
+   "distributable_wan": 12530.415831,
+   "unit_distributable": 0.2506,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2023Q2",
+   "revenue_wan": 24304.450409999998,
+   "net_profit_wan": -84.678653,
+   "distributable_wan": 17506.780821,
+   "unit_distributable": 0.1751,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2023Q2",
+   "revenue_wan": 10851.830855,
+   "net_profit_wan": 2346.33177,
+   "distributable_wan": 7044.046815000001,
+   "unit_distributable": 0.0704,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q2",
+   "revenue_wan": 1206.098377,
+   "net_profit_wan": 597.836055,
+   "distributable_wan": 1368.965094,
+   "unit_distributable": 0.0684,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q2",
+   "revenue_wan": 7070.43285,
+   "net_profit_wan": 1616.989176,
+   "distributable_wan": 3625.8405840000005,
+   "unit_distributable": 0.0403,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2023Q2",
+   "revenue_wan": 26373.134307,
+   "net_profit_wan": 8348.77852,
+   "distributable_wan": 22930.412141999997,
+   "unit_distributable": 0.2866,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q2",
+   "revenue_wan": 10179.85708,
+   "net_profit_wan": 997.3480199999999,
+   "distributable_wan": 10500.633954,
+   "unit_distributable": 0.0542,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q2",
+   "revenue_wan": 1918.874598,
+   "net_profit_wan": 667.105297,
+   "distributable_wan": 1487.718965,
+   "unit_distributable": 0.0298,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2023Q2",
+   "revenue_wan": 9738.552172,
+   "net_profit_wan": 2361.1480579999998,
+   "distributable_wan": 5349.0540869999995,
+   "unit_distributable": 0.1337,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q2",
+   "revenue_wan": 1827.49792,
+   "net_profit_wan": 774.532027,
+   "distributable_wan": 1380.167492,
+   "unit_distributable": 0.0276,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q2",
+   "revenue_wan": 1945.660628,
+   "net_profit_wan": 78.698107,
+   "distributable_wan": 1615.9762289999999,
+   "unit_distributable": 0.0323,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q2",
+   "revenue_wan": 2739.325254,
+   "net_profit_wan": 1099.681075,
+   "distributable_wan": 2359.014933,
+   "unit_distributable": 0.0472,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2023Q2",
+   "revenue_wan": 11410.194497,
+   "net_profit_wan": 5802.604799000001,
+   "distributable_wan": 3906.258672,
+   "unit_distributable": 0.1302,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q2",
+   "revenue_wan": 2684.974126,
+   "net_profit_wan": 514.6860019999999,
+   "distributable_wan": 1790.6379399999998,
+   "unit_distributable": 0.0358,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q2",
+   "revenue_wan": 4630.223163000001,
+   "net_profit_wan": 377.38825,
+   "distributable_wan": 2115.937391,
+   "unit_distributable": 0.0235,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q3",
+   "revenue_wan": 5177.722571,
+   "net_profit_wan": 1976.0965670000003,
+   "distributable_wan": 3070.65703,
+   "unit_distributable": 0.0216,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q3",
+   "revenue_wan": 2369.666721,
+   "net_profit_wan": 679.5811679999999,
+   "distributable_wan": 1917.36595,
+   "unit_distributable": 0.0274,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q3",
+   "revenue_wan": 2664.318649,
+   "net_profit_wan": 244.729334,
+   "distributable_wan": 1529.768556,
+   "unit_distributable": 0.0306,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2023Q3",
+   "revenue_wan": 22784.662707,
+   "net_profit_wan": 8009.536974,
+   "distributable_wan": 17005.47291,
+   "unit_distributable": 0.2429,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2023Q3",
+   "revenue_wan": 6490.636901,
+   "net_profit_wan": 1412.4171210000002,
+   "distributable_wan": 4274.56048,
+   "unit_distributable": 0.1425,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q3",
+   "revenue_wan": 3596.548601,
+   "net_profit_wan": 1300.588692,
+   "distributable_wan": 2685.845832,
+   "unit_distributable": 0.0282,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2023Q3",
+   "revenue_wan": 65369.18681,
+   "net_profit_wan": 13708.245006000001,
+   "distributable_wan": 15320.112016,
+   "unit_distributable": 0.2553,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q3",
+   "revenue_wan": 1373.849474,
+   "net_profit_wan": 629.159246,
+   "distributable_wan": 1332.798914,
+   "unit_distributable": 0.0267,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2023Q3",
+   "revenue_wan": 11059.947406000001,
+   "net_profit_wan": 1861.8410079999999,
+   "distributable_wan": 1376.619375,
+   "unit_distributable": 0.1377,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q3",
+   "revenue_wan": 4784.09172,
+   "net_profit_wan": -18.857708,
+   "distributable_wan": 3153.1811789999997,
+   "unit_distributable": 0.0328,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2023Q3",
+   "revenue_wan": 21002.479526,
+   "net_profit_wan": 3215.155633,
+   "distributable_wan": 14831.548671999999,
+   "unit_distributable": 0.2966,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2023Q3",
+   "revenue_wan": 7953.627788,
+   "net_profit_wan": 1934.0336140000002,
+   "distributable_wan": 5322.07442,
+   "unit_distributable": 0.1064,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2023Q3",
+   "revenue_wan": 20461.768955,
+   "net_profit_wan": 4951.143151,
+   "distributable_wan": 13833.073253999999,
+   "unit_distributable": 0.2767,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2023Q3",
+   "revenue_wan": 25826.141845,
+   "net_profit_wan": 846.6370310000001,
+   "distributable_wan": 19026.557181,
+   "unit_distributable": 0.1903,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2023Q3",
+   "revenue_wan": 11813.001715999999,
+   "net_profit_wan": 2864.653536,
+   "distributable_wan": 7888.274292,
+   "unit_distributable": 0.0789,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2023Q3",
+   "revenue_wan": 2780.427697,
+   "net_profit_wan": 285.737078,
+   "distributable_wan": 1856.1617899999999,
+   "unit_distributable": 0.0309,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q3",
+   "revenue_wan": 1210.492214,
+   "net_profit_wan": 655.833935,
+   "distributable_wan": 565.148638,
+   "unit_distributable": 0.0283,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q3",
+   "revenue_wan": 7521.348131000001,
+   "net_profit_wan": 2295.128431,
+   "distributable_wan": 4800.079799,
+   "unit_distributable": 0.0533,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2023Q3",
+   "revenue_wan": 14942.627332,
+   "net_profit_wan": 2813.976639,
+   "distributable_wan": 20512.091143999998,
+   "unit_distributable": 0.2564,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q3",
+   "revenue_wan": 11674.648541,
+   "net_profit_wan": 492.90888099999995,
+   "distributable_wan": 8672.7663,
+   "unit_distributable": 0.0447,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q3",
+   "revenue_wan": 1927.4291030000002,
+   "net_profit_wan": 694.363249,
+   "distributable_wan": 1465.878575,
+   "unit_distributable": 0.0293,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2023Q3",
+   "revenue_wan": 11083.051509,
+   "net_profit_wan": 3828.562658,
+   "distributable_wan": 5345.720388000001,
+   "unit_distributable": 0.1336,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q3",
+   "revenue_wan": 1840.511657,
+   "net_profit_wan": 780.878153,
+   "distributable_wan": 1374.6118789999998,
+   "unit_distributable": 0.0275,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q3",
+   "revenue_wan": 1979.760635,
+   "net_profit_wan": 151.54918600000002,
+   "distributable_wan": 1435.148569,
+   "unit_distributable": 0.0287,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q3",
+   "revenue_wan": 2804.900905,
+   "net_profit_wan": 1600.663134,
+   "distributable_wan": 1982.9939190000002,
+   "unit_distributable": 0.0397,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2023Q3",
+   "revenue_wan": 10551.15512,
+   "net_profit_wan": 5291.73708,
+   "distributable_wan": 28271.706348000003,
+   "unit_distributable": 0.9424,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q3",
+   "revenue_wan": 2717.130062,
+   "net_profit_wan": 821.76462,
+   "distributable_wan": 2272.2071760000003,
+   "unit_distributable": 0.0454,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q3",
+   "revenue_wan": 4324.369659,
+   "net_profit_wan": 220.37856000000002,
+   "distributable_wan": 1855.049679,
+   "unit_distributable": 0.0206,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2023Q4",
+   "revenue_wan": 5600.808656,
+   "net_profit_wan": 2090.6529179999998,
+   "distributable_wan": 5010.336568,
+   "unit_distributable": 0.0353,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2023Q4",
+   "revenue_wan": 2415.733852,
+   "net_profit_wan": 552.012658,
+   "distributable_wan": 1923.2235699999999,
+   "unit_distributable": 0.0275,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2023Q4",
+   "revenue_wan": 2859.0398920000002,
+   "net_profit_wan": 445.301021,
+   "distributable_wan": 1494.4067539999999,
+   "unit_distributable": 0.0299,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2023Q4",
+   "revenue_wan": 19031.667984,
+   "net_profit_wan": 4436.8274759999995,
+   "distributable_wan": 11899.553279,
+   "unit_distributable": 0.17,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2023Q4",
+   "revenue_wan": 5692.849314,
+   "net_profit_wan": 694.23225,
+   "distributable_wan": 3922.4533030000002,
+   "unit_distributable": 0.1307,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2023Q4",
+   "revenue_wan": 3429.8767840000005,
+   "net_profit_wan": 956.206039,
+   "distributable_wan": 2289.151734,
+   "unit_distributable": 0.024,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2023Q4",
+   "revenue_wan": 36804.453216,
+   "net_profit_wan": -2321.068639,
+   "distributable_wan": 6187.047335,
+   "unit_distributable": 0.1031,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2023Q4",
+   "revenue_wan": 1362.972334,
+   "net_profit_wan": 583.304577,
+   "distributable_wan": 1081.86202,
+   "unit_distributable": 0.0216,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2023Q4",
+   "revenue_wan": 11609.881667,
+   "net_profit_wan": 805.743066,
+   "distributable_wan": 4433.722016,
+   "unit_distributable": 0.4434,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2023Q4",
+   "revenue_wan": 3585.180125,
+   "net_profit_wan": -551.580622,
+   "distributable_wan": 3345.8040140000003,
+   "unit_distributable": 0.0348,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2023Q4",
+   "revenue_wan": 18058.610538,
+   "net_profit_wan": -2200.3085929999997,
+   "distributable_wan": 5659.505242,
+   "unit_distributable": 0.1132,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2023Q4",
+   "revenue_wan": 7317.7048159999995,
+   "net_profit_wan": 148.074271,
+   "distributable_wan": 2252.459338,
+   "unit_distributable": 0.045,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2023Q4",
+   "revenue_wan": 7071.280057999999,
+   "net_profit_wan": 2754.156148,
+   "distributable_wan": 35621.772484,
+   "unit_distributable": 0.8905,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2023Q4",
+   "revenue_wan": 19090.043709,
+   "net_profit_wan": 518.680817,
+   "distributable_wan": 7908.176114,
+   "unit_distributable": 0.1582,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2023Q4",
+   "revenue_wan": 19944.452168,
+   "net_profit_wan": -9031.938243,
+   "distributable_wan": 18423.322756,
+   "unit_distributable": 0.1842,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2023Q4",
+   "revenue_wan": 11768.338271999999,
+   "net_profit_wan": 2488.5054,
+   "distributable_wan": 7763.635564,
+   "unit_distributable": 0.0776,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2023Q4",
+   "revenue_wan": 3106.6552070000002,
+   "net_profit_wan": 814.9111849999999,
+   "distributable_wan": 1882.106162,
+   "unit_distributable": 0.0314,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2023Q4",
+   "revenue_wan": 1273.383108,
+   "net_profit_wan": 523.948515,
+   "distributable_wan": 1165.847479,
+   "unit_distributable": 0.0583,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2023Q4",
+   "revenue_wan": 6751.406911,
+   "net_profit_wan": 994.594252,
+   "distributable_wan": 4852.959296,
+   "unit_distributable": 0.0539,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2023Q4",
+   "revenue_wan": 22562.865283000003,
+   "net_profit_wan": 9397.375524,
+   "distributable_wan": 21712.459143,
+   "unit_distributable": 0.2714,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2023Q4",
+   "revenue_wan": 12030.161984,
+   "net_profit_wan": 185.51989,
+   "distributable_wan": 9252.555653,
+   "unit_distributable": 0.0477,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2023Q4",
+   "revenue_wan": 1943.7548379999998,
+   "net_profit_wan": 579.931909,
+   "distributable_wan": 1377.429847,
+   "unit_distributable": 0.0275,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2023Q4",
+   "revenue_wan": 8907.910281,
+   "net_profit_wan": 210.926267,
+   "distributable_wan": 4277.760968,
+   "unit_distributable": 0.1069,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2023Q4",
+   "revenue_wan": 1828.843441,
+   "net_profit_wan": 776.208674,
+   "distributable_wan": 1378.710771,
+   "unit_distributable": 0.0276,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2023Q4",
+   "revenue_wan": 1989.254809,
+   "net_profit_wan": 123.01426299999999,
+   "distributable_wan": 1433.922622,
+   "unit_distributable": 0.0287,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2023Q4",
+   "revenue_wan": 2710.048394,
+   "net_profit_wan": 462.171454,
+   "distributable_wan": 1765.9694510000002,
+   "unit_distributable": 0.0353,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2023Q4",
+   "revenue_wan": 8827.450454,
+   "net_profit_wan": 3523.255203,
+   "distributable_wan": 656.845425,
+   "unit_distributable": 0.0219,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2023Q4",
+   "revenue_wan": 2691.957334,
+   "net_profit_wan": 1117.081422,
+   "distributable_wan": 1590.057126,
+   "unit_distributable": 0.0318,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2023Q4",
+   "revenue_wan": 3842.3649950000004,
+   "net_profit_wan": -583.607562,
+   "distributable_wan": 1779.3874640000001,
+   "unit_distributable": 0.0198,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q1",
+   "revenue_wan": 4969.846565,
+   "net_profit_wan": 1657.466466,
+   "distributable_wan": 2767.6192149999997,
+   "unit_distributable": 0.0195,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q1",
+   "revenue_wan": 2311.175788,
+   "net_profit_wan": 634.794731,
+   "distributable_wan": 1891.880506,
+   "unit_distributable": 0.027,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q1",
+   "revenue_wan": 2695.351431,
+   "net_profit_wan": 329.147764,
+   "distributable_wan": 1473.851922,
+   "unit_distributable": 0.0295,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2024Q1",
+   "revenue_wan": 18750.523856,
+   "net_profit_wan": 7040.761090000001,
+   "distributable_wan": 15110.764297999998,
+   "unit_distributable": 0.2159,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2024Q1",
+   "revenue_wan": 5828.2822670000005,
+   "net_profit_wan": 1129.55655,
+   "distributable_wan": 3398.7332189999997,
+   "unit_distributable": 0.1133,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q1",
+   "revenue_wan": 3405.8008299999997,
+   "net_profit_wan": 1151.37103,
+   "distributable_wan": 2526.61182,
+   "unit_distributable": 0.0265,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2024Q1",
+   "revenue_wan": 28121.235991,
+   "net_profit_wan": 3209.184748,
+   "distributable_wan": 5127.992262,
+   "unit_distributable": 0.0855,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q1",
+   "revenue_wan": 1362.738573,
+   "net_profit_wan": 608.849652,
+   "distributable_wan": 1340.879718,
+   "unit_distributable": 0.0268,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q1",
+   "revenue_wan": 10074.338557,
+   "net_profit_wan": -426.584424,
+   "distributable_wan": 5122.189182,
+   "unit_distributable": 0.0512,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2024Q1",
+   "revenue_wan": 8943.647851,
+   "net_profit_wan": 533.809432,
+   "distributable_wan": 1265.335533,
+   "unit_distributable": 0.1265,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q1",
+   "revenue_wan": 4386.380379,
+   "net_profit_wan": -136.941549,
+   "distributable_wan": 3283.328269,
+   "unit_distributable": 0.0342,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2024Q1",
+   "revenue_wan": 18707.640054,
+   "net_profit_wan": 3012.9394,
+   "distributable_wan": 14499.523497,
+   "unit_distributable": 0.29,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2024Q1",
+   "revenue_wan": 7233.191027,
+   "net_profit_wan": 913.5849619999999,
+   "distributable_wan": 4169.440908,
+   "unit_distributable": 0.0834,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2024Q1",
+   "revenue_wan": 7126.680475,
+   "net_profit_wan": 1187.597374,
+   "distributable_wan": 4904.752727,
+   "unit_distributable": 0.1226,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2024Q1",
+   "revenue_wan": 18834.883256,
+   "net_profit_wan": 3104.36454,
+   "distributable_wan": 12406.892477,
+   "unit_distributable": 0.2481,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2024Q1",
+   "revenue_wan": 21594.058033,
+   "net_profit_wan": -2548.096388,
+   "distributable_wan": 12942.316313,
+   "unit_distributable": 0.1294,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q1",
+   "revenue_wan": 1964.904225,
+   "net_profit_wan": 663.934971,
+   "distributable_wan": 1211.323977,
+   "unit_distributable": 0.0303,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q1",
+   "revenue_wan": 1462.1345800000001,
+   "net_profit_wan": 281.876021,
+   "distributable_wan": 887.278622,
+   "unit_distributable": 0.0222,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2024Q1",
+   "revenue_wan": 10576.764315,
+   "net_profit_wan": 1662.279842,
+   "distributable_wan": 7200.342645999999,
+   "unit_distributable": 0.072,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q1",
+   "revenue_wan": 2797.982485,
+   "net_profit_wan": 285.649374,
+   "distributable_wan": 1952.1103420000002,
+   "unit_distributable": 0.0325,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q1",
+   "revenue_wan": 1098.851783,
+   "net_profit_wan": 538.777542,
+   "distributable_wan": 773.78305,
+   "unit_distributable": 0.0387,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2024Q1",
+   "revenue_wan": 6960.675395,
+   "net_profit_wan": 2013.0766800000001,
+   "distributable_wan": 3873.270619,
+   "unit_distributable": 0.043,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2024Q1",
+   "revenue_wan": 30236.51257,
+   "net_profit_wan": 13006.594767,
+   "distributable_wan": 13649.037656,
+   "unit_distributable": 0.1706,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q1",
+   "revenue_wan": 4574.334911999999,
+   "net_profit_wan": 2049.621266,
+   "distributable_wan": 3276.507734,
+   "unit_distributable": 0.0328,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q1",
+   "revenue_wan": 11943.471454999999,
+   "net_profit_wan": 908.749374,
+   "distributable_wan": 8884.012268,
+   "unit_distributable": 0.0458,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q1",
+   "revenue_wan": 1954.0358780000001,
+   "net_profit_wan": 705.441364,
+   "distributable_wan": 1425.126554,
+   "unit_distributable": 0.0285,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2024Q1",
+   "revenue_wan": 8706.40249,
+   "net_profit_wan": 1726.246684,
+   "distributable_wan": 7026.313896,
+   "unit_distributable": 0.1757,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q1",
+   "revenue_wan": 1820.775373,
+   "net_profit_wan": 783.279422,
+   "distributable_wan": 1343.941026,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q1",
+   "revenue_wan": 1961.752666,
+   "net_profit_wan": 152.917436,
+   "distributable_wan": 1220.24938,
+   "unit_distributable": 0.0244,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q1",
+   "revenue_wan": 2629.148207,
+   "net_profit_wan": 1314.691963,
+   "distributable_wan": 2032.186989,
+   "unit_distributable": 0.0406,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2024Q1",
+   "revenue_wan": 9380.649793999999,
+   "net_profit_wan": 4015.0420619999995,
+   "distributable_wan": 15838.096684999999,
+   "unit_distributable": 0.5279,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2024Q1",
+   "revenue_wan": 2645.575641,
+   "net_profit_wan": 683.82655,
+   "distributable_wan": 2003.744295,
+   "unit_distributable": 0.0401,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2024Q1",
+   "revenue_wan": 3633.003225,
+   "net_profit_wan": -150.215887,
+   "distributable_wan": 1064.159586,
+   "unit_distributable": 0.0118,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q2",
+   "revenue_wan": 5326.293479,
+   "net_profit_wan": 1776.755872,
+   "distributable_wan": 3408.560575,
+   "unit_distributable": 0.024,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q2",
+   "revenue_wan": 2312.689469,
+   "net_profit_wan": 539.743413,
+   "distributable_wan": 1899.3189690000002,
+   "unit_distributable": 0.0271,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q2",
+   "revenue_wan": 2659.628769,
+   "net_profit_wan": 242.663441,
+   "distributable_wan": 1399.38733,
+   "unit_distributable": 0.028,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2024Q2",
+   "revenue_wan": 16901.785956,
+   "net_profit_wan": 4940.179664,
+   "distributable_wan": 10648.833837999999,
+   "unit_distributable": 0.1521,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2024Q2",
+   "revenue_wan": 5661.3757479999995,
+   "net_profit_wan": 1186.286653,
+   "distributable_wan": 3149.88301,
+   "unit_distributable": 0.105,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q2",
+   "revenue_wan": 3329.8357920000003,
+   "net_profit_wan": 1034.040131,
+   "distributable_wan": 2258.280156,
+   "unit_distributable": 0.0237,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2024Q2",
+   "revenue_wan": 41549.110899,
+   "net_profit_wan": 3998.72649,
+   "distributable_wan": 9880.467690000001,
+   "unit_distributable": 0.1647,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q2",
+   "revenue_wan": 1375.629614,
+   "net_profit_wan": 626.6537900000001,
+   "distributable_wan": 1203.43931,
+   "unit_distributable": 0.0241,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q2",
+   "revenue_wan": 17374.081137999998,
+   "net_profit_wan": 1074.415059,
+   "distributable_wan": 8666.158744,
+   "unit_distributable": 0.0867,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q2",
+   "revenue_wan": 7247.904539,
+   "net_profit_wan": 464.95750499999997,
+   "distributable_wan": 3680.986594,
+   "unit_distributable": 0.0368,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2024Q2",
+   "revenue_wan": 10580.726947,
+   "net_profit_wan": 1791.236659,
+   "distributable_wan": 2116.445182,
+   "unit_distributable": 0.2116,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q2",
+   "revenue_wan": 4339.350450999999,
+   "net_profit_wan": -492.77298499999995,
+   "distributable_wan": 2941.025046,
+   "unit_distributable": 0.0306,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2024Q2",
+   "revenue_wan": 17237.224445,
+   "net_profit_wan": 1568.482497,
+   "distributable_wan": 6893.163193,
+   "unit_distributable": 0.1379,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2024Q2",
+   "revenue_wan": 7706.903225,
+   "net_profit_wan": 1533.7202439999999,
+   "distributable_wan": 2820.2755829999996,
+   "unit_distributable": 0.0564,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2024Q2",
+   "revenue_wan": 7454.033897,
+   "net_profit_wan": 1236.817951,
+   "distributable_wan": 4776.983688,
+   "unit_distributable": 0.1194,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2024Q2",
+   "revenue_wan": 19154.032091,
+   "net_profit_wan": 3825.2183229999996,
+   "distributable_wan": 11538.5825,
+   "unit_distributable": 0.2308,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2024Q2",
+   "revenue_wan": 19371.25646,
+   "net_profit_wan": -4344.692937,
+   "distributable_wan": 16310.62157,
+   "unit_distributable": 0.1631,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q2",
+   "revenue_wan": 2967.566128,
+   "net_profit_wan": 891.758694,
+   "distributable_wan": 1625.159084,
+   "unit_distributable": 0.0406,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q2",
+   "revenue_wan": 2321.684483,
+   "net_profit_wan": 379.120384,
+   "distributable_wan": 1330.3698869999998,
+   "unit_distributable": 0.0333,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2024Q2",
+   "revenue_wan": 9682.812456,
+   "net_profit_wan": 1098.553579,
+   "distributable_wan": 6084.843803,
+   "unit_distributable": 0.0608,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q2",
+   "revenue_wan": 2777.199175,
+   "net_profit_wan": 494.78035700000004,
+   "distributable_wan": 2010.032865,
+   "unit_distributable": 0.0335,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q2",
+   "revenue_wan": 1203.775341,
+   "net_profit_wan": 614.60627,
+   "distributable_wan": 885.138172,
+   "unit_distributable": 0.0443,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508026",
+   "period": "2024Q2",
+   "revenue_wan": null,
+   "net_profit_wan": null,
+   "distributable_wan": null,
+   "unit_distributable": null,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2024Q2",
+   "revenue_wan": 6707.3165770000005,
+   "net_profit_wan": 1989.1184629999998,
+   "distributable_wan": 3550.3620840000003,
+   "unit_distributable": 0.0394,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2024Q2",
+   "revenue_wan": 17354.150388,
+   "net_profit_wan": 2815.464336,
+   "distributable_wan": -4212.140186,
+   "unit_distributable": -0.0527,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q2",
+   "revenue_wan": 4343.197357999999,
+   "net_profit_wan": 1869.670507,
+   "distributable_wan": 3065.8630829999997,
+   "unit_distributable": 0.0307,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508033",
+   "period": "2024Q2",
+   "revenue_wan": 8881.353808,
+   "net_profit_wan": 1051.290323,
+   "distributable_wan": 3879.67748,
+   "unit_distributable": 0.1293,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q2",
+   "revenue_wan": 11727.604478,
+   "net_profit_wan": 487.4277,
+   "distributable_wan": 9004.369289,
+   "unit_distributable": 0.0465,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q2",
+   "revenue_wan": 1964.975341,
+   "net_profit_wan": 692.700454,
+   "distributable_wan": 1484.91985,
+   "unit_distributable": 0.0297,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2024Q2",
+   "revenue_wan": 8944.206288,
+   "net_profit_wan": 1575.083529,
+   "distributable_wan": 5716.176143,
+   "unit_distributable": 0.1429,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q2",
+   "revenue_wan": 1786.3374420000002,
+   "net_profit_wan": 832.035012,
+   "distributable_wan": 1338.650407,
+   "unit_distributable": 0.0268,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q2",
+   "revenue_wan": 1969.673482,
+   "net_profit_wan": 264.18118,
+   "distributable_wan": 1220.502498,
+   "unit_distributable": 0.0244,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q2",
+   "revenue_wan": 2841.481884,
+   "net_profit_wan": 1373.943042,
+   "distributable_wan": 2153.516091,
+   "unit_distributable": 0.0431,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2024Q2",
+   "revenue_wan": 13774.950015999999,
+   "net_profit_wan": 8115.23942,
+   "distributable_wan": 4496.719448,
+   "unit_distributable": 0.1499,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2024Q2",
+   "revenue_wan": 2654.5374079999997,
+   "net_profit_wan": 731.6627129999999,
+   "distributable_wan": 2014.317384,
+   "unit_distributable": 0.0403,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2024Q2",
+   "revenue_wan": 3669.604307,
+   "net_profit_wan": -149.68418300000002,
+   "distributable_wan": 1347.9564990000001,
+   "unit_distributable": 0.015,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q3",
+   "revenue_wan": 5258.463416,
+   "net_profit_wan": 1906.715679,
+   "distributable_wan": 3680.640139,
+   "unit_distributable": 0.0259,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q3",
+   "revenue_wan": 2336.249766,
+   "net_profit_wan": 646.8975320000001,
+   "distributable_wan": 1880.876386,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q3",
+   "revenue_wan": 2409.117139,
+   "net_profit_wan": 69.566511,
+   "distributable_wan": 1423.396348,
+   "unit_distributable": 0.0285,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2024Q3",
+   "revenue_wan": 20958.508005,
+   "net_profit_wan": 7496.249847,
+   "distributable_wan": 17271.714174,
+   "unit_distributable": 0.2467,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2024Q3",
+   "revenue_wan": 6015.970278,
+   "net_profit_wan": 1100.018882,
+   "distributable_wan": 3786.7532979999996,
+   "unit_distributable": 0.1262,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q3",
+   "revenue_wan": 3195.112803,
+   "net_profit_wan": 947.9408609999999,
+   "distributable_wan": 2426.1215039999997,
+   "unit_distributable": 0.0254,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180302",
+   "period": "2024Q3",
+   "revenue_wan": 2798.0861609999997,
+   "net_profit_wan": 506.949251,
+   "distributable_wan": 1855.172459,
+   "unit_distributable": 0.0309,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2024Q3",
+   "revenue_wan": 52661.68176,
+   "net_profit_wan": 8815.464586,
+   "distributable_wan": 14345.293778,
+   "unit_distributable": 0.2391,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q3",
+   "revenue_wan": 1367.064055,
+   "net_profit_wan": 608.115562,
+   "distributable_wan": 1191.376458,
+   "unit_distributable": 0.0238,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q3",
+   "revenue_wan": 18659.781155,
+   "net_profit_wan": 2041.264074,
+   "distributable_wan": 8878.498962,
+   "unit_distributable": 0.0888,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q3",
+   "revenue_wan": 8549.774549,
+   "net_profit_wan": 401.430272,
+   "distributable_wan": 4280.180727,
+   "unit_distributable": 0.0428,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2024Q3",
+   "revenue_wan": 9316.792556,
+   "net_profit_wan": 1051.4736970000001,
+   "distributable_wan": 778.608226,
+   "unit_distributable": 0.0779,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q3",
+   "revenue_wan": 3397.158958,
+   "net_profit_wan": -1313.984837,
+   "distributable_wan": 3061.265802,
+   "unit_distributable": 0.0319,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2024Q3",
+   "revenue_wan": 19924.197124000002,
+   "net_profit_wan": 923.5352640000001,
+   "distributable_wan": 12776.637861,
+   "unit_distributable": 0.2555,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508002",
+   "period": "2024Q3",
+   "revenue_wan": 5271.9431700000005,
+   "net_profit_wan": 589.65157,
+   "distributable_wan": 2965.6953719999997,
+   "unit_distributable": 0.0297,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2024Q3",
+   "revenue_wan": 8200.754511,
+   "net_profit_wan": 2362.51592,
+   "distributable_wan": 3781.151583,
+   "unit_distributable": 0.0756,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2024Q3",
+   "revenue_wan": 8220.571146,
+   "net_profit_wan": 3095.452308,
+   "distributable_wan": 4961.210309,
+   "unit_distributable": 0.124,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2024Q3",
+   "revenue_wan": 19567.902379,
+   "net_profit_wan": 4369.869517,
+   "distributable_wan": 14454.794079,
+   "unit_distributable": 0.2891,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2024Q3",
+   "revenue_wan": 21578.759408,
+   "net_profit_wan": -2141.680362,
+   "distributable_wan": 18345.255899,
+   "unit_distributable": 0.1835,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q3",
+   "revenue_wan": 2948.311824,
+   "net_profit_wan": 1030.251221,
+   "distributable_wan": 1684.7306620000002,
+   "unit_distributable": 0.0421,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508015",
+   "period": "2024Q3",
+   "revenue_wan": 2630.24747,
+   "net_profit_wan": 591.067317,
+   "distributable_wan": 4006.3153450000004,
+   "unit_distributable": 0.2003,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q3",
+   "revenue_wan": 2315.265908,
+   "net_profit_wan": 399.006982,
+   "distributable_wan": 1358.515139,
+   "unit_distributable": 0.034,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2024Q3",
+   "revenue_wan": 11549.214696,
+   "net_profit_wan": 2082.221999,
+   "distributable_wan": 7839.851637000001,
+   "unit_distributable": 0.0784,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q3",
+   "revenue_wan": 2652.94363,
+   "net_profit_wan": 228.84862999999999,
+   "distributable_wan": 1916.027628,
+   "unit_distributable": 0.0319,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q3",
+   "revenue_wan": 1136.475309,
+   "net_profit_wan": 524.369278,
+   "distributable_wan": 1065.122464,
+   "unit_distributable": 0.0533,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508026",
+   "period": "2024Q3",
+   "revenue_wan": 3207.9535170000004,
+   "net_profit_wan": 642.060577,
+   "distributable_wan": 2369.543998,
+   "unit_distributable": 0.0592,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2024Q3",
+   "revenue_wan": 6490.783495000001,
+   "net_profit_wan": 1471.289426,
+   "distributable_wan": 3703.0892670000003,
+   "unit_distributable": 0.0411,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2024Q3",
+   "revenue_wan": 20669.621016999998,
+   "net_profit_wan": 5788.249468,
+   "distributable_wan": 9623.29132,
+   "unit_distributable": 0.1203,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q3",
+   "revenue_wan": 4404.991448,
+   "net_profit_wan": 1953.869414,
+   "distributable_wan": 3266.7369489999996,
+   "unit_distributable": 0.0327,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508033",
+   "period": "2024Q3",
+   "revenue_wan": 11191.529883,
+   "net_profit_wan": 7350.234528,
+   "distributable_wan": 6353.758347999999,
+   "unit_distributable": 0.2118,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q3",
+   "revenue_wan": 10819.524226000001,
+   "net_profit_wan": -133.908106,
+   "distributable_wan": 8825.908311,
+   "unit_distributable": 0.0455,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q3",
+   "revenue_wan": 2000.773227,
+   "net_profit_wan": 730.79225,
+   "distributable_wan": 1464.572717,
+   "unit_distributable": 0.0293,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2024Q3",
+   "revenue_wan": 9527.198551000001,
+   "net_profit_wan": 2724.616968,
+   "distributable_wan": 6211.984732,
+   "unit_distributable": 0.1553,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q3",
+   "revenue_wan": 1803.448234,
+   "net_profit_wan": 838.345606,
+   "distributable_wan": 1346.854226,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q3",
+   "revenue_wan": 1997.950882,
+   "net_profit_wan": 300.68383,
+   "distributable_wan": 1231.850966,
+   "unit_distributable": 0.0246,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508086",
+   "period": "2024Q3",
+   "revenue_wan": 15502.822318999999,
+   "net_profit_wan": 2483.918533,
+   "distributable_wan": 12844.608846,
+   "unit_distributable": 0.1284,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q3",
+   "revenue_wan": 3038.73522,
+   "net_profit_wan": 1458.389715,
+   "distributable_wan": 1922.954775,
+   "unit_distributable": 0.0385,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508089",
+   "period": "2024Q3",
+   "revenue_wan": 4886.09836,
+   "net_profit_wan": 2614.802795,
+   "distributable_wan": 2128.859936,
+   "unit_distributable": 0.071,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2024Q3",
+   "revenue_wan": 9845.947453,
+   "net_profit_wan": 3873.883535,
+   "distributable_wan": 14183.350627000002,
+   "unit_distributable": 0.4728,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2024Q3",
+   "revenue_wan": 2702.6450370000002,
+   "net_profit_wan": 694.6184,
+   "distributable_wan": 2387.1606890000003,
+   "unit_distributable": 0.0477,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2024Q3",
+   "revenue_wan": 3621.0446060000004,
+   "net_profit_wan": -192.028001,
+   "distributable_wan": 1122.847433,
+   "unit_distributable": 0.0125,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2024Q4",
+   "revenue_wan": 5274.61456,
+   "net_profit_wan": 1697.6977149999998,
+   "distributable_wan": 4305.979265999999,
+   "unit_distributable": 0.0303,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2024Q4",
+   "revenue_wan": 2238.350532,
+   "net_profit_wan": 477.39216799999997,
+   "distributable_wan": 1893.317198,
+   "unit_distributable": 0.027,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2024Q4",
+   "revenue_wan": 2733.201626,
+   "net_profit_wan": -68.886545,
+   "distributable_wan": 1417.5142560000002,
+   "unit_distributable": 0.0284,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180105",
+   "period": "2024Q4",
+   "revenue_wan": 3261.269851,
+   "net_profit_wan": 168.600437,
+   "distributable_wan": 2652.172489,
+   "unit_distributable": 0.0332,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2024Q4",
+   "revenue_wan": 18319.885295,
+   "net_profit_wan": 3512.4489380000005,
+   "distributable_wan": 9601.059471999999,
+   "unit_distributable": 0.1372,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2024Q4",
+   "revenue_wan": 5333.372707,
+   "net_profit_wan": -81.824139,
+   "distributable_wan": 2460.406454,
+   "unit_distributable": 0.082,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180203",
+   "period": "2024Q4",
+   "revenue_wan": 8678.018294,
+   "net_profit_wan": 1743.181755,
+   "distributable_wan": 23534.742899,
+   "unit_distributable": 0.4707,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2024Q4",
+   "revenue_wan": 3110.1903829999997,
+   "net_profit_wan": 981.47054,
+   "distributable_wan": 2266.471916,
+   "unit_distributable": 0.0238,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180302",
+   "period": "2024Q4",
+   "revenue_wan": 2989.5053940000003,
+   "net_profit_wan": 850.4353140000001,
+   "distributable_wan": 1857.0338359999998,
+   "unit_distributable": 0.031,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180303",
+   "period": "2024Q4",
+   "revenue_wan": 2604.811612,
+   "net_profit_wan": 264.627568,
+   "distributable_wan": 1345.7105080000001,
+   "unit_distributable": 0.0449,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2024Q4",
+   "revenue_wan": 34099.175069,
+   "net_profit_wan": -2429.510527,
+   "distributable_wan": 6206.62021,
+   "unit_distributable": 0.1034,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2024Q4",
+   "revenue_wan": 1332.8325009999999,
+   "net_profit_wan": 560.7903110000001,
+   "distributable_wan": 1202.394733,
+   "unit_distributable": 0.024,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180502",
+   "period": "2024Q4",
+   "revenue_wan": 2068.642126,
+   "net_profit_wan": -146.60146699999999,
+   "distributable_wan": 1462.512717,
+   "unit_distributable": 0.0293,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180601",
+   "period": "2024Q4",
+   "revenue_wan": 18090.393157,
+   "net_profit_wan": -1501.267818,
+   "distributable_wan": 8867.740245,
+   "unit_distributable": 0.0887,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180602",
+   "period": "2024Q4",
+   "revenue_wan": 8915.570593,
+   "net_profit_wan": 569.927458,
+   "distributable_wan": 4488.645668,
+   "unit_distributable": 0.0449,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180603",
+   "period": "2024Q4",
+   "revenue_wan": 8606.178753,
+   "net_profit_wan": -304.14686,
+   "distributable_wan": 4529.085568,
+   "unit_distributable": 0.0453,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180701",
+   "period": "2024Q4",
+   "revenue_wan": 5379.6279030000005,
+   "net_profit_wan": 1613.8863199999998,
+   "distributable_wan": 6060.6964259999995,
+   "unit_distributable": 0.101,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2024Q4",
+   "revenue_wan": 9273.705439,
+   "net_profit_wan": 773.939797,
+   "distributable_wan": 3384.692445,
+   "unit_distributable": 0.3385,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2024Q4",
+   "revenue_wan": 4150.144961999999,
+   "net_profit_wan": -898.6491560000001,
+   "distributable_wan": 2716.91501,
+   "unit_distributable": 0.0283,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2024Q4",
+   "revenue_wan": 18360.714925,
+   "net_profit_wan": -1814.209834,
+   "distributable_wan": 8818.8407,
+   "unit_distributable": 0.1764,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508002",
+   "period": "2024Q4",
+   "revenue_wan": 5124.700557,
+   "net_profit_wan": 408.801056,
+   "distributable_wan": 3324.4999620000003,
+   "unit_distributable": 0.0332,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508003",
+   "period": "2024Q4",
+   "revenue_wan": 2747.112414,
+   "net_profit_wan": 83.831094,
+   "distributable_wan": 1656.501447,
+   "unit_distributable": 0.033,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508005",
+   "period": "2024Q4",
+   "revenue_wan": 7039.432105,
+   "net_profit_wan": 2092.2044,
+   "distributable_wan": 2951.308891,
+   "unit_distributable": 0.0369,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2024Q4",
+   "revenue_wan": 7207.782653,
+   "net_profit_wan": -112.59099199999999,
+   "distributable_wan": 2080.853352,
+   "unit_distributable": 0.0416,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2024Q4",
+   "revenue_wan": 7929.64831,
+   "net_profit_wan": 2079.156688,
+   "distributable_wan": 4228.802476,
+   "unit_distributable": 0.1057,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2024Q4",
+   "revenue_wan": 17388.130579,
+   "net_profit_wan": 498.55324900000005,
+   "distributable_wan": 9319.03864,
+   "unit_distributable": 0.1864,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2024Q4",
+   "revenue_wan": 20127.410021,
+   "net_profit_wan": -9841.08819,
+   "distributable_wan": 12436.423387,
+   "unit_distributable": 0.1244,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508011",
+   "period": "2024Q4",
+   "revenue_wan": 2958.6432600000003,
+   "net_profit_wan": 1950.756218,
+   "distributable_wan": 1675.861766,
+   "unit_distributable": 0.0419,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508015",
+   "period": "2024Q4",
+   "revenue_wan": 4643.528364,
+   "net_profit_wan": 1683.21707,
+   "distributable_wan": 2520.758415,
+   "unit_distributable": 0.126,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508017",
+   "period": "2024Q4",
+   "revenue_wan": 2323.342679,
+   "net_profit_wan": 348.36040499999996,
+   "distributable_wan": 1383.051852,
+   "unit_distributable": 0.0346,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2024Q4",
+   "revenue_wan": 11104.34812,
+   "net_profit_wan": 1195.8275310000001,
+   "distributable_wan": 5351.872716,
+   "unit_distributable": 0.0535,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2024Q4",
+   "revenue_wan": 2534.1533649999997,
+   "net_profit_wan": 507.98870800000003,
+   "distributable_wan": 1539.7475,
+   "unit_distributable": 0.0257,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2024Q4",
+   "revenue_wan": 1108.014558,
+   "net_profit_wan": 554.192321,
+   "distributable_wan": 619.069516,
+   "unit_distributable": 0.031,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508022",
+   "period": "2024Q4",
+   "revenue_wan": 3219.262991,
+   "net_profit_wan": 840.1735679999999,
+   "distributable_wan": 1729.417498,
+   "unit_distributable": 0.0346,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508026",
+   "period": "2024Q4",
+   "revenue_wan": 2761.045694,
+   "net_profit_wan": 513.436664,
+   "distributable_wan": 3634.934999,
+   "unit_distributable": 0.0909,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2024Q4",
+   "revenue_wan": 6350.71852,
+   "net_profit_wan": 573.3423,
+   "distributable_wan": 3659.7592219999997,
+   "unit_distributable": 0.0407,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2024Q4",
+   "revenue_wan": 22049.413291999997,
+   "net_profit_wan": 7279.340097,
+   "distributable_wan": 23769.201756,
+   "unit_distributable": 0.2971,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508031",
+   "period": "2024Q4",
+   "revenue_wan": 4677.708421,
+   "net_profit_wan": 2174.861458,
+   "distributable_wan": 3457.668192,
+   "unit_distributable": 0.0346,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508033",
+   "period": "2024Q4",
+   "revenue_wan": 9112.625668,
+   "net_profit_wan": -2702.823005,
+   "distributable_wan": 4785.237962,
+   "unit_distributable": 0.1595,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2024Q4",
+   "revenue_wan": 11078.625759999999,
+   "net_profit_wan": 148.714894,
+   "distributable_wan": 9279.044967,
+   "unit_distributable": 0.0479,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2024Q4",
+   "revenue_wan": 2009.993947,
+   "net_profit_wan": 630.014313,
+   "distributable_wan": 1439.056489,
+   "unit_distributable": 0.0288,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2024Q4",
+   "revenue_wan": 9887.085597,
+   "net_profit_wan": -297.730229,
+   "distributable_wan": 3824.6057560000004,
+   "unit_distributable": 0.0956,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2024Q4",
+   "revenue_wan": 1816.672155,
+   "net_profit_wan": 899.061079,
+   "distributable_wan": 1355.414769,
+   "unit_distributable": 0.0271,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508069",
+   "period": "2024Q4",
+   "revenue_wan": 9817.72409,
+   "net_profit_wan": 2213.414547,
+   "distributable_wan": 17676.110467,
+   "unit_distributable": 0.3535,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2024Q4",
+   "revenue_wan": 1978.3081829999999,
+   "net_profit_wan": 250.40347799999998,
+   "distributable_wan": 1231.850801,
+   "unit_distributable": 0.0246,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508086",
+   "period": "2024Q4",
+   "revenue_wan": 13855.212687000001,
+   "net_profit_wan": 1957.549271,
+   "distributable_wan": 11651.539977,
+   "unit_distributable": 0.1165,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2024Q4",
+   "revenue_wan": 2753.3443239999997,
+   "net_profit_wan": 1113.699165,
+   "distributable_wan": 1648.072746,
+   "unit_distributable": 0.033,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508089",
+   "period": "2024Q4",
+   "revenue_wan": 3899.094816,
+   "net_profit_wan": 1777.762664,
+   "distributable_wan": 2407.990792,
+   "unit_distributable": 0.0803,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2024Q4",
+   "revenue_wan": 6105.915245,
+   "net_profit_wan": 1285.91885,
+   "distributable_wan": 303.145267,
+   "unit_distributable": 0.0101,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2024Q4",
+   "revenue_wan": 2712.704934,
+   "net_profit_wan": 608.411479,
+   "distributable_wan": 1497.554267,
+   "unit_distributable": 0.03,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2024Q4",
+   "revenue_wan": 2914.120735,
+   "net_profit_wan": -897.716667,
+   "distributable_wan": 713.653189,
+   "unit_distributable": 0.0079,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2025Q1",
+   "revenue_wan": 4609.193238,
+   "net_profit_wan": 1327.0719869999998,
+   "distributable_wan": 2378.726395,
+   "unit_distributable": 0.0167,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180102",
+   "period": "2025Q1",
+   "revenue_wan": 2193.996082,
+   "net_profit_wan": 559.415,
+   "distributable_wan": 1709.4460649999999,
+   "unit_distributable": 0.0244,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180103",
+   "period": "2025Q1",
+   "revenue_wan": 2300.751989,
+   "net_profit_wan": 126.699277,
+   "distributable_wan": 1344.693333,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180105",
+   "period": "2025Q1",
+   "revenue_wan": 2735.005239,
+   "net_profit_wan": 125.05363799999999,
+   "distributable_wan": 2388.942708,
+   "unit_distributable": 0.0299,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180106",
+   "period": "2025Q1",
+   "revenue_wan": 2375.140039,
+   "net_profit_wan": 148.49043899999998,
+   "distributable_wan": 1646.20403,
+   "unit_distributable": 0.0412,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180201",
+   "period": "2025Q1",
+   "revenue_wan": 18354.445154,
+   "net_profit_wan": 6396.864305,
+   "distributable_wan": 15103.636389,
+   "unit_distributable": 0.2158,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180202",
+   "period": "2025Q1",
+   "revenue_wan": 6008.095989,
+   "net_profit_wan": 1123.448343,
+   "distributable_wan": 2691.947298,
+   "unit_distributable": 0.0897,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180203",
+   "period": "2025Q1",
+   "revenue_wan": 10909.099857,
+   "net_profit_wan": 2370.519399,
+   "distributable_wan": 7951.285218999999,
+   "unit_distributable": 0.159,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180301",
+   "period": "2025Q1",
+   "revenue_wan": 3137.6745730000002,
+   "net_profit_wan": 946.384876,
+   "distributable_wan": 2360.138835,
+   "unit_distributable": 0.0247,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180302",
+   "period": "2025Q1",
+   "revenue_wan": 2990.129421,
+   "net_profit_wan": 864.612902,
+   "distributable_wan": 1823.49863,
+   "unit_distributable": 0.0304,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180303",
+   "period": "2025Q1",
+   "revenue_wan": 2221.9136,
+   "net_profit_wan": 248.785164,
+   "distributable_wan": 1247.433449,
+   "unit_distributable": 0.0416,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180401",
+   "period": "2025Q1",
+   "revenue_wan": 23233.065914,
+   "net_profit_wan": 148.719412,
+   "distributable_wan": 4826.564849,
+   "unit_distributable": 0.0804,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180402",
+   "period": "2025Q1",
+   "revenue_wan": 3457.300227,
+   "net_profit_wan": 1203.480726,
+   "distributable_wan": 3582.2975530000003,
+   "unit_distributable": 0.1791,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180501",
+   "period": "2025Q1",
+   "revenue_wan": 1346.213643,
+   "net_profit_wan": 498.830983,
+   "distributable_wan": 1153.189842,
+   "unit_distributable": 0.0231,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180502",
+   "period": "2025Q1",
+   "revenue_wan": 1791.034407,
+   "net_profit_wan": -146.204383,
+   "distributable_wan": 1239.883233,
+   "unit_distributable": 0.0248,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180601",
+   "period": "2025Q1",
+   "revenue_wan": 18363.629359,
+   "net_profit_wan": 900.143733,
+   "distributable_wan": 8825.917937,
+   "unit_distributable": 0.0883,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180602",
+   "period": "2025Q1",
+   "revenue_wan": 8701.665269,
+   "net_profit_wan": 638.6794,
+   "distributable_wan": 4305.108641,
+   "unit_distributable": 0.0431,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180603",
+   "period": "2025Q1",
+   "revenue_wan": 8469.906678,
+   "net_profit_wan": 986.748833,
+   "distributable_wan": 4473.759446,
+   "unit_distributable": 0.0447,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180605",
+   "period": "2025Q1",
+   "revenue_wan": 2599.797693,
+   "net_profit_wan": 830.588703,
+   "distributable_wan": 5570.961415999999,
+   "unit_distributable": 0.1114,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180701",
+   "period": "2025Q1",
+   "revenue_wan": 4455.170081,
+   "net_profit_wan": 1875.076533,
+   "distributable_wan": 2720.635466,
+   "unit_distributable": 0.0453,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180801",
+   "period": "2025Q1",
+   "revenue_wan": 8908.192959,
+   "net_profit_wan": 1147.961364,
+   "distributable_wan": 1364.1406140000001,
+   "unit_distributable": 0.14,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508000",
+   "period": "2025Q1",
+   "revenue_wan": 3611.3424590000004,
+   "net_profit_wan": -933.3452130000001,
+   "distributable_wan": 3219.5466969999998,
+   "unit_distributable": 0.0335,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508001",
+   "period": "2025Q1",
+   "revenue_wan": 18551.629525,
+   "net_profit_wan": 2462.1952760000004,
+   "distributable_wan": 13996.320117,
+   "unit_distributable": 0.2799,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508002",
+   "period": "2025Q1",
+   "revenue_wan": 6290.474911,
+   "net_profit_wan": 1075.43334,
+   "distributable_wan": 3997.224472,
+   "unit_distributable": 0.04,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508003",
+   "period": "2025Q1",
+   "revenue_wan": 2831.495243,
+   "net_profit_wan": -88.40355600000001,
+   "distributable_wan": 2010.7444469999998,
+   "unit_distributable": 0.0402,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508005",
+   "period": "2025Q1",
+   "revenue_wan": 7219.770368,
+   "net_profit_wan": 2201.208612,
+   "distributable_wan": 3172.075545,
+   "unit_distributable": 0.0397,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508006",
+   "period": "2025Q1",
+   "revenue_wan": 6652.915977000001,
+   "net_profit_wan": 875.357592,
+   "distributable_wan": 3563.4708520000004,
+   "unit_distributable": 0.0713,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508007",
+   "period": "2025Q1",
+   "revenue_wan": 6290.253548,
+   "net_profit_wan": 1859.761806,
+   "distributable_wan": 4905.976997,
+   "unit_distributable": 0.1226,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508008",
+   "period": "2025Q1",
+   "revenue_wan": 16681.312719999998,
+   "net_profit_wan": 1467.2596310000001,
+   "distributable_wan": 10561.134999,
+   "unit_distributable": 0.2112,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508009",
+   "period": "2025Q1",
+   "revenue_wan": 22975.028248,
+   "net_profit_wan": 1241.6888,
+   "distributable_wan": 16761.541977,
+   "unit_distributable": 0.1676,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508010",
+   "period": "2025Q1",
+   "revenue_wan": 2657.137065,
+   "net_profit_wan": 1195.599847,
+   "distributable_wan": 1401.490888,
+   "unit_distributable": 0.035,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508011",
+   "period": "2025Q1",
+   "revenue_wan": 2558.3352800000002,
+   "net_profit_wan": 797.525309,
+   "distributable_wan": 1798.357446,
+   "unit_distributable": 0.045,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508012",
+   "period": "2025Q1",
+   "revenue_wan": 1512.9280720000002,
+   "net_profit_wan": 385.767198,
+   "distributable_wan": 979.4593619999999,
+   "unit_distributable": 0.0326,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508015",
+   "period": "2025Q1",
+   "revenue_wan": 5694.952634,
+   "net_profit_wan": 2103.875216,
+   "distributable_wan": 2648.646641,
+   "unit_distributable": 0.1324,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508017",
+   "period": "2025Q1",
+   "revenue_wan": 2351.904399,
+   "net_profit_wan": 187.332728,
+   "distributable_wan": 1411.285058,
+   "unit_distributable": 0.0353,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508018",
+   "period": "2025Q1",
+   "revenue_wan": 10849.942659999999,
+   "net_profit_wan": 1512.125324,
+   "distributable_wan": 7263.8822549999995,
+   "unit_distributable": 0.0726,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508019",
+   "period": "2025Q1",
+   "revenue_wan": 2446.24167,
+   "net_profit_wan": 116.51075900000001,
+   "distributable_wan": 1503.0995699999999,
+   "unit_distributable": 0.0251,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508021",
+   "period": "2025Q1",
+   "revenue_wan": 1093.330407,
+   "net_profit_wan": 537.224105,
+   "distributable_wan": 805.108584,
+   "unit_distributable": 0.0403,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508022",
+   "period": "2025Q1",
+   "revenue_wan": 3249.395934,
+   "net_profit_wan": 1161.2699519999999,
+   "distributable_wan": 1785.9993789999999,
+   "unit_distributable": 0.0357,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508026",
+   "period": "2025Q1",
+   "revenue_wan": 1863.449181,
+   "net_profit_wan": 170.952248,
+   "distributable_wan": 2050.908823,
+   "unit_distributable": 0.0513,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508027",
+   "period": "2025Q1",
+   "revenue_wan": 5963.890933,
+   "net_profit_wan": 1539.1465369999999,
+   "distributable_wan": 3563.627006,
+   "unit_distributable": 0.0396,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508028",
+   "period": "2025Q1",
+   "revenue_wan": 25507.433202,
+   "net_profit_wan": 8400.279911,
+   "distributable_wan": 7023.0449,
+   "unit_distributable": 0.0878,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508031",
+   "period": "2025Q1",
+   "revenue_wan": 4466.735423,
+   "net_profit_wan": 2021.824448,
+   "distributable_wan": 3140.090958,
+   "unit_distributable": 0.0314,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508033",
+   "period": "2025Q1",
+   "revenue_wan": 9129.174065000001,
+   "net_profit_wan": 1797.0980350000002,
+   "distributable_wan": 5812.925757,
+   "unit_distributable": 0.1938,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508036",
+   "period": "2025Q1",
+   "revenue_wan": 51716.976115,
+   "net_profit_wan": 10822.339034,
+   "distributable_wan": 37777.799644,
+   "unit_distributable": 0.3778,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508048",
+   "period": "2025Q1",
+   "revenue_wan": 2018.5421780000001,
+   "net_profit_wan": 112.515901,
+   "distributable_wan": 1530.1789390000001,
+   "unit_distributable": 0.0383,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508056",
+   "period": "2025Q1",
+   "revenue_wan": 10870.188252,
+   "net_profit_wan": 29.763848,
+   "distributable_wan": 8282.592895,
+   "unit_distributable": 0.0427,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508058",
+   "period": "2025Q1",
+   "revenue_wan": 2010.951999,
+   "net_profit_wan": 759.9205469999999,
+   "distributable_wan": 1475.736835,
+   "unit_distributable": 0.0295,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508066",
+   "period": "2025Q1",
+   "revenue_wan": 10120.480849,
+   "net_profit_wan": 2749.356759,
+   "distributable_wan": 7609.388031,
+   "unit_distributable": 0.1902,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508068",
+   "period": "2025Q1",
+   "revenue_wan": 1851.871951,
+   "net_profit_wan": 860.940619,
+   "distributable_wan": 1346.5570619999999,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508069",
+   "period": "2025Q1",
+   "revenue_wan": 11255.795603,
+   "net_profit_wan": 2910.748171,
+   "distributable_wan": 6824.633868000001,
+   "unit_distributable": 0.1365,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508077",
+   "period": "2025Q1",
+   "revenue_wan": 1946.7451859999999,
+   "net_profit_wan": 275.719708,
+   "distributable_wan": 1209.921871,
+   "unit_distributable": 0.0242,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508078",
+   "period": "2025Q1",
+   "revenue_wan": 3422.6743420000003,
+   "net_profit_wan": -2182.891561,
+   "distributable_wan": 1955.7230260000001,
+   "unit_distributable": 0.02,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508086",
+   "period": "2025Q1",
+   "revenue_wan": 10235.755466,
+   "net_profit_wan": -2366.377469,
+   "distributable_wan": 8116.837409000001,
+   "unit_distributable": 0.0812,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508087",
+   "period": "2025Q1",
+   "revenue_wan": 37747.231878,
+   "net_profit_wan": 7354.673965999999,
+   "distributable_wan": 7668.1980969999995,
+   "unit_distributable": 0.3834,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508088",
+   "period": "2025Q1",
+   "revenue_wan": 2545.777466,
+   "net_profit_wan": 1200.8607949999998,
+   "distributable_wan": 1773.2607879999998,
+   "unit_distributable": 0.0355,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508089",
+   "period": "2025Q1",
+   "revenue_wan": 4919.113356,
+   "net_profit_wan": 2452.8581050000003,
+   "distributable_wan": 1138.64364,
+   "unit_distributable": 0.038,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508092",
+   "period": "2025Q1",
+   "revenue_wan": 2644.724381,
+   "net_profit_wan": 1033.2174009999999,
+   "distributable_wan": 1471.862568,
+   "unit_distributable": 0.0368,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508096",
+   "period": "2025Q1",
+   "revenue_wan": 7446.563231,
+   "net_profit_wan": 2475.197392,
+   "distributable_wan": 264.388525,
+   "unit_distributable": 0.01,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508097",
+   "period": "2025Q1",
+   "revenue_wan": 1926.7007489999999,
+   "net_profit_wan": 770.095566,
+   "distributable_wan": 1289.13893,
+   "unit_distributable": 0.0322,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508098",
+   "period": "2025Q1",
+   "revenue_wan": 2624.1350989999996,
+   "net_profit_wan": 683.4762929999999,
+   "distributable_wan": 1714.4473079999998,
+   "unit_distributable": 0.0343,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508099",
+   "period": "2025Q1",
+   "revenue_wan": 2990.261848,
+   "net_profit_wan": -357.871877,
+   "distributable_wan": 738.845782,
+   "unit_distributable": 0.0082,
+   "ebitda_wan": null
+  },
+  {
+   "code": "180101",
+   "period": "2025Q2",
+   "revenue_wan": 4594.102882,
+   "net_profit_wan": 1265.801441,
+   "distributable_wan": 3300.983508,
+   "unit_distributable": 0.0232,
+   "ebitda_wan": 3540.639815
+  },
+  {
+   "code": "180102",
+   "period": "2025Q2",
+   "revenue_wan": 2092.427286,
+   "net_profit_wan": 441.33070499999997,
+   "distributable_wan": 1711.808246,
+   "unit_distributable": 0.0245,
+   "ebitda_wan": 1408.757122
+  },
+  {
+   "code": "180103",
+   "period": "2025Q2",
+   "revenue_wan": 2169.0579850000004,
+   "net_profit_wan": -8.083128,
+   "distributable_wan": 1347.9672130000001,
+   "unit_distributable": 0.027,
+   "ebitda_wan": 1406.32711
+  },
+  {
+   "code": "180105",
+   "period": "2025Q2",
+   "revenue_wan": 2756.842652,
+   "net_profit_wan": 123.719827,
+   "distributable_wan": 2332.571373,
+   "unit_distributable": 0.0292,
+   "ebitda_wan": 2116.050804
+  },
+  {
+   "code": "180106",
+   "period": "2025Q2",
+   "revenue_wan": 2300.112412,
+   "net_profit_wan": 171.853418,
+   "distributable_wan": 1489.189899,
+   "unit_distributable": 0.0372,
+   "ebitda_wan": 1629.918625
+  },
+  {
+   "code": "180201",
+   "period": "2025Q2",
+   "revenue_wan": 17174.311118999998,
+   "net_profit_wan": 4753.299839,
+   "distributable_wan": 10401.584526,
+   "unit_distributable": 0.1486,
+   "ebitda_wan": 14146.048944999999
+  },
+  {
+   "code": "180202",
+   "period": "2025Q2",
+   "revenue_wan": 5221.622775,
+   "net_profit_wan": 454.82466600000004,
+   "distributable_wan": 2861.899387,
+   "unit_distributable": 0.0954,
+   "ebitda_wan": 4311.006093999999
+  },
+  {
+   "code": "180203",
+   "period": "2025Q2",
+   "revenue_wan": 10462.184636,
+   "net_profit_wan": 2149.386657,
+   "distributable_wan": 6453.574594,
+   "unit_distributable": 0.1291,
+   "ebitda_wan": 8783.915461
+  },
+  {
+   "code": "180301",
+   "period": "2025Q2",
+   "revenue_wan": 3252.3802149999997,
+   "net_profit_wan": 1036.709542,
+   "distributable_wan": 2419.964689,
+   "unit_distributable": 0.0254,
+   "ebitda_wan": 2766.3918289999997
+  },
+  {
+   "code": "180302",
+   "period": "2025Q2",
+   "revenue_wan": 2965.439188,
+   "net_profit_wan": 866.5287210000001,
+   "distributable_wan": 1851.1683289999999,
+   "unit_distributable": 0.0309,
+   "ebitda_wan": 2262.72329
+  },
+  {
+   "code": "180303",
+   "period": "2025Q2",
+   "revenue_wan": 2322.31386,
+   "net_profit_wan": 342.372296,
+   "distributable_wan": 1434.450044,
+   "unit_distributable": 0.0478,
+   "ebitda_wan": 1620.585514
+  },
+  {
+   "code": "180305",
+   "period": "2025Q2",
+   "revenue_wan": 6092.7564170000005,
+   "net_profit_wan": 791.331814,
+   "distributable_wan": 3760.593929,
+   "unit_distributable": 0.0376,
+   "ebitda_wan": 4396.932079
+  },
+  {
+   "code": "180401",
+   "period": "2025Q2",
+   "revenue_wan": 38604.532195,
+   "net_profit_wan": 5343.125086,
+   "distributable_wan": 4477.5313320000005,
+   "unit_distributable": 0.0746,
+   "ebitda_wan": 11042.717938
+  },
+  {
+   "code": "180402",
+   "period": "2025Q2",
+   "revenue_wan": 3236.4654769999997,
+   "net_profit_wan": 928.8882779999999,
+   "distributable_wan": 80.234713,
+   "unit_distributable": 0.004,
+   "ebitda_wan": 2764.4180079999996
+  },
+  {
+   "code": "180501",
+   "period": "2025Q2",
+   "revenue_wan": 1376.18694,
+   "net_profit_wan": 562.507869,
+   "distributable_wan": 1200.199499,
+   "unit_distributable": 0.024,
+   "ebitda_wan": 1213.356036
+  },
+  {
+   "code": "180502",
+   "period": "2025Q2",
+   "revenue_wan": 2017.5407079999998,
+   "net_profit_wan": 71.329475,
+   "distributable_wan": 1387.364595,
+   "unit_distributable": 0.0277,
+   "ebitda_wan": 1539.608211
+  },
+  {
+   "code": "180601",
+   "period": "2025Q2",
+   "revenue_wan": 18319.826619,
+   "net_profit_wan": 710.9760719999999,
+   "distributable_wan": 9116.738843000001,
+   "unit_distributable": 0.0912,
+   "ebitda_wan": 10228.339377
+  },
+  {
+   "code": "180602",
+   "period": "2025Q2",
+   "revenue_wan": 8345.31898,
+   "net_profit_wan": 193.97356000000002,
+   "distributable_wan": 4337.814153,
+   "unit_distributable": 0.0434,
+   "ebitda_wan": 5318.876201
+  },
+  {
+   "code": "180603",
+   "period": "2025Q2",
+   "revenue_wan": 8223.817511,
+   "net_profit_wan": 882.5688130000001,
+   "distributable_wan": 4539.992945,
+   "unit_distributable": 0.0454,
+   "ebitda_wan": 4802.030522
+  },
+  {
+   "code": "180605",
+   "period": "2025Q2",
+   "revenue_wan": 2691.276842,
+   "net_profit_wan": 1188.915,
+   "distributable_wan": 2655.7567280000003,
+   "unit_distributable": 0.0531,
+   "ebitda_wan": 2352.787915
+  },
+  {
+   "code": "180701",
+   "period": "2025Q2",
+   "revenue_wan": 4314.898518999999,
+   "net_profit_wan": 1763.6284829999997,
+   "distributable_wan": 2605.469662,
+   "unit_distributable": 0.0434,
+   "ebitda_wan": 2760.230543
+  },
+  {
+   "code": "180801",
+   "period": "2025Q2",
+   "revenue_wan": 9350.955942,
+   "net_profit_wan": 742.445003,
+   "distributable_wan": 1576.057174,
+   "unit_distributable": 0.1576,
+   "ebitda_wan": 3062.660409
+  },
+  {
+   "code": "508000",
+   "period": "2025Q2",
+   "revenue_wan": 3610.34146,
+   "net_profit_wan": -693.777868,
+   "distributable_wan": 2780.9202179999997,
+   "unit_distributable": 0.029,
+   "ebitda_wan": 3166.38399
+  },
+  {
+   "code": "508001",
+   "period": "2025Q2",
+   "revenue_wan": 15481.206433000001,
+   "net_profit_wan": -266.916609,
+   "distributable_wan": 6307.055829999999,
+   "unit_distributable": 0.1261,
+   "ebitda_wan": 12743.046435
+  },
+  {
+   "code": "508002",
+   "period": "2025Q2",
+   "revenue_wan": 5374.4881350000005,
+   "net_profit_wan": 631.033926,
+   "distributable_wan": 3220.203887,
+   "unit_distributable": 0.0322,
+   "ebitda_wan": 3614.632205
+  },
+  {
+   "code": "508003",
+   "period": "2025Q2",
+   "revenue_wan": 2968.042074,
+   "net_profit_wan": 48.162714,
+   "distributable_wan": 2024.455861,
+   "unit_distributable": 0.0405,
+   "ebitda_wan": 2389.902029
+  },
+  {
+   "code": "508005",
+   "period": "2025Q2",
+   "revenue_wan": 5892.81199,
+   "net_profit_wan": 1613.475536,
+   "distributable_wan": 3207.3107170000003,
+   "unit_distributable": 0.0401,
+   "ebitda_wan": 3514.175965
+  },
+  {
+   "code": "508006",
+   "period": "2025Q2",
+   "revenue_wan": 7661.798640999999,
+   "net_profit_wan": 1313.709236,
+   "distributable_wan": 4618.978156,
+   "unit_distributable": 0.0924,
+   "ebitda_wan": 4938.638068
+  },
+  {
+   "code": "508007",
+   "period": "2025Q2",
+   "revenue_wan": 6538.663979,
+   "net_profit_wan": 1721.677948,
+   "distributable_wan": 4779.238067,
+   "unit_distributable": 0.1195,
+   "ebitda_wan": 5123.413137
+  },
+  {
+   "code": "508008",
+   "period": "2025Q2",
+   "revenue_wan": 17346.046246,
+   "net_profit_wan": 2562.9451289999997,
+   "distributable_wan": 10654.741184999999,
+   "unit_distributable": 0.2131,
+   "ebitda_wan": 14736.186894999999
+  },
+  {
+   "code": "508009",
+   "period": "2025Q2",
+   "revenue_wan": 22559.342209,
+   "net_profit_wan": -304.91407000000004,
+   "distributable_wan": 14871.945571,
+   "unit_distributable": 0.1487,
+   "ebitda_wan": 18963.311425
+  },
+  {
+   "code": "508010",
+   "period": "2025Q2",
+   "revenue_wan": 2346.20197,
+   "net_profit_wan": 769.748893,
+   "distributable_wan": 1331.054502,
+   "unit_distributable": 0.0333,
+   "ebitda_wan": 1594.191671
+  },
+  {
+   "code": "508011",
+   "period": "2025Q2",
+   "revenue_wan": 2727.5988859999998,
+   "net_profit_wan": 821.388743,
+   "distributable_wan": 1731.0734260000002,
+   "unit_distributable": 0.0433,
+   "ebitda_wan": 2137.979069
+  },
+  {
+   "code": "508012",
+   "period": "2025Q2",
+   "revenue_wan": 1541.098125,
+   "net_profit_wan": 414.602554,
+   "distributable_wan": 1255.0040199999999,
+   "unit_distributable": 0.0418,
+   "ebitda_wan": 1256.054648
+  },
+  {
+   "code": "508015",
+   "period": "2025Q2",
+   "revenue_wan": 4875.430299000001,
+   "net_profit_wan": 1900.0530469999999,
+   "distributable_wan": 1023.685857,
+   "unit_distributable": 0.0512,
+   "ebitda_wan": 4065.168771
+  },
+  {
+   "code": "508017",
+   "period": "2025Q2",
+   "revenue_wan": 2433.164495,
+   "net_profit_wan": 263.41207599999996,
+   "distributable_wan": 1461.359778,
+   "unit_distributable": 0.0365,
+   "ebitda_wan": 1294.169118
+  },
+  {
+   "code": "508018",
+   "period": "2025Q2",
+   "revenue_wan": 9656.044367,
+   "net_profit_wan": 928.6403730000001,
+   "distributable_wan": 5930.048312,
+   "unit_distributable": 0.0593,
+   "ebitda_wan": 7526.515034999999
+  },
+  {
+   "code": "508019",
+   "period": "2025Q2",
+   "revenue_wan": 2101.394893,
+   "net_profit_wan": -161.572013,
+   "distributable_wan": 1496.372424,
+   "unit_distributable": 0.0249,
+   "ebitda_wan": 1325.4051869999998
+  },
+  {
+   "code": "508021",
+   "period": "2025Q2",
+   "revenue_wan": 1116.693119,
+   "net_profit_wan": 562.821735,
+   "distributable_wan": 927.677932,
+   "unit_distributable": 0.0464,
+   "ebitda_wan": 980.370067
+  },
+  {
+   "code": "508022",
+   "period": "2025Q2",
+   "revenue_wan": 3169.171366,
+   "net_profit_wan": 1212.267132,
+   "distributable_wan": 2102.266477,
+   "unit_distributable": 0.042,
+   "ebitda_wan": 2402.622498
+  },
+  {
+   "code": "508026",
+   "period": "2025Q2",
+   "revenue_wan": 1768.0745539999998,
+   "net_profit_wan": -567.085494,
+   "distributable_wan": 1000.613509,
+   "unit_distributable": 0.025,
+   "ebitda_wan": 664.4977349999999
+  },
+  {
+   "code": "508027",
+   "period": "2025Q2",
+   "revenue_wan": 6089.561051,
+   "net_profit_wan": 1308.269874,
+   "distributable_wan": 3214.002411,
+   "unit_distributable": 0.0357,
+   "ebitda_wan": 3891.470796
+  },
+  {
+   "code": "508028",
+   "period": "2025Q2",
+   "revenue_wan": 24287.157149000002,
+   "net_profit_wan": 8662.4375,
+   "distributable_wan": 6656.9026380000005,
+   "unit_distributable": 0.0832,
+   "ebitda_wan": 19950.307882
+  },
+  {
+   "code": "508031",
+   "period": "2025Q2",
+   "revenue_wan": 4564.527108,
+   "net_profit_wan": 2077.362743,
+   "distributable_wan": 3196.773018,
+   "unit_distributable": 0.032,
+   "ebitda_wan": 3533.3314200000004
+  },
+  {
+   "code": "508033",
+   "period": "2025Q2",
+   "revenue_wan": 7856.067864,
+   "net_profit_wan": 2408.436682,
+   "distributable_wan": 5614.384559,
+   "unit_distributable": 0.1871,
+   "ebitda_wan": 6525.039183
+  },
+  {
+   "code": "508036",
+   "period": "2025Q2",
+   "revenue_wan": 53501.216313,
+   "net_profit_wan": 11324.733257,
+   "distributable_wan": 35752.462395,
+   "unit_distributable": 0.3575,
+   "ebitda_wan": 49209.34435
+  },
+  {
+   "code": "508048",
+   "period": "2025Q2",
+   "revenue_wan": 2016.900202,
+   "net_profit_wan": 107.569449,
+   "distributable_wan": 1595.049226,
+   "unit_distributable": 0.0399,
+   "ebitda_wan": 1691.672023
+  },
+  {
+   "code": "508055",
+   "period": "2025Q2",
+   "revenue_wan": 1816.3409420000003,
+   "net_profit_wan": 227.9112,
+   "distributable_wan": 1283.5448720000002,
+   "unit_distributable": 0.0257,
+   "ebitda_wan": 1350.7065710000002
+  },
+  {
+   "code": "508056",
+   "period": "2025Q2",
+   "revenue_wan": 10755.669328,
+   "net_profit_wan": 9.147160000000001,
+   "distributable_wan": 8396.257066,
+   "unit_distributable": 0.0433,
+   "ebitda_wan": 7155.563009
+  },
+  {
+   "code": "508058",
+   "period": "2025Q2",
+   "revenue_wan": 2027.174084,
+   "net_profit_wan": 718.391497,
+   "distributable_wan": 1491.333898,
+   "unit_distributable": 0.0298,
+   "ebitda_wan": 1675.282068
+  },
+  {
+   "code": "508066",
+   "period": "2025Q2",
+   "revenue_wan": 10239.999567,
+   "net_profit_wan": 1886.8194760000001,
+   "distributable_wan": 7080.082895999999,
+   "unit_distributable": 0.177,
+   "ebitda_wan": 7823.521704000001
+  },
+  {
+   "code": "508068",
+   "period": "2025Q2",
+   "revenue_wan": 2150.950624,
+   "net_profit_wan": 956.9637119999999,
+   "distributable_wan": 1564.112277,
+   "unit_distributable": 0.0216,
+   "ebitda_wan": 1742.212046
+  },
+  {
+   "code": "508069",
+   "period": "2025Q2",
+   "revenue_wan": 12330.240037,
+   "net_profit_wan": 1951.150565,
+   "distributable_wan": 7315.309658,
+   "unit_distributable": 0.1463,
+   "ebitda_wan": 8181.369703
+  },
+  {
+   "code": "508077",
+   "period": "2025Q2",
+   "revenue_wan": 1982.085057,
+   "net_profit_wan": 302.656839,
+   "distributable_wan": 1223.574135,
+   "unit_distributable": 0.0245,
+   "ebitda_wan": 1422.382733
+  },
+  {
+   "code": "508078",
+   "period": "2025Q2",
+   "revenue_wan": 3346.431307,
+   "net_profit_wan": -1822.3556,
+   "distributable_wan": 2950.522849,
+   "unit_distributable": 0.0369,
+   "ebitda_wan": 2555.38393
+  },
+  {
+   "code": "508084",
+   "period": "2025Q2",
+   "revenue_wan": 2125.574963,
+   "net_profit_wan": 581.349378,
+   "distributable_wan": 1519.721544,
+   "unit_distributable": 0.038,
+   "ebitda_wan": 1729.347754
+  },
+  {
+   "code": "508085",
+   "period": "2025Q2",
+   "revenue_wan": 2020.919601,
+   "net_profit_wan": 442.56691500000005,
+   "distributable_wan": 1618.9138580000001,
+   "unit_distributable": 0.0324,
+   "ebitda_wan": 1157.143933
+  },
+  {
+   "code": "508086",
+   "period": "2025Q2",
+   "revenue_wan": 12774.441105,
+   "net_profit_wan": 225.84146,
+   "distributable_wan": 10584.462631,
+   "unit_distributable": 0.1058,
+   "ebitda_wan": 11222.95202
+  },
+  {
+   "code": "508087",
+   "period": "2025Q2",
+   "revenue_wan": 8.013198,
+   "net_profit_wan": -1435.534173,
+   "distributable_wan": 15.786869,
+   "unit_distributable": 0.0008,
+   "ebitda_wan": -665.256251
+  },
+  {
+   "code": "508088",
+   "period": "2025Q2",
+   "revenue_wan": 2510.9529620000003,
+   "net_profit_wan": 1075.063435,
+   "distributable_wan": 2183.263661,
+   "unit_distributable": 0.0437,
+   "ebitda_wan": 1882.237894
+  },
+  {
+   "code": "508089",
+   "period": "2025Q2",
+   "revenue_wan": 4878.442129,
+   "net_profit_wan": 2589.603371,
+   "distributable_wan": 696.661887,
+   "unit_distributable": 0.0232,
+   "ebitda_wan": 3970.638568
+  },
+  {
+   "code": "508092",
+   "period": "2025Q2",
+   "revenue_wan": 3154.175193,
+   "net_profit_wan": 1207.689082,
+   "distributable_wan": 1972.8581629999999,
+   "unit_distributable": 0.0493,
+   "ebitda_wan": 2730.756561
+  },
+  {
+   "code": "508096",
+   "period": "2025Q2",
+   "revenue_wan": 7806.891968999999,
+   "net_profit_wan": 3131.817184,
+   "distributable_wan": 6547.482613,
+   "unit_distributable": 0.2182,
+   "ebitda_wan": 6946.840565
+  },
+  {
+   "code": "508097",
+   "period": "2025Q2",
+   "revenue_wan": 1855.4937960000002,
+   "net_profit_wan": 718.593796,
+   "distributable_wan": 1301.766199,
+   "unit_distributable": 0.0325,
+   "ebitda_wan": 1411.133169
+  },
+  {
+   "code": "508098",
+   "period": "2025Q2",
+   "revenue_wan": 2655.719604,
+   "net_profit_wan": 711.981712,
+   "distributable_wan": 2003.5168429999999,
+   "unit_distributable": 0.0401,
+   "ebitda_wan": 1908.0410399999998
+  },
+  {
+   "code": "508099",
+   "period": "2025Q2",
+   "revenue_wan": 2961.7155620000003,
+   "net_profit_wan": -497.48714800000005,
+   "distributable_wan": 871.657366,
+   "unit_distributable": 0.0097,
+   "ebitda_wan": 1592.000967
+  },
+  {
+   "code": "180101",
+   "period": "2025Q3",
+   "revenue_wan": 4409.76318,
+   "net_profit_wan": 1137.237428,
+   "distributable_wan": 2853.223343,
+   "unit_distributable": 0.0201,
+   "ebitda_wan": 3418.989392
+  },
+  {
+   "code": "180102",
+   "period": "2025Q3",
+   "revenue_wan": 1988.083055,
+   "net_profit_wan": 502.187425,
+   "distributable_wan": 1559.838592,
+   "unit_distributable": 0.0223,
+   "ebitda_wan": 1473.975501
+  },
+  {
+   "code": "180103",
+   "period": "2025Q3",
+   "revenue_wan": 2186.254023,
+   "net_profit_wan": 51.510834,
+   "distributable_wan": 1348.331119,
+   "unit_distributable": 0.027,
+   "ebitda_wan": 1469.860362
+  },
+  {
+   "code": "180105",
+   "period": "2025Q3",
+   "revenue_wan": 2589.8686399999997,
+   "net_profit_wan": -634.678269,
+   "distributable_wan": 1697.5096039999999,
+   "unit_distributable": 0.0212,
+   "ebitda_wan": 1845.9649539999998
+  },
+  {
+   "code": "180106",
+   "period": "2025Q3",
+   "revenue_wan": 2223.05407,
+   "net_profit_wan": 448.069537,
+   "distributable_wan": 1679.99501,
+   "unit_distributable": 0.042,
+   "ebitda_wan": 1401.293373
+  },
+  {
+   "code": "180201",
+   "period": "2025Q3",
+   "revenue_wan": 20153.190453,
+   "net_profit_wan": 6580.558218,
+   "distributable_wan": 15901.005215000001,
+   "unit_distributable": 0.2272,
+   "ebitda_wan": 17330.536317
+  },
+  {
+   "code": "180202",
+   "period": "2025Q3",
+   "revenue_wan": 5894.583977,
+   "net_profit_wan": 978.4428859999999,
+   "distributable_wan": 3440.882071,
+   "unit_distributable": 0.1147,
+   "ebitda_wan": 4961.164151
+  },
+  {
+   "code": "180203",
+   "period": "2025Q3",
+   "revenue_wan": 11653.689566,
+   "net_profit_wan": 2911.713964,
+   "distributable_wan": 8265.984484999999,
+   "unit_distributable": 0.1653,
+   "ebitda_wan": 9893.842881999999
+  },
+  {
+   "code": "180301",
+   "period": "2025Q3",
+   "revenue_wan": 3157.303285,
+   "net_profit_wan": 935.6332160000001,
+   "distributable_wan": 2362.324694,
+   "unit_distributable": 0.0248,
+   "ebitda_wan": 2653.567443
+  },
+  {
+   "code": "180302",
+   "period": "2025Q3",
+   "revenue_wan": 2735.254172,
+   "net_profit_wan": 655.976551,
+   "distributable_wan": 1874.491101,
+   "unit_distributable": 0.0312,
+   "ebitda_wan": 2080.4714289999997
+  },
+  {
+   "code": "180303",
+   "period": "2025Q3",
+   "revenue_wan": 2195.729823,
+   "net_profit_wan": 205.111731,
+   "distributable_wan": 1218.91405,
+   "unit_distributable": 0.0406,
+   "ebitda_wan": 1509.020777
+  },
+  {
+   "code": "180305",
+   "period": "2025Q3",
+   "revenue_wan": 5468.891442,
+   "net_profit_wan": 715.2462469999999,
+   "distributable_wan": 4267.651793999999,
+   "unit_distributable": 0.0426,
+   "ebitda_wan": 3943.6055590000005
+  },
+  {
+   "code": "180401",
+   "period": "2025Q3",
+   "revenue_wan": 44796.223483,
+   "net_profit_wan": 4620.678953000001,
+   "distributable_wan": 7870.6953459999995,
+   "unit_distributable": 0.1312,
+   "ebitda_wan": 12584.829184
+  },
+  {
+   "code": "180402",
+   "period": "2025Q3",
+   "revenue_wan": 1984.6570559999998,
+   "net_profit_wan": -184.280666,
+   "distributable_wan": 15972.377134,
+   "unit_distributable": 0.7986,
+   "ebitda_wan": 1546.6018800000002
+  },
+  {
+   "code": "180501",
+   "period": "2025Q3",
+   "revenue_wan": 1403.7442429999999,
+   "net_profit_wan": 592.6137219999999,
+   "distributable_wan": 1212.671131,
+   "unit_distributable": 0.0243,
+   "ebitda_wan": 1244.656851
+  },
+  {
+   "code": "180502",
+   "period": "2025Q3",
+   "revenue_wan": 2140.472626,
+   "net_profit_wan": 204.459562,
+   "distributable_wan": 1590.11612,
+   "unit_distributable": 0.0318,
+   "ebitda_wan": 1590.225522
+  },
+  {
+   "code": "180601",
+   "period": "2025Q3",
+   "revenue_wan": 19757.372106,
+   "net_profit_wan": 2011.50748,
+   "distributable_wan": 9239.621403000001,
+   "unit_distributable": 0.0924,
+   "ebitda_wan": 11400.438664
+  },
+  {
+   "code": "180602",
+   "period": "2025Q3",
+   "revenue_wan": 8430.296140999999,
+   "net_profit_wan": 301.399135,
+   "distributable_wan": 4466.534498,
+   "unit_distributable": 0.0447,
+   "ebitda_wan": 5401.087782
+  },
+  {
+   "code": "180603",
+   "period": "2025Q3",
+   "revenue_wan": 8546.400537000001,
+   "net_profit_wan": 934.1583019999999,
+   "distributable_wan": 4598.3036649999995,
+   "unit_distributable": 0.046,
+   "ebitda_wan": 4834.391732
+  },
+  {
+   "code": "180605",
+   "period": "2025Q3",
+   "revenue_wan": 2713.7937920000004,
+   "net_profit_wan": 915.0594199999999,
+   "distributable_wan": 2255.189362,
+   "unit_distributable": 0.0451,
+   "ebitda_wan": 2396.401836
+  },
+  {
+   "code": "180606",
+   "period": "2025Q3",
+   "revenue_wan": 4310.272795,
+   "net_profit_wan": 338.004762,
+   "distributable_wan": 2200.086353,
+   "unit_distributable": 0.044,
+   "ebitda_wan": 2428.8275989999997
+  },
+  {
+   "code": "180701",
+   "period": "2025Q3",
+   "revenue_wan": 6700.354141,
+   "net_profit_wan": 3719.2046729999997,
+   "distributable_wan": 4599.8866179999995,
+   "unit_distributable": 0.0767,
+   "ebitda_wan": 5205.397313
+  },
+  {
+   "code": "180801",
+   "period": "2025Q3",
+   "revenue_wan": 10472.882856999999,
+   "net_profit_wan": 1614.840609,
+   "distributable_wan": 1536.998025,
+   "unit_distributable": 0.1537,
+   "ebitda_wan": 3804.2292729999995
+  },
+  {
+   "code": "180901",
+   "period": "2025Q3",
+   "revenue_wan": 11429.193774,
+   "net_profit_wan": 1989.018709,
+   "distributable_wan": 5016.470247,
+   "unit_distributable": 0.0502,
+   "ebitda_wan": 4936.408349
+  },
+  {
+   "code": "508000",
+   "period": "2025Q3",
+   "revenue_wan": 3496.517952,
+   "net_profit_wan": -1288.6324769999999,
+   "distributable_wan": 2518.31701,
+   "unit_distributable": 0.0262,
+   "ebitda_wan": 2698.078434
+  },
+  {
+   "code": "508001",
+   "period": "2025Q3",
+   "revenue_wan": 19345.62472,
+   "net_profit_wan": -155.74338999999998,
+   "distributable_wan": 11600.782361,
+   "unit_distributable": 0.232,
+   "ebitda_wan": 12977.242526
+  },
+  {
+   "code": "508002",
+   "period": "2025Q3",
+   "revenue_wan": 5626.791135,
+   "net_profit_wan": 831.351617,
+   "distributable_wan": 3445.4153840000004,
+   "unit_distributable": 0.0345,
+   "ebitda_wan": 3904.0034570000003
+  },
+  {
+   "code": "508003",
+   "period": "2025Q3",
+   "revenue_wan": 2794.59975,
+   "net_profit_wan": -209.33636,
+   "distributable_wan": 2049.7825940000002,
+   "unit_distributable": 0.041,
+   "ebitda_wan": 2136.322424
+  },
+  {
+   "code": "508005",
+   "period": "2025Q3",
+   "revenue_wan": 5068.077875,
+   "net_profit_wan": 1022.585234,
+   "distributable_wan": 3242.545334,
+   "unit_distributable": 0.0405,
+   "ebitda_wan": 2933.1491760000004
+  },
+  {
+   "code": "508006",
+   "period": "2025Q3",
+   "revenue_wan": 7356.114935,
+   "net_profit_wan": 274.68068999999997,
+   "distributable_wan": 3267.695421,
+   "unit_distributable": 0.0654,
+   "ebitda_wan": 3630.88135
+  },
+  {
+   "code": "508007",
+   "period": "2025Q3",
+   "revenue_wan": 6660.280675999999,
+   "net_profit_wan": 2089.617092,
+   "distributable_wan": 4962.3570039999995,
+   "unit_distributable": 0.1241,
+   "ebitda_wan": 5534.714512
+  },
+  {
+   "code": "508008",
+   "period": "2025Q3",
+   "revenue_wan": 16489.302199,
+   "net_profit_wan": 1527.747877,
+   "distributable_wan": 11193.321951,
+   "unit_distributable": 0.2239,
+   "ebitda_wan": 13600.700480000001
+  },
+  {
+   "code": "508009",
+   "period": "2025Q3",
+   "revenue_wan": 23283.347956,
+   "net_profit_wan": 306.58806200000004,
+   "distributable_wan": 19583.511077000003,
+   "unit_distributable": 0.1958,
+   "ebitda_wan": 19557.49235
+  },
+  {
+   "code": "508010",
+   "period": "2025Q3",
+   "revenue_wan": 1665.300336,
+   "net_profit_wan": 435.811999,
+   "distributable_wan": 1352.404354,
+   "unit_distributable": 0.0338,
+   "ebitda_wan": 1258.570847
+  },
+  {
+   "code": "508011",
+   "period": "2025Q3",
+   "revenue_wan": 2798.222391,
+   "net_profit_wan": 944.8253070000001,
+   "distributable_wan": 1724.263516,
+   "unit_distributable": 0.0431,
+   "ebitda_wan": 2215.9350640000002
+  },
+  {
+   "code": "508012",
+   "period": "2025Q3",
+   "revenue_wan": 1453.2705939999998,
+   "net_profit_wan": 227.22955499999998,
+   "distributable_wan": 540.394376,
+   "unit_distributable": 0.018,
+   "ebitda_wan": 1081.879739
+  },
+  {
+   "code": "508015",
+   "period": "2025Q3",
+   "revenue_wan": 2416.175078,
+   "net_profit_wan": 2728.904729,
+   "distributable_wan": 4334.972513000001,
+   "unit_distributable": 0.2167,
+   "ebitda_wan": 4827.361356
+  },
+  {
+   "code": "508016",
+   "period": "2025Q3",
+   "revenue_wan": 49716.947634,
+   "net_profit_wan": 137.703158,
+   "distributable_wan": 2447.953565,
+   "unit_distributable": 0.049,
+   "ebitda_wan": 2364.9747399999997
+  },
+  {
+   "code": "508017",
+   "period": "2025Q3",
+   "revenue_wan": 2580.915613,
+   "net_profit_wan": 522.100575,
+   "distributable_wan": 1502.008196,
+   "unit_distributable": 0.0376,
+   "ebitda_wan": 1553.361632
+  },
+  {
+   "code": "508018",
+   "period": "2025Q3",
+   "revenue_wan": 10769.464093,
+   "net_profit_wan": 2580.4082989999997,
+   "distributable_wan": 6971.452972,
+   "unit_distributable": 0.0697,
+   "ebitda_wan": 8607.253433
+  },
+  {
+   "code": "508019",
+   "period": "2025Q3",
+   "revenue_wan": 2095.070244,
+   "net_profit_wan": -153.861287,
+   "distributable_wan": 1485.0804380000002,
+   "unit_distributable": 0.0248,
+   "ebitda_wan": 1334.859948
+  },
+  {
+   "code": "508021",
+   "period": "2025Q3",
+   "revenue_wan": 2319.082747,
+   "net_profit_wan": 847.1839689999999,
+   "distributable_wan": 1684.42502,
+   "unit_distributable": 0.0286,
+   "ebitda_wan": 1731.8227600000002
+  },
+  {
+   "code": "508022",
+   "period": "2025Q3",
+   "revenue_wan": 3114.083109,
+   "net_profit_wan": 1074.045633,
+   "distributable_wan": 1951.8077719999999,
+   "unit_distributable": 0.039,
+   "ebitda_wan": 2287.9569850000003
+  },
+  {
+   "code": "508026",
+   "period": "2025Q3",
+   "revenue_wan": 2816.4463809999997,
+   "net_profit_wan": 1034.820696,
+   "distributable_wan": 2556.33765,
+   "unit_distributable": 0.0639,
+   "ebitda_wan": 2115.272242
+  },
+  {
+   "code": "508027",
+   "period": "2025Q3",
+   "revenue_wan": 5889.693933,
+   "net_profit_wan": 1153.534353,
+   "distributable_wan": 3434.231305,
+   "unit_distributable": 0.0382,
+   "ebitda_wan": 3601.8793200000005
+  },
+  {
+   "code": "508028",
+   "period": "2025Q3",
+   "revenue_wan": 14282.48083,
+   "net_profit_wan": 1965.2745510000002,
+   "distributable_wan": -979.157868,
+   "unit_distributable": -0.0122,
+   "ebitda_wan": 10925.337504000001
+  },
+  {
+   "code": "508031",
+   "period": "2025Q3",
+   "revenue_wan": 4730.730861,
+   "net_profit_wan": 2204.315918,
+   "distributable_wan": 3207.9703449999997,
+   "unit_distributable": 0.0321,
+   "ebitda_wan": 3651.926613
+  },
+  {
+   "code": "508033",
+   "period": "2025Q3",
+   "revenue_wan": 9391.125794,
+   "net_profit_wan": 3242.5251719999997,
+   "distributable_wan": 6724.513267,
+   "unit_distributable": 0.2242,
+   "ebitda_wan": 8068.129428
+  },
+  {
+   "code": "508036",
+   "period": "2025Q3",
+   "revenue_wan": 59128.559823,
+   "net_profit_wan": 13423.056555000001,
+   "distributable_wan": 18928.645617,
+   "unit_distributable": 0.1893,
+   "ebitda_wan": 54286.082963
+  },
+  {
+   "code": "508039",
+   "period": "2025Q3",
+   "revenue_wan": 7621.792337999999,
+   "net_profit_wan": 3198.3925870000003,
+   "distributable_wan": 19522.465543000002,
+   "unit_distributable": 0.1952,
+   "ebitda_wan": 5578.180818
+  },
+  {
+   "code": "508048",
+   "period": "2025Q3",
+   "revenue_wan": 1858.2170640000002,
+   "net_profit_wan": -63.487913,
+   "distributable_wan": 1389.904581,
+   "unit_distributable": 0.0347,
+   "ebitda_wan": 1542.096341
+  },
+  {
+   "code": "508055",
+   "period": "2025Q3",
+   "revenue_wan": 1968.9738739999998,
+   "net_profit_wan": 424.690261,
+   "distributable_wan": 1325.875165,
+   "unit_distributable": 0.0265,
+   "ebitda_wan": 1557.770118
+  },
+  {
+   "code": "508056",
+   "period": "2025Q3",
+   "revenue_wan": 10241.153751,
+   "net_profit_wan": -534.915477,
+   "distributable_wan": 8403.51096,
+   "unit_distributable": 0.0434,
+   "ebitda_wan": 6622.064318
+  },
+  {
+   "code": "508058",
+   "period": "2025Q3",
+   "revenue_wan": 2040.971693,
+   "net_profit_wan": 759.220372,
+   "distributable_wan": 1524.381203,
+   "unit_distributable": 0.0305,
+   "ebitda_wan": 1695.514743
+  },
+  {
+   "code": "508060",
+   "period": "2025Q3",
+   "revenue_wan": 4408.614668,
+   "net_profit_wan": 1367.984586,
+   "distributable_wan": 2462.615153,
+   "unit_distributable": 0.0308,
+   "ebitda_wan": 2991.438445
+  },
+  {
+   "code": "508066",
+   "period": "2025Q3",
+   "revenue_wan": 12392.764785,
+   "net_profit_wan": 989.8188789999999,
+   "distributable_wan": 5558.075967,
+   "unit_distributable": 0.139,
+   "ebitda_wan": 6143.531676
+  },
+  {
+   "code": "508068",
+   "period": "2025Q3",
+   "revenue_wan": 3232.273722,
+   "net_profit_wan": 1281.984776,
+   "distributable_wan": 2209.186603,
+   "unit_distributable": 0.0305,
+   "ebitda_wan": 2566.388361
+  },
+  {
+   "code": "508069",
+   "period": "2025Q3",
+   "revenue_wan": 13275.908849,
+   "net_profit_wan": 3751.710104,
+   "distributable_wan": 6775.305069,
+   "unit_distributable": 0.1355,
+   "ebitda_wan": 9544.313909
+  },
+  {
+   "code": "508077",
+   "period": "2025Q3",
+   "revenue_wan": 1908.9797,
+   "net_profit_wan": 288.556926,
+   "distributable_wan": 1236.7892060000001,
+   "unit_distributable": 0.0247,
+   "ebitda_wan": 1406.753044
+  },
+  {
+   "code": "508078",
+   "period": "2025Q3",
+   "revenue_wan": 3314.442325,
+   "net_profit_wan": -2104.952307,
+   "distributable_wan": 2466.181446,
+   "unit_distributable": 0.0308,
+   "ebitda_wan": 2173.930593
+  },
+  {
+   "code": "508080",
+   "period": "2025Q3",
+   "revenue_wan": 2585.393042,
+   "net_profit_wan": -15.845678,
+   "distributable_wan": 1853.3394239999998,
+   "unit_distributable": 0.0463,
+   "ebitda_wan": 1752.2516280000002
+  },
+  {
+   "code": "508084",
+   "period": "2025Q3",
+   "revenue_wan": 2131.615894,
+   "net_profit_wan": 565.864188,
+   "distributable_wan": 1561.719848,
+   "unit_distributable": 0.039,
+   "ebitda_wan": 1744.7489030000002
+  },
+  {
+   "code": "508085",
+   "period": "2025Q3",
+   "revenue_wan": 2025.4267920000002,
+   "net_profit_wan": -93.859736,
+   "distributable_wan": 960.2601289999999,
+   "unit_distributable": 0.0192,
+   "ebitda_wan": 1682.524888
+  },
+  {
+   "code": "508086",
+   "period": "2025Q3",
+   "revenue_wan": 15907.473219,
+   "net_profit_wan": 3112.012784,
+   "distributable_wan": 13448.004001,
+   "unit_distributable": 0.1345,
+   "ebitda_wan": 13899.150034
+  },
+  {
+   "code": "508087",
+   "period": "2025Q3",
+   "revenue_wan": 20.477491,
+   "net_profit_wan": -944.5098109999999,
+   "distributable_wan": 21.097315,
+   "unit_distributable": 0.0011,
+   "ebitda_wan": -11.812274
+  },
+  {
+   "code": "508088",
+   "period": "2025Q3",
+   "revenue_wan": 2577.429298,
+   "net_profit_wan": 1036.379404,
+   "distributable_wan": 1826.096168,
+   "unit_distributable": 0.0365,
+   "ebitda_wan": 1949.811287
+  },
+  {
+   "code": "508089",
+   "period": "2025Q3",
+   "revenue_wan": 5369.464268,
+   "net_profit_wan": 3086.603361,
+   "distributable_wan": 6495.706094,
+   "unit_distributable": 0.2165,
+   "ebitda_wan": 4737.386361
+  },
+  {
+   "code": "508090",
+   "period": "2025Q3",
+   "revenue_wan": 2569.903011,
+   "net_profit_wan": 436.747054,
+   "distributable_wan": 1583.083088,
+   "unit_distributable": 0.0396,
+   "ebitda_wan": 1905.306753
+  },
+  {
+   "code": "508092",
+   "period": "2025Q3",
+   "revenue_wan": 2837.0276870000002,
+   "net_profit_wan": 890.022326,
+   "distributable_wan": 1994.4360989999998,
+   "unit_distributable": 0.0499,
+   "ebitda_wan": 2229.706012
+  },
+  {
+   "code": "508096",
+   "period": "2025Q3",
+   "revenue_wan": 8438.725421,
+   "net_profit_wan": 3131.653027,
+   "distributable_wan": 19936.45955,
+   "unit_distributable": 0.6645,
+   "ebitda_wan": 7441.399086
+  },
+  {
+   "code": "508097",
+   "period": "2025Q3",
+   "revenue_wan": 1765.6142550000002,
+   "net_profit_wan": 489.079675,
+   "distributable_wan": 1441.209664,
+   "unit_distributable": 0.036,
+   "ebitda_wan": 1145.00326
+  },
+  {
+   "code": "508098",
+   "period": "2025Q3",
+   "revenue_wan": 2690.140385,
+   "net_profit_wan": 756.592597,
+   "distributable_wan": 2002.0697300000002,
+   "unit_distributable": 0.04,
+   "ebitda_wan": 1956.9935739999999
+  },
+  {
+   "code": "508099",
+   "period": "2025Q3",
+   "revenue_wan": 2949.9564219999997,
+   "net_profit_wan": -438.141733,
+   "distributable_wan": 1037.149365,
+   "unit_distributable": 0.0115,
+   "ebitda_wan": 1653.57636
+  },
+  {
+   "code": "180101",
+   "period": "2025Q4",
+   "revenue_wan": 4561.735197,
+   "net_profit_wan": 961.384011,
+   "distributable_wan": 3528.708111,
+   "unit_distributable": 0.0248,
+   "ebitda_wan": 3257.524404
+  },
+  {
+   "code": "180102",
+   "period": "2025Q4",
+   "revenue_wan": 1578.034979,
+   "net_profit_wan": 232.927959,
+   "distributable_wan": 973.9475570000001,
+   "unit_distributable": 0.0139,
+   "ebitda_wan": 1196.354716
+  },
+  {
+   "code": "180103",
+   "period": "2025Q4",
+   "revenue_wan": 2132.559009,
+   "net_profit_wan": -283.47702200000003,
+   "distributable_wan": 1293.157931,
+   "unit_distributable": 0.0259,
+   "ebitda_wan": 1134.73777
+  },
+  {
+   "code": "180105",
+   "period": "2025Q4",
+   "revenue_wan": 2479.275192,
+   "net_profit_wan": -460.01642699999996,
+   "distributable_wan": 1546.607333,
+   "unit_distributable": 0.0193,
+   "ebitda_wan": 1834.9346280000002
+  },
+  {
+   "code": "180106",
+   "period": "2025Q4",
+   "revenue_wan": 2165.185729,
+   "net_profit_wan": 533.114551,
+   "distributable_wan": 1731.6248460000002,
+   "unit_distributable": 0.0433,
+   "ebitda_wan": 1639.1442949999998
+  },
+  {
+   "code": "180201",
+   "period": "2025Q4",
+   "revenue_wan": 17706.849518,
+   "net_profit_wan": 4145.783872999999,
+   "distributable_wan": 9981.286726999999,
+   "unit_distributable": 0.1426,
+   "ebitda_wan": 14134.481658
+  },
+  {
+   "code": "180202",
+   "period": "2025Q4",
+   "revenue_wan": 5281.547321999999,
+   "net_profit_wan": 340.39660699999996,
+   "distributable_wan": 2221.30908,
+   "unit_distributable": 0.074,
+   "ebitda_wan": 4255.010408
+  },
+  {
+   "code": "180203",
+   "period": "2025Q4",
+   "revenue_wan": 11547.577978,
+   "net_profit_wan": 3175.652621,
+   "distributable_wan": 9162.652587999999,
+   "unit_distributable": 0.1833,
+   "ebitda_wan": 9763.948895
+  },
+  {
+   "code": "180301",
+   "period": "2025Q4",
+   "revenue_wan": 2982.962207,
+   "net_profit_wan": 728.208137,
+   "distributable_wan": 2116.186505,
+   "unit_distributable": 0.0222,
+   "ebitda_wan": 2448.261196
+  },
+  {
+   "code": "180302",
+   "period": "2025Q4",
+   "revenue_wan": 2462.03782,
+   "net_profit_wan": 275.834615,
+   "distributable_wan": 1890.96194,
+   "unit_distributable": 0.0315,
+   "ebitda_wan": 1759.2252030000002
+  },
+  {
+   "code": "180303",
+   "period": "2025Q4",
+   "revenue_wan": 2508.373165,
+   "net_profit_wan": 681.487741,
+   "distributable_wan": 1607.108177,
+   "unit_distributable": 0.0536,
+   "ebitda_wan": 1988.04043
+  },
+  {
+   "code": "180305",
+   "period": "2025Q4",
+   "revenue_wan": 6321.497764,
+   "net_profit_wan": 1593.430949,
+   "distributable_wan": 4350.944,
+   "unit_distributable": 0.0435,
+   "ebitda_wan": 4636.672579
+  },
+  {
+   "code": "180401",
+   "period": "2025Q4",
+   "revenue_wan": 28743.585072,
+   "net_profit_wan": -4375.338806000001,
+   "distributable_wan": 7760.789648999999,
+   "unit_distributable": 0.1293,
+   "ebitda_wan": -2443.1808690000003
+  },
+  {
+   "code": "180402",
+   "period": "2025Q4",
+   "revenue_wan": 3702.905683,
+   "net_profit_wan": 1639.8840810000002,
+   "distributable_wan": -300.043814,
+   "unit_distributable": -0.015,
+   "ebitda_wan": 3067.3717239999996
+  },
+  {
+   "code": "180501",
+   "period": "2025Q4",
+   "revenue_wan": 1424.047102,
+   "net_profit_wan": 601.779513,
+   "distributable_wan": 1201.425784,
+   "unit_distributable": 0.024,
+   "ebitda_wan": 1264.5033640000001
+  },
+  {
+   "code": "180502",
+   "period": "2025Q4",
+   "revenue_wan": 2139.487134,
+   "net_profit_wan": 228.470558,
+   "distributable_wan": 1454.8325109999998,
+   "unit_distributable": 0.0291,
+   "ebitda_wan": 1627.522522
+  },
+  {
+   "code": "180601",
+   "period": "2025Q4",
+   "revenue_wan": 19789.163273,
+   "net_profit_wan": 1950.827634,
+   "distributable_wan": 9324.069919,
+   "unit_distributable": 0.0932,
+   "ebitda_wan": 11488.061591
+  },
+  {
+   "code": "180602",
+   "period": "2025Q4",
+   "revenue_wan": 8820.02801,
+   "net_profit_wan": 281.415587,
+   "distributable_wan": 4279.912232,
+   "unit_distributable": 0.0428,
+   "ebitda_wan": 5368.607395
+  },
+  {
+   "code": "180603",
+   "period": "2025Q4",
+   "revenue_wan": 8918.040765,
+   "net_profit_wan": 974.367587,
+   "distributable_wan": 4601.89612,
+   "unit_distributable": 0.046,
+   "ebitda_wan": 4970.235428
+  },
+  {
+   "code": "180605",
+   "period": "2025Q4",
+   "revenue_wan": 2853.244859,
+   "net_profit_wan": 562.263379,
+   "distributable_wan": 1448.551122,
+   "unit_distributable": 0.029,
+   "ebitda_wan": 2063.881775
+  },
+  {
+   "code": "180606",
+   "period": "2025Q4",
+   "revenue_wan": 4281.101934,
+   "net_profit_wan": -50.42072,
+   "distributable_wan": 1826.793497,
+   "unit_distributable": 0.0365,
+   "ebitda_wan": 2034.464266
+  },
+  {
+   "code": "180607",
+   "period": "2025Q4",
+   "revenue_wan": 3135.621877,
+   "net_profit_wan": 368.386508,
+   "distributable_wan": 1300.1812320000001,
+   "unit_distributable": 0.0433,
+   "ebitda_wan": 1207.084405
+  },
+  {
+   "code": "180701",
+   "period": "2025Q4",
+   "revenue_wan": 5456.353998,
+   "net_profit_wan": 2631.300115,
+   "distributable_wan": 2395.3928,
+   "unit_distributable": 0.0399,
+   "ebitda_wan": 3854.232856
+  },
+  {
+   "code": "180801",
+   "period": "2025Q4",
+   "revenue_wan": 11611.496987,
+   "net_profit_wan": 769.333782,
+   "distributable_wan": 2878.117951,
+   "unit_distributable": 0.2878,
+   "ebitda_wan": 3664.132682
+  },
+  {
+   "code": "180901",
+   "period": "2025Q4",
+   "revenue_wan": 13852.204641,
+   "net_profit_wan": 1768.398668,
+   "distributable_wan": 16533.341433,
+   "unit_distributable": 0.1653,
+   "ebitda_wan": 7626.35785
+  },
+  {
+   "code": "508000",
+   "period": "2025Q4",
+   "revenue_wan": 3514.219894,
+   "net_profit_wan": -1367.904751,
+   "distributable_wan": 2749.781525,
+   "unit_distributable": 0.0286,
+   "ebitda_wan": 2550.327013
+  },
+  {
+   "code": "508001",
+   "period": "2025Q4",
+   "revenue_wan": 16407.928394,
+   "net_profit_wan": -2672.763938,
+   "distributable_wan": 8056.929487,
+   "unit_distributable": 0.1611,
+   "ebitda_wan": 10498.206203
+  },
+  {
+   "code": "508002",
+   "period": "2025Q4",
+   "revenue_wan": 6483.1499969999995,
+   "net_profit_wan": 596.946854,
+   "distributable_wan": 3860.177475,
+   "unit_distributable": 0.0386,
+   "ebitda_wan": 4380.868793
+  },
+  {
+   "code": "508003",
+   "period": "2025Q4",
+   "revenue_wan": 2756.861307,
+   "net_profit_wan": -256.62484700000005,
+   "distributable_wan": 1998.532563,
+   "unit_distributable": 0.04,
+   "ebitda_wan": 2094.138403
+  },
+  {
+   "code": "508005",
+   "period": "2025Q4",
+   "revenue_wan": 7296.499092,
+   "net_profit_wan": 2256.694166,
+   "distributable_wan": 3242.9254379999998,
+   "unit_distributable": 0.0405,
+   "ebitda_wan": 4276.890887
+  },
+  {
+   "code": "508006",
+   "period": "2025Q4",
+   "revenue_wan": 7286.3228340000005,
+   "net_profit_wan": 1394.6985960000002,
+   "distributable_wan": 4872.5425,
+   "unit_distributable": 0.0975,
+   "ebitda_wan": 4669.054218
+  },
+  {
+   "code": "508007",
+   "period": "2025Q4",
+   "revenue_wan": 6334.832917,
+   "net_profit_wan": 752.24628,
+   "distributable_wan": 4402.7930369999995,
+   "unit_distributable": 0.1101,
+   "ebitda_wan": 3588.17986
+  },
+  {
+   "code": "508008",
+   "period": "2025Q4",
+   "revenue_wan": 16106.016977000001,
+   "net_profit_wan": 287.099023,
+   "distributable_wan": 8508.785624,
+   "unit_distributable": 0.1702,
+   "ebitda_wan": 11844.042581
+  },
+  {
+   "code": "508009",
+   "period": "2025Q4",
+   "revenue_wan": 19673.660953,
+   "net_profit_wan": -7156.571181,
+   "distributable_wan": 12432.557282,
+   "unit_distributable": 0.1243,
+   "ebitda_wan": 12102.3458
+  },
+  {
+   "code": "508010",
+   "period": "2025Q4",
+   "revenue_wan": 2578.0830969999997,
+   "net_profit_wan": 1127.131787,
+   "distributable_wan": 1393.953818,
+   "unit_distributable": 0.0348,
+   "ebitda_wan": 1961.1259899999998
+  },
+  {
+   "code": "508011",
+   "period": "2025Q4",
+   "revenue_wan": 2420.951003,
+   "net_profit_wan": 571.246459,
+   "distributable_wan": 1725.0371300000002,
+   "unit_distributable": 0.0431,
+   "ebitda_wan": 1835.079864
+  },
+  {
+   "code": "508012",
+   "period": "2025Q4",
+   "revenue_wan": 2123.613072,
+   "net_profit_wan": 720.760033,
+   "distributable_wan": 1778.4425260000003,
+   "unit_distributable": 0.0593,
+   "ebitda_wan": 1670.8683199999998
+  },
+  {
+   "code": "508015",
+   "period": "2025Q4",
+   "revenue_wan": 4417.396306000001,
+   "net_profit_wan": 1033.464586,
+   "distributable_wan": 2546.348281,
+   "unit_distributable": 0.1273,
+   "ebitda_wan": 4071.287467
+  },
+  {
+   "code": "508016",
+   "period": "2025Q4",
+   "revenue_wan": 38038.097164,
+   "net_profit_wan": -1659.975952,
+   "distributable_wan": 2901.769183,
+   "unit_distributable": 0.058,
+   "ebitda_wan": 2145.1687469999997
+  },
+  {
+   "code": "508017",
+   "period": "2025Q4",
+   "revenue_wan": 2653.2899390000002,
+   "net_profit_wan": 593.6870240000001,
+   "distributable_wan": 1495.827072,
+   "unit_distributable": 0.0374,
+   "ebitda_wan": 1644.177545
+  },
+  {
+   "code": "508018",
+   "period": "2025Q4",
+   "revenue_wan": 10908.52333,
+   "net_profit_wan": 1909.1591460000002,
+   "distributable_wan": 6078.5043399999995,
+   "unit_distributable": 0.0608,
+   "ebitda_wan": 7964.013677
+  },
+  {
+   "code": "508019",
+   "period": "2025Q4",
+   "revenue_wan": 2051.866484,
+   "net_profit_wan": 116.89679199999999,
+   "distributable_wan": 1291.6578630000001,
+   "unit_distributable": 0.0215,
+   "ebitda_wan": 1610.494962
+  },
+  {
+   "code": "508021",
+   "period": "2025Q4",
+   "revenue_wan": 3497.0398219999997,
+   "net_profit_wan": 1541.201077,
+   "distributable_wan": 3359.384458,
+   "unit_distributable": 0.0571,
+   "ebitda_wan": 2648.116115
+  },
+  {
+   "code": "508022",
+   "period": "2025Q4",
+   "revenue_wan": 3108.257203,
+   "net_profit_wan": 986.9554220000001,
+   "distributable_wan": 2212.53662,
+   "unit_distributable": 0.0443,
+   "ebitda_wan": 2180.474498
+  },
+  {
+   "code": "508026",
+   "period": "2025Q4",
+   "revenue_wan": 2069.285261,
+   "net_profit_wan": -174.272859,
+   "distributable_wan": 2591.161982,
+   "unit_distributable": 0.0648,
+   "ebitda_wan": 1287.602877
+  },
+  {
+   "code": "508027",
+   "period": "2025Q4",
+   "revenue_wan": 5448.81038,
+   "net_profit_wan": 605.336892,
+   "distributable_wan": 3120.923662,
+   "unit_distributable": 0.0347,
+   "ebitda_wan": 3191.312671
+  },
+  {
+   "code": "508028",
+   "period": "2025Q4",
+   "revenue_wan": 25223.910797999997,
+   "net_profit_wan": 8959.080958,
+   "distributable_wan": 16031.552399,
+   "unit_distributable": 0.2004,
+   "ebitda_wan": 20273.26591
+  },
+  {
+   "code": "508029",
+   "period": "2025Q4",
+   "revenue_wan": 1984.7948579999997,
+   "net_profit_wan": -467.753559,
+   "distributable_wan": 6512.6296,
+   "unit_distributable": 0.2171,
+   "ebitda_wan": 1379.412609
+  },
+  {
+   "code": "508031",
+   "period": "2025Q4",
+   "revenue_wan": 4684.044089999999,
+   "net_profit_wan": 2139.203485,
+   "distributable_wan": 3251.990053,
+   "unit_distributable": 0.0325,
+   "ebitda_wan": 3643.9495380000003
+  },
+  {
+   "code": "508033",
+   "period": "2025Q4",
+   "revenue_wan": 8415.020695000001,
+   "net_profit_wan": -1475.609477,
+   "distributable_wan": 4522.917993999999,
+   "unit_distributable": 0.1508,
+   "ebitda_wan": 4942.641562
+  },
+  {
+   "code": "508036",
+   "period": "2025Q4",
+   "revenue_wan": 54769.258878,
+   "net_profit_wan": 3529.4168590000004,
+   "distributable_wan": 16879.339739,
+   "unit_distributable": 0.1688,
+   "ebitda_wan": 38657.963385
+  },
+  {
+   "code": "508039",
+   "period": "2025Q4",
+   "revenue_wan": 8078.609636,
+   "net_profit_wan": 3247.195513,
+   "distributable_wan": 5941.226682,
+   "unit_distributable": 0.0594,
+   "ebitda_wan": 6614.481569
+  },
+  {
+   "code": "508048",
+   "period": "2025Q4",
+   "revenue_wan": 1877.7345480000001,
+   "net_profit_wan": 33.149665999999996,
+   "distributable_wan": 1445.005498,
+   "unit_distributable": 0.0361,
+   "ebitda_wan": 1557.2745730000001
+  },
+  {
+   "code": "508055",
+   "period": "2025Q4",
+   "revenue_wan": 1869.8826980000001,
+   "net_profit_wan": 488.30104500000004,
+   "distributable_wan": 1289.742031,
+   "unit_distributable": 0.0258,
+   "ebitda_wan": 1431.380606
+  },
+  {
+   "code": "508056",
+   "period": "2025Q4",
+   "revenue_wan": 10501.855204000001,
+   "net_profit_wan": -180.495207,
+   "distributable_wan": 8664.921938,
+   "unit_distributable": 0.0447,
+   "ebitda_wan": 6760.115686
+  },
+  {
+   "code": "508058",
+   "period": "2025Q4",
+   "revenue_wan": 2044.2556260000001,
+   "net_profit_wan": 728.181481,
+   "distributable_wan": 1443.165403,
+   "unit_distributable": 0.0289,
+   "ebitda_wan": 1622.893041
+  },
+  {
+   "code": "508060",
+   "period": "2025Q4",
+   "revenue_wan": 4537.112555,
+   "net_profit_wan": 954.9411859999999,
+   "distributable_wan": 6743.233045999999,
+   "unit_distributable": 0.0843,
+   "ebitda_wan": 3857.369556
+  },
+  {
+   "code": "508066",
+   "period": "2025Q4",
+   "revenue_wan": 12617.776515000001,
+   "net_profit_wan": 2700.740589,
+   "distributable_wan": 7269.572665000001,
+   "unit_distributable": 0.1817,
+   "ebitda_wan": 8749.098642
+  },
+  {
+   "code": "508068",
+   "period": "2025Q4",
+   "revenue_wan": 3249.568846,
+   "net_profit_wan": 1437.727948,
+   "distributable_wan": 2362.530537,
+   "unit_distributable": 0.0326,
+   "ebitda_wan": 2563.5838329999997
+  },
+  {
+   "code": "508069",
+   "period": "2025Q4",
+   "revenue_wan": 12149.464426999999,
+   "net_profit_wan": 837.051587,
+   "distributable_wan": 8950.186664,
+   "unit_distributable": 0.179,
+   "ebitda_wan": 8489.293723
+  },
+  {
+   "code": "508077",
+   "period": "2025Q4",
+   "revenue_wan": 2057.3993609999998,
+   "net_profit_wan": 281.053005,
+   "distributable_wan": 1385.705757,
+   "unit_distributable": 0.0146,
+   "ebitda_wan": 1478.945912
+  },
+  {
+   "code": "508078",
+   "period": "2025Q4",
+   "revenue_wan": 3201.429741,
+   "net_profit_wan": -1981.0913440000002,
+   "distributable_wan": 5039.769924,
+   "unit_distributable": 0.063,
+   "ebitda_wan": 2397.619315
+  },
+  {
+   "code": "508080",
+   "period": "2025Q4",
+   "revenue_wan": 2593.193033,
+   "net_profit_wan": -202.760148,
+   "distributable_wan": 1532.980397,
+   "unit_distributable": 0.0383,
+   "ebitda_wan": 1656.3202880000001
+  },
+  {
+   "code": "508082",
+   "period": "2025Q4",
+   "revenue_wan": 8705.487528,
+   "net_profit_wan": -654.472939,
+   "distributable_wan": 4108.0031,
+   "unit_distributable": 0.0411,
+   "ebitda_wan": 5801.532878
+  },
+  {
+   "code": "508084",
+   "period": "2025Q4",
+   "revenue_wan": 2132.9989600000004,
+   "net_profit_wan": 256.32185400000003,
+   "distributable_wan": 1684.060027,
+   "unit_distributable": 0.0421,
+   "ebitda_wan": 1705.0555420000003
+  },
+  {
+   "code": "508085",
+   "period": "2025Q4",
+   "revenue_wan": 2050.759953,
+   "net_profit_wan": 232.623072,
+   "distributable_wan": 1130.2770150000001,
+   "unit_distributable": 0.0226,
+   "ebitda_wan": 1374.3993150000001
+  },
+  {
+   "code": "508086",
+   "period": "2025Q4",
+   "revenue_wan": 12685.920944,
+   "net_profit_wan": -219.10695299999998,
+   "distributable_wan": 10223.878261,
+   "unit_distributable": 0.1022,
+   "ebitda_wan": 10806.589858
+  },
+  {
+   "code": "508087",
+   "period": "2025Q4",
+   "revenue_wan": 30537.214058999998,
+   "net_profit_wan": -1762.2120530000002,
+   "distributable_wan": 5137.278246,
+   "unit_distributable": 0.2569,
+   "ebitda_wan": -18.838549
+  },
+  {
+   "code": "508088",
+   "period": "2025Q4",
+   "revenue_wan": 2852.618629,
+   "net_profit_wan": 1500.545692,
+   "distributable_wan": 1758.292016,
+   "unit_distributable": 0.0284,
+   "ebitda_wan": 1799.1381760000002
+  },
+  {
+   "code": "508089",
+   "period": "2025Q4",
+   "revenue_wan": 4464.049817,
+   "net_profit_wan": 2118.647696,
+   "distributable_wan": 3614.3194869999998,
+   "unit_distributable": 0.1205,
+   "ebitda_wan": 3411.890499
+  },
+  {
+   "code": "508090",
+   "period": "2025Q4",
+   "revenue_wan": 2667.580322,
+   "net_profit_wan": 371.346075,
+   "distributable_wan": 1583.341073,
+   "unit_distributable": 0.0396,
+   "ebitda_wan": 1980.751398
+  },
+  {
+   "code": "508091",
+   "period": "2025Q4",
+   "revenue_wan": 6289.73847,
+   "net_profit_wan": 174.43516499999998,
+   "distributable_wan": 2625.410632,
+   "unit_distributable": 0.0656,
+   "ebitda_wan": 3650.359182
+  },
+  {
+   "code": "508092",
+   "period": "2025Q4",
+   "revenue_wan": 2855.599945,
+   "net_profit_wan": 837.956217,
+   "distributable_wan": 1995.400634,
+   "unit_distributable": 0.0499,
+   "ebitda_wan": 2103.9935370000003
+  },
+  {
+   "code": "508096",
+   "period": "2025Q4",
+   "revenue_wan": 7059.409341,
+   "net_profit_wan": 1349.88294,
+   "distributable_wan": 5603.424404,
+   "unit_distributable": 0.0933,
+   "ebitda_wan": 6023.873063
+  },
+  {
+   "code": "508097",
+   "period": "2025Q4",
+   "revenue_wan": 1721.344484,
+   "net_profit_wan": 766.586716,
+   "distributable_wan": 1265.4954970000001,
+   "unit_distributable": 0.0316,
+   "ebitda_wan": 1498.680505
+  },
+  {
+   "code": "508098",
+   "period": "2025Q4",
+   "revenue_wan": 2703.5076280000003,
+   "net_profit_wan": 659.465618,
+   "distributable_wan": 1434.918064,
+   "unit_distributable": 0.0287,
+   "ebitda_wan": 1863.871622
+  },
+  {
+   "code": "508099",
+   "period": "2025Q4",
+   "revenue_wan": 3005.6673539999997,
+   "net_profit_wan": -453.487391,
+   "distributable_wan": 1136.472793,
+   "unit_distributable": 0.0126,
+   "ebitda_wan": 1617.514626
+  },
+  {
+   "code": "180101",
+   "period": "2026Q1",
+   "revenue_wan": 4105.8402240000005,
+   "net_profit_wan": 998.190351,
+   "distributable_wan": 2035.5551679999999,
+   "unit_distributable": 0.0143,
+   "ebitda_wan": 3173.928635
+  },
+  {
+   "code": "180102",
+   "period": "2026Q1",
+   "revenue_wan": 1329.778624,
+   "net_profit_wan": 5.040201000000001,
+   "distributable_wan": 844.311959,
+   "unit_distributable": 0.0121,
+   "ebitda_wan": 927.3220130000001
+  },
+  {
+   "code": "180103",
+   "period": "2026Q1",
+   "revenue_wan": 1981.29417,
+   "net_profit_wan": -119.691084,
+   "distributable_wan": 1213.1749,
+   "unit_distributable": 0.0243,
+   "ebitda_wan": 1230.25794
+  },
+  {
+   "code": "180105",
+   "period": "2026Q1",
+   "revenue_wan": 2260.3483760000004,
+   "net_profit_wan": -283.140894,
+   "distributable_wan": 1373.716775,
+   "unit_distributable": 0.0172,
+   "ebitda_wan": 1647.318695
+  },
+  {
+   "code": "180106",
+   "period": "2026Q1",
+   "revenue_wan": 2342.763064,
+   "net_profit_wan": 531.327154,
+   "distributable_wan": 1552.216668,
+   "unit_distributable": 0.0388,
+   "ebitda_wan": 1655.72892
+  },
+  {
+   "code": "180201",
+   "period": "2026Q1",
+   "revenue_wan": 18563.688197,
+   "net_profit_wan": 5434.944802,
+   "distributable_wan": 15036.655584999999,
+   "unit_distributable": 0.2148,
+   "ebitda_wan": 16532.565166999997
+  },
+  {
+   "code": "180202",
+   "period": "2026Q1",
+   "revenue_wan": 6119.441212,
+   "net_profit_wan": 995.563774,
+   "distributable_wan": 3008.2026140000003,
+   "unit_distributable": 0.1003,
+   "ebitda_wan": 5145.58818
+  },
+  {
+   "code": "180203",
+   "period": "2026Q1",
+   "revenue_wan": 12655.897353,
+   "net_profit_wan": 3637.8405020000005,
+   "distributable_wan": 6854.9514,
+   "unit_distributable": 0.1371,
+   "ebitda_wan": 11050.719439
+  },
+  {
+   "code": "180301",
+   "period": "2026Q1",
+   "revenue_wan": 2899.352453,
+   "net_profit_wan": 756.9950349999999,
+   "distributable_wan": 2155.026077,
+   "unit_distributable": 0.0226,
+   "ebitda_wan": 2439.018321
+  },
+  {
+   "code": "180302",
+   "period": "2026Q1",
+   "revenue_wan": 2335.599668,
+   "net_profit_wan": 327.831312,
+   "distributable_wan": 1768.2410960000002,
+   "unit_distributable": 0.0295,
+   "ebitda_wan": 1747.2020260000002
+  },
+  {
+   "code": "180303",
+   "period": "2026Q1",
+   "revenue_wan": 1941.509039,
+   "net_profit_wan": 61.395602000000004,
+   "distributable_wan": 1444.796573,
+   "unit_distributable": 0.0482,
+   "ebitda_wan": 1305.847925
+  },
+  {
+   "code": "180305",
+   "period": "2026Q1",
+   "revenue_wan": 6052.854378,
+   "net_profit_wan": 1273.634095,
+   "distributable_wan": 4330.850625,
+   "unit_distributable": 0.0433,
+   "ebitda_wan": 4532.359742000001
+  },
+  {
+   "code": "180306",
+   "period": "2026Q1",
+   "revenue_wan": 4302.772038,
+   "net_profit_wan": 556.985012,
+   "distributable_wan": 2675.8633219999997,
+   "unit_distributable": 0.0669,
+   "ebitda_wan": 2959.2083559999996
+  },
+  {
+   "code": "180401",
+   "period": "2026Q1",
+   "revenue_wan": 28302.903689,
+   "net_profit_wan": 1967.404427,
+   "distributable_wan": 4417.871234,
+   "unit_distributable": 0.0736,
+   "ebitda_wan": 5881.857167
+  },
+  {
+   "code": "180402",
+   "period": "2026Q1",
+   "revenue_wan": 2571.032634,
+   "net_profit_wan": 678.851676,
+   "distributable_wan": 243.54140800000002,
+   "unit_distributable": 0.0122,
+   "ebitda_wan": 2134.158838
+  },
+  {
+   "code": "180501",
+   "period": "2026Q1",
+   "revenue_wan": 1395.657617,
+   "net_profit_wan": 576.312366,
+   "distributable_wan": 1179.6376480000001,
+   "unit_distributable": 0.0236,
+   "ebitda_wan": 1227.238007
+  },
+  {
+   "code": "180502",
+   "period": "2026Q1",
+   "revenue_wan": 2019.0077670000003,
+   "net_profit_wan": 117.595601,
+   "distributable_wan": 1413.983018,
+   "unit_distributable": 0.0283,
+   "ebitda_wan": 1580.311643
+  },
+  {
+   "code": "180601",
+   "period": "2026Q1",
+   "revenue_wan": 20580.831202,
+   "net_profit_wan": 2326.054121,
+   "distributable_wan": 9013.027320000001,
+   "unit_distributable": 0.0901,
+   "ebitda_wan": 12052.689956999999
+  },
+  {
+   "code": "180602",
+   "period": "2026Q1",
+   "revenue_wan": 8752.360594,
+   "net_profit_wan": 519.316459,
+   "distributable_wan": 4273.869288,
+   "unit_distributable": 0.0427,
+   "ebitda_wan": 5686.239864
+  },
+  {
+   "code": "180603",
+   "period": "2026Q1",
+   "revenue_wan": 9147.763611,
+   "net_profit_wan": 1376.937122,
+   "distributable_wan": 4618.875562,
+   "unit_distributable": 0.0462,
+   "ebitda_wan": 5379.444887
+  },
+  {
+   "code": "180605",
+   "period": "2026Q1",
+   "revenue_wan": 2806.212328,
+   "net_profit_wan": 1108.230035,
+   "distributable_wan": 2247.02465,
+   "unit_distributable": 0.0449,
+   "ebitda_wan": 2467.658598
+  },
+  {
+   "code": "180606",
+   "period": "2026Q1",
+   "revenue_wan": 4270.129165,
+   "net_profit_wan": 470.93116299999997,
+   "distributable_wan": 2091.655671,
+   "unit_distributable": 0.0418,
+   "ebitda_wan": 2539.1672399999998
+  },
+  {
+   "code": "180607",
+   "period": "2026Q1",
+   "revenue_wan": 3069.0812079999996,
+   "net_profit_wan": 66.43781800000001,
+   "distributable_wan": 1645.762599,
+   "unit_distributable": 0.0549,
+   "ebitda_wan": 1904.2212550000002
+  },
+  {
+   "code": "180701",
+   "period": "2026Q1",
+   "revenue_wan": 1400.803827,
+   "net_profit_wan": -1020.6489310000001,
+   "distributable_wan": 633.677994,
+   "unit_distributable": 0.0106,
+   "ebitda_wan": -55.234191
+  },
+  {
+   "code": "180801",
+   "period": "2026Q1",
+   "revenue_wan": 10105.574118999999,
+   "net_profit_wan": 1526.062199,
+   "distributable_wan": 1092.838928,
+   "unit_distributable": 0.1093,
+   "ebitda_wan": 3793.8991109999997
+  },
+  {
+   "code": "180901",
+   "period": "2026Q1",
+   "revenue_wan": 13619.606833000002,
+   "net_profit_wan": 1513.661397,
+   "distributable_wan": 6039.8531,
+   "unit_distributable": 0.0604,
+   "ebitda_wan": 7579.478669
+  },
+  {
+   "code": "508000",
+   "period": "2026Q1",
+   "revenue_wan": 3264.546514,
+   "net_profit_wan": -1231.576984,
+   "distributable_wan": 2578.896666,
+   "unit_distributable": 0.0269,
+   "ebitda_wan": 2600.944075
+  },
+  {
+   "code": "508001",
+   "period": "2026Q1",
+   "revenue_wan": 18574.516926,
+   "net_profit_wan": 1924.559643,
+   "distributable_wan": 13597.376185,
+   "unit_distributable": 0.2719,
+   "ebitda_wan": 14968.010336000001
+  },
+  {
+   "code": "508002",
+   "period": "2026Q1",
+   "revenue_wan": 6181.237218,
+   "net_profit_wan": 1098.717512,
+   "distributable_wan": 3646.106839,
+   "unit_distributable": 0.0365,
+   "ebitda_wan": 4088.56755
+  },
+  {
+   "code": "508003",
+   "period": "2026Q1",
+   "revenue_wan": 2715.931663,
+   "net_profit_wan": -218.606849,
+   "distributable_wan": 1984.7429399999999,
+   "unit_distributable": 0.0397,
+   "ebitda_wan": 2093.760315
+  },
+  {
+   "code": "508005",
+   "period": "2026Q1",
+   "revenue_wan": 8315.959351000001,
+   "net_profit_wan": 2685.619922,
+   "distributable_wan": 4225.645493,
+   "unit_distributable": 0.0528,
+   "ebitda_wan": 4977.7356
+  },
+  {
+   "code": "508007",
+   "period": "2026Q1",
+   "revenue_wan": 5762.943957,
+   "net_profit_wan": 1497.646502,
+   "distributable_wan": 4921.132651,
+   "unit_distributable": 0.123,
+   "ebitda_wan": 4456.119829
+  },
+  {
+   "code": "508008",
+   "period": "2026Q1",
+   "revenue_wan": 16342.132392,
+   "net_profit_wan": 1928.103339,
+   "distributable_wan": 11243.321272,
+   "unit_distributable": 0.2249,
+   "ebitda_wan": 14078.434618000001
+  },
+  {
+   "code": "508009",
+   "period": "2026Q1",
+   "revenue_wan": 20052.700889,
+   "net_profit_wan": -1482.252053,
+   "distributable_wan": 8814.891286,
+   "unit_distributable": 0.0881,
+   "ebitda_wan": 17651.086795
+  },
+  {
+   "code": "508010",
+   "period": "2026Q1",
+   "revenue_wan": 2064.2587670000003,
+   "net_profit_wan": 758.802811,
+   "distributable_wan": 1287.0841070000001,
+   "unit_distributable": 0.0322,
+   "ebitda_wan": 1575.8836019999999
+  },
+  {
+   "code": "508011",
+   "period": "2026Q1",
+   "revenue_wan": 2736.532255,
+   "net_profit_wan": 893.4503199999999,
+   "distributable_wan": 1806.652183,
+   "unit_distributable": 0.0452,
+   "ebitda_wan": 2170.061444
+  },
+  {
+   "code": "508012",
+   "period": "2026Q1",
+   "revenue_wan": 1483.262961,
+   "net_profit_wan": 214.337963,
+   "distributable_wan": 538.843668,
+   "unit_distributable": 0.018,
+   "ebitda_wan": 1109.639008
+  },
+  {
+   "code": "508015",
+   "period": "2026Q1",
+   "revenue_wan": 4694.675435,
+   "net_profit_wan": 1483.736703,
+   "distributable_wan": 1519.150035,
+   "unit_distributable": 0.076,
+   "ebitda_wan": 3530.1710369999996
+  },
+  {
+   "code": "508016",
+   "period": "2026Q1",
+   "revenue_wan": 36917.502101,
+   "net_profit_wan": -510.482117,
+   "distributable_wan": 2989.56247,
+   "unit_distributable": 0.0598,
+   "ebitda_wan": 3866.6770100000003
+  },
+  {
+   "code": "508017",
+   "period": "2026Q1",
+   "revenue_wan": 2488.565063,
+   "net_profit_wan": 452.73292999999995,
+   "distributable_wan": 1471.83825,
+   "unit_distributable": 0.0368,
+   "ebitda_wan": 1504.8744789999998
+  },
+  {
+   "code": "508018",
+   "period": "2026Q1",
+   "revenue_wan": 11942.833465,
+   "net_profit_wan": 2826.67215,
+   "distributable_wan": 8655.681070999999,
+   "unit_distributable": 0.0866,
+   "ebitda_wan": 10025.194935
+  },
+  {
+   "code": "508019",
+   "period": "2026Q1",
+   "revenue_wan": 1914.191798,
+   "net_profit_wan": -137.619125,
+   "distributable_wan": 1137.989497,
+   "unit_distributable": 0.019,
+   "ebitda_wan": 1235.15104
+  },
+  {
+   "code": "508021",
+   "period": "2026Q1",
+   "revenue_wan": 3215.598134,
+   "net_profit_wan": 1085.450144,
+   "distributable_wan": 1491.504985,
+   "unit_distributable": 0.0253,
+   "ebitda_wan": 2544.872948
+  },
+  {
+   "code": "508022",
+   "period": "2026Q1",
+   "revenue_wan": 2926.728838,
+   "net_profit_wan": 935.758957,
+   "distributable_wan": 1897.901301,
+   "unit_distributable": 0.038,
+   "ebitda_wan": 2140.576693
+  },
+  {
+   "code": "508026",
+   "period": "2026Q1",
+   "revenue_wan": 2744.094118,
+   "net_profit_wan": 1001.2359789999999,
+   "distributable_wan": 2457.978788,
+   "unit_distributable": 0.0614,
+   "ebitda_wan": 2077.6998949999997
+  },
+  {
+   "code": "508027",
+   "period": "2026Q1",
+   "revenue_wan": 5556.468177000001,
+   "net_profit_wan": 1105.766792,
+   "distributable_wan": 3255.931523,
+   "unit_distributable": 0.0362,
+   "ebitda_wan": 3468.151665
+  },
+  {
+   "code": "508028",
+   "period": "2026Q1",
+   "revenue_wan": 20297.397383,
+   "net_profit_wan": 6680.89456,
+   "distributable_wan": 8279.639482999999,
+   "unit_distributable": 0.1035,
+   "ebitda_wan": 17118.986958
+  },
+  {
+   "code": "508029",
+   "period": "2026Q1",
+   "revenue_wan": 2338.7281,
+   "net_profit_wan": -494.485974,
+   "distributable_wan": 1524.799483,
+   "unit_distributable": 0.0508,
+   "ebitda_wan": 1621.942792
+  },
+  {
+   "code": "508031",
+   "period": "2026Q1",
+   "revenue_wan": 4523.277706,
+   "net_profit_wan": 2021.443611,
+   "distributable_wan": 3159.612873,
+   "unit_distributable": 0.0316,
+   "ebitda_wan": 3451.8049170000004
+  },
+  {
+   "code": "508033",
+   "period": "2026Q1",
+   "revenue_wan": 9543.856979,
+   "net_profit_wan": 1901.5307460000001,
+   "distributable_wan": 7195.831151,
+   "unit_distributable": 0.2399,
+   "ebitda_wan": 8366.101426000001
+  },
+  {
+   "code": "508036",
+   "period": "2026Q1",
+   "revenue_wan": 48091.488498,
+   "net_profit_wan": 9354.464348,
+   "distributable_wan": 31864.995039999998,
+   "unit_distributable": 0.3186,
+   "ebitda_wan": 44108.135485
+  },
+  {
+   "code": "508039",
+   "period": "2026Q1",
+   "revenue_wan": 7937.882526,
+   "net_profit_wan": 1427.4522279999999,
+   "distributable_wan": 4804.973532999999,
+   "unit_distributable": 0.048,
+   "ebitda_wan": 6510.571712
+  },
+  {
+   "code": "508048",
+   "period": "2026Q1",
+   "revenue_wan": 1830.38629,
+   "net_profit_wan": 5.156834,
+   "distributable_wan": 1402.338526,
+   "unit_distributable": 0.0351,
+   "ebitda_wan": 1510.990752
+  },
+  {
+   "code": "508050",
+   "period": "2026Q1",
+   "revenue_wan": 1265.827366,
+   "net_profit_wan": -518.597224,
+   "distributable_wan": 1087.155139,
+   "unit_distributable": 0.0362,
+   "ebitda_wan": 699.812737
+  },
+  {
+   "code": "508055",
+   "period": "2026Q1",
+   "revenue_wan": 1777.548366,
+   "net_profit_wan": 353.786631,
+   "distributable_wan": 1287.3053300000001,
+   "unit_distributable": 0.0257,
+   "ebitda_wan": 1369.1503619999999
+  },
+  {
+   "code": "508056",
+   "period": "2026Q1",
+   "revenue_wan": 9746.276118000002,
+   "net_profit_wan": -708.330094,
+   "distributable_wan": 6888.871781,
+   "unit_distributable": 0.0355,
+   "ebitda_wan": 6262.872340999999
+  },
+  {
+   "code": "508058",
+   "period": "2026Q1",
+   "revenue_wan": 2055.51115,
+   "net_profit_wan": 836.753779,
+   "distributable_wan": 1494.475301,
+   "unit_distributable": 0.0299,
+   "ebitda_wan": 1703.1964420000002
+  },
+  {
+   "code": "508060",
+   "period": "2026Q1",
+   "revenue_wan": 4542.577363,
+   "net_profit_wan": 1626.096043,
+   "distributable_wan": 1866.2372649999998,
+   "unit_distributable": 0.0233,
+   "ebitda_wan": 3918.818639
+  },
+  {
+   "code": "508066",
+   "period": "2026Q1",
+   "revenue_wan": 12282.914373,
+   "net_profit_wan": 4269.240703,
+   "distributable_wan": 9432.804879000001,
+   "unit_distributable": 0.2358,
+   "ebitda_wan": 10213.089182
+  },
+  {
+   "code": "508068",
+   "period": "2026Q1",
+   "revenue_wan": 3255.617294,
+   "net_profit_wan": 1374.242469,
+   "distributable_wan": 2242.946594,
+   "unit_distributable": 0.031,
+   "ebitda_wan": 2583.8350969999997
+  },
+  {
+   "code": "508069",
+   "period": "2026Q1",
+   "revenue_wan": 11483.605529999999,
+   "net_profit_wan": 2566.6419769999998,
+   "distributable_wan": 7491.493441,
+   "unit_distributable": 0.1498,
+   "ebitda_wan": 8369.623466
+  },
+  {
+   "code": "508077",
+   "period": "2026Q1",
+   "revenue_wan": 3398.0577439999997,
+   "net_profit_wan": 290.086568,
+   "distributable_wan": 2253.749869,
+   "unit_distributable": 0.0238,
+   "ebitda_wan": 2480.865957
+  },
+  {
+   "code": "508078",
+   "period": "2026Q1",
+   "revenue_wan": 3382.357725,
+   "net_profit_wan": -1515.060732,
+   "distributable_wan": 2010.1230170000001,
+   "unit_distributable": 0.0251,
+   "ebitda_wan": 2628.409329
+  },
+  {
+   "code": "508080",
+   "period": "2026Q1",
+   "revenue_wan": 2642.953873,
+   "net_profit_wan": 345.382129,
+   "distributable_wan": 1717.08287,
+   "unit_distributable": 0.0429,
+   "ebitda_wan": 2081.703212
+  },
+  {
+   "code": "508082",
+   "period": "2026Q1",
+   "revenue_wan": 8839.039398,
+   "net_profit_wan": -81.68413699999999,
+   "distributable_wan": 4666.808028,
+   "unit_distributable": 0.0467,
+   "ebitda_wan": 6245.295486
+  },
+  {
+   "code": "508084",
+   "period": "2026Q1",
+   "revenue_wan": 2187.34708,
+   "net_profit_wan": 603.484641,
+   "distributable_wan": 1538.023746,
+   "unit_distributable": 0.0385,
+   "ebitda_wan": 1804.319827
+  },
+  {
+   "code": "508085",
+   "period": "2026Q1",
+   "revenue_wan": 2029.203766,
+   "net_profit_wan": 514.823906,
+   "distributable_wan": 1444.014473,
+   "unit_distributable": 0.0289,
+   "ebitda_wan": 1721.0712019999999
+  },
+  {
+   "code": "508086",
+   "period": "2026Q1",
+   "revenue_wan": 10334.999679999999,
+   "net_profit_wan": -2205.092451,
+   "distributable_wan": 8198.761290999999,
+   "unit_distributable": 0.082,
+   "ebitda_wan": 8570.588077
+  },
+  {
+   "code": "508087",
+   "period": "2026Q1",
+   "revenue_wan": 47052.267644,
+   "net_profit_wan": 5610.801618,
+   "distributable_wan": 5319.718691,
+   "unit_distributable": 0.266,
+   "ebitda_wan": 8739.405506000001
+  },
+  {
+   "code": "508088",
+   "period": "2026Q1",
+   "revenue_wan": 3549.7543560000004,
+   "net_profit_wan": 1623.651098,
+   "distributable_wan": 2847.716625,
+   "unit_distributable": 0.046,
+   "ebitda_wan": 2745.9560109999998
+  },
+  {
+   "code": "508089",
+   "period": "2026Q1",
+   "revenue_wan": 4662.269037,
+   "net_profit_wan": 2262.712216,
+   "distributable_wan": 736.356085,
+   "unit_distributable": 0.0245,
+   "ebitda_wan": 3769.2206539999997
+  },
+  {
+   "code": "508090",
+   "period": "2026Q1",
+   "revenue_wan": 2581.0089120000002,
+   "net_profit_wan": 640.92165,
+   "distributable_wan": 1608.464232,
+   "unit_distributable": 0.0402,
+   "ebitda_wan": 1961.478682
+  },
+  {
+   "code": "508091",
+   "period": "2026Q1",
+   "revenue_wan": 6188.928471,
+   "net_profit_wan": 216.26344500000002,
+   "distributable_wan": 2686.0656870000003,
+   "unit_distributable": 0.0672,
+   "ebitda_wan": 3681.1517799999997
+  },
+  {
+   "code": "508092",
+   "period": "2026Q1",
+   "revenue_wan": 2923.954201,
+   "net_profit_wan": 1008.7959279999999,
+   "distributable_wan": 1740.2805230000001,
+   "unit_distributable": 0.0435,
+   "ebitda_wan": 2361.07782
+  },
+  {
+   "code": "508096",
+   "period": "2026Q1",
+   "revenue_wan": 13890.772356,
+   "net_profit_wan": 3802.7968909999995,
+   "distributable_wan": 15418.968061000001,
+   "unit_distributable": 0.2566,
+   "ebitda_wan": 11026.077766
+  },
+  {
+   "code": "508097",
+   "period": "2026Q1",
+   "revenue_wan": 1520.1398179999999,
+   "net_profit_wan": 443.398242,
+   "distributable_wan": 1251.491892,
+   "unit_distributable": 0.0313,
+   "ebitda_wan": 1134.664982
+  },
+  {
+   "code": "508098",
+   "period": "2026Q1",
+   "revenue_wan": 2633.616071,
+   "net_profit_wan": 707.679637,
+   "distributable_wan": 1800.761802,
+   "unit_distributable": 0.036,
+   "ebitda_wan": 1908.971081
+  },
+  {
+   "code": "508099",
+   "period": "2026Q1",
+   "revenue_wan": 2843.173297,
+   "net_profit_wan": -382.124826,
+   "distributable_wan": 1211.117119,
+   "unit_distributable": 0.0135,
+   "ebitda_wan": 1644.413225
+  },
+  {
+   "code": "180101",
+   "period": "2026Q2",
+   "revenue_wan": 4121.778892,
+   "net_profit_wan": 943.6730660000001,
+   "distributable_wan": 3116.419068,
+   "unit_distributable": 0.0219,
+   "ebitda_wan": 3152.311466
+  },
+  {
+   "code": "180102",
+   "period": "2026Q2",
+   "revenue_wan": 1224.867923,
+   "net_profit_wan": -128.42296299999998,
+   "distributable_wan": 732.765021,
+   "unit_distributable": 0.0105,
+   "ebitda_wan": 806.4781429999999
+  },
+  {
+   "code": "180103",
+   "period": "2026Q2",
+   "revenue_wan": 1988.3349269999999,
+   "net_profit_wan": -85.033142,
+   "distributable_wan": 1155.160707,
+   "unit_distributable": 0.0231,
+   "ebitda_wan": 1263.614718
+  },
+  {
+   "code": "180105",
+   "period": "2026Q2",
+   "revenue_wan": 2139.331627,
+   "net_profit_wan": -513.3401700000001,
+   "distributable_wan": 1001.67394,
+   "unit_distributable": 0.0125,
+   "ebitda_wan": 1456.2582519999999
+  },
+  {
+   "code": "180106",
+   "period": "2026Q2",
+   "revenue_wan": 2015.5789510000002,
+   "net_profit_wan": 233.99620499999997,
+   "distributable_wan": 1417.830258,
+   "unit_distributable": 0.0354,
+   "ebitda_wan": 1237.002657
+  },
+  {
+   "code": "180201",
+   "period": "2026Q2",
+   "revenue_wan": 16539.12756,
+   "net_profit_wan": 3032.096994,
+   "distributable_wan": 9917.015159,
+   "unit_distributable": 0.1417,
+   "ebitda_wan": 13618.275212999999
+  },
+  {
+   "code": "180202",
+   "period": "2026Q2",
+   "revenue_wan": 5324.9229350000005,
+   "net_profit_wan": 414.475782,
+   "distributable_wan": 2888.159756,
+   "unit_distributable": 0.0963,
+   "ebitda_wan": 4392.491402000001
+  },
+  {
+   "code": "180203",
+   "period": "2026Q2",
+   "revenue_wan": 11891.96235,
+   "net_profit_wan": 3652.589403,
+   "distributable_wan": 9870.324069,
+   "unit_distributable": 0.1974,
+   "ebitda_wan": 10300.212823
+  },
+  {
+   "code": "180301",
+   "period": "2026Q2",
+   "revenue_wan": 2894.4609649999998,
+   "net_profit_wan": 750.1424969999999,
+   "distributable_wan": 2061.297004,
+   "unit_distributable": 0.0216,
+   "ebitda_wan": 2443.3033170000003
+  },
+  {
+   "code": "180302",
+   "period": "2026Q2",
+   "revenue_wan": 2406.731772,
+   "net_profit_wan": 124.334792,
+   "distributable_wan": 1781.2204769999998,
+   "unit_distributable": 0.0297,
+   "ebitda_wan": 1801.259477
+  },
+  {
+   "code": "180303",
+   "period": "2026Q2",
+   "revenue_wan": 2086.843759,
+   "net_profit_wan": 137.72608400000001,
+   "distributable_wan": 1537.453226,
+   "unit_distributable": 0.0512,
+   "ebitda_wan": 1397.5665099999999
+  },
+  {
+   "code": "180305",
+   "period": "2026Q2",
+   "revenue_wan": 6028.140874000001,
+   "net_profit_wan": 1117.264691,
+   "distributable_wan": 4049.461758,
+   "unit_distributable": 0.0405,
+   "ebitda_wan": 4422.869259
+  },
+  {
+   "code": "180306",
+   "period": "2026Q2",
+   "revenue_wan": 4101.475461,
+   "net_profit_wan": 462.013412,
+   "distributable_wan": 2678.7672850000004,
+   "unit_distributable": 0.067,
+   "ebitda_wan": 2848.809993
+  },
+  {
+   "code": "180401",
+   "period": "2026Q2",
+   "revenue_wan": 30780.114514999997,
+   "net_profit_wan": 4805.268405,
+   "distributable_wan": 3210.8731780000003,
+   "unit_distributable": 0.0535,
+   "ebitda_wan": 9666.060353
+  },
+  {
+   "code": "180402",
+   "period": "2026Q2",
+   "revenue_wan": 2441.862862,
+   "net_profit_wan": 120.89301599999999,
+   "distributable_wan": 1820.4835480000002,
+   "unit_distributable": 0.091,
+   "ebitda_wan": 1959.1902309999998
+  },
+  {
+   "code": "180501",
+   "period": "2026Q2",
+   "revenue_wan": 1406.119148,
+   "net_profit_wan": 581.163854,
+   "distributable_wan": 1193.2404279999998,
+   "unit_distributable": 0.0239,
+   "ebitda_wan": 1230.593957
+  },
+  {
+   "code": "180502",
+   "period": "2026Q2",
+   "revenue_wan": 2044.5058399999998,
+   "net_profit_wan": 109.896176,
+   "distributable_wan": 1561.7996210000001,
+   "unit_distributable": 0.0312,
+   "ebitda_wan": 1581.8185349999999
+  },
+  {
+   "code": "180503",
+   "period": "2026Q2",
+   "revenue_wan": 1803.905558,
+   "net_profit_wan": 1060.168491,
+   "distributable_wan": 3432.1378090000003,
+   "unit_distributable": 0.0858,
+   "ebitda_wan": 821.882549
+  },
+  {
+   "code": "180601",
+   "period": "2026Q2",
+   "revenue_wan": 19994.798915,
+   "net_profit_wan": 1831.02037,
+   "distributable_wan": 9213.54987,
+   "unit_distributable": 0.0921,
+   "ebitda_wan": 11560.003716
+  },
+  {
+   "code": "180602",
+   "period": "2026Q2",
+   "revenue_wan": 8819.798209,
+   "net_profit_wan": 630.393941,
+   "distributable_wan": 4346.695844,
+   "unit_distributable": 0.0435,
+   "ebitda_wan": 5738.116647999999
+  },
+  {
+   "code": "180603",
+   "period": "2026Q2",
+   "revenue_wan": 8838.965673,
+   "net_profit_wan": 1259.730022,
+   "distributable_wan": 4598.030542,
+   "unit_distributable": 0.046,
+   "ebitda_wan": 5114.887203
+  },
+  {
+   "code": "180605",
+   "period": "2026Q2",
+   "revenue_wan": 2735.0018489999998,
+   "net_profit_wan": 770.884479,
+   "distributable_wan": 2290.267389,
+   "unit_distributable": 0.0458,
+   "ebitda_wan": 2392.2314579999997
+  },
+  {
+   "code": "180606",
+   "period": "2026Q2",
+   "revenue_wan": 4196.651252000001,
+   "net_profit_wan": 435.880221,
+   "distributable_wan": 2003.8365079999999,
+   "unit_distributable": 0.0401,
+   "ebitda_wan": 2502.14542
+  },
+  {
+   "code": "180607",
+   "period": "2026Q2",
+   "revenue_wan": 3280.679019,
+   "net_profit_wan": -51.929123,
+   "distributable_wan": 1701.838904,
+   "unit_distributable": 0.0567,
+   "ebitda_wan": 1926.02097
+  },
+  {
+   "code": "180701",
+   "period": "2026Q2",
+   "revenue_wan": 3512.052389,
+   "net_profit_wan": 1030.163166,
+   "distributable_wan": 1865.036379,
+   "unit_distributable": 0.0311,
+   "ebitda_wan": 2015.2817300000002
+  },
+  {
+   "code": "180801",
+   "period": "2026Q2",
+   "revenue_wan": 10546.627696,
+   "net_profit_wan": 846.574384,
+   "distributable_wan": 1056.913716,
+   "unit_distributable": 0.1057,
+   "ebitda_wan": 3335.5350120000003
+  },
+  {
+   "code": "180901",
+   "period": "2026Q2",
+   "revenue_wan": 14224.985374000002,
+   "net_profit_wan": 1721.667802,
+   "distributable_wan": 7771.44543,
+   "unit_distributable": 0.0777,
+   "ebitda_wan": 7021.31331
+  },
+  {
+   "code": "508000",
+   "period": "2026Q2",
+   "revenue_wan": 3065.071062,
+   "net_profit_wan": -1164.453688,
+   "distributable_wan": 2369.5441920000003,
+   "unit_distributable": 0.0247,
+   "ebitda_wan": 2647.439377
+  },
+  {
+   "code": "508001",
+   "period": "2026Q2",
+   "revenue_wan": 16029.587681,
+   "net_profit_wan": -476.75744299999997,
+   "distributable_wan": 5404.764238000001,
+   "unit_distributable": 0.1081,
+   "ebitda_wan": 13007.825301
+  },
+  {
+   "code": "508002",
+   "period": "2026Q2",
+   "revenue_wan": 5350.5522869999995,
+   "net_profit_wan": 300.94929,
+   "distributable_wan": 3223.906939,
+   "unit_distributable": 0.0322,
+   "ebitda_wan": 3635.941596
+  },
+  {
+   "code": "508003",
+   "period": "2026Q2",
+   "revenue_wan": 2711.394131,
+   "net_profit_wan": -266.25080099999997,
+   "distributable_wan": 1981.6697629999999,
+   "unit_distributable": 0.0396,
+   "ebitda_wan": 2098.34163
+  },
+  {
+   "code": "508005",
+   "period": "2026Q2",
+   "revenue_wan": 6066.208364,
+   "net_profit_wan": 1447.1115320000001,
+   "distributable_wan": 2971.603616,
+   "unit_distributable": 0.0371,
+   "ebitda_wan": 3595.494631
+  },
+  {
+   "code": "508006",
+   "period": "2026Q2",
+   "revenue_wan": 7876.552211,
+   "net_profit_wan": 1292.489284,
+   "distributable_wan": 5527.730609,
+   "unit_distributable": 0.1106,
+   "ebitda_wan": 4971.873191
+  },
+  {
+   "code": "508007",
+   "period": "2026Q2",
+   "revenue_wan": 6099.525933,
+   "net_profit_wan": 1544.5423039999998,
+   "distributable_wan": 4838.5109840000005,
+   "unit_distributable": 0.121,
+   "ebitda_wan": 4979.858469
+  },
+  {
+   "code": "508008",
+   "period": "2026Q2",
+   "revenue_wan": 15562.191942,
+   "net_profit_wan": 943.4238789999999,
+   "distributable_wan": 9031.251929,
+   "unit_distributable": 0.1806,
+   "ebitda_wan": 12812.048081
+  },
+  {
+   "code": "508009",
+   "period": "2026Q2",
+   "revenue_wan": 21124.221629,
+   "net_profit_wan": -838.051693,
+   "distributable_wan": 16950.782132,
+   "unit_distributable": 0.1695,
+   "ebitda_wan": 18306.900806
+  },
+  {
+   "code": "508010",
+   "period": "2026Q2",
+   "revenue_wan": 2216.519909,
+   "net_profit_wan": 815.615849,
+   "distributable_wan": 1540.311316,
+   "unit_distributable": 0.0385,
+   "ebitda_wan": 1636.369076
+  },
+  {
+   "code": "508011",
+   "period": "2026Q2",
+   "revenue_wan": 2742.372623,
+   "net_profit_wan": 659.186282,
+   "distributable_wan": 1811.400623,
+   "unit_distributable": 0.0453,
+   "ebitda_wan": 2161.451234
+  },
+  {
+   "code": "508012",
+   "period": "2026Q2",
+   "revenue_wan": 1417.916046,
+   "net_profit_wan": 135.036155,
+   "distributable_wan": 761.1152450000001,
+   "unit_distributable": 0.0254,
+   "ebitda_wan": 1026.581659
+  },
+  {
+   "code": "508015",
+   "period": "2026Q2",
+   "revenue_wan": 4049.098735,
+   "net_profit_wan": 1283.741074,
+   "distributable_wan": 1101.779283,
+   "unit_distributable": 0.0551,
+   "ebitda_wan": 3575.310729
+  },
+  {
+   "code": "508016",
+   "period": "2026Q2",
+   "revenue_wan": 30055.936154000003,
+   "net_profit_wan": 772.28387,
+   "distributable_wan": 3034.746807,
+   "unit_distributable": 0.0607,
+   "ebitda_wan": 4893.048874
+  },
+  {
+   "code": "508017",
+   "period": "2026Q2",
+   "revenue_wan": 2580.02167,
+   "net_profit_wan": 503.648221,
+   "distributable_wan": 1494.92766,
+   "unit_distributable": 0.0374,
+   "ebitda_wan": 1556.67148
+  },
+  {
+   "code": "508018",
+   "period": "2026Q2",
+   "revenue_wan": 11195.479493,
+   "net_profit_wan": 2480.293096,
+   "distributable_wan": 7617.914051000001,
+   "unit_distributable": 0.0762,
+   "ebitda_wan": 9384.642878
+  },
+  {
+   "code": "508019",
+   "period": "2026Q2",
+   "revenue_wan": 1978.698788,
+   "net_profit_wan": -122.897756,
+   "distributable_wan": 1248.182401,
+   "unit_distributable": 0.0208,
+   "ebitda_wan": 1312.5106759999999
+  },
+  {
+   "code": "508020",
+   "period": "2026Q2",
+   "revenue_wan": 13583.849591,
+   "net_profit_wan": 3434.727176,
+   "distributable_wan": 52415.044575,
+   "unit_distributable": 0.5242,
+   "ebitda_wan": 12166.561817
+  },
+  {
+   "code": "508021",
+   "period": "2026Q2",
+   "revenue_wan": 3343.7134,
+   "net_profit_wan": 1561.3555939999999,
+   "distributable_wan": 3059.001682,
+   "unit_distributable": 0.052,
+   "ebitda_wan": 2520.345825
+  },
+  {
+   "code": "508022",
+   "period": "2026Q2",
+   "revenue_wan": 2940.723579,
+   "net_profit_wan": 983.226778,
+   "distributable_wan": 1828.8660920000002,
+   "unit_distributable": 0.0366,
+   "ebitda_wan": 2179.912996
+  },
+  {
+   "code": "508026",
+   "period": "2026Q2",
+   "revenue_wan": 1162.14174,
+   "net_profit_wan": -761.253061,
+   "distributable_wan": 610.461197,
+   "unit_distributable": 0.0153,
+   "ebitda_wan": 361.869844
+  },
+  {
+   "code": "508027",
+   "period": "2026Q2",
+   "revenue_wan": 5380.9982,
+   "net_profit_wan": 915.1129300000001,
+   "distributable_wan": 2703.283857,
+   "unit_distributable": 0.03,
+   "ebitda_wan": 3252.15822
+  },
+  {
+   "code": "508028",
+   "period": "2026Q2",
+   "revenue_wan": 18485.269630000003,
+   "net_profit_wan": 845.980488,
+   "distributable_wan": -1121.239448,
+   "unit_distributable": -0.014,
+   "ebitda_wan": 14696.299604
+  },
+  {
+   "code": "508029",
+   "period": "2026Q2",
+   "revenue_wan": 2288.239588,
+   "net_profit_wan": -588.847625,
+   "distributable_wan": 1459.2700029999999,
+   "unit_distributable": 0.0486,
+   "ebitda_wan": 1416.102424
+  },
+  {
+   "code": "508031",
+   "period": "2026Q2",
+   "revenue_wan": 4644.176802,
+   "net_profit_wan": 2183.473713,
+   "distributable_wan": 3337.2966420000002,
+   "unit_distributable": 0.0334,
+   "ebitda_wan": 3629.5371619999996
+  },
+  {
+   "code": "508033",
+   "period": "2026Q2",
+   "revenue_wan": 7745.387025,
+   "net_profit_wan": 1176.4655289999998,
+   "distributable_wan": 4657.8563619999995,
+   "unit_distributable": 0.1553,
+   "ebitda_wan": 6570.188697
+  },
+  {
+   "code": "508036",
+   "period": "2026Q2",
+   "revenue_wan": 53483.862546,
+   "net_profit_wan": 9227.09173,
+   "distributable_wan": 28693.356135,
+   "unit_distributable": 0.2869,
+   "ebitda_wan": 46204.68243
+  },
+  {
+   "code": "508039",
+   "period": "2026Q2",
+   "revenue_wan": null,
+   "net_profit_wan": 1427.4522279999999,
+   "distributable_wan": null,
+   "unit_distributable": null,
+   "ebitda_wan": null
+  },
+  {
+   "code": "508048",
+   "period": "2026Q2",
+   "revenue_wan": 2147.015806,
+   "net_profit_wan": 16.481803,
+   "distributable_wan": 1365.96679,
+   "unit_distributable": 0.0341,
+   "ebitda_wan": 1521.2856470000002
+  },
+  {
+   "code": "508050",
+   "period": "2026Q2",
+   "revenue_wan": 3558.894351,
+   "net_profit_wan": 1322.5044050000001,
+   "distributable_wan": 2429.638009,
+   "unit_distributable": 0.081,
+   "ebitda_wan": 2877.126746
+  },
+  {
+   "code": "508055",
+   "period": "2026Q2",
+   "revenue_wan": 1824.774867,
+   "net_profit_wan": 302.1426,
+   "distributable_wan": 1389.890324,
+   "unit_distributable": 0.0278,
+   "ebitda_wan": 1409.334348
+  },
+  {
+   "code": "508056",
+   "period": "2026Q2",
+   "revenue_wan": 9681.575795,
+   "net_profit_wan": -747.979935,
+   "distributable_wan": 7244.529041,
+   "unit_distributable": 0.0374,
+   "ebitda_wan": 6174.657004
+  },
+  {
+   "code": "508058",
+   "period": "2026Q2",
+   "revenue_wan": 2606.096069,
+   "net_profit_wan": 966.83922,
+   "distributable_wan": 1861.2703149999998,
+   "unit_distributable": 0.0261,
+   "ebitda_wan": 2131.160068
+  },
+  {
+   "code": "508060",
+   "period": "2026Q2",
+   "revenue_wan": 5010.458187,
+   "net_profit_wan": 2010.276506,
+   "distributable_wan": 3382.375035,
+   "unit_distributable": 0.0423,
+   "ebitda_wan": 4392.142436
+  },
+  {
+   "code": "508066",
+   "period": "2026Q2",
+   "revenue_wan": 13611.884931999999,
+   "net_profit_wan": 3598.2453560000004,
+   "distributable_wan": 7574.851111,
+   "unit_distributable": 0.1894,
+   "ebitda_wan": 9628.055898
+  },
+  {
+   "code": "508068",
+   "period": "2026Q2",
+   "revenue_wan": 3229.240722,
+   "net_profit_wan": 1372.39091,
+   "distributable_wan": 2242.983091,
+   "unit_distributable": 0.031,
+   "ebitda_wan": 2578.438903
+  },
+  {
+   "code": "508069",
+   "period": "2026Q2",
+   "revenue_wan": 11309.007997,
+   "net_profit_wan": 1769.8036670000001,
+   "distributable_wan": 5945.981914,
+   "unit_distributable": 0.1189,
+   "ebitda_wan": 7779.960126999999
+  },
+  {
+   "code": "508077",
+   "period": "2026Q2",
+   "revenue_wan": 3486.754203,
+   "net_profit_wan": 446.382209,
+   "distributable_wan": 2276.7056239999997,
+   "unit_distributable": 0.024,
+   "ebitda_wan": 2603.58278
+  },
+  {
+   "code": "508078",
+   "period": "2026Q2",
+   "revenue_wan": 3176.734119,
+   "net_profit_wan": -1488.133174,
+   "distributable_wan": 2303.164927,
+   "unit_distributable": 0.0288,
+   "ebitda_wan": 2597.0299370000002
+  },
+  {
+   "code": "508080",
+   "period": "2026Q2",
+   "revenue_wan": 2416.559277,
+   "net_profit_wan": -176.08637099999999,
+   "distributable_wan": 1711.0598699999998,
+   "unit_distributable": 0.0428,
+   "ebitda_wan": 1562.326066
+  },
+  {
+   "code": "508082",
+   "period": "2026Q2",
+   "revenue_wan": 6743.953129,
+   "net_profit_wan": -1450.885569,
+   "distributable_wan": 4098.303006,
+   "unit_distributable": 0.041,
+   "ebitda_wan": 4865.347065
+  },
+  {
+   "code": "508084",
+   "period": "2026Q2",
+   "revenue_wan": 2189.653573,
+   "net_profit_wan": 602.453551,
+   "distributable_wan": 1559.978633,
+   "unit_distributable": 0.039,
+   "ebitda_wan": 1808.527609
+  },
+  {
+   "code": "508085",
+   "period": "2026Q2",
+   "revenue_wan": 2038.44766,
+   "net_profit_wan": 232.31228,
+   "distributable_wan": 1492.1108140000001,
+   "unit_distributable": 0.0298,
+   "ebitda_wan": 1702.6117219999999
+  },
+  {
+   "code": "508086",
+   "period": "2026Q2",
+   "revenue_wan": 10901.196503,
+   "net_profit_wan": -1277.4866710000001,
+   "distributable_wan": 9126.858962999999,
+   "unit_distributable": 0.0913,
+   "ebitda_wan": 9457.916965999999
+  },
+  {
+   "code": "508087",
+   "period": "2026Q2",
+   "revenue_wan": 102.86397,
+   "net_profit_wan": -2360.404587,
+   "distributable_wan": 225.68662700000002,
+   "unit_distributable": 0.0113,
+   "ebitda_wan": -514.016084
+  },
+  {
+   "code": "508088",
+   "period": "2026Q2",
+   "revenue_wan": 3337.658557,
+   "net_profit_wan": 1753.362232,
+   "distributable_wan": 2140.733732,
+   "unit_distributable": 0.0346,
+   "ebitda_wan": 2516.777764
+  },
+  {
+   "code": "508089",
+   "period": "2026Q2",
+   "revenue_wan": 3828.062078,
+   "net_profit_wan": 1975.5566579999997,
+   "distributable_wan": 5479.6775880000005,
+   "unit_distributable": 0.1827,
+   "ebitda_wan": 3431.5485479999998
+  },
+  {
+   "code": "508090",
+   "period": "2026Q2",
+   "revenue_wan": 2533.398166,
+   "net_profit_wan": 695.361391,
+   "distributable_wan": 1646.6520990000001,
+   "unit_distributable": 0.0412,
+   "ebitda_wan": 1910.5090890000001
+  },
+  {
+   "code": "508091",
+   "period": "2026Q2",
+   "revenue_wan": 6078.781528,
+   "net_profit_wan": 65.49107,
+   "distributable_wan": 2617.68481,
+   "unit_distributable": 0.0654,
+   "ebitda_wan": 3435.7202429999998
+  },
+  {
+   "code": "508092",
+   "period": "2026Q2",
+   "revenue_wan": 2724.603203,
+   "net_profit_wan": 773.549745,
+   "distributable_wan": 1967.3390190000002,
+   "unit_distributable": 0.0492,
+   "ebitda_wan": 2115.071514
+  },
+  {
+   "code": "508096",
+   "period": "2026Q2",
+   "revenue_wan": 16755.432889,
+   "net_profit_wan": 5565.474849,
+   "distributable_wan": 12562.321241,
+   "unit_distributable": 0.2091,
+   "ebitda_wan": 13746.182399000001
+  },
+  {
+   "code": "508097",
+   "period": "2026Q2",
+   "revenue_wan": 1559.458286,
+   "net_profit_wan": 455.363313,
+   "distributable_wan": 991.8106429999999,
+   "unit_distributable": 0.0248,
+   "ebitda_wan": 1139.511303
+  },
+  {
+   "code": "508098",
+   "period": "2026Q2",
+   "revenue_wan": 2536.13143,
+   "net_profit_wan": 613.9776860000001,
+   "distributable_wan": 1818.441025,
+   "unit_distributable": 0.0364,
+   "ebitda_wan": 1837.3916390000002
+  },
+  {
+   "code": "508099",
+   "period": "2026Q2",
+   "revenue_wan": 2759.374202,
+   "net_profit_wan": -510.757453,
+   "distributable_wan": 920.876031,
+   "unit_distributable": 0.0102,
+   "ebitda_wan": 1520.00015
+  }
+ ]
+}

@@ -785,3 +785,160 @@ def test_operations_tab_env_kpi_renders_capacity_and_price(no_network, monkeypat
     cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
     assert "83.44%" in cards[0]
     assert "1.2980" in cards[0]
+
+
+# ---------------------------------------------------------------------------
+# 高速 KPI 缺数字修复：total_cost_wan 解析 + NAV 改年报净值
+# ---------------------------------------------------------------------------
+
+
+def _mock_quarterly_for(code, name):
+    """单只基金季度数据（含 total_cost_wan；nav_wan 列留空——不再使用）。"""
+    import pandas as pd
+
+    static = pd.DataFrame(
+        {
+            "code": [code],
+            "name": [name],
+            "asset": ["高速"],
+            "region": ["广东"],
+            "mileage_km": [100],
+            "listing_date": ["2021-01-01"],
+            "issue_scale_yi": [90],
+            "concession_years_left": [20],
+            "asset_type": ["高速"],
+        }
+    )
+    monthly = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    quarterly = pd.DataFrame(
+        {
+            "period": ["2026Q2"],
+            "code": [code],
+            "name": [name],
+            "total_revenue_wan": [16539.13],
+            "total_cost_wan": [23043.99],
+            "net_profit_wan": [3032.10],
+            "distributable_wan": [9917.02],
+            "ebitda_wan": [13618.28],
+            "nav_wan": [float("nan")],
+            "source": ["测试"],
+        }
+    )
+    return static, monthly, quarterly
+
+
+def test_operations_tab_kpi_noi_and_yield_filled_for_180201(no_network, monkeypatch):
+    """高速 180201：NOI 利润率与年化可供分配收益率不再是「—」。
+
+    成本取自季报 4.2.1（mock quarterly total_cost_wan）；NAV 改用
+    annual_completion.json 中 180201 的最新年报净值（860066.41 万）。
+    """
+    import json
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static, monthly, quarterly = _mock_quarterly_for("180201", "平安广州广河REIT")
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": monthly, "quarterly": quarterly},
+        raising=False,
+    )
+
+    completion = json.loads(
+        (DATA_PATH / "annual_completion.json").read_text(encoding="utf-8")
+    )["completion"]
+    nav_180201 = next(
+        r["nav_wan"] for r in completion if str(r["code"]) == "180201"
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("180201").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "NOI利润率" in cards[0]
+    assert "年化可供分配收益率" in cards[0]
+    assert f"{(16539.13 - 23043.99) / 16539.13:.1%}" in cards[0]
+    assert f"{9917.02 * 4 / nav_180201:.1%}" in cards[0]
+
+
+def test_operations_tab_yield_uses_market_completion_nav(no_network, monkeypatch):
+    """NAV 不在 annual_completion.json 的基金（508069）：年化收益率用
+    market_completion.json 年报净值；有值不再显示「—」。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static, monthly, quarterly = _mock_quarterly_for("508069", "华夏南京交通高速公路REIT")
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": monthly, "quarterly": quarterly},
+        raising=False,
+    )
+    completion = pd.DataFrame(
+        {
+            "code": ["508069"],
+            "name": ["华夏南京交通高速公路REIT"],
+            "year": [2024],
+            "predicted_wan": [None],
+            "actual_wan": [None],
+            "completion_pct": [None],
+            "status": [None],
+            "nav_unit_price": [5.4798],
+            "nav_wan": [273988.58],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_completion", lambda path=None: completion, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("508069").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "年化可供分配收益率" in cards[0]
+    assert f"{9917.02 * 4 / 273988.58:.1%}" in cards[0]
+
+
+def test_operations_tab_kpi_yield_dash_when_no_nav(no_network, monkeypatch):
+    """无任何年报净值来源的基金（508020）：年化可供分配收益率保留「—」、
+    不抛异常；NOI 利润率有成本时仍有值。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static, monthly, quarterly = _mock_quarterly_for("508020", "平安合肥高新REIT")
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": monthly, "quarterly": quarterly},
+        raising=False,
+    )
+    monkeypatch.setattr(
+        dl, "load_market_completion", lambda path=None: pd.DataFrame(), raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("508020").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "年化可供分配收益率" in cards[0]
+    assert f"{(16539.13 - 23043.99) / 16539.13:.1%}" in cards[0]

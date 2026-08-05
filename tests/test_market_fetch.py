@@ -22,6 +22,7 @@ ROW_KEYS = (
     "code",
     "period",
     "revenue_wan",
+    "total_cost_wan",
     "net_profit_wan",
     "distributable_wan",
     "unit_distributable",

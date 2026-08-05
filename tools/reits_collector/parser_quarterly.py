@@ -6,7 +6,9 @@ parse_quarterly_report 面向沪深两市统一的季度报告模板：
 - 「3.1 主要财务指标」表格给出 本期收入 / 本期净利润 / 本期现金流分派率(%)；
 - 「3.3.1 本报告期的可供分配金额」表格给出 期间(本期/本年累计) 行的
   可供分配金额 与 单位可供分配金额；
-- EBITDA 出现在财务分析节（位置可能为 3.x 或 4.x），取当期值。
+- EBITDA 出现在财务分析节（位置可能为 3.x 或 4.x），取当期值；
+- total_cost_wan 取「4.2.1 不动产项目公司整体财务情况」表的「营业成本/费用」
+  行（部分管理人标签为「营业成本」「总成本」，容忍断行与千分位）。
 
 报告期支持三种写法：标题「2026年第2季度报告」、正文
 「报告期(2026年04月01日-2026年06月30日)」、中文数字年份
@@ -26,6 +28,19 @@ NUMBER_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
 OLD_DISTRIBUTABLE_LABEL_RE = re.compile(r"本期可供分配金额(?!\S)")
 
 NEW_DISTRIBUTABLE_TITLE_RE = re.compile(r"本报告期(?:及近三年)?的可供分配金额")
+
+# 4.2.1 表「营业成本/费用」行：按标签优先级依次匹配，要求标签后（允许空白/
+# 断行）紧跟数值，避免把叙述句（「营业成本及主要费用分析」「营业成本-管理人
+# 报酬」等分项指标、日期中的年份）误当成成本值。
+_COST_FEE_RE = re.compile(
+    r"营业成本\s*/\s*费\s*用\s*[:：]?\s*(-?[\d,]+(?:\.\d+)?)"
+)
+_COST_STANDALONE_RE = re.compile(
+    r"营业成本(?!/)(?!及)(?!-)(?!合)(?!计)(?!费)\s*[:：]?\s*(-?[\d,]+(?:\.\d+)?)"
+)
+_TOTAL_COST_RE = re.compile(r"总成本\s*[:：]?\s*(-?[\d,]+(?:\.\d+)?)")
+
+_COST_PATTERNS = (_COST_FEE_RE, _COST_STANDALONE_RE, _TOTAL_COST_RE)
 
 TITLE_PERIOD_RE = re.compile(r"(\d{4})\s*年第\s*([1-4一二三四])\s*季度")
 CN_YEAR_PERIOD_RE = re.compile(
@@ -232,12 +247,28 @@ def _parse_ebitda(text: str, limit: int = 80):
         return _to_number(m.group(0))
 
 
+def _parse_total_cost(text: str):
+    """取「4.2.1 不动产项目公司整体财务情况」表「营业成本/费用」行当期值（元）。
+
+    按标签优先级匹配：营业成本/费用（容忍「营业成本/费\\n用」断行与千分位）
+    → 独立「营业成本」行 → 「总成本」。仅当标签后紧跟数值时取值，因此
+    「营业成本及主要费用分析」标题、「营业成本-管理人报酬」分项指标与
+    「占该项目总成本比例」表头均不会误匹配；无成本行返回 None。
+    """
+    for pattern in _COST_PATTERNS:
+        m = pattern.search(text)
+        if m is not None:
+            return _to_number(m.group(1))
+    return None
+
+
 def parse_quarterly(text: str) -> dict:
-    """解析季度报告全文，返回含 7 个键的字典（缺失字段为 None）。"""
+    """解析季度报告全文，返回含 8 个键的字典（缺失字段为 None）。"""
     result = {"period": _parse_period(text)}
     result["revenue_wan"] = _to_wan(
         _value_after_any(text, ("本期收入", "营业总收入"))
     )
+    result["total_cost_wan"] = _to_wan(_parse_total_cost(text))
     result["net_profit_wan"] = _to_wan(_value_after(text, "本期净利润"))
     result["cash_distribution_rate"] = _value_after(text, "本期现金流分派率")
     distributable, unit = _parse_distributable(text)

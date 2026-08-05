@@ -21,6 +21,7 @@ EXPECTED = {
     "quarterly_180201_2026Q2.pdf": {
         "period": "2026Q2",
         "revenue_wan": 16539.127560,
+        "total_cost_wan": 23043.990264,
         "net_profit_wan": 3032.096994,
         "distributable_wan": 9917.015159,
         "unit_distributable": 0.1417,
@@ -30,6 +31,7 @@ EXPECTED = {
     "quarterly_508001_2026Q2.pdf": {
         "period": "2026Q2",
         "revenue_wan": 16029.587681,
+        "total_cost_wan": 4073.621506,
         "net_profit_wan": -476.757443,
         "distributable_wan": 5404.764238,
         "unit_distributable": 0.1081,
@@ -39,6 +41,7 @@ EXPECTED = {
     "quarterly_508036_2026Q2.pdf": {
         "period": "2026Q2",
         "revenue_wan": 53483.862546,
+        "total_cost_wan": 27343.664814,
         "net_profit_wan": 9227.091730,
         "distributable_wan": 28693.356135,
         "unit_distributable": 0.2869,
@@ -48,6 +51,7 @@ EXPECTED = {
     "quarterly_508008_2026Q2.pdf": {
         "period": "2026Q2",
         "revenue_wan": 15562.191942,
+        "total_cost_wan": 17545.652648,
         "net_profit_wan": 943.423879,
         "distributable_wan": 9031.251929,
         "unit_distributable": 0.1806,
@@ -57,6 +61,7 @@ EXPECTED = {
     "quarterly_180201_2024Q3.pdf": {
         "period": "2024Q3",
         "revenue_wan": 20958.508005,
+        "total_cost_wan": None,
         "net_profit_wan": 7496.249847,
         "distributable_wan": 17271.714174,
         "unit_distributable": 0.2467,
@@ -67,6 +72,7 @@ EXPECTED = {
 
 VALUE_KEYS = (
     "revenue_wan",
+    "total_cost_wan",
     "net_profit_wan",
     "distributable_wan",
     "unit_distributable",
@@ -206,3 +212,93 @@ def test_ebitda_missing_returns_none():
     result = parser_quarterly.parse_quarterly("3.1 主要财务指标\n1.本期收入\n30,650,710.62")
 
     assert result["ebitda_wan"] is None
+
+
+# ---------------------------------------------------------------------------
+# total_cost_wan：4.2.1 表「营业成本/费用」行
+# ---------------------------------------------------------------------------
+
+
+def test_parse_total_cost_from_180201_421_paragraph_fixture():
+    """真实 180201 2026Q2 报告 4.2.1 段落 fixture：
+    「营业成本/费用 230,439,902.64」→ total_cost_wan=23043.99（元→万）。"""
+    text = (FIXTURES_DIR / "quarterly_180201_cost.txt").read_text(encoding="utf-8")
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] == pytest.approx(23043.99, rel=1e-4)
+
+
+def test_parse_total_cost_label_split_across_lines():
+    """4.2.1 表「营业成本/费用」标签可能被 PDF 断行拆成「营业成本/费\\n用」：
+    应容忍断行取到数值。"""
+    text = (
+        "4.2.1不动产项目公司整体财务情况\n"
+        "序号\n科目名称\n报告期金额（元）\n上年同期金额（元）\n"
+        "1\n营业收入\n23,403,111.66\n23,523,820.68\n"
+        "2\n营业成本/费\n用\n21,251,628.45\n6,233,771.15\n"
+        "3\nEBITDA\n16,557,289.20"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] == pytest.approx(2125.162845)
+
+
+def test_parse_total_cost_label_variant_plain_cost():
+    """部分管理人 4.2.1 成本行标签为独立「营业成本」（无「/费用」后缀）。"""
+    text = (
+        "序号\n科目名称\n报告期金额（元）\n"
+        "1\n营业收入\n30,667,809.22\n"
+        "2\n营业成本\n30,667,809.22"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] == pytest.approx(3066.780922)
+
+
+def test_parse_total_cost_label_variant_total_cost():
+    """成本行标签可为「总成本」。"""
+    text = (
+        "序号\n科目名称\n报告期金额（元）\n"
+        "1\n营业收入\n200,000,000.00\n"
+        "2\n总成本\n212,707,813.61"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] == pytest.approx(21270.781361)
+
+
+def test_parse_total_cost_skips_narrative_first_occurrence():
+    """叙述段先出现（「营业成本及主要费用分析」「营业成本-管理人报酬」）时
+    不应被当作成本值；须取 4.2.1 表「营业成本/费用」行数值。"""
+    text = (
+        "4.2.4 营业成本及主要费用分析\n"
+        "基础设施项目公司名称：广州交投广河高速公路有限公司\n"
+        "1\n营业成本-管理人报酬\n万元\n8,913.64\n"
+        "4.2.1 不动产项目公司整体财务情况\n"
+        "序号\n科目名称\n报告期金额（元）\n"
+        "2\n营业成本/费用\n230,439,902.64"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] == pytest.approx(23043.990264)
+
+
+def test_parse_total_cost_old_format_without_cost_row_returns_none():
+    """旧格式（2024Q3 及更早）无 4.2.1「营业成本/费用」行，且「营业成本-管理人
+    报酬」等分项指标不应被误取 → total_cost_wan 为 None。"""
+    text = (
+        "4.2.3 基础设施项目公司的财务业绩衡量指标分析\n"
+        "1\n营业成本-管理人报酬\n万元\n8,913.64\n"
+        "4.2.2 基础设施项目公司的营业成本及主要费用分析\n"
+        "1\n主营业务成本\n117,097,787.73"
+    )
+    result = parser_quarterly.parse_quarterly(text)
+
+    assert result["total_cost_wan"] is None
+
+
+def test_parse_total_cost_missing_returns_none():
+    """无任何成本标签 → total_cost_wan 为 None，不抛异常。"""
+    result = parser_quarterly.parse_quarterly("3.1 主要财务指标\n1.本期收入\n30,650,710.62")
+
+    assert result["total_cost_wan"] is None

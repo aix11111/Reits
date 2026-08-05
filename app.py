@@ -496,7 +496,7 @@ def _render_env_ops(env_df):
 
 
 def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
-                      energy_df=None, env_df=None):
+                      energy_df=None, env_df=None, nav_wan=None):
     """经营数据页签：最新指标 KPI、月度图表与季度明细表。
 
     选中基金有租赁类运营指标（data/market_ops_rental.json）时，在 KPI 区下方
@@ -504,10 +504,13 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
     （data/market_ops_energy.json）时追加发电量 KPI 卡与发电量趋势图；
     有生态环保类运营指标（data/market_ops_environment.json）时追加处理量
     KPI 卡与处理量趋势图；均无数据（其他类）保持原视图不变。
+
+    nav_wan：该基金最新年报净值（万元），用于年化可供分配收益率
+    （不再依赖季度 Sheet 的 nav_wan 列）；缺失基金该 KPI 显示「—」。
     """
     st.subheader(f"基金：{code} {name}")
 
-    metrics = latest_metrics(quarterly_df, code)
+    metrics = latest_metrics(quarterly_df, code, nav_wan=nav_wan)
     if metrics:
         cards = "".join(
             [
@@ -516,7 +519,7 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
                           "(营业总收入-营业成本)/营业总收入"),
                 _kpi_card("净利润率", _fmt_pct(metrics["net_margin"]), "净利润/营业总收入"),
                 _kpi_card("年化可供分配收益率", _fmt_pct(metrics["distributable_yield"]),
-                          "可供分配×4/NAV（年化）"),
+                          "可供分配×4/NAV（年化，年报净值）"),
             ]
         )
         st.markdown(
@@ -647,6 +650,25 @@ def _load_annual_completion() -> pd.DataFrame:
     if not rows:
         return pd.DataFrame(columns=columns)
     return pd.DataFrame(rows, columns=columns)
+
+
+def _nav_map_from_completion(completion_df) -> dict:
+    """从年报完成度 DataFrame 提取每基金最新（含净值披露的）年报 nav_wan。
+
+    返回 {code: nav_wan}；无净值记录的行被跳过。年化可供分配收益率的
+    NAV 数据源：14 只高速读 annual_completion.json，全市场其余基金读
+    market_completion.json，缺失基金保留「—」。
+    """
+    nav = {}
+    if completion_df is None or completion_df.empty or "nav_wan" not in completion_df:
+        return nav
+    for code, sub in completion_df.groupby("code"):
+        valid = sub[sub["nav_wan"].notna()]
+        if valid.empty:
+            continue
+        latest = valid.sort_values("year").iloc[-1]
+        nav[str(code)] = float(latest["nav_wan"])
+    return nav
 
 
 def _completion_color(value):
@@ -1184,6 +1206,12 @@ def main():
     market_ops_energy = load_market_ops_energy(_MARKET_OPS_ENERGY_PATH)
     market_ops_env = load_market_ops_environment(_MARKET_OPS_ENV_PATH)
 
+    # 年化可供分配收益率的 NAV 数据源：14 只高速读 annual_completion.json，
+    # 其余基金用 market_completion.json 的年报净值补齐；缺失保留「—」。
+    nav_map = _nav_map_from_completion(completion_df)
+    for code, nav in _nav_map_from_completion(market_completion).items():
+        nav_map.setdefault(code, nav)
+
     with st.sidebar:
         st.header("市场筛选")
         asset_type = st.selectbox(
@@ -1213,6 +1241,7 @@ def main():
             rental_df=market_ops_rental,
             energy_df=market_ops_energy,
             env_df=market_ops_env,
+            nav_wan=nav_map.get(selected_code),
         )
 
     with tab_mkt:

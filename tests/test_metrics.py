@@ -85,6 +85,37 @@ def test_latest_metrics_takes_latest_quarter():
     assert result["distributable_yield"] == pytest.approx(5400 * 4 / 688000)
 
 
+def test_latest_metrics_uses_external_nav_when_provided():
+    """显式传入年报净值时，年化可供分配收益率改用该 NAV（不再依赖季度行）。"""
+    df = make_df(SAMPLE_ROWS)
+    result = latest_metrics(df, "180201", nav_wan=860066.41)
+
+    assert result["distributable_yield"] == pytest.approx(5400 * 4 / 860066.41)
+
+
+def test_latest_metrics_yield_none_when_nav_missing():
+    """外部 NAV 与季度列 NAV 均缺失 → distributable_yield 为 None（看板显示「—」）。"""
+    df = make_df(
+        [
+            [
+                "2026Q2",
+                "180201",
+                "平安广州广河REIT",
+                16539.13,
+                23043.99,
+                3032.10,
+                9917.02,
+                13618.28,
+                float("nan"),
+                "季报",
+            ]
+        ]
+    )
+    result = latest_metrics(df, "180201")
+
+    assert result["distributable_yield"] is None
+
+
 def test_latest_metrics_unknown_code_returns_empty_dict():
     df = make_df(SAMPLE_ROWS)
     assert latest_metrics(df, "999999") == {}

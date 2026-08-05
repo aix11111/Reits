@@ -7,7 +7,8 @@
    "net_profit_wan": 1334.890279,
    "distributable_wan": 2245.2987120000003,
    "unit_distributable": 0.02,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -16,7 +17,8 @@
    "net_profit_wan": 5506.456843999999,
    "distributable_wan": 15748.501194,
    "unit_distributable": 0.225,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180301",
@@ -25,7 +27,8 @@
    "net_profit_wan": 790.510516,
    "distributable_wan": 1953.340351,
    "unit_distributable": 0.0244,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -34,7 +37,8 @@
    "net_profit_wan": 1809.657564,
    "distributable_wan": 4285.593556,
    "unit_distributable": 0.4286,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -43,7 +47,8 @@
    "net_profit_wan": -570.817822,
    "distributable_wan": 1553.545856,
    "unit_distributable": 0.0311,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -52,7 +57,8 @@
    "net_profit_wan": 4249.107834,
    "distributable_wan": 14803.159131999999,
    "unit_distributable": 0.3,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21270.781361
   },
   {
    "code": "508006",
@@ -61,7 +67,8 @@
    "net_profit_wan": 2769.181919,
    "distributable_wan": 3915.0627689999997,
    "unit_distributable": 0.0783,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -70,7 +77,8 @@
    "net_profit_wan": 1445.23401,
    "distributable_wan": 5037.567007,
    "unit_distributable": 0.056,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 2807.314307
   },
   {
    "code": "508056",
@@ -79,7 +87,8 @@
    "net_profit_wan": 678.231456,
    "distributable_wan": 6297.687776,
    "unit_distributable": 0.042,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 12.419728
   },
   {
    "code": "180101",
@@ -88,7 +97,8 @@
    "net_profit_wan": 1116.3180929999999,
    "distributable_wan": 2427.567113,
    "unit_distributable": 0.03,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -97,7 +107,8 @@
    "net_profit_wan": 2181.42659,
    "distributable_wan": 17161.787676,
    "unit_distributable": 0.2452,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180301",
@@ -106,7 +117,8 @@
    "net_profit_wan": 1079.503085,
    "distributable_wan": 2110.4426359999998,
    "unit_distributable": 0.0264,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -115,7 +127,8 @@
    "net_profit_wan": -4068.305775,
    "distributable_wan": 5101.503465,
    "unit_distributable": 0.5102,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -124,7 +137,8 @@
    "net_profit_wan": -575.9045120000001,
    "distributable_wan": 2042.652797,
    "unit_distributable": 0.0409,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -133,7 +147,8 @@
    "net_profit_wan": -5899.285345,
    "distributable_wan": 4409.257329,
    "unit_distributable": 0.0882,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 25708.089434
   },
   {
    "code": "508006",
@@ -142,7 +157,8 @@
    "net_profit_wan": 216.085372,
    "distributable_wan": 2686.603721,
    "unit_distributable": 0.0537,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -151,7 +167,8 @@
    "net_profit_wan": 1334.002993,
    "distributable_wan": 3975.4333189999998,
    "unit_distributable": 0.0442,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -160,7 +177,8 @@
    "net_profit_wan": 759.494602,
    "distributable_wan": 6852.148643,
    "unit_distributable": 0.0457,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 40.847325
   },
   {
    "code": "180101",
@@ -169,7 +187,8 @@
    "net_profit_wan": 1094.3057939999999,
    "distributable_wan": 1623.410451,
    "unit_distributable": 0.02,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -178,7 +197,8 @@
    "net_profit_wan": 3961.2573820000002,
    "distributable_wan": 10593.442564,
    "unit_distributable": 0.1513,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -187,7 +207,8 @@
    "net_profit_wan": 1629.81914,
    "distributable_wan": 3718.5626380000003,
    "unit_distributable": 0.124,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3066.780922
   },
   {
    "code": "180301",
@@ -196,7 +217,8 @@
    "net_profit_wan": 1156.475904,
    "distributable_wan": 2301.366387,
    "unit_distributable": 0.0288,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -205,7 +227,8 @@
    "net_profit_wan": 1585.8245980000002,
    "distributable_wan": 2319.009426,
    "unit_distributable": 0.2319,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -214,7 +237,8 @@
    "net_profit_wan": -607.519441,
    "distributable_wan": 1699.4055280000002,
    "unit_distributable": 0.034,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -223,7 +247,8 @@
    "net_profit_wan": -134.091437,
    "distributable_wan": 11523.441945999999,
    "unit_distributable": 0.2305,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -232,7 +257,8 @@
    "net_profit_wan": 1099.071199,
    "distributable_wan": 3627.6626450000003,
    "unit_distributable": 0.0726,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -241,7 +267,8 @@
    "net_profit_wan": 2349.8803120000002,
    "distributable_wan": 3484.060504,
    "unit_distributable": 0.0387,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -250,7 +277,8 @@
    "net_profit_wan": 1020.2552220000001,
    "distributable_wan": 6765.112328,
    "unit_distributable": 0.0451,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 32.969269
   },
   {
    "code": "508099",
@@ -259,7 +287,8 @@
    "net_profit_wan": 2027.572841,
    "distributable_wan": 3864.6695090000003,
    "unit_distributable": 0.0429,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -268,7 +297,8 @@
    "net_profit_wan": 1539.722189,
    "distributable_wan": 1247.5761289999998,
    "unit_distributable": 0.01,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -277,7 +307,8 @@
    "net_profit_wan": 2185.265364,
    "distributable_wan": 12663.511768,
    "unit_distributable": 0.1809,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -286,7 +317,8 @@
    "net_profit_wan": 1184.448079,
    "distributable_wan": 3309.446104,
    "unit_distributable": 0.1103,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 2655.903315
   },
   {
    "code": "180301",
@@ -295,7 +327,8 @@
    "net_profit_wan": 1077.21697,
    "distributable_wan": 2205.225149,
    "unit_distributable": 0.0276,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -304,7 +337,8 @@
    "net_profit_wan": 2045.175801,
    "distributable_wan": 1586.813758,
    "unit_distributable": 0.1587,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -313,7 +347,8 @@
    "net_profit_wan": -628.349153,
    "distributable_wan": 1657.752026,
    "unit_distributable": 0.0332,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -322,7 +357,8 @@
    "net_profit_wan": -4651.348661999999,
    "distributable_wan": 7502.39169,
    "unit_distributable": 0.15,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -331,7 +367,8 @@
    "net_profit_wan": 1004.702737,
    "distributable_wan": 3791.4265630000004,
    "unit_distributable": 0.0758,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508018",
@@ -340,7 +377,8 @@
    "net_profit_wan": 3316.443859,
    "distributable_wan": 8290.45203,
    "unit_distributable": 0.0829,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4701.069372
   },
   {
    "code": "508027",
@@ -349,7 +387,8 @@
    "net_profit_wan": -218.384109,
    "distributable_wan": 1760.534539,
    "unit_distributable": 0.0196,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -358,7 +397,8 @@
    "net_profit_wan": 550.955072,
    "distributable_wan": 7057.447418000001,
    "unit_distributable": 0.047,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 40.237003
   },
   {
    "code": "508099",
@@ -367,7 +407,8 @@
    "net_profit_wan": 2486.439514,
    "distributable_wan": 3928.5423450000003,
    "unit_distributable": 0.0437,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -376,7 +417,8 @@
    "net_profit_wan": -10.491881,
    "distributable_wan": 2212.217234,
    "unit_distributable": 0.02,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -385,7 +427,8 @@
    "net_profit_wan": 7312.391219,
    "distributable_wan": 17671.412291,
    "unit_distributable": 0.2524,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -394,7 +437,8 @@
    "net_profit_wan": 2298.1372300000003,
    "distributable_wan": 3809.3601409999997,
    "unit_distributable": 0.127,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 2206.508136
   },
   {
    "code": "180301",
@@ -403,7 +447,8 @@
    "net_profit_wan": 945.7397369999999,
    "distributable_wan": 2034.286548,
    "unit_distributable": 0.0254,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -412,7 +457,8 @@
    "net_profit_wan": 19467.06384,
    "distributable_wan": 17984.052257,
    "unit_distributable": 0.2997,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -421,7 +467,8 @@
    "net_profit_wan": 2094.332645,
    "distributable_wan": 1078.767703,
    "unit_distributable": 0.1079,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -430,7 +477,8 @@
    "net_profit_wan": -802.638776,
    "distributable_wan": 1688.9444850000002,
    "unit_distributable": 0.0338,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -439,7 +487,8 @@
    "net_profit_wan": -175.031605,
    "distributable_wan": 10460.169273,
    "unit_distributable": 0.2092,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -448,7 +497,8 @@
    "net_profit_wan": 1624.9719289999998,
    "distributable_wan": 4890.428403,
    "unit_distributable": 0.0978,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -457,7 +507,8 @@
    "net_profit_wan": 1591.739266,
    "distributable_wan": 9111.702892,
    "unit_distributable": 0.1822,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508018",
@@ -466,7 +517,8 @@
    "net_profit_wan": 2730.059357,
    "distributable_wan": 9492.533386,
    "unit_distributable": 0.0949,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5188.082883
   },
   {
    "code": "508027",
@@ -475,7 +527,8 @@
    "net_profit_wan": 2584.9176350000002,
    "distributable_wan": 4131.153816,
    "unit_distributable": 0.0459,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -484,7 +537,8 @@
    "net_profit_wan": 539.366944,
    "distributable_wan": 6265.970829999999,
    "unit_distributable": 0.0418,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 106.218769
   },
   {
    "code": "508099",
@@ -493,7 +547,8 @@
    "net_profit_wan": 175.98382,
    "distributable_wan": 2350.135419,
    "unit_distributable": 0.0261,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -502,7 +557,8 @@
    "net_profit_wan": 997.9244359999999,
    "distributable_wan": 3566.6079590000004,
    "unit_distributable": 0.04,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -511,7 +567,8 @@
    "net_profit_wan": 976.357934,
    "distributable_wan": 1855.126102,
    "unit_distributable": 0.0265,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 897.3167619999999
   },
   {
    "code": "180201",
@@ -520,7 +577,8 @@
    "net_profit_wan": 3280.0457739999997,
    "distributable_wan": 9214.496437,
    "unit_distributable": 0.1316,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -529,7 +587,8 @@
    "net_profit_wan": -1975.6342949999998,
    "distributable_wan": 2905.313261,
    "unit_distributable": 0.0968,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5403.347954
   },
   {
    "code": "180301",
@@ -538,7 +597,8 @@
    "net_profit_wan": 942.4618839999999,
    "distributable_wan": 2153.883586,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -547,7 +607,8 @@
    "net_profit_wan": -3813.840395,
    "distributable_wan": 8852.043955,
    "unit_distributable": 0.1475,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -556,7 +617,8 @@
    "net_profit_wan": 884.279564,
    "distributable_wan": 1362.873883,
    "unit_distributable": 0.0273,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -565,7 +627,8 @@
    "net_profit_wan": -993.477176,
    "distributable_wan": 8757.260937000001,
    "unit_distributable": 0.8757,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -574,7 +637,8 @@
    "net_profit_wan": -1035.3968220000002,
    "distributable_wan": 1201.174992,
    "unit_distributable": 0.024,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -583,7 +647,8 @@
    "net_profit_wan": -4972.64665,
    "distributable_wan": 2383.021238,
    "unit_distributable": 0.0477,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -592,7 +657,8 @@
    "net_profit_wan": -561.0777860000001,
    "distributable_wan": 4501.065811,
    "unit_distributable": 0.09,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -601,7 +667,8 @@
    "net_profit_wan": 1766.842907,
    "distributable_wan": 7907.728994,
    "unit_distributable": 0.1582,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508018",
@@ -610,7 +677,8 @@
    "net_profit_wan": 1911.78708,
    "distributable_wan": 7276.806570999999,
    "unit_distributable": 0.0728,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5217.226361
   },
   {
    "code": "508021",
@@ -619,7 +687,8 @@
    "net_profit_wan": 467.845994,
    "distributable_wan": 902.260693,
    "unit_distributable": 0.0451,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -628,7 +697,8 @@
    "net_profit_wan": 2712.670685,
    "distributable_wan": 6603.033727,
    "unit_distributable": 0.0734,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -637,7 +707,8 @@
    "net_profit_wan": 778.334384,
    "distributable_wan": 6132.041879,
    "unit_distributable": 0.0409,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 49.509491
   },
   {
    "code": "508058",
@@ -646,7 +717,8 @@
    "net_profit_wan": 583.821667,
    "distributable_wan": 1389.202204,
    "unit_distributable": 0.0278,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -655,7 +727,8 @@
    "net_profit_wan": 764.983287,
    "distributable_wan": 1356.0890949999998,
    "unit_distributable": 0.0271,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508088",
@@ -664,7 +737,8 @@
    "net_profit_wan": 412.721873,
    "distributable_wan": 1877.7614190000002,
    "unit_distributable": 0.0376,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -673,7 +747,8 @@
    "net_profit_wan": 605.613297,
    "distributable_wan": 2370.1474120000003,
    "unit_distributable": 0.0263,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -682,7 +757,8 @@
    "net_profit_wan": 1109.450578,
    "distributable_wan": 1465.077695,
    "unit_distributable": 0.02,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -691,7 +767,8 @@
    "net_profit_wan": 801.803354,
    "distributable_wan": 1851.579843,
    "unit_distributable": 0.0265,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 884.752096
   },
   {
    "code": "180103",
@@ -700,7 +777,8 @@
    "net_profit_wan": 240.54588999999999,
    "distributable_wan": 1476.8750109999999,
    "unit_distributable": 0.0295,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1545.017899
   },
   {
    "code": "180201",
@@ -709,7 +787,8 @@
    "net_profit_wan": 7152.209731,
    "distributable_wan": 14803.055431,
    "unit_distributable": 0.2115,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -718,7 +797,8 @@
    "net_profit_wan": 1673.094288,
    "distributable_wan": 4433.373457,
    "unit_distributable": 0.1478,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3403.598714
   },
   {
    "code": "180301",
@@ -727,7 +807,8 @@
    "net_profit_wan": 1153.6154980000001,
    "distributable_wan": 2348.246389,
    "unit_distributable": 0.0294,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -736,7 +817,8 @@
    "net_profit_wan": 6336.205532999999,
    "distributable_wan": 3783.274633,
    "unit_distributable": 0.0631,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -745,7 +827,8 @@
    "net_profit_wan": 634.354409,
    "distributable_wan": 1261.681734,
    "unit_distributable": 0.0252,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -754,7 +837,8 @@
    "net_profit_wan": 1319.19119,
    "distributable_wan": 3811.14124,
    "unit_distributable": 0.3811,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -763,7 +847,8 @@
    "net_profit_wan": -1177.01984,
    "distributable_wan": 1473.384955,
    "unit_distributable": 0.0295,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -772,7 +857,8 @@
    "net_profit_wan": 2698.783134,
    "distributable_wan": 13946.008424000001,
    "unit_distributable": 0.2789,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -781,7 +867,8 @@
    "net_profit_wan": 777.753542,
    "distributable_wan": 3321.329001,
    "unit_distributable": 0.0664,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -790,7 +877,8 @@
    "net_profit_wan": 4636.303825,
    "distributable_wan": 14561.178041,
    "unit_distributable": 0.2912,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -799,7 +887,8 @@
    "net_profit_wan": 1859.0772539999998,
    "distributable_wan": 23087.937896,
    "unit_distributable": 0.2309,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21221.558927000002
   },
   {
    "code": "508018",
@@ -808,7 +897,8 @@
    "net_profit_wan": 3385.112735,
    "distributable_wan": 9339.85099,
    "unit_distributable": 0.0934,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5030.611209000001
   },
   {
    "code": "508021",
@@ -817,7 +907,8 @@
    "net_profit_wan": 697.281267,
    "distributable_wan": 841.026698,
    "unit_distributable": 0.0421,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -826,7 +917,8 @@
    "net_profit_wan": 2154.055244,
    "distributable_wan": 3118.059971,
    "unit_distributable": 0.0346,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -835,7 +927,8 @@
    "net_profit_wan": 732.5128,
    "distributable_wan": 6685.086457,
    "unit_distributable": 0.0446,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 42.291018
   },
   {
    "code": "508058",
@@ -844,7 +937,8 @@
    "net_profit_wan": 671.088034,
    "distributable_wan": 1401.586575,
    "unit_distributable": 0.028,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -853,7 +947,8 @@
    "net_profit_wan": 2996.404309,
    "distributable_wan": 7654.407381999999,
    "unit_distributable": 0.1914,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -862,7 +957,8 @@
    "net_profit_wan": 775.7809990000001,
    "distributable_wan": 1371.809813,
    "unit_distributable": 0.0274,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508077",
@@ -871,7 +967,8 @@
    "net_profit_wan": 132.70418999999998,
    "distributable_wan": 1591.088923,
    "unit_distributable": 0.0318,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1235.588461
   },
   {
    "code": "508088",
@@ -880,7 +977,8 @@
    "net_profit_wan": 1417.461935,
    "distributable_wan": 1993.36123,
    "unit_distributable": 0.0399,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -889,7 +987,8 @@
    "net_profit_wan": 1155.148207,
    "distributable_wan": 1753.62492,
    "unit_distributable": 0.0351,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -898,7 +997,8 @@
    "net_profit_wan": 497.83359900000005,
    "distributable_wan": 2361.223853,
    "unit_distributable": 0.0262,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -907,7 +1007,8 @@
    "net_profit_wan": 1376.1528759999999,
    "distributable_wan": 2279.522393,
    "unit_distributable": 0.016,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -916,7 +1017,8 @@
    "net_profit_wan": 711.897308,
    "distributable_wan": 1891.3358489999998,
    "unit_distributable": 0.027,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 874.311961
   },
   {
    "code": "180103",
@@ -925,7 +1027,8 @@
    "net_profit_wan": 400.103123,
    "distributable_wan": 1527.593767,
    "unit_distributable": 0.0306,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1438.6082900000001
   },
   {
    "code": "180201",
@@ -934,7 +1037,8 @@
    "net_profit_wan": 6456.974967,
    "distributable_wan": 10664.124272,
    "unit_distributable": 0.1523,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -943,7 +1047,8 @@
    "net_profit_wan": 1208.399484,
    "distributable_wan": 3779.1080030000003,
    "unit_distributable": 0.126,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3403.953977
   },
   {
    "code": "180301",
@@ -952,7 +1057,8 @@
    "net_profit_wan": 1120.294897,
    "distributable_wan": 2280.2079940000003,
    "unit_distributable": 0.0239,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -961,7 +1067,8 @@
    "net_profit_wan": 11470.20507,
    "distributable_wan": 16715.34729,
    "unit_distributable": 0.2786,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -970,7 +1077,8 @@
    "net_profit_wan": 649.7951059999999,
    "distributable_wan": 1433.292236,
    "unit_distributable": 0.0287,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -979,7 +1087,8 @@
    "net_profit_wan": 1199.221484,
    "distributable_wan": 1106.7162130000002,
    "unit_distributable": 0.1107,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -988,7 +1097,8 @@
    "net_profit_wan": -1090.61422,
    "distributable_wan": 1735.165884,
    "unit_distributable": 0.0181,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -997,7 +1107,8 @@
    "net_profit_wan": -48.161328000000005,
    "distributable_wan": 10861.875374,
    "unit_distributable": 0.2172,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -1006,7 +1117,8 @@
    "net_profit_wan": 1245.280161,
    "distributable_wan": 2938.568425,
    "unit_distributable": 0.0588,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -1015,7 +1127,8 @@
    "net_profit_wan": 2692.5648260000003,
    "distributable_wan": 12530.415831,
    "unit_distributable": 0.2506,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -1024,7 +1137,8 @@
    "net_profit_wan": -84.678653,
    "distributable_wan": 17506.780821,
    "unit_distributable": 0.1751,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21240.651138999998
   },
   {
    "code": "508018",
@@ -1033,7 +1147,8 @@
    "net_profit_wan": 2346.33177,
    "distributable_wan": 7044.046815000001,
    "unit_distributable": 0.0704,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5405.807924000001
   },
   {
    "code": "508021",
@@ -1042,7 +1157,8 @@
    "net_profit_wan": 597.836055,
    "distributable_wan": 1368.965094,
    "unit_distributable": 0.0684,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -1051,7 +1167,8 @@
    "net_profit_wan": 1616.989176,
    "distributable_wan": 3625.8405840000005,
    "unit_distributable": 0.0403,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -1060,7 +1177,8 @@
    "net_profit_wan": 8348.77852,
    "distributable_wan": 22930.412141999997,
    "unit_distributable": 0.2866,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -1069,7 +1187,8 @@
    "net_profit_wan": 997.3480199999999,
    "distributable_wan": 10500.633954,
    "unit_distributable": 0.0542,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 56.448297
   },
   {
    "code": "508058",
@@ -1078,7 +1197,8 @@
    "net_profit_wan": 667.105297,
    "distributable_wan": 1487.718965,
    "unit_distributable": 0.0298,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -1087,7 +1207,8 @@
    "net_profit_wan": 2361.1480579999998,
    "distributable_wan": 5349.0540869999995,
    "unit_distributable": 0.1337,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -1096,7 +1217,8 @@
    "net_profit_wan": 774.532027,
    "distributable_wan": 1380.167492,
    "unit_distributable": 0.0276,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508077",
@@ -1105,7 +1227,8 @@
    "net_profit_wan": 78.698107,
    "distributable_wan": 1615.9762289999999,
    "unit_distributable": 0.0323,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1250.198631
   },
   {
    "code": "508088",
@@ -1114,7 +1237,8 @@
    "net_profit_wan": 1099.681075,
    "distributable_wan": 2359.014933,
    "unit_distributable": 0.0472,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -1123,7 +1247,8 @@
    "net_profit_wan": 5802.604799000001,
    "distributable_wan": 3906.258672,
    "unit_distributable": 0.1302,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -1132,7 +1257,8 @@
    "net_profit_wan": 514.6860019999999,
    "distributable_wan": 1790.6379399999998,
    "unit_distributable": 0.0358,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -1141,7 +1267,8 @@
    "net_profit_wan": 377.38825,
    "distributable_wan": 2115.937391,
    "unit_distributable": 0.0235,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -1150,7 +1277,8 @@
    "net_profit_wan": 1976.0965670000003,
    "distributable_wan": 3070.65703,
    "unit_distributable": 0.0216,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -1159,7 +1287,8 @@
    "net_profit_wan": 679.5811679999999,
    "distributable_wan": 1917.36595,
    "unit_distributable": 0.0274,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 868.281092
   },
   {
    "code": "180103",
@@ -1168,7 +1297,8 @@
    "net_profit_wan": 244.729334,
    "distributable_wan": 1529.768556,
    "unit_distributable": 0.0306,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1409.391308
   },
   {
    "code": "180201",
@@ -1177,7 +1307,8 @@
    "net_profit_wan": 8009.536974,
    "distributable_wan": 17005.47291,
    "unit_distributable": 0.2429,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -1186,7 +1317,8 @@
    "net_profit_wan": 1412.4171210000002,
    "distributable_wan": 4274.56048,
    "unit_distributable": 0.1425,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3664.441822
   },
   {
    "code": "180301",
@@ -1195,7 +1327,8 @@
    "net_profit_wan": 1300.588692,
    "distributable_wan": 2685.845832,
    "unit_distributable": 0.0282,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -1204,7 +1337,8 @@
    "net_profit_wan": 13708.245006000001,
    "distributable_wan": 15320.112016,
    "unit_distributable": 0.2553,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -1213,7 +1347,8 @@
    "net_profit_wan": 629.159246,
    "distributable_wan": 1332.798914,
    "unit_distributable": 0.0267,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -1222,7 +1357,8 @@
    "net_profit_wan": 1861.8410079999999,
    "distributable_wan": 1376.619375,
    "unit_distributable": 0.1377,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -1231,7 +1367,8 @@
    "net_profit_wan": -18.857708,
    "distributable_wan": 3153.1811789999997,
    "unit_distributable": 0.0328,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -1240,7 +1377,8 @@
    "net_profit_wan": 3215.155633,
    "distributable_wan": 14831.548671999999,
    "unit_distributable": 0.2966,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -1249,7 +1387,8 @@
    "net_profit_wan": 1934.0336140000002,
    "distributable_wan": 5322.07442,
    "unit_distributable": 0.1064,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -1258,7 +1397,8 @@
    "net_profit_wan": 4951.143151,
    "distributable_wan": 13833.073253999999,
    "unit_distributable": 0.2767,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -1267,7 +1407,8 @@
    "net_profit_wan": 846.6370310000001,
    "distributable_wan": 19026.557181,
    "unit_distributable": 0.1903,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21524.333724
   },
   {
    "code": "508018",
@@ -1276,7 +1417,8 @@
    "net_profit_wan": 2864.653536,
    "distributable_wan": 7888.274292,
    "unit_distributable": 0.0789,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5535.792544
   },
   {
    "code": "508019",
@@ -1285,7 +1427,8 @@
    "net_profit_wan": 285.737078,
    "distributable_wan": 1856.1617899999999,
    "unit_distributable": 0.0309,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -1294,7 +1437,8 @@
    "net_profit_wan": 655.833935,
    "distributable_wan": 565.148638,
    "unit_distributable": 0.0283,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -1303,7 +1447,8 @@
    "net_profit_wan": 2295.128431,
    "distributable_wan": 4800.079799,
    "unit_distributable": 0.0533,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -1312,7 +1457,8 @@
    "net_profit_wan": 2813.976639,
    "distributable_wan": 20512.091143999998,
    "unit_distributable": 0.2564,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -1321,7 +1467,8 @@
    "net_profit_wan": 492.90888099999995,
    "distributable_wan": 8672.7663,
    "unit_distributable": 0.0447,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 201.311252
   },
   {
    "code": "508058",
@@ -1330,7 +1477,8 @@
    "net_profit_wan": 694.363249,
    "distributable_wan": 1465.878575,
    "unit_distributable": 0.0293,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -1339,7 +1487,8 @@
    "net_profit_wan": 3828.562658,
    "distributable_wan": 5345.720388000001,
    "unit_distributable": 0.1336,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -1348,7 +1497,8 @@
    "net_profit_wan": 780.878153,
    "distributable_wan": 1374.6118789999998,
    "unit_distributable": 0.0275,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508077",
@@ -1357,7 +1507,8 @@
    "net_profit_wan": 151.54918600000002,
    "distributable_wan": 1435.148569,
    "unit_distributable": 0.0287,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1284.3098289999998
   },
   {
    "code": "508088",
@@ -1366,7 +1517,8 @@
    "net_profit_wan": 1600.663134,
    "distributable_wan": 1982.9939190000002,
    "unit_distributable": 0.0397,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -1375,7 +1527,8 @@
    "net_profit_wan": 5291.73708,
    "distributable_wan": 28271.706348000003,
    "unit_distributable": 0.9424,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -1384,7 +1537,8 @@
    "net_profit_wan": 821.76462,
    "distributable_wan": 2272.2071760000003,
    "unit_distributable": 0.0454,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -1393,7 +1547,8 @@
    "net_profit_wan": 220.37856000000002,
    "distributable_wan": 1855.049679,
    "unit_distributable": 0.0206,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -1402,7 +1557,8 @@
    "net_profit_wan": 2090.6529179999998,
    "distributable_wan": 5010.336568,
    "unit_distributable": 0.0353,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -1411,7 +1567,8 @@
    "net_profit_wan": 552.012658,
    "distributable_wan": 1923.2235699999999,
    "unit_distributable": 0.0275,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 907.1003910000001
   },
   {
    "code": "180103",
@@ -1420,7 +1577,8 @@
    "net_profit_wan": 445.301021,
    "distributable_wan": 1494.4067539999999,
    "unit_distributable": 0.0299,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1493.153527
   },
   {
    "code": "180201",
@@ -1429,7 +1587,8 @@
    "net_profit_wan": 4436.8274759999995,
    "distributable_wan": 11899.553279,
    "unit_distributable": 0.17,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -1438,7 +1597,8 @@
    "net_profit_wan": 694.23225,
    "distributable_wan": 3922.4533030000002,
    "unit_distributable": 0.1307,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3736.779914
   },
   {
    "code": "180301",
@@ -1447,7 +1607,8 @@
    "net_profit_wan": 956.206039,
    "distributable_wan": 2289.151734,
    "unit_distributable": 0.024,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -1456,7 +1617,8 @@
    "net_profit_wan": -2321.068639,
    "distributable_wan": 6187.047335,
    "unit_distributable": 0.1031,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -1465,7 +1627,8 @@
    "net_profit_wan": 583.304577,
    "distributable_wan": 1081.86202,
    "unit_distributable": 0.0216,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -1474,7 +1637,8 @@
    "net_profit_wan": 805.743066,
    "distributable_wan": 4433.722016,
    "unit_distributable": 0.4434,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -1483,7 +1647,8 @@
    "net_profit_wan": -551.580622,
    "distributable_wan": 3345.8040140000003,
    "unit_distributable": 0.0348,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -1492,7 +1657,8 @@
    "net_profit_wan": -2200.3085929999997,
    "distributable_wan": 5659.505242,
    "unit_distributable": 0.1132,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -1501,7 +1667,8 @@
    "net_profit_wan": 148.074271,
    "distributable_wan": 2252.459338,
    "unit_distributable": 0.045,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -1510,7 +1677,8 @@
    "net_profit_wan": 2754.156148,
    "distributable_wan": 35621.772484,
    "unit_distributable": 0.8905,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3277.84956
   },
   {
    "code": "508008",
@@ -1519,7 +1687,8 @@
    "net_profit_wan": 518.680817,
    "distributable_wan": 7908.176114,
    "unit_distributable": 0.1582,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -1528,7 +1697,8 @@
    "net_profit_wan": -9031.938243,
    "distributable_wan": 18423.322756,
    "unit_distributable": 0.1842,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 28186.910345
   },
   {
    "code": "508018",
@@ -1537,7 +1707,8 @@
    "net_profit_wan": 2488.5054,
    "distributable_wan": 7763.635564,
    "unit_distributable": 0.0776,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5996.717857
   },
   {
    "code": "508019",
@@ -1546,7 +1717,8 @@
    "net_profit_wan": 814.9111849999999,
    "distributable_wan": 1882.106162,
    "unit_distributable": 0.0314,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -1555,7 +1727,8 @@
    "net_profit_wan": 523.948515,
    "distributable_wan": 1165.847479,
    "unit_distributable": 0.0583,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -1564,7 +1737,8 @@
    "net_profit_wan": 994.594252,
    "distributable_wan": 4852.959296,
    "unit_distributable": 0.0539,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -1573,7 +1747,8 @@
    "net_profit_wan": 9397.375524,
    "distributable_wan": 21712.459143,
    "unit_distributable": 0.2714,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -1582,7 +1757,8 @@
    "net_profit_wan": 185.51989,
    "distributable_wan": 9252.555653,
    "unit_distributable": 0.0477,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 92.476742
   },
   {
    "code": "508058",
@@ -1591,7 +1767,8 @@
    "net_profit_wan": 579.931909,
    "distributable_wan": 1377.429847,
    "unit_distributable": 0.0275,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -1600,7 +1777,8 @@
    "net_profit_wan": 210.926267,
    "distributable_wan": 4277.760968,
    "unit_distributable": 0.1069,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -1609,7 +1787,8 @@
    "net_profit_wan": 776.208674,
    "distributable_wan": 1378.710771,
    "unit_distributable": 0.0276,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508077",
@@ -1618,7 +1797,8 @@
    "net_profit_wan": 123.01426299999999,
    "distributable_wan": 1433.922622,
    "unit_distributable": 0.0287,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1278.9292560000001
   },
   {
    "code": "508088",
@@ -1627,7 +1807,8 @@
    "net_profit_wan": 462.171454,
    "distributable_wan": 1765.9694510000002,
    "unit_distributable": 0.0353,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -1636,7 +1817,8 @@
    "net_profit_wan": 3523.255203,
    "distributable_wan": 656.845425,
    "unit_distributable": 0.0219,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -1645,7 +1827,8 @@
    "net_profit_wan": 1117.081422,
    "distributable_wan": 1590.057126,
    "unit_distributable": 0.0318,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -1654,7 +1837,8 @@
    "net_profit_wan": -583.607562,
    "distributable_wan": 1779.3874640000001,
    "unit_distributable": 0.0198,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -1663,7 +1847,8 @@
    "net_profit_wan": 1657.466466,
    "distributable_wan": 2767.6192149999997,
    "unit_distributable": 0.0195,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -1672,7 +1857,8 @@
    "net_profit_wan": 634.794731,
    "distributable_wan": 1891.880506,
    "unit_distributable": 0.027,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 865.806304
   },
   {
    "code": "180103",
@@ -1681,7 +1867,8 @@
    "net_profit_wan": 329.147764,
    "distributable_wan": 1473.851922,
    "unit_distributable": 0.0295,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1442.924614
   },
   {
    "code": "180201",
@@ -1690,7 +1877,8 @@
    "net_profit_wan": 7040.761090000001,
    "distributable_wan": 15110.764297999998,
    "unit_distributable": 0.2159,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -1699,7 +1887,8 @@
    "net_profit_wan": 1129.55655,
    "distributable_wan": 3398.7332189999997,
    "unit_distributable": 0.1133,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3482.396029
   },
   {
    "code": "180301",
@@ -1708,7 +1897,8 @@
    "net_profit_wan": 1151.37103,
    "distributable_wan": 2526.61182,
    "unit_distributable": 0.0265,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -1717,7 +1907,8 @@
    "net_profit_wan": 3209.184748,
    "distributable_wan": 5127.992262,
    "unit_distributable": 0.0855,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -1726,7 +1917,8 @@
    "net_profit_wan": 608.849652,
    "distributable_wan": 1340.879718,
    "unit_distributable": 0.0268,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180601",
@@ -1735,7 +1927,8 @@
    "net_profit_wan": -426.584424,
    "distributable_wan": 5122.189182,
    "unit_distributable": 0.0512,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3725.921089
   },
   {
    "code": "180801",
@@ -1744,7 +1937,8 @@
    "net_profit_wan": 533.809432,
    "distributable_wan": 1265.335533,
    "unit_distributable": 0.1265,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -1753,7 +1947,8 @@
    "net_profit_wan": -136.941549,
    "distributable_wan": 3283.328269,
    "unit_distributable": 0.0342,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -1762,7 +1957,8 @@
    "net_profit_wan": 3012.9394,
    "distributable_wan": 14499.523497,
    "unit_distributable": 0.29,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -1771,7 +1967,8 @@
    "net_profit_wan": 913.5849619999999,
    "distributable_wan": 4169.440908,
    "unit_distributable": 0.0834,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -1780,7 +1977,8 @@
    "net_profit_wan": 1187.597374,
    "distributable_wan": 4904.752727,
    "unit_distributable": 0.1226,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4710.931939
   },
   {
    "code": "508008",
@@ -1789,7 +1987,8 @@
    "net_profit_wan": 3104.36454,
    "distributable_wan": 12406.892477,
    "unit_distributable": 0.2481,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -1798,7 +1997,8 @@
    "net_profit_wan": -2548.096388,
    "distributable_wan": 12942.316313,
    "unit_distributable": 0.1294,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21434.115659
   },
   {
    "code": "508011",
@@ -1807,7 +2007,8 @@
    "net_profit_wan": 663.934971,
    "distributable_wan": 1211.323977,
    "unit_distributable": 0.0303,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508017",
@@ -1816,7 +2017,8 @@
    "net_profit_wan": 281.876021,
    "distributable_wan": 887.278622,
    "unit_distributable": 0.0222,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 999.198657
   },
   {
    "code": "508018",
@@ -1825,7 +2027,8 @@
    "net_profit_wan": 1662.279842,
    "distributable_wan": 7200.342645999999,
    "unit_distributable": 0.072,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5790.641922
   },
   {
    "code": "508019",
@@ -1834,7 +2037,8 @@
    "net_profit_wan": 285.649374,
    "distributable_wan": 1952.1103420000002,
    "unit_distributable": 0.0325,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -1843,7 +2047,8 @@
    "net_profit_wan": 538.777542,
    "distributable_wan": 773.78305,
    "unit_distributable": 0.0387,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -1852,7 +2057,8 @@
    "net_profit_wan": 2013.0766800000001,
    "distributable_wan": 3873.270619,
    "unit_distributable": 0.043,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -1861,7 +2067,8 @@
    "net_profit_wan": 13006.594767,
    "distributable_wan": 13649.037656,
    "unit_distributable": 0.1706,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508031",
@@ -1870,7 +2077,8 @@
    "net_profit_wan": 2049.621266,
    "distributable_wan": 3276.507734,
    "unit_distributable": 0.0328,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -1879,7 +2087,8 @@
    "net_profit_wan": 908.749374,
    "distributable_wan": 8884.012268,
    "unit_distributable": 0.0458,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 81.95559200000001
   },
   {
    "code": "508058",
@@ -1888,7 +2097,8 @@
    "net_profit_wan": 705.441364,
    "distributable_wan": 1425.126554,
    "unit_distributable": 0.0285,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -1897,7 +2107,8 @@
    "net_profit_wan": 1726.246684,
    "distributable_wan": 7026.313896,
    "unit_distributable": 0.1757,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -1906,7 +2117,8 @@
    "net_profit_wan": 783.279422,
    "distributable_wan": 1343.941026,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508077",
@@ -1915,7 +2127,8 @@
    "net_profit_wan": 152.917436,
    "distributable_wan": 1220.24938,
    "unit_distributable": 0.0244,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1254.392048
   },
   {
    "code": "508088",
@@ -1924,7 +2137,8 @@
    "net_profit_wan": 1314.691963,
    "distributable_wan": 2032.186989,
    "unit_distributable": 0.0406,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -1933,7 +2147,8 @@
    "net_profit_wan": 4015.0420619999995,
    "distributable_wan": 15838.096684999999,
    "unit_distributable": 0.5279,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -1942,7 +2157,8 @@
    "net_profit_wan": 683.82655,
    "distributable_wan": 2003.744295,
    "unit_distributable": 0.0401,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -1951,7 +2167,8 @@
    "net_profit_wan": -150.215887,
    "distributable_wan": 1064.159586,
    "unit_distributable": 0.0118,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -1960,7 +2177,8 @@
    "net_profit_wan": 1776.755872,
    "distributable_wan": 3408.560575,
    "unit_distributable": 0.024,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -1969,7 +2187,8 @@
    "net_profit_wan": 539.743413,
    "distributable_wan": 1899.3189690000002,
    "unit_distributable": 0.0271,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 998.7473269999999
   },
   {
    "code": "180103",
@@ -1978,7 +2197,8 @@
    "net_profit_wan": 242.663441,
    "distributable_wan": 1399.38733,
    "unit_distributable": 0.028,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1442.9464050000001
   },
   {
    "code": "180201",
@@ -1987,7 +2207,8 @@
    "net_profit_wan": 4940.179664,
    "distributable_wan": 10648.833837999999,
    "unit_distributable": 0.1521,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -1996,7 +2217,8 @@
    "net_profit_wan": 1186.286653,
    "distributable_wan": 3149.88301,
    "unit_distributable": 0.105,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3284.064274
   },
   {
    "code": "180301",
@@ -2005,7 +2227,8 @@
    "net_profit_wan": 1034.040131,
    "distributable_wan": 2258.280156,
    "unit_distributable": 0.0237,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -2014,7 +2237,8 @@
    "net_profit_wan": 3998.72649,
    "distributable_wan": 9880.467690000001,
    "unit_distributable": 0.1647,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -2023,7 +2247,8 @@
    "net_profit_wan": 626.6537900000001,
    "distributable_wan": 1203.43931,
    "unit_distributable": 0.0241,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180601",
@@ -2032,7 +2257,8 @@
    "net_profit_wan": 1074.415059,
    "distributable_wan": 8666.158744,
    "unit_distributable": 0.0867,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 6455.868820000001
   },
   {
    "code": "180602",
@@ -2041,7 +2267,8 @@
    "net_profit_wan": 464.95750499999997,
    "distributable_wan": 3680.986594,
    "unit_distributable": 0.0368,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1242.245366
   },
   {
    "code": "180801",
@@ -2050,7 +2277,8 @@
    "net_profit_wan": 1791.236659,
    "distributable_wan": 2116.445182,
    "unit_distributable": 0.2116,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -2059,7 +2287,8 @@
    "net_profit_wan": -492.77298499999995,
    "distributable_wan": 2941.025046,
    "unit_distributable": 0.0306,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -2068,7 +2297,8 @@
    "net_profit_wan": 1568.482497,
    "distributable_wan": 6893.163193,
    "unit_distributable": 0.1379,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -2077,7 +2307,8 @@
    "net_profit_wan": 1533.7202439999999,
    "distributable_wan": 2820.2755829999996,
    "unit_distributable": 0.0564,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -2086,7 +2317,8 @@
    "net_profit_wan": 1236.817951,
    "distributable_wan": 4776.983688,
    "unit_distributable": 0.1194,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5033.48062
   },
   {
    "code": "508008",
@@ -2095,7 +2327,8 @@
    "net_profit_wan": 3825.2183229999996,
    "distributable_wan": 11538.5825,
    "unit_distributable": 0.2308,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -2104,7 +2337,8 @@
    "net_profit_wan": -4344.692937,
    "distributable_wan": 16310.62157,
    "unit_distributable": 0.1631,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21565.04297
   },
   {
    "code": "508011",
@@ -2113,7 +2347,8 @@
    "net_profit_wan": 891.758694,
    "distributable_wan": 1625.159084,
    "unit_distributable": 0.0406,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508017",
@@ -2122,7 +2357,8 @@
    "net_profit_wan": 379.120384,
    "distributable_wan": 1330.3698869999998,
    "unit_distributable": 0.0333,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1608.718593
   },
   {
    "code": "508018",
@@ -2131,7 +2367,8 @@
    "net_profit_wan": 1098.553579,
    "distributable_wan": 6084.843803,
    "unit_distributable": 0.0608,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 5582.974254
   },
   {
    "code": "508019",
@@ -2140,7 +2377,8 @@
    "net_profit_wan": 494.78035700000004,
    "distributable_wan": 2010.032865,
    "unit_distributable": 0.0335,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -2149,7 +2387,8 @@
    "net_profit_wan": 614.60627,
    "distributable_wan": 885.138172,
    "unit_distributable": 0.0443,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508026",
@@ -2158,7 +2397,8 @@
    "net_profit_wan": null,
    "distributable_wan": null,
    "unit_distributable": null,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -2167,7 +2407,8 @@
    "net_profit_wan": 1989.1184629999998,
    "distributable_wan": 3550.3620840000003,
    "unit_distributable": 0.0394,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -2176,7 +2417,8 @@
    "net_profit_wan": 2815.464336,
    "distributable_wan": -4212.140186,
    "unit_distributable": -0.0527,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508031",
@@ -2185,7 +2427,8 @@
    "net_profit_wan": 1869.670507,
    "distributable_wan": 3065.8630829999997,
    "unit_distributable": 0.0307,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508033",
@@ -2194,7 +2437,8 @@
    "net_profit_wan": 1051.290323,
    "distributable_wan": 3879.67748,
    "unit_distributable": 0.1293,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4292.625435
   },
   {
    "code": "508056",
@@ -2203,7 +2447,8 @@
    "net_profit_wan": 487.4277,
    "distributable_wan": 9004.369289,
    "unit_distributable": 0.0465,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 111.07723700000001
   },
   {
    "code": "508058",
@@ -2212,7 +2457,8 @@
    "net_profit_wan": 692.700454,
    "distributable_wan": 1484.91985,
    "unit_distributable": 0.0297,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -2221,7 +2467,8 @@
    "net_profit_wan": 1575.083529,
    "distributable_wan": 5716.176143,
    "unit_distributable": 0.1429,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -2230,7 +2477,8 @@
    "net_profit_wan": 832.035012,
    "distributable_wan": 1338.650407,
    "unit_distributable": 0.0268,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 901.1696599999999
   },
   {
    "code": "508077",
@@ -2239,7 +2487,8 @@
    "net_profit_wan": 264.18118,
    "distributable_wan": 1220.502498,
    "unit_distributable": 0.0244,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1209.475277
   },
   {
    "code": "508088",
@@ -2248,7 +2497,8 @@
    "net_profit_wan": 1373.943042,
    "distributable_wan": 2153.516091,
    "unit_distributable": 0.0431,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -2257,7 +2507,8 @@
    "net_profit_wan": 8115.23942,
    "distributable_wan": 4496.719448,
    "unit_distributable": 0.1499,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -2266,7 +2517,8 @@
    "net_profit_wan": 731.6627129999999,
    "distributable_wan": 2014.317384,
    "unit_distributable": 0.0403,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -2275,7 +2527,8 @@
    "net_profit_wan": -149.68418300000002,
    "distributable_wan": 1347.9564990000001,
    "unit_distributable": 0.015,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -2284,7 +2537,8 @@
    "net_profit_wan": 1906.715679,
    "distributable_wan": 3680.640139,
    "unit_distributable": 0.0259,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -2293,7 +2547,8 @@
    "net_profit_wan": 646.8975320000001,
    "distributable_wan": 1880.876386,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 935.1310269999999
   },
   {
    "code": "180103",
@@ -2302,7 +2557,8 @@
    "net_profit_wan": 69.566511,
    "distributable_wan": 1423.396348,
    "unit_distributable": 0.0285,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1407.6630089999999
   },
   {
    "code": "180201",
@@ -2311,7 +2567,8 @@
    "net_profit_wan": 7496.249847,
    "distributable_wan": 17271.714174,
    "unit_distributable": 0.2467,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -2320,7 +2577,8 @@
    "net_profit_wan": 1100.018882,
    "distributable_wan": 3786.7532979999996,
    "unit_distributable": 0.1262,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3695.7905840000003
   },
   {
    "code": "180301",
@@ -2329,7 +2587,8 @@
    "net_profit_wan": 947.9408609999999,
    "distributable_wan": 2426.1215039999997,
    "unit_distributable": 0.0254,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180302",
@@ -2338,7 +2597,8 @@
    "net_profit_wan": 506.949251,
    "distributable_wan": 1855.172459,
    "unit_distributable": 0.0309,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1201.282369
   },
   {
    "code": "180401",
@@ -2347,7 +2607,8 @@
    "net_profit_wan": 8815.464586,
    "distributable_wan": 14345.293778,
    "unit_distributable": 0.2391,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -2356,7 +2617,8 @@
    "net_profit_wan": 608.115562,
    "distributable_wan": 1191.376458,
    "unit_distributable": 0.0238,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180601",
@@ -2365,7 +2627,8 @@
    "net_profit_wan": 2041.264074,
    "distributable_wan": 8878.498962,
    "unit_distributable": 0.0888,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 7001.4314890000005
   },
   {
    "code": "180602",
@@ -2374,7 +2637,8 @@
    "net_profit_wan": 401.430272,
    "distributable_wan": 4280.180727,
    "unit_distributable": 0.0428,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1646.460797
   },
   {
    "code": "180801",
@@ -2383,7 +2647,8 @@
    "net_profit_wan": 1051.4736970000001,
    "distributable_wan": 778.608226,
    "unit_distributable": 0.0779,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -2392,7 +2657,8 @@
    "net_profit_wan": -1313.984837,
    "distributable_wan": 3061.265802,
    "unit_distributable": 0.0319,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -2401,7 +2667,8 @@
    "net_profit_wan": 923.5352640000001,
    "distributable_wan": 12776.637861,
    "unit_distributable": 0.2555,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508002",
@@ -2410,7 +2677,8 @@
    "net_profit_wan": 589.65157,
    "distributable_wan": 2965.6953719999997,
    "unit_distributable": 0.0297,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1027.818305
   },
   {
    "code": "508006",
@@ -2419,7 +2687,8 @@
    "net_profit_wan": 2362.51592,
    "distributable_wan": 3781.151583,
    "unit_distributable": 0.0756,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -2428,7 +2697,8 @@
    "net_profit_wan": 3095.452308,
    "distributable_wan": 4961.210309,
    "unit_distributable": 0.124,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4419.8670170000005
   },
   {
    "code": "508008",
@@ -2437,7 +2707,8 @@
    "net_profit_wan": 4369.869517,
    "distributable_wan": 14454.794079,
    "unit_distributable": 0.2891,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -2446,7 +2717,8 @@
    "net_profit_wan": -2141.680362,
    "distributable_wan": 18345.255899,
    "unit_distributable": 0.1835,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 21706.540231
   },
   {
    "code": "508011",
@@ -2455,7 +2727,8 @@
    "net_profit_wan": 1030.251221,
    "distributable_wan": 1684.7306620000002,
    "unit_distributable": 0.0421,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508015",
@@ -2464,7 +2737,8 @@
    "net_profit_wan": 591.067317,
    "distributable_wan": 4006.3153450000004,
    "unit_distributable": 0.2003,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508017",
@@ -2473,7 +2747,8 @@
    "net_profit_wan": 399.006982,
    "distributable_wan": 1358.515139,
    "unit_distributable": 0.034,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1582.575603
   },
   {
    "code": "508018",
@@ -2482,7 +2757,8 @@
    "net_profit_wan": 2082.221999,
    "distributable_wan": 7839.851637000001,
    "unit_distributable": 0.0784,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 6194.671622999999
   },
   {
    "code": "508019",
@@ -2491,7 +2767,8 @@
    "net_profit_wan": 228.84862999999999,
    "distributable_wan": 1916.027628,
    "unit_distributable": 0.0319,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -2500,7 +2777,8 @@
    "net_profit_wan": 524.369278,
    "distributable_wan": 1065.122464,
    "unit_distributable": 0.0533,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508026",
@@ -2509,7 +2787,8 @@
    "net_profit_wan": 642.060577,
    "distributable_wan": 2369.543998,
    "unit_distributable": 0.0592,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -2518,7 +2797,8 @@
    "net_profit_wan": 1471.289426,
    "distributable_wan": 3703.0892670000003,
    "unit_distributable": 0.0411,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -2527,7 +2807,8 @@
    "net_profit_wan": 5788.249468,
    "distributable_wan": 9623.29132,
    "unit_distributable": 0.1203,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508031",
@@ -2536,7 +2817,8 @@
    "net_profit_wan": 1953.869414,
    "distributable_wan": 3266.7369489999996,
    "unit_distributable": 0.0327,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508033",
@@ -2545,7 +2827,8 @@
    "net_profit_wan": 7350.234528,
    "distributable_wan": 6353.758347999999,
    "unit_distributable": 0.2118,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4210.136436
   },
   {
    "code": "508056",
@@ -2554,7 +2837,8 @@
    "net_profit_wan": -133.908106,
    "distributable_wan": 8825.908311,
    "unit_distributable": 0.0455,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508058",
@@ -2563,7 +2847,8 @@
    "net_profit_wan": 730.79225,
    "distributable_wan": 1464.572717,
    "unit_distributable": 0.0293,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -2572,7 +2857,8 @@
    "net_profit_wan": 2724.616968,
    "distributable_wan": 6211.984732,
    "unit_distributable": 0.1553,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -2581,7 +2867,8 @@
    "net_profit_wan": 838.345606,
    "distributable_wan": 1346.854226,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 894.889283
   },
   {
    "code": "508077",
@@ -2590,7 +2877,8 @@
    "net_profit_wan": 300.68383,
    "distributable_wan": 1231.850966,
    "unit_distributable": 0.0246,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1209.727521
   },
   {
    "code": "508086",
@@ -2599,7 +2887,8 @@
    "net_profit_wan": 2483.918533,
    "distributable_wan": 12844.608846,
    "unit_distributable": 0.1284,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 12226.309919
   },
   {
    "code": "508088",
@@ -2608,7 +2897,8 @@
    "net_profit_wan": 1458.389715,
    "distributable_wan": 1922.954775,
    "unit_distributable": 0.0385,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508089",
@@ -2617,7 +2907,8 @@
    "net_profit_wan": 2614.802795,
    "distributable_wan": 2128.859936,
    "unit_distributable": 0.071,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1479.002899
   },
   {
    "code": "508096",
@@ -2626,7 +2917,8 @@
    "net_profit_wan": 3873.883535,
    "distributable_wan": 14183.350627000002,
    "unit_distributable": 0.4728,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -2635,7 +2927,8 @@
    "net_profit_wan": 694.6184,
    "distributable_wan": 2387.1606890000003,
    "unit_distributable": 0.0477,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -2644,7 +2937,8 @@
    "net_profit_wan": -192.028001,
    "distributable_wan": 1122.847433,
    "unit_distributable": 0.0125,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -2653,7 +2947,8 @@
    "net_profit_wan": 1697.6977149999998,
    "distributable_wan": 4305.979265999999,
    "unit_distributable": 0.0303,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -2662,7 +2957,8 @@
    "net_profit_wan": 477.39216799999997,
    "distributable_wan": 1893.317198,
    "unit_distributable": 0.027,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180103",
@@ -2671,7 +2967,8 @@
    "net_profit_wan": -68.886545,
    "distributable_wan": 1417.5142560000002,
    "unit_distributable": 0.0284,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180105",
@@ -2680,7 +2977,8 @@
    "net_profit_wan": 168.600437,
    "distributable_wan": 2652.172489,
    "unit_distributable": 0.0332,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -2689,7 +2987,8 @@
    "net_profit_wan": 3512.4489380000005,
    "distributable_wan": 9601.059471999999,
    "unit_distributable": 0.1372,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -2698,7 +2997,8 @@
    "net_profit_wan": -81.824139,
    "distributable_wan": 2460.406454,
    "unit_distributable": 0.082,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180203",
@@ -2707,7 +3007,8 @@
    "net_profit_wan": 1743.181755,
    "distributable_wan": 23534.742899,
    "unit_distributable": 0.4707,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180301",
@@ -2716,7 +3017,8 @@
    "net_profit_wan": 981.47054,
    "distributable_wan": 2266.471916,
    "unit_distributable": 0.0238,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180302",
@@ -2725,7 +3027,8 @@
    "net_profit_wan": 850.4353140000001,
    "distributable_wan": 1857.0338359999998,
    "unit_distributable": 0.031,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180303",
@@ -2734,7 +3037,8 @@
    "net_profit_wan": 264.627568,
    "distributable_wan": 1345.7105080000001,
    "unit_distributable": 0.0449,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -2743,7 +3047,8 @@
    "net_profit_wan": -2429.510527,
    "distributable_wan": 6206.62021,
    "unit_distributable": 0.1034,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -2752,7 +3057,8 @@
    "net_profit_wan": 560.7903110000001,
    "distributable_wan": 1202.394733,
    "unit_distributable": 0.024,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180502",
@@ -2761,7 +3067,8 @@
    "net_profit_wan": -146.60146699999999,
    "distributable_wan": 1462.512717,
    "unit_distributable": 0.0293,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180601",
@@ -2770,7 +3077,8 @@
    "net_profit_wan": -1501.267818,
    "distributable_wan": 8867.740245,
    "unit_distributable": 0.0887,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180602",
@@ -2779,7 +3087,8 @@
    "net_profit_wan": 569.927458,
    "distributable_wan": 4488.645668,
    "unit_distributable": 0.0449,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1483.1436410000001
   },
   {
    "code": "180603",
@@ -2788,7 +3097,8 @@
    "net_profit_wan": -304.14686,
    "distributable_wan": 4529.085568,
    "unit_distributable": 0.0453,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180701",
@@ -2797,7 +3107,8 @@
    "net_profit_wan": 1613.8863199999998,
    "distributable_wan": 6060.6964259999995,
    "unit_distributable": 0.101,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 3114.7820260000003
   },
   {
    "code": "180801",
@@ -2806,7 +3117,8 @@
    "net_profit_wan": 773.939797,
    "distributable_wan": 3384.692445,
    "unit_distributable": 0.3385,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -2815,7 +3127,8 @@
    "net_profit_wan": -898.6491560000001,
    "distributable_wan": 2716.91501,
    "unit_distributable": 0.0283,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -2824,7 +3137,8 @@
    "net_profit_wan": -1814.209834,
    "distributable_wan": 8818.8407,
    "unit_distributable": 0.1764,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508002",
@@ -2833,7 +3147,8 @@
    "net_profit_wan": 408.801056,
    "distributable_wan": 3324.4999620000003,
    "unit_distributable": 0.0332,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 1222.273561
   },
   {
    "code": "508003",
@@ -2842,7 +3157,8 @@
    "net_profit_wan": 83.831094,
    "distributable_wan": 1656.501447,
    "unit_distributable": 0.033,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 25.151869
   },
   {
    "code": "508005",
@@ -2851,7 +3167,8 @@
    "net_profit_wan": 2092.2044,
    "distributable_wan": 2951.308891,
    "unit_distributable": 0.0369,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -2860,7 +3177,8 @@
    "net_profit_wan": -112.59099199999999,
    "distributable_wan": 2080.853352,
    "unit_distributable": 0.0416,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -2869,7 +3187,8 @@
    "net_profit_wan": 2079.156688,
    "distributable_wan": 4228.802476,
    "unit_distributable": 0.1057,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 4261.9048
   },
   {
    "code": "508008",
@@ -2878,7 +3197,8 @@
    "net_profit_wan": 498.55324900000005,
    "distributable_wan": 9319.03864,
    "unit_distributable": 0.1864,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -2887,7 +3207,8 @@
    "net_profit_wan": -9841.08819,
    "distributable_wan": 12436.423387,
    "unit_distributable": 0.1244,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 27998.783827999996
   },
   {
    "code": "508011",
@@ -2896,7 +3217,8 @@
    "net_profit_wan": 1950.756218,
    "distributable_wan": 1675.861766,
    "unit_distributable": 0.0419,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508015",
@@ -2905,7 +3227,8 @@
    "net_profit_wan": 1683.21707,
    "distributable_wan": 2520.758415,
    "unit_distributable": 0.126,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508017",
@@ -2914,7 +3237,8 @@
    "net_profit_wan": 348.36040499999996,
    "distributable_wan": 1383.051852,
    "unit_distributable": 0.0346,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508018",
@@ -2923,7 +3247,8 @@
    "net_profit_wan": 1195.8275310000001,
    "distributable_wan": 5351.872716,
    "unit_distributable": 0.0535,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 612.821931
   },
   {
    "code": "508019",
@@ -2932,7 +3257,8 @@
    "net_profit_wan": 507.98870800000003,
    "distributable_wan": 1539.7475,
    "unit_distributable": 0.0257,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -2941,7 +3267,8 @@
    "net_profit_wan": 554.192321,
    "distributable_wan": 619.069516,
    "unit_distributable": 0.031,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508022",
@@ -2950,7 +3277,8 @@
    "net_profit_wan": 840.1735679999999,
    "distributable_wan": 1729.417498,
    "unit_distributable": 0.0346,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 0.15099100000000001
   },
   {
    "code": "508026",
@@ -2959,7 +3287,8 @@
    "net_profit_wan": 513.436664,
    "distributable_wan": 3634.934999,
    "unit_distributable": 0.0909,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -2968,7 +3297,8 @@
    "net_profit_wan": 573.3423,
    "distributable_wan": 3659.7592219999997,
    "unit_distributable": 0.0407,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -2977,7 +3307,8 @@
    "net_profit_wan": 7279.340097,
    "distributable_wan": 23769.201756,
    "unit_distributable": 0.2971,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508031",
@@ -2986,7 +3317,8 @@
    "net_profit_wan": 2174.861458,
    "distributable_wan": 3457.668192,
    "unit_distributable": 0.0346,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508033",
@@ -2995,7 +3327,8 @@
    "net_profit_wan": -2702.823005,
    "distributable_wan": 4785.237962,
    "unit_distributable": 0.1595,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -3004,7 +3337,8 @@
    "net_profit_wan": 148.714894,
    "distributable_wan": 9279.044967,
    "unit_distributable": 0.0479,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508058",
@@ -3013,7 +3347,8 @@
    "net_profit_wan": 630.014313,
    "distributable_wan": 1439.056489,
    "unit_distributable": 0.0288,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -3022,7 +3357,8 @@
    "net_profit_wan": -297.730229,
    "distributable_wan": 3824.6057560000004,
    "unit_distributable": 0.0956,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -3031,7 +3367,8 @@
    "net_profit_wan": 899.061079,
    "distributable_wan": 1355.414769,
    "unit_distributable": 0.0271,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508069",
@@ -3040,7 +3377,8 @@
    "net_profit_wan": 2213.414547,
    "distributable_wan": 17676.110467,
    "unit_distributable": 0.3535,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 490.31617
   },
   {
    "code": "508077",
@@ -3049,7 +3387,8 @@
    "net_profit_wan": 250.40347799999998,
    "distributable_wan": 1231.850801,
    "unit_distributable": 0.0246,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508086",
@@ -3058,7 +3397,8 @@
    "net_profit_wan": 1957.549271,
    "distributable_wan": 11651.539977,
    "unit_distributable": 0.1165,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 12424.027111
   },
   {
    "code": "508088",
@@ -3067,7 +3407,8 @@
    "net_profit_wan": 1113.699165,
    "distributable_wan": 1648.072746,
    "unit_distributable": 0.033,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508089",
@@ -3076,7 +3417,8 @@
    "net_profit_wan": 1777.762664,
    "distributable_wan": 2407.990792,
    "unit_distributable": 0.0803,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 422.609026
   },
   {
    "code": "508096",
@@ -3085,7 +3427,8 @@
    "net_profit_wan": 1285.91885,
    "distributable_wan": 303.145267,
    "unit_distributable": 0.0101,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -3094,7 +3437,8 @@
    "net_profit_wan": 608.411479,
    "distributable_wan": 1497.554267,
    "unit_distributable": 0.03,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -3103,7 +3447,8 @@
    "net_profit_wan": -897.716667,
    "distributable_wan": 713.653189,
    "unit_distributable": 0.0079,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -3112,7 +3457,8 @@
    "net_profit_wan": 1327.0719869999998,
    "distributable_wan": 2378.726395,
    "unit_distributable": 0.0167,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180102",
@@ -3121,7 +3467,8 @@
    "net_profit_wan": 559.415,
    "distributable_wan": 1709.4460649999999,
    "unit_distributable": 0.0244,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180103",
@@ -3130,7 +3477,8 @@
    "net_profit_wan": 126.699277,
    "distributable_wan": 1344.693333,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180105",
@@ -3139,7 +3487,8 @@
    "net_profit_wan": 125.05363799999999,
    "distributable_wan": 2388.942708,
    "unit_distributable": 0.0299,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180106",
@@ -3148,7 +3497,8 @@
    "net_profit_wan": 148.49043899999998,
    "distributable_wan": 1646.20403,
    "unit_distributable": 0.0412,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180201",
@@ -3157,7 +3507,8 @@
    "net_profit_wan": 6396.864305,
    "distributable_wan": 15103.636389,
    "unit_distributable": 0.2158,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180202",
@@ -3166,7 +3517,8 @@
    "net_profit_wan": 1123.448343,
    "distributable_wan": 2691.947298,
    "unit_distributable": 0.0897,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180203",
@@ -3175,7 +3527,8 @@
    "net_profit_wan": 2370.519399,
    "distributable_wan": 7951.285218999999,
    "unit_distributable": 0.159,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 149.09389299999998
   },
   {
    "code": "180301",
@@ -3184,7 +3537,8 @@
    "net_profit_wan": 946.384876,
    "distributable_wan": 2360.138835,
    "unit_distributable": 0.0247,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180302",
@@ -3193,7 +3547,8 @@
    "net_profit_wan": 864.612902,
    "distributable_wan": 1823.49863,
    "unit_distributable": 0.0304,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180303",
@@ -3202,7 +3557,8 @@
    "net_profit_wan": 248.785164,
    "distributable_wan": 1247.433449,
    "unit_distributable": 0.0416,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180401",
@@ -3211,7 +3567,8 @@
    "net_profit_wan": 148.719412,
    "distributable_wan": 4826.564849,
    "unit_distributable": 0.0804,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180402",
@@ -3220,7 +3577,8 @@
    "net_profit_wan": 1203.480726,
    "distributable_wan": 3582.2975530000003,
    "unit_distributable": 0.1791,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180501",
@@ -3229,7 +3587,8 @@
    "net_profit_wan": 498.830983,
    "distributable_wan": 1153.189842,
    "unit_distributable": 0.0231,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180502",
@@ -3238,7 +3597,8 @@
    "net_profit_wan": -146.204383,
    "distributable_wan": 1239.883233,
    "unit_distributable": 0.0248,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180601",
@@ -3247,7 +3607,8 @@
    "net_profit_wan": 900.143733,
    "distributable_wan": 8825.917937,
    "unit_distributable": 0.0883,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180602",
@@ -3256,7 +3617,8 @@
    "net_profit_wan": 638.6794,
    "distributable_wan": 4305.108641,
    "unit_distributable": 0.0431,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180603",
@@ -3265,7 +3627,8 @@
    "net_profit_wan": 986.748833,
    "distributable_wan": 4473.759446,
    "unit_distributable": 0.0447,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180605",
@@ -3274,7 +3637,8 @@
    "net_profit_wan": 830.588703,
    "distributable_wan": 5570.961415999999,
    "unit_distributable": 0.1114,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180701",
@@ -3283,7 +3647,8 @@
    "net_profit_wan": 1875.076533,
    "distributable_wan": 2720.635466,
    "unit_distributable": 0.0453,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180801",
@@ -3292,7 +3657,8 @@
    "net_profit_wan": 1147.961364,
    "distributable_wan": 1364.1406140000001,
    "unit_distributable": 0.14,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508000",
@@ -3301,7 +3667,8 @@
    "net_profit_wan": -933.3452130000001,
    "distributable_wan": 3219.5466969999998,
    "unit_distributable": 0.0335,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508001",
@@ -3310,7 +3677,8 @@
    "net_profit_wan": 2462.1952760000004,
    "distributable_wan": 13996.320117,
    "unit_distributable": 0.2799,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508002",
@@ -3319,7 +3687,8 @@
    "net_profit_wan": 1075.43334,
    "distributable_wan": 3997.224472,
    "unit_distributable": 0.04,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508003",
@@ -3328,7 +3697,8 @@
    "net_profit_wan": -88.40355600000001,
    "distributable_wan": 2010.7444469999998,
    "unit_distributable": 0.0402,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508005",
@@ -3337,7 +3707,8 @@
    "net_profit_wan": 2201.208612,
    "distributable_wan": 3172.075545,
    "unit_distributable": 0.0397,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508006",
@@ -3346,7 +3717,8 @@
    "net_profit_wan": 875.357592,
    "distributable_wan": 3563.4708520000004,
    "unit_distributable": 0.0713,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508007",
@@ -3355,7 +3727,8 @@
    "net_profit_wan": 1859.761806,
    "distributable_wan": 4905.976997,
    "unit_distributable": 0.1226,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508008",
@@ -3364,7 +3737,8 @@
    "net_profit_wan": 1467.2596310000001,
    "distributable_wan": 10561.134999,
    "unit_distributable": 0.2112,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508009",
@@ -3373,7 +3747,8 @@
    "net_profit_wan": 1241.6888,
    "distributable_wan": 16761.541977,
    "unit_distributable": 0.1676,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 163.49223
   },
   {
    "code": "508010",
@@ -3382,7 +3757,8 @@
    "net_profit_wan": 1195.599847,
    "distributable_wan": 1401.490888,
    "unit_distributable": 0.035,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508011",
@@ -3391,7 +3767,8 @@
    "net_profit_wan": 797.525309,
    "distributable_wan": 1798.357446,
    "unit_distributable": 0.045,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508012",
@@ -3400,7 +3777,8 @@
    "net_profit_wan": 385.767198,
    "distributable_wan": 979.4593619999999,
    "unit_distributable": 0.0326,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508015",
@@ -3409,7 +3787,8 @@
    "net_profit_wan": 2103.875216,
    "distributable_wan": 2648.646641,
    "unit_distributable": 0.1324,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508017",
@@ -3418,7 +3797,8 @@
    "net_profit_wan": 187.332728,
    "distributable_wan": 1411.285058,
    "unit_distributable": 0.0353,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508018",
@@ -3427,7 +3807,8 @@
    "net_profit_wan": 1512.125324,
    "distributable_wan": 7263.8822549999995,
    "unit_distributable": 0.0726,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 598.141246
   },
   {
    "code": "508019",
@@ -3436,7 +3817,8 @@
    "net_profit_wan": 116.51075900000001,
    "distributable_wan": 1503.0995699999999,
    "unit_distributable": 0.0251,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508021",
@@ -3445,7 +3827,8 @@
    "net_profit_wan": 537.224105,
    "distributable_wan": 805.108584,
    "unit_distributable": 0.0403,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508022",
@@ -3454,7 +3837,8 @@
    "net_profit_wan": 1161.2699519999999,
    "distributable_wan": 1785.9993789999999,
    "unit_distributable": 0.0357,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508026",
@@ -3463,7 +3847,8 @@
    "net_profit_wan": 170.952248,
    "distributable_wan": 2050.908823,
    "unit_distributable": 0.0513,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508027",
@@ -3472,7 +3857,8 @@
    "net_profit_wan": 1539.1465369999999,
    "distributable_wan": 3563.627006,
    "unit_distributable": 0.0396,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508028",
@@ -3481,7 +3867,8 @@
    "net_profit_wan": 8400.279911,
    "distributable_wan": 7023.0449,
    "unit_distributable": 0.0878,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508031",
@@ -3490,7 +3877,8 @@
    "net_profit_wan": 2021.824448,
    "distributable_wan": 3140.090958,
    "unit_distributable": 0.0314,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508033",
@@ -3499,7 +3887,8 @@
    "net_profit_wan": 1797.0980350000002,
    "distributable_wan": 5812.925757,
    "unit_distributable": 0.1938,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508036",
@@ -3508,7 +3897,8 @@
    "net_profit_wan": 10822.339034,
    "distributable_wan": 37777.799644,
    "unit_distributable": 0.3778,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508048",
@@ -3517,7 +3907,8 @@
    "net_profit_wan": 112.515901,
    "distributable_wan": 1530.1789390000001,
    "unit_distributable": 0.0383,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508056",
@@ -3526,7 +3917,8 @@
    "net_profit_wan": 29.763848,
    "distributable_wan": 8282.592895,
    "unit_distributable": 0.0427,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508058",
@@ -3535,7 +3927,8 @@
    "net_profit_wan": 759.9205469999999,
    "distributable_wan": 1475.736835,
    "unit_distributable": 0.0295,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508066",
@@ -3544,7 +3937,8 @@
    "net_profit_wan": 2749.356759,
    "distributable_wan": 7609.388031,
    "unit_distributable": 0.1902,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508068",
@@ -3553,7 +3947,8 @@
    "net_profit_wan": 860.940619,
    "distributable_wan": 1346.5570619999999,
    "unit_distributable": 0.0269,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508069",
@@ -3562,7 +3957,8 @@
    "net_profit_wan": 2910.748171,
    "distributable_wan": 6824.633868000001,
    "unit_distributable": 0.1365,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 179.81949
   },
   {
    "code": "508077",
@@ -3571,7 +3967,8 @@
    "net_profit_wan": 275.719708,
    "distributable_wan": 1209.921871,
    "unit_distributable": 0.0242,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508078",
@@ -3580,7 +3977,8 @@
    "net_profit_wan": -2182.891561,
    "distributable_wan": 1955.7230260000001,
    "unit_distributable": 0.02,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508086",
@@ -3589,7 +3987,8 @@
    "net_profit_wan": -2366.377469,
    "distributable_wan": 8116.837409000001,
    "unit_distributable": 0.0812,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508087",
@@ -3598,7 +3997,8 @@
    "net_profit_wan": 7354.673965999999,
    "distributable_wan": 7668.1980969999995,
    "unit_distributable": 0.3834,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508088",
@@ -3607,7 +4007,8 @@
    "net_profit_wan": 1200.8607949999998,
    "distributable_wan": 1773.2607879999998,
    "unit_distributable": 0.0355,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508089",
@@ -3616,7 +4017,8 @@
    "net_profit_wan": 2452.8581050000003,
    "distributable_wan": 1138.64364,
    "unit_distributable": 0.038,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": 436.06096399999996
   },
   {
    "code": "508092",
@@ -3625,7 +4027,8 @@
    "net_profit_wan": 1033.2174009999999,
    "distributable_wan": 1471.862568,
    "unit_distributable": 0.0368,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508096",
@@ -3634,7 +4037,8 @@
    "net_profit_wan": 2475.197392,
    "distributable_wan": 264.388525,
    "unit_distributable": 0.01,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508097",
@@ -3643,7 +4047,8 @@
    "net_profit_wan": 770.095566,
    "distributable_wan": 1289.13893,
    "unit_distributable": 0.0322,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508098",
@@ -3652,7 +4057,8 @@
    "net_profit_wan": 683.4762929999999,
    "distributable_wan": 1714.4473079999998,
    "unit_distributable": 0.0343,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508099",
@@ -3661,7 +4067,8 @@
    "net_profit_wan": -357.871877,
    "distributable_wan": 738.845782,
    "unit_distributable": 0.0082,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "180101",
@@ -3670,7 +4077,8 @@
    "net_profit_wan": 1265.801441,
    "distributable_wan": 3300.983508,
    "unit_distributable": 0.0232,
-   "ebitda_wan": 3540.639815
+   "ebitda_wan": 3540.639815,
+   "total_cost_wan": 690.414991
   },
   {
    "code": "180102",
@@ -3679,7 +4087,8 @@
    "net_profit_wan": 441.33070499999997,
    "distributable_wan": 1711.808246,
    "unit_distributable": 0.0245,
-   "ebitda_wan": 1408.757122
+   "ebitda_wan": 1408.757122,
+   "total_cost_wan": 3031.4088070000003
   },
   {
    "code": "180103",
@@ -3688,7 +4097,8 @@
    "net_profit_wan": -8.083128,
    "distributable_wan": 1347.9672130000001,
    "unit_distributable": 0.027,
-   "ebitda_wan": 1406.32711
+   "ebitda_wan": 1406.32711,
+   "total_cost_wan": 3020.7063420000004
   },
   {
    "code": "180105",
@@ -3697,7 +4107,8 @@
    "net_profit_wan": 123.719827,
    "distributable_wan": 2332.571373,
    "unit_distributable": 0.0292,
-   "ebitda_wan": 2116.050804
+   "ebitda_wan": 2116.050804,
+   "total_cost_wan": 667.83232
   },
   {
    "code": "180106",
@@ -3706,7 +4117,8 @@
    "net_profit_wan": 171.853418,
    "distributable_wan": 1489.189899,
    "unit_distributable": 0.0372,
-   "ebitda_wan": 1629.918625
+   "ebitda_wan": 1629.918625,
+   "total_cost_wan": 6625.04501
   },
   {
    "code": "180201",
@@ -3715,7 +4127,8 @@
    "net_profit_wan": 4753.299839,
    "distributable_wan": 10401.584526,
    "unit_distributable": 0.1486,
-   "ebitda_wan": 14146.048944999999
+   "ebitda_wan": 14146.048944999999,
+   "total_cost_wan": 22329.361497
   },
   {
    "code": "180202",
@@ -3724,7 +4137,8 @@
    "net_profit_wan": 454.82466600000004,
    "distributable_wan": 2861.899387,
    "unit_distributable": 0.0954,
-   "ebitda_wan": 4311.006093999999
+   "ebitda_wan": 4311.006093999999,
+   "total_cost_wan": null
   },
   {
    "code": "180203",
@@ -3733,7 +4147,8 @@
    "net_profit_wan": 2149.386657,
    "distributable_wan": 6453.574594,
    "unit_distributable": 0.1291,
-   "ebitda_wan": 8783.915461
+   "ebitda_wan": 8783.915461,
+   "total_cost_wan": 5351.015711
   },
   {
    "code": "180301",
@@ -3742,7 +4157,8 @@
    "net_profit_wan": 1036.709542,
    "distributable_wan": 2419.964689,
    "unit_distributable": 0.0254,
-   "ebitda_wan": 2766.3918289999997
+   "ebitda_wan": 2766.3918289999997,
+   "total_cost_wan": 4188.974166
   },
   {
    "code": "180302",
@@ -3751,7 +4167,8 @@
    "net_profit_wan": 866.5287210000001,
    "distributable_wan": 1851.1683289999999,
    "unit_distributable": 0.0309,
-   "ebitda_wan": 2262.72329
+   "ebitda_wan": 2262.72329,
+   "total_cost_wan": 3310.328769
   },
   {
    "code": "180303",
@@ -3760,7 +4177,8 @@
    "net_profit_wan": 342.372296,
    "distributable_wan": 1434.450044,
    "unit_distributable": 0.0478,
-   "ebitda_wan": 1620.585514
+   "ebitda_wan": 1620.585514,
+   "total_cost_wan": 2444.351173
   },
   {
    "code": "180305",
@@ -3769,7 +4187,8 @@
    "net_profit_wan": 791.331814,
    "distributable_wan": 3760.593929,
    "unit_distributable": 0.0376,
-   "ebitda_wan": 4396.932079
+   "ebitda_wan": 4396.932079,
+   "total_cost_wan": 5176.202937
   },
   {
    "code": "180401",
@@ -3778,7 +4197,8 @@
    "net_profit_wan": 5343.125086,
    "distributable_wan": 4477.5313320000005,
    "unit_distributable": 0.0746,
-   "ebitda_wan": 11042.717938
+   "ebitda_wan": 11042.717938,
+   "total_cost_wan": 34970.429192
   },
   {
    "code": "180402",
@@ -3787,7 +4207,8 @@
    "net_profit_wan": 928.8882779999999,
    "distributable_wan": 80.234713,
    "unit_distributable": 0.004,
-   "ebitda_wan": 2764.4180079999996
+   "ebitda_wan": 2764.4180079999996,
+   "total_cost_wan": 3166.049607
   },
   {
    "code": "180501",
@@ -3796,7 +4217,8 @@
    "net_profit_wan": 562.507869,
    "distributable_wan": 1200.199499,
    "unit_distributable": 0.024,
-   "ebitda_wan": 1213.356036
+   "ebitda_wan": 1213.356036,
+   "total_cost_wan": 1860.4262239999998
   },
   {
    "code": "180502",
@@ -3805,7 +4227,8 @@
    "net_profit_wan": 71.329475,
    "distributable_wan": 1387.364595,
    "unit_distributable": 0.0277,
-   "ebitda_wan": 1539.608211
+   "ebitda_wan": 1539.608211,
+   "total_cost_wan": 988.8614039999999
   },
   {
    "code": "180601",
@@ -3814,7 +4237,8 @@
    "net_profit_wan": 710.9760719999999,
    "distributable_wan": 9116.738843000001,
    "unit_distributable": 0.0912,
-   "ebitda_wan": 10228.339377
+   "ebitda_wan": 10228.339377,
+   "total_cost_wan": 23052.739638
   },
   {
    "code": "180602",
@@ -3823,7 +4247,8 @@
    "net_profit_wan": 193.97356000000002,
    "distributable_wan": 4337.814153,
    "unit_distributable": 0.0434,
-   "ebitda_wan": 5318.876201
+   "ebitda_wan": 5318.876201,
+   "total_cost_wan": 7854.521914
   },
   {
    "code": "180603",
@@ -3832,7 +4257,8 @@
    "net_profit_wan": 882.5688130000001,
    "distributable_wan": 4539.992945,
    "unit_distributable": 0.0454,
-   "ebitda_wan": 4802.030522
+   "ebitda_wan": 4802.030522,
+   "total_cost_wan": 11305.338936
   },
   {
    "code": "180605",
@@ -3841,7 +4267,8 @@
    "net_profit_wan": 1188.915,
    "distributable_wan": 2655.7567280000003,
    "unit_distributable": 0.0531,
-   "ebitda_wan": 2352.787915
+   "ebitda_wan": 2352.787915,
+   "total_cost_wan": 780.502519
   },
   {
    "code": "180701",
@@ -3850,7 +4277,8 @@
    "net_profit_wan": 1763.6284829999997,
    "distributable_wan": 2605.469662,
    "unit_distributable": 0.0434,
-   "ebitda_wan": 2760.230543
+   "ebitda_wan": 2760.230543,
+   "total_cost_wan": 5138.888178
   },
   {
    "code": "180801",
@@ -3859,7 +4287,8 @@
    "net_profit_wan": 742.445003,
    "distributable_wan": 1576.057174,
    "unit_distributable": 0.1576,
-   "ebitda_wan": 3062.660409
+   "ebitda_wan": 3062.660409,
+   "total_cost_wan": 10197.381276
   },
   {
    "code": "508000",
@@ -3868,7 +4297,8 @@
    "net_profit_wan": -693.777868,
    "distributable_wan": 2780.9202179999997,
    "unit_distributable": 0.029,
-   "ebitda_wan": 3166.38399
+   "ebitda_wan": 3166.38399,
+   "total_cost_wan": 412.50245099999995
   },
   {
    "code": "508001",
@@ -3877,7 +4307,8 @@
    "net_profit_wan": -266.916609,
    "distributable_wan": 6307.055829999999,
    "unit_distributable": 0.1261,
-   "ebitda_wan": 12743.046435
+   "ebitda_wan": 12743.046435,
+   "total_cost_wan": 19851.538131
   },
   {
    "code": "508002",
@@ -3886,7 +4317,8 @@
    "net_profit_wan": 631.033926,
    "distributable_wan": 3220.203887,
    "unit_distributable": 0.0322,
-   "ebitda_wan": 3614.632205
+   "ebitda_wan": 3614.632205,
+   "total_cost_wan": 6310.751248
   },
   {
    "code": "508003",
@@ -3895,7 +4327,8 @@
    "net_profit_wan": 48.162714,
    "distributable_wan": 2024.455861,
    "unit_distributable": 0.0405,
-   "ebitda_wan": 2389.902029
+   "ebitda_wan": 2389.902029,
+   "total_cost_wan": 2359.7310079999997
   },
   {
    "code": "508005",
@@ -3904,7 +4337,8 @@
    "net_profit_wan": 1613.475536,
    "distributable_wan": 3207.3107170000003,
    "unit_distributable": 0.0401,
-   "ebitda_wan": 3514.175965
+   "ebitda_wan": 3514.175965,
+   "total_cost_wan": 6526.45769
   },
   {
    "code": "508006",
@@ -3913,7 +4347,8 @@
    "net_profit_wan": 1313.709236,
    "distributable_wan": 4618.978156,
    "unit_distributable": 0.0924,
-   "ebitda_wan": 4938.638068
+   "ebitda_wan": 4938.638068,
+   "total_cost_wan": 5272.562191
   },
   {
    "code": "508007",
@@ -3922,7 +4357,8 @@
    "net_profit_wan": 1721.677948,
    "distributable_wan": 4779.238067,
    "unit_distributable": 0.1195,
-   "ebitda_wan": 5123.413137
+   "ebitda_wan": 5123.413137,
+   "total_cost_wan": 11511.496189
   },
   {
    "code": "508008",
@@ -3931,7 +4367,8 @@
    "net_profit_wan": 2562.9451289999997,
    "distributable_wan": 10654.741184999999,
    "unit_distributable": 0.2131,
-   "ebitda_wan": 14736.186894999999
+   "ebitda_wan": 14736.186894999999,
+   "total_cost_wan": 17475.854087
   },
   {
    "code": "508009",
@@ -3940,7 +4377,8 @@
    "net_profit_wan": -304.91407000000004,
    "distributable_wan": 14871.945571,
    "unit_distributable": 0.1487,
-   "ebitda_wan": 18963.311425
+   "ebitda_wan": 18963.311425,
+   "total_cost_wan": 39970.099999
   },
   {
    "code": "508010",
@@ -3949,7 +4387,8 @@
    "net_profit_wan": 769.748893,
    "distributable_wan": 1331.054502,
    "unit_distributable": 0.0333,
-   "ebitda_wan": 1594.191671
+   "ebitda_wan": 1594.191671,
+   "total_cost_wan": 3007.450156
   },
   {
    "code": "508011",
@@ -3958,7 +4397,8 @@
    "net_profit_wan": 821.388743,
    "distributable_wan": 1731.0734260000002,
    "unit_distributable": 0.0433,
-   "ebitda_wan": 2137.979069
+   "ebitda_wan": 2137.979069,
+   "total_cost_wan": 3330.939143
   },
   {
    "code": "508012",
@@ -3967,7 +4407,8 @@
    "net_profit_wan": 414.602554,
    "distributable_wan": 1255.0040199999999,
    "unit_distributable": 0.0418,
-   "ebitda_wan": 1256.054648
+   "ebitda_wan": 1256.054648,
+   "total_cost_wan": 900.8788210000001
   },
   {
    "code": "508015",
@@ -3976,7 +4417,8 @@
    "net_profit_wan": 1900.0530469999999,
    "distributable_wan": 1023.685857,
    "unit_distributable": 0.0512,
-   "ebitda_wan": 4065.168771
+   "ebitda_wan": 4065.168771,
+   "total_cost_wan": 2996.369689
   },
   {
    "code": "508017",
@@ -3985,7 +4427,8 @@
    "net_profit_wan": 263.41207599999996,
    "distributable_wan": 1461.359778,
    "unit_distributable": 0.0365,
-   "ebitda_wan": 1294.169118
+   "ebitda_wan": 1294.169118,
+   "total_cost_wan": 3413.158372
   },
   {
    "code": "508018",
@@ -3994,7 +4437,8 @@
    "net_profit_wan": 928.6403730000001,
    "distributable_wan": 5930.048312,
    "unit_distributable": 0.0593,
-   "ebitda_wan": 7526.515034999999
+   "ebitda_wan": 7526.515034999999,
+   "total_cost_wan": 17545.330954
   },
   {
    "code": "508019",
@@ -4003,7 +4447,8 @@
    "net_profit_wan": -161.572013,
    "distributable_wan": 1496.372424,
    "unit_distributable": 0.0249,
-   "ebitda_wan": 1325.4051869999998
+   "ebitda_wan": 1325.4051869999998,
+   "total_cost_wan": 2014.453041
   },
   {
    "code": "508021",
@@ -4012,7 +4457,8 @@
    "net_profit_wan": 562.821735,
    "distributable_wan": 927.677932,
    "unit_distributable": 0.0464,
-   "ebitda_wan": 980.370067
+   "ebitda_wan": 980.370067,
+   "total_cost_wan": 142.02123799999998
   },
   {
    "code": "508022",
@@ -4021,7 +4467,8 @@
    "net_profit_wan": 1212.267132,
    "distributable_wan": 2102.266477,
    "unit_distributable": 0.042,
-   "ebitda_wan": 2402.622498
+   "ebitda_wan": 2402.622498,
+   "total_cost_wan": 1193.915563
   },
   {
    "code": "508026",
@@ -4030,7 +4477,8 @@
    "net_profit_wan": -567.085494,
    "distributable_wan": 1000.613509,
    "unit_distributable": 0.025,
-   "ebitda_wan": 664.4977349999999
+   "ebitda_wan": 664.4977349999999,
+   "total_cost_wan": 3407.376033
   },
   {
    "code": "508027",
@@ -4039,7 +4487,8 @@
    "net_profit_wan": 1308.269874,
    "distributable_wan": 3214.002411,
    "unit_distributable": 0.0357,
-   "ebitda_wan": 3891.470796
+   "ebitda_wan": 3891.470796,
+   "total_cost_wan": 1373.082257
   },
   {
    "code": "508028",
@@ -4048,7 +4497,8 @@
    "net_profit_wan": 8662.4375,
    "distributable_wan": 6656.9026380000005,
    "unit_distributable": 0.0832,
-   "ebitda_wan": 19950.307882
+   "ebitda_wan": 19950.307882,
+   "total_cost_wan": 21953.78226
   },
   {
    "code": "508031",
@@ -4057,7 +4507,8 @@
    "net_profit_wan": 2077.362743,
    "distributable_wan": 3196.773018,
    "unit_distributable": 0.032,
-   "ebitda_wan": 3533.3314200000004
+   "ebitda_wan": 3533.3314200000004,
+   "total_cost_wan": 2101.5975129999997
   },
   {
    "code": "508033",
@@ -4066,7 +4517,8 @@
    "net_profit_wan": 2408.436682,
    "distributable_wan": 5614.384559,
    "unit_distributable": 0.1871,
-   "ebitda_wan": 6525.039183
+   "ebitda_wan": 6525.039183,
+   "total_cost_wan": 9365.143154000001
   },
   {
    "code": "508036",
@@ -4075,7 +4527,8 @@
    "net_profit_wan": 11324.733257,
    "distributable_wan": 35752.462395,
    "unit_distributable": 0.3575,
-   "ebitda_wan": 49209.34435
+   "ebitda_wan": 49209.34435,
+   "total_cost_wan": 21994.876157
   },
   {
    "code": "508048",
@@ -4084,7 +4537,8 @@
    "net_profit_wan": 107.569449,
    "distributable_wan": 1595.049226,
    "unit_distributable": 0.0399,
-   "ebitda_wan": 1691.672023
+   "ebitda_wan": 1691.672023,
+   "total_cost_wan": 1847.5324460000002
   },
   {
    "code": "508055",
@@ -4093,7 +4547,8 @@
    "net_profit_wan": 227.9112,
    "distributable_wan": 1283.5448720000002,
    "unit_distributable": 0.0257,
-   "ebitda_wan": 1350.7065710000002
+   "ebitda_wan": 1350.7065710000002,
+   "total_cost_wan": 3078.765784
   },
   {
    "code": "508056",
@@ -4102,7 +4557,8 @@
    "net_profit_wan": 9.147160000000001,
    "distributable_wan": 8396.257066,
    "unit_distributable": 0.0433,
-   "ebitda_wan": 7155.563009
+   "ebitda_wan": 7155.563009,
+   "total_cost_wan": 1994.8157579999997
   },
   {
    "code": "508058",
@@ -4111,7 +4567,8 @@
    "net_profit_wan": 718.391497,
    "distributable_wan": 1491.333898,
    "unit_distributable": 0.0298,
-   "ebitda_wan": 1675.282068
+   "ebitda_wan": 1675.282068,
+   "total_cost_wan": 290.964648
   },
   {
    "code": "508066",
@@ -4120,7 +4577,8 @@
    "net_profit_wan": 1886.8194760000001,
    "distributable_wan": 7080.082895999999,
    "unit_distributable": 0.177,
-   "ebitda_wan": 7823.521704000001
+   "ebitda_wan": 7823.521704000001,
+   "total_cost_wan": 13335.642566
   },
   {
    "code": "508068",
@@ -4129,7 +4587,8 @@
    "net_profit_wan": 956.9637119999999,
    "distributable_wan": 1564.112277,
    "unit_distributable": 0.0216,
-   "ebitda_wan": 1742.212046
+   "ebitda_wan": 1742.212046,
+   "total_cost_wan": 2530.8381219999997
   },
   {
    "code": "508069",
@@ -4138,7 +4597,8 @@
    "net_profit_wan": 1951.150565,
    "distributable_wan": 7315.309658,
    "unit_distributable": 0.1463,
-   "ebitda_wan": 8181.369703
+   "ebitda_wan": 8181.369703,
+   "total_cost_wan": 24118.36449
   },
   {
    "code": "508077",
@@ -4147,7 +4607,8 @@
    "net_profit_wan": 302.656839,
    "distributable_wan": 1223.574135,
    "unit_distributable": 0.0245,
-   "ebitda_wan": 1422.382733
+   "ebitda_wan": 1422.382733,
+   "total_cost_wan": 2768.189203
   },
   {
    "code": "508078",
@@ -4156,7 +4617,8 @@
    "net_profit_wan": -1822.3556,
    "distributable_wan": 2950.522849,
    "unit_distributable": 0.0369,
-   "ebitda_wan": 2555.38393
+   "ebitda_wan": 2555.38393,
+   "total_cost_wan": 3642.325057
   },
   {
    "code": "508084",
@@ -4165,7 +4627,8 @@
    "net_profit_wan": 581.349378,
    "distributable_wan": 1519.721544,
    "unit_distributable": 0.038,
-   "ebitda_wan": 1729.347754
+   "ebitda_wan": 1729.347754,
+   "total_cost_wan": 2904.06452
   },
   {
    "code": "508085",
@@ -4174,7 +4637,8 @@
    "net_profit_wan": 442.56691500000005,
    "distributable_wan": 1618.9138580000001,
    "unit_distributable": 0.0324,
-   "ebitda_wan": 1157.143933
+   "ebitda_wan": 1157.143933,
+   "total_cost_wan": 883.164473
   },
   {
    "code": "508086",
@@ -4183,7 +4647,8 @@
    "net_profit_wan": 225.84146,
    "distributable_wan": 10584.462631,
    "unit_distributable": 0.1058,
-   "ebitda_wan": 11222.95202
+   "ebitda_wan": 11222.95202,
+   "total_cost_wan": 22179.561274
   },
   {
    "code": "508087",
@@ -4192,7 +4657,8 @@
    "net_profit_wan": -1435.534173,
    "distributable_wan": 15.786869,
    "unit_distributable": 0.0008,
-   "ebitda_wan": -665.256251
+   "ebitda_wan": -665.256251,
+   "total_cost_wan": 883.318247
   },
   {
    "code": "508088",
@@ -4201,7 +4667,8 @@
    "net_profit_wan": 1075.063435,
    "distributable_wan": 2183.263661,
    "unit_distributable": 0.0437,
-   "ebitda_wan": 1882.237894
+   "ebitda_wan": 1882.237894,
+   "total_cost_wan": 662.093952
   },
   {
    "code": "508089",
@@ -4210,7 +4677,8 @@
    "net_profit_wan": 2589.603371,
    "distributable_wan": 696.661887,
    "unit_distributable": 0.0232,
-   "ebitda_wan": 3970.638568
+   "ebitda_wan": 3970.638568,
+   "total_cost_wan": 4820.165966
   },
   {
    "code": "508092",
@@ -4219,7 +4687,8 @@
    "net_profit_wan": 1207.689082,
    "distributable_wan": 1972.8581629999999,
    "unit_distributable": 0.0493,
-   "ebitda_wan": 2730.756561
+   "ebitda_wan": 2730.756561,
+   "total_cost_wan": 2918.159982
   },
   {
    "code": "508096",
@@ -4228,7 +4697,8 @@
    "net_profit_wan": 3131.817184,
    "distributable_wan": 6547.482613,
    "unit_distributable": 0.2182,
-   "ebitda_wan": 6946.840565
+   "ebitda_wan": 6946.840565,
+   "total_cost_wan": 6097.353027
   },
   {
    "code": "508097",
@@ -4237,7 +4707,8 @@
    "net_profit_wan": 718.593796,
    "distributable_wan": 1301.766199,
    "unit_distributable": 0.0325,
-   "ebitda_wan": 1411.133169
+   "ebitda_wan": 1411.133169,
+   "total_cost_wan": 2353.808209
   },
   {
    "code": "508098",
@@ -4246,7 +4717,8 @@
    "net_profit_wan": 711.981712,
    "distributable_wan": 2003.5168429999999,
    "unit_distributable": 0.0401,
-   "ebitda_wan": 1908.0410399999998
+   "ebitda_wan": 1908.0410399999998,
+   "total_cost_wan": 3493.6476780000003
   },
   {
    "code": "508099",
@@ -4255,7 +4727,8 @@
    "net_profit_wan": -497.48714800000005,
    "distributable_wan": 871.657366,
    "unit_distributable": 0.0097,
-   "ebitda_wan": 1592.000967
+   "ebitda_wan": 1592.000967,
+   "total_cost_wan": 2271.162694
   },
   {
    "code": "180101",
@@ -4264,7 +4737,8 @@
    "net_profit_wan": 1137.237428,
    "distributable_wan": 2853.223343,
    "unit_distributable": 0.0201,
-   "ebitda_wan": 3418.989392
+   "ebitda_wan": 3418.989392,
+   "total_cost_wan": 605.53726
   },
   {
    "code": "180102",
@@ -4273,7 +4747,8 @@
    "net_profit_wan": 502.187425,
    "distributable_wan": 1559.838592,
    "unit_distributable": 0.0223,
-   "ebitda_wan": 1473.975501
+   "ebitda_wan": 1473.975501,
+   "total_cost_wan": 2955.225611
   },
   {
    "code": "180103",
@@ -4282,7 +4757,8 @@
    "net_profit_wan": 51.510834,
    "distributable_wan": 1348.331119,
    "unit_distributable": 0.027,
-   "ebitda_wan": 1469.860362
+   "ebitda_wan": 1469.860362,
+   "total_cost_wan": 3111.490214
   },
   {
    "code": "180105",
@@ -4291,7 +4767,8 @@
    "net_profit_wan": -634.678269,
    "distributable_wan": 1697.5096039999999,
    "unit_distributable": 0.0212,
-   "ebitda_wan": 1845.9649539999998
+   "ebitda_wan": 1845.9649539999998,
+   "total_cost_wan": 746.8767650000001
   },
   {
    "code": "180106",
@@ -4300,7 +4777,8 @@
    "net_profit_wan": 448.069537,
    "distributable_wan": 1679.99501,
    "unit_distributable": 0.042,
-   "ebitda_wan": 1401.293373
+   "ebitda_wan": 1401.293373,
+   "total_cost_wan": 2272.259479
   },
   {
    "code": "180201",
@@ -4309,7 +4787,8 @@
    "net_profit_wan": 6580.558218,
    "distributable_wan": 15901.005215000001,
    "unit_distributable": 0.2272,
-   "ebitda_wan": 17330.536317
+   "ebitda_wan": 17330.536317,
+   "total_cost_wan": 23486.345559
   },
   {
    "code": "180202",
@@ -4318,7 +4797,8 @@
    "net_profit_wan": 978.4428859999999,
    "distributable_wan": 3440.882071,
    "unit_distributable": 0.1147,
-   "ebitda_wan": 4961.164151
+   "ebitda_wan": 4961.164151,
+   "total_cost_wan": 8133.099074
   },
   {
    "code": "180203",
@@ -4327,7 +4807,8 @@
    "net_profit_wan": 2911.713964,
    "distributable_wan": 8265.984484999999,
    "unit_distributable": 0.1653,
-   "ebitda_wan": 9893.842881999999
+   "ebitda_wan": 9893.842881999999,
+   "total_cost_wan": 5885.4679320000005
   },
   {
    "code": "180301",
@@ -4336,7 +4817,8 @@
    "net_profit_wan": 935.6332160000001,
    "distributable_wan": 2362.324694,
    "unit_distributable": 0.0248,
-   "ebitda_wan": 2653.567443
+   "ebitda_wan": 2653.567443,
+   "total_cost_wan": 4242.576543
   },
   {
    "code": "180302",
@@ -4345,7 +4827,8 @@
    "net_profit_wan": 655.976551,
    "distributable_wan": 1874.491101,
    "unit_distributable": 0.0312,
-   "ebitda_wan": 2080.4714289999997
+   "ebitda_wan": 2080.4714289999997,
+   "total_cost_wan": 3656.869928
   },
   {
    "code": "180303",
@@ -4354,7 +4837,8 @@
    "net_profit_wan": 205.111731,
    "distributable_wan": 1218.91405,
    "unit_distributable": 0.0406,
-   "ebitda_wan": 1509.020777
+   "ebitda_wan": 1509.020777,
+   "total_cost_wan": 3129.065922
   },
   {
    "code": "180305",
@@ -4363,7 +4847,8 @@
    "net_profit_wan": 715.2462469999999,
    "distributable_wan": 4267.651793999999,
    "unit_distributable": 0.0426,
-   "ebitda_wan": 3943.6055590000005
+   "ebitda_wan": 3943.6055590000005,
+   "total_cost_wan": 5858.948989
   },
   {
    "code": "180401",
@@ -4372,7 +4857,8 @@
    "net_profit_wan": 4620.678953000001,
    "distributable_wan": 7870.6953459999995,
    "unit_distributable": 0.1312,
-   "ebitda_wan": 12584.829184
+   "ebitda_wan": 12584.829184,
+   "total_cost_wan": 42756.065318
   },
   {
    "code": "180402",
@@ -4381,7 +4867,8 @@
    "net_profit_wan": -184.280666,
    "distributable_wan": 15972.377134,
    "unit_distributable": 0.7986,
-   "ebitda_wan": 1546.6018800000002
+   "ebitda_wan": 1546.6018800000002,
+   "total_cost_wan": 3538.178204
   },
   {
    "code": "180501",
@@ -4390,7 +4877,8 @@
    "net_profit_wan": 592.6137219999999,
    "distributable_wan": 1212.671131,
    "unit_distributable": 0.0243,
-   "ebitda_wan": 1244.656851
+   "ebitda_wan": 1244.656851,
+   "total_cost_wan": 1858.6631690000002
   },
   {
    "code": "180502",
@@ -4399,7 +4887,8 @@
    "net_profit_wan": 204.459562,
    "distributable_wan": 1590.11612,
    "unit_distributable": 0.0318,
-   "ebitda_wan": 1590.225522
+   "ebitda_wan": 1590.225522,
+   "total_cost_wan": 969.721419
   },
   {
    "code": "180601",
@@ -4408,7 +4897,8 @@
    "net_profit_wan": 2011.50748,
    "distributable_wan": 9239.621403000001,
    "unit_distributable": 0.0924,
-   "ebitda_wan": 11400.438664
+   "ebitda_wan": 11400.438664,
+   "total_cost_wan": 23288.910661
   },
   {
    "code": "180602",
@@ -4417,7 +4907,8 @@
    "net_profit_wan": 301.399135,
    "distributable_wan": 4466.534498,
    "unit_distributable": 0.0447,
-   "ebitda_wan": 5401.087782
+   "ebitda_wan": 5401.087782,
+   "total_cost_wan": 7913.809112000001
   },
   {
    "code": "180603",
@@ -4426,7 +4917,8 @@
    "net_profit_wan": 934.1583019999999,
    "distributable_wan": 4598.3036649999995,
    "unit_distributable": 0.046,
-   "ebitda_wan": 4834.391732
+   "ebitda_wan": 4834.391732,
+   "total_cost_wan": 11647.056081
   },
   {
    "code": "180605",
@@ -4435,7 +4927,8 @@
    "net_profit_wan": 915.0594199999999,
    "distributable_wan": 2255.189362,
    "unit_distributable": 0.0451,
-   "ebitda_wan": 2396.401836
+   "ebitda_wan": 2396.401836,
+   "total_cost_wan": 802.022586
   },
   {
    "code": "180606",
@@ -4444,7 +4937,8 @@
    "net_profit_wan": 338.004762,
    "distributable_wan": 2200.086353,
    "unit_distributable": 0.044,
-   "ebitda_wan": 2428.8275989999997
+   "ebitda_wan": 2428.8275989999997,
+   "total_cost_wan": 5935.335555
   },
   {
    "code": "180701",
@@ -4453,7 +4947,8 @@
    "net_profit_wan": 3719.2046729999997,
    "distributable_wan": 4599.8866179999995,
    "unit_distributable": 0.0767,
-   "ebitda_wan": 5205.397313
+   "ebitda_wan": 5205.397313,
+   "total_cost_wan": 7345.670123000001
   },
   {
    "code": "180801",
@@ -4462,7 +4957,8 @@
    "net_profit_wan": 1614.840609,
    "distributable_wan": 1536.998025,
    "unit_distributable": 0.1537,
-   "ebitda_wan": 3804.2292729999995
+   "ebitda_wan": 3804.2292729999995,
+   "total_cost_wan": 10614.224756
   },
   {
    "code": "180901",
@@ -4471,7 +4967,8 @@
    "net_profit_wan": 1989.018709,
    "distributable_wan": 5016.470247,
    "unit_distributable": 0.0502,
-   "ebitda_wan": 4936.408349
+   "ebitda_wan": 4936.408349,
+   "total_cost_wan": 5319.783893
   },
   {
    "code": "508000",
@@ -4480,7 +4977,8 @@
    "net_profit_wan": -1288.6324769999999,
    "distributable_wan": 2518.31701,
    "unit_distributable": 0.0262,
-   "ebitda_wan": 2698.078434
+   "ebitda_wan": 2698.078434,
+   "total_cost_wan": 533.228347
   },
   {
    "code": "508001",
@@ -4489,7 +4987,8 @@
    "net_profit_wan": -155.74338999999998,
    "distributable_wan": 11600.782361,
    "unit_distributable": 0.232,
-   "ebitda_wan": 12977.242526
+   "ebitda_wan": 12977.242526,
+   "total_cost_wan": 23734.62151
   },
   {
    "code": "508002",
@@ -4498,7 +4997,8 @@
    "net_profit_wan": 831.351617,
    "distributable_wan": 3445.4153840000004,
    "unit_distributable": 0.0345,
-   "ebitda_wan": 3904.0034570000003
+   "ebitda_wan": 3904.0034570000003,
+   "total_cost_wan": 6342.270252
   },
   {
    "code": "508003",
@@ -4507,7 +5007,8 @@
    "net_profit_wan": -209.33636,
    "distributable_wan": 2049.7825940000002,
    "unit_distributable": 0.041,
-   "ebitda_wan": 2136.322424
+   "ebitda_wan": 2136.322424,
+   "total_cost_wan": 2467.2925
   },
   {
    "code": "508005",
@@ -4516,7 +5017,8 @@
    "net_profit_wan": 1022.585234,
    "distributable_wan": 3242.545334,
    "unit_distributable": 0.0405,
-   "ebitda_wan": 2933.1491760000004
+   "ebitda_wan": 2933.1491760000004,
+   "total_cost_wan": 6473.7334869999995
   },
   {
    "code": "508006",
@@ -4525,7 +5027,8 @@
    "net_profit_wan": 274.68068999999997,
    "distributable_wan": 3267.695421,
    "unit_distributable": 0.0654,
-   "ebitda_wan": 3630.88135
+   "ebitda_wan": 3630.88135,
+   "total_cost_wan": 6350.391872
   },
   {
    "code": "508007",
@@ -4534,7 +5037,8 @@
    "net_profit_wan": 2089.617092,
    "distributable_wan": 4962.3570039999995,
    "unit_distributable": 0.1241,
-   "ebitda_wan": 5534.714512
+   "ebitda_wan": 5534.714512,
+   "total_cost_wan": 9487.585073999999
   },
   {
    "code": "508008",
@@ -4543,7 +5047,8 @@
    "net_profit_wan": 1527.747877,
    "distributable_wan": 11193.321951,
    "unit_distributable": 0.2239,
-   "ebitda_wan": 13600.700480000001
+   "ebitda_wan": 13600.700480000001,
+   "total_cost_wan": 17780.997451
   },
   {
    "code": "508009",
@@ -4552,7 +5057,8 @@
    "net_profit_wan": 306.58806200000004,
    "distributable_wan": 19583.511077000003,
    "unit_distributable": 0.1958,
-   "ebitda_wan": 19557.49235
+   "ebitda_wan": 19557.49235,
+   "total_cost_wan": 40321.468433
   },
   {
    "code": "508010",
@@ -4561,7 +5067,8 @@
    "net_profit_wan": 435.811999,
    "distributable_wan": 1352.404354,
    "unit_distributable": 0.0338,
-   "ebitda_wan": 1258.570847
+   "ebitda_wan": 1258.570847,
+   "total_cost_wan": 2684.788583
   },
   {
    "code": "508011",
@@ -4570,7 +5077,8 @@
    "net_profit_wan": 944.8253070000001,
    "distributable_wan": 1724.263516,
    "unit_distributable": 0.0431,
-   "ebitda_wan": 2215.9350640000002
+   "ebitda_wan": 2215.9350640000002,
+   "total_cost_wan": 3347.964348
   },
   {
    "code": "508012",
@@ -4579,7 +5087,8 @@
    "net_profit_wan": 227.22955499999998,
    "distributable_wan": 540.394376,
    "unit_distributable": 0.018,
-   "ebitda_wan": 1081.879739
+   "ebitda_wan": 1081.879739,
+   "total_cost_wan": 983.656609
   },
   {
    "code": "508015",
@@ -4588,7 +5097,8 @@
    "net_profit_wan": 2728.904729,
    "distributable_wan": 4334.972513000001,
    "unit_distributable": 0.2167,
-   "ebitda_wan": 4827.361356
+   "ebitda_wan": 4827.361356,
+   "total_cost_wan": 5237.39604
   },
   {
    "code": "508016",
@@ -4597,7 +5107,8 @@
    "net_profit_wan": 137.703158,
    "distributable_wan": 2447.953565,
    "unit_distributable": 0.049,
-   "ebitda_wan": 2364.9747399999997
+   "ebitda_wan": 2364.9747399999997,
+   "total_cost_wan": 50254.894945
   },
   {
    "code": "508017",
@@ -4606,7 +5117,8 @@
    "net_profit_wan": 522.100575,
    "distributable_wan": 1502.008196,
    "unit_distributable": 0.0376,
-   "ebitda_wan": 1553.361632
+   "ebitda_wan": 1553.361632,
+   "total_cost_wan": 3534.54205
   },
   {
    "code": "508018",
@@ -4615,7 +5127,8 @@
    "net_profit_wan": 2580.4082989999997,
    "distributable_wan": 6971.452972,
    "unit_distributable": 0.0697,
-   "ebitda_wan": 8607.253433
+   "ebitda_wan": 8607.253433,
+   "total_cost_wan": 18065.20075
   },
   {
    "code": "508019",
@@ -4624,7 +5137,8 @@
    "net_profit_wan": -153.861287,
    "distributable_wan": 1485.0804380000002,
    "unit_distributable": 0.0248,
-   "ebitda_wan": 1334.859948
+   "ebitda_wan": 1334.859948,
+   "total_cost_wan": 1997.16498
   },
   {
    "code": "508021",
@@ -4633,7 +5147,8 @@
    "net_profit_wan": 847.1839689999999,
    "distributable_wan": 1684.42502,
    "unit_distributable": 0.0286,
-   "ebitda_wan": 1731.8227600000002
+   "ebitda_wan": 1731.8227600000002,
+   "total_cost_wan": 548.645654
   },
   {
    "code": "508022",
@@ -4642,7 +5157,8 @@
    "net_profit_wan": 1074.045633,
    "distributable_wan": 1951.8077719999999,
    "unit_distributable": 0.039,
-   "ebitda_wan": 2287.9569850000003
+   "ebitda_wan": 2287.9569850000003,
+   "total_cost_wan": 1280.955677
   },
   {
    "code": "508026",
@@ -4651,7 +5167,8 @@
    "net_profit_wan": 1034.820696,
    "distributable_wan": 2556.33765,
    "unit_distributable": 0.0639,
-   "ebitda_wan": 2115.272242
+   "ebitda_wan": 2115.272242,
+   "total_cost_wan": 3048.088941
   },
   {
    "code": "508027",
@@ -4660,7 +5177,8 @@
    "net_profit_wan": 1153.534353,
    "distributable_wan": 3434.231305,
    "unit_distributable": 0.0382,
-   "ebitda_wan": 3601.8793200000005
+   "ebitda_wan": 3601.8793200000005,
+   "total_cost_wan": 1497.371612
   },
   {
    "code": "508028",
@@ -4669,7 +5187,8 @@
    "net_profit_wan": 1965.2745510000002,
    "distributable_wan": -979.157868,
    "unit_distributable": -0.0122,
-   "ebitda_wan": 10925.337504000001
+   "ebitda_wan": 10925.337504000001,
+   "total_cost_wan": 21011.201625
   },
   {
    "code": "508031",
@@ -4678,7 +5197,8 @@
    "net_profit_wan": 2204.315918,
    "distributable_wan": 3207.9703449999997,
    "unit_distributable": 0.0321,
-   "ebitda_wan": 3651.926613
+   "ebitda_wan": 3651.926613,
+   "total_cost_wan": 2137.7493719999998
   },
   {
    "code": "508033",
@@ -4687,7 +5207,8 @@
    "net_profit_wan": 3242.5251719999997,
    "distributable_wan": 6724.513267,
    "unit_distributable": 0.2242,
-   "ebitda_wan": 8068.129428
+   "ebitda_wan": 8068.129428,
+   "total_cost_wan": 10263.247926
   },
   {
    "code": "508036",
@@ -4696,7 +5217,8 @@
    "net_profit_wan": 13423.056555000001,
    "distributable_wan": 18928.645617,
    "unit_distributable": 0.1893,
-   "ebitda_wan": 54286.082963
+   "ebitda_wan": 54286.082963,
+   "total_cost_wan": 25986.715704
   },
   {
    "code": "508039",
@@ -4705,7 +5227,8 @@
    "net_profit_wan": 3198.3925870000003,
    "distributable_wan": 19522.465543000002,
    "unit_distributable": 0.1952,
-   "ebitda_wan": 5578.180818
+   "ebitda_wan": 5578.180818,
+   "total_cost_wan": 3289.8366
   },
   {
    "code": "508048",
@@ -4714,7 +5237,8 @@
    "net_profit_wan": -63.487913,
    "distributable_wan": 1389.904581,
    "unit_distributable": 0.0347,
-   "ebitda_wan": 1542.096341
+   "ebitda_wan": 1542.096341,
+   "total_cost_wan": 3635.428899
   },
   {
    "code": "508055",
@@ -4723,7 +5247,8 @@
    "net_profit_wan": 424.690261,
    "distributable_wan": 1325.875165,
    "unit_distributable": 0.0265,
-   "ebitda_wan": 1557.770118
+   "ebitda_wan": 1557.770118,
+   "total_cost_wan": 5434.446626
   },
   {
    "code": "508056",
@@ -4732,7 +5257,8 @@
    "net_profit_wan": -534.915477,
    "distributable_wan": 8403.51096,
    "unit_distributable": 0.0434,
-   "ebitda_wan": 6622.064318
+   "ebitda_wan": 6622.064318,
+   "total_cost_wan": 2037.829223
   },
   {
    "code": "508058",
@@ -4741,7 +5267,8 @@
    "net_profit_wan": 759.220372,
    "distributable_wan": 1524.381203,
    "unit_distributable": 0.0305,
-   "ebitda_wan": 1695.514743
+   "ebitda_wan": 1695.514743,
+   "total_cost_wan": 294.02994900000004
   },
   {
    "code": "508060",
@@ -4750,7 +5277,8 @@
    "net_profit_wan": 1367.984586,
    "distributable_wan": 2462.615153,
    "unit_distributable": 0.0308,
-   "ebitda_wan": 2991.438445
+   "ebitda_wan": 2991.438445,
+   "total_cost_wan": 1898.70603
   },
   {
    "code": "508066",
@@ -4759,7 +5287,8 @@
    "net_profit_wan": 989.8188789999999,
    "distributable_wan": 5558.075967,
    "unit_distributable": 0.139,
-   "ebitda_wan": 6143.531676
+   "ebitda_wan": 6143.531676,
+   "total_cost_wan": 16416.243909
   },
   {
    "code": "508068",
@@ -4768,7 +5297,8 @@
    "net_profit_wan": 1281.984776,
    "distributable_wan": 2209.186603,
    "unit_distributable": 0.0305,
-   "ebitda_wan": 2566.388361
+   "ebitda_wan": 2566.388361,
+   "total_cost_wan": 3596.2542590000003
   },
   {
    "code": "508069",
@@ -4777,7 +5307,8 @@
    "net_profit_wan": 3751.710104,
    "distributable_wan": 6775.305069,
    "unit_distributable": 0.1355,
-   "ebitda_wan": 9544.313909
+   "ebitda_wan": 9544.313909,
+   "total_cost_wan": 19654.561205
   },
   {
    "code": "508077",
@@ -4786,7 +5317,8 @@
    "net_profit_wan": 288.556926,
    "distributable_wan": 1236.7892060000001,
    "unit_distributable": 0.0247,
-   "ebitda_wan": 1406.753044
+   "ebitda_wan": 1406.753044,
+   "total_cost_wan": 2734.122204
   },
   {
    "code": "508078",
@@ -4795,7 +5327,8 @@
    "net_profit_wan": -2104.952307,
    "distributable_wan": 2466.181446,
    "unit_distributable": 0.0308,
-   "ebitda_wan": 2173.930593
+   "ebitda_wan": 2173.930593,
+   "total_cost_wan": 4370.325269
   },
   {
    "code": "508080",
@@ -4804,7 +5337,8 @@
    "net_profit_wan": -15.845678,
    "distributable_wan": 1853.3394239999998,
    "unit_distributable": 0.0463,
-   "ebitda_wan": 1752.2516280000002
+   "ebitda_wan": 1752.2516280000002,
+   "total_cost_wan": 3388.0034119999996
   },
   {
    "code": "508084",
@@ -4813,7 +5347,8 @@
    "net_profit_wan": 565.864188,
    "distributable_wan": 1561.719848,
    "unit_distributable": 0.039,
-   "ebitda_wan": 1744.7489030000002
+   "ebitda_wan": 1744.7489030000002,
+   "total_cost_wan": 3839.7468700000004
   },
   {
    "code": "508085",
@@ -4822,7 +5357,8 @@
    "net_profit_wan": -93.859736,
    "distributable_wan": 960.2601289999999,
    "unit_distributable": 0.0192,
-   "ebitda_wan": 1682.524888
+   "ebitda_wan": 1682.524888,
+   "total_cost_wan": 2847.735287
   },
   {
    "code": "508086",
@@ -4831,7 +5367,8 @@
    "net_profit_wan": 3112.012784,
    "distributable_wan": 13448.004001,
    "unit_distributable": 0.1345,
-   "ebitda_wan": 13899.150034
+   "ebitda_wan": 13899.150034,
+   "total_cost_wan": 16450.279081
   },
   {
    "code": "508087",
@@ -4840,7 +5377,8 @@
    "net_profit_wan": -944.5098109999999,
    "distributable_wan": 21.097315,
    "unit_distributable": 0.0011,
-   "ebitda_wan": -11.812274
+   "ebitda_wan": -11.812274,
+   "total_cost_wan": 355.81387
   },
   {
    "code": "508088",
@@ -4849,7 +5387,8 @@
    "net_profit_wan": 1036.379404,
    "distributable_wan": 1826.096168,
    "unit_distributable": 0.0365,
-   "ebitda_wan": 1949.811287
+   "ebitda_wan": 1949.811287,
+   "total_cost_wan": 635.230243
   },
   {
    "code": "508089",
@@ -4858,7 +5397,8 @@
    "net_profit_wan": 3086.603361,
    "distributable_wan": 6495.706094,
    "unit_distributable": 0.2165,
-   "ebitda_wan": 4737.386361
+   "ebitda_wan": 4737.386361,
+   "total_cost_wan": 4926.534453
   },
   {
    "code": "508090",
@@ -4867,7 +5407,8 @@
    "net_profit_wan": 436.747054,
    "distributable_wan": 1583.083088,
    "unit_distributable": 0.0396,
-   "ebitda_wan": 1905.306753
+   "ebitda_wan": 1905.306753,
+   "total_cost_wan": 1555.474642
   },
   {
    "code": "508092",
@@ -4876,7 +5417,8 @@
    "net_profit_wan": 890.022326,
    "distributable_wan": 1994.4360989999998,
    "unit_distributable": 0.0499,
-   "ebitda_wan": 2229.706012
+   "ebitda_wan": 2229.706012,
+   "total_cost_wan": 3701.2070729999996
   },
   {
    "code": "508096",
@@ -4885,7 +5427,8 @@
    "net_profit_wan": 3131.653027,
    "distributable_wan": 19936.45955,
    "unit_distributable": 0.6645,
-   "ebitda_wan": 7441.399086
+   "ebitda_wan": 7441.399086,
+   "total_cost_wan": 8025.328976999999
   },
   {
    "code": "508097",
@@ -4894,7 +5437,8 @@
    "net_profit_wan": 489.079675,
    "distributable_wan": 1441.209664,
    "unit_distributable": 0.036,
-   "ebitda_wan": 1145.00326
+   "ebitda_wan": 1145.00326,
+   "total_cost_wan": 2394.549069
   },
   {
    "code": "508098",
@@ -4903,7 +5447,8 @@
    "net_profit_wan": 756.592597,
    "distributable_wan": 2002.0697300000002,
    "unit_distributable": 0.04,
-   "ebitda_wan": 1956.9935739999999
+   "ebitda_wan": 1956.9935739999999,
+   "total_cost_wan": 3498.7495740000004
   },
   {
    "code": "508099",
@@ -4912,7 +5457,8 @@
    "net_profit_wan": -438.141733,
    "distributable_wan": 1037.149365,
    "unit_distributable": 0.0115,
-   "ebitda_wan": 1653.57636
+   "ebitda_wan": 1653.57636,
+   "total_cost_wan": 2202.11179
   },
   {
    "code": "180101",
@@ -4921,7 +5467,8 @@
    "net_profit_wan": 961.384011,
    "distributable_wan": 3528.708111,
    "unit_distributable": 0.0248,
-   "ebitda_wan": 3257.524404
+   "ebitda_wan": 3257.524404,
+   "total_cost_wan": 999.1191570000001
   },
   {
    "code": "180102",
@@ -4930,7 +5477,8 @@
    "net_profit_wan": 232.927959,
    "distributable_wan": 973.9475570000001,
    "unit_distributable": 0.0139,
-   "ebitda_wan": 1196.354716
+   "ebitda_wan": 1196.354716,
+   "total_cost_wan": 2577.539487
   },
   {
    "code": "180103",
@@ -4939,7 +5487,8 @@
    "net_profit_wan": -283.47702200000003,
    "distributable_wan": 1293.157931,
    "unit_distributable": 0.0259,
-   "ebitda_wan": 1134.73777
+   "ebitda_wan": 1134.73777,
+   "total_cost_wan": 3393.8957520000004
   },
   {
    "code": "180105",
@@ -4948,7 +5497,8 @@
    "net_profit_wan": -460.01642699999996,
    "distributable_wan": 1546.607333,
    "unit_distributable": 0.0193,
-   "ebitda_wan": 1834.9346280000002
+   "ebitda_wan": 1834.9346280000002,
+   "total_cost_wan": 648.168938
   },
   {
    "code": "180106",
@@ -4957,7 +5507,8 @@
    "net_profit_wan": 533.114551,
    "distributable_wan": 1731.6248460000002,
    "unit_distributable": 0.0433,
-   "ebitda_wan": 1639.1442949999998
+   "ebitda_wan": 1639.1442949999998,
+   "total_cost_wan": 1996.9228420000002
   },
   {
    "code": "180201",
@@ -4966,7 +5517,8 @@
    "net_profit_wan": 4145.783872999999,
    "distributable_wan": 9981.286726999999,
    "unit_distributable": 0.1426,
-   "ebitda_wan": 14134.481658
+   "ebitda_wan": 14134.481658,
+   "total_cost_wan": 23262.429491
   },
   {
    "code": "180202",
@@ -4975,7 +5527,8 @@
    "net_profit_wan": 340.39660699999996,
    "distributable_wan": 2221.30908,
    "unit_distributable": 0.074,
-   "ebitda_wan": 4255.010408
+   "ebitda_wan": 4255.010408,
+   "total_cost_wan": 8389.358998
   },
   {
    "code": "180203",
@@ -4984,7 +5537,8 @@
    "net_profit_wan": 3175.652621,
    "distributable_wan": 9162.652587999999,
    "unit_distributable": 0.1833,
-   "ebitda_wan": 9763.948895
+   "ebitda_wan": 9763.948895,
+   "total_cost_wan": 5641.158898
   },
   {
    "code": "180301",
@@ -4993,7 +5547,8 @@
    "net_profit_wan": 728.208137,
    "distributable_wan": 2116.186505,
    "unit_distributable": 0.0222,
-   "ebitda_wan": 2448.261196
+   "ebitda_wan": 2448.261196,
+   "total_cost_wan": 4104.291613
   },
   {
    "code": "180302",
@@ -5002,7 +5557,8 @@
    "net_profit_wan": 275.834615,
    "distributable_wan": 1890.96194,
    "unit_distributable": 0.0315,
-   "ebitda_wan": 1759.2252030000002
+   "ebitda_wan": 1759.2252030000002,
+   "total_cost_wan": 3733.603428
   },
   {
    "code": "180303",
@@ -5011,7 +5567,8 @@
    "net_profit_wan": 681.487741,
    "distributable_wan": 1607.108177,
    "unit_distributable": 0.0536,
-   "ebitda_wan": 1988.04043
+   "ebitda_wan": 1988.04043,
+   "total_cost_wan": 2957.504878
   },
   {
    "code": "180305",
@@ -5020,7 +5577,8 @@
    "net_profit_wan": 1593.430949,
    "distributable_wan": 4350.944,
    "unit_distributable": 0.0435,
-   "ebitda_wan": 4636.672579
+   "ebitda_wan": 4636.672579,
+   "total_cost_wan": 6973.240798999999
   },
   {
    "code": "180401",
@@ -5029,7 +5587,8 @@
    "net_profit_wan": -4375.338806000001,
    "distributable_wan": 7760.789648999999,
    "unit_distributable": 0.1293,
-   "ebitda_wan": -2443.1808690000003
+   "ebitda_wan": -2443.1808690000003,
+   "total_cost_wan": 39652.895741
   },
   {
    "code": "180402",
@@ -5038,7 +5597,8 @@
    "net_profit_wan": 1639.8840810000002,
    "distributable_wan": -300.043814,
    "unit_distributable": -0.015,
-   "ebitda_wan": 3067.3717239999996
+   "ebitda_wan": 3067.3717239999996,
+   "total_cost_wan": 3417.0597869999997
   },
   {
    "code": "180501",
@@ -5047,7 +5607,8 @@
    "net_profit_wan": 601.779513,
    "distributable_wan": 1201.425784,
    "unit_distributable": 0.024,
-   "ebitda_wan": 1264.5033640000001
+   "ebitda_wan": 1264.5033640000001,
+   "total_cost_wan": 2031.265368
   },
   {
    "code": "180502",
@@ -5056,7 +5617,8 @@
    "net_profit_wan": 228.470558,
    "distributable_wan": 1454.8325109999998,
    "unit_distributable": 0.0291,
-   "ebitda_wan": 1627.522522
+   "ebitda_wan": 1627.522522,
+   "total_cost_wan": 944.2781480000001
   },
   {
    "code": "180601",
@@ -5065,7 +5627,8 @@
    "net_profit_wan": 1950.827634,
    "distributable_wan": 9324.069919,
    "unit_distributable": 0.0932,
-   "ebitda_wan": 11488.061591
+   "ebitda_wan": 11488.061591,
+   "total_cost_wan": 23389.212962999998
   },
   {
    "code": "180602",
@@ -5074,7 +5637,8 @@
    "net_profit_wan": 281.415587,
    "distributable_wan": 4279.912232,
    "unit_distributable": 0.0428,
-   "ebitda_wan": 5368.607395
+   "ebitda_wan": 5368.607395,
+   "total_cost_wan": 8330.741204
   },
   {
    "code": "180603",
@@ -5083,7 +5647,8 @@
    "net_profit_wan": 974.367587,
    "distributable_wan": 4601.89612,
    "unit_distributable": 0.046,
-   "ebitda_wan": 4970.235428
+   "ebitda_wan": 4970.235428,
+   "total_cost_wan": 11893.841208
   },
   {
    "code": "180605",
@@ -5092,7 +5657,8 @@
    "net_profit_wan": 562.263379,
    "distributable_wan": 1448.551122,
    "unit_distributable": 0.029,
-   "ebitda_wan": 2063.881775
+   "ebitda_wan": 2063.881775,
+   "total_cost_wan": 1259.376025
   },
   {
    "code": "180606",
@@ -5101,7 +5667,8 @@
    "net_profit_wan": -50.42072,
    "distributable_wan": 1826.793497,
    "unit_distributable": 0.0365,
-   "ebitda_wan": 2034.464266
+   "ebitda_wan": 2034.464266,
+   "total_cost_wan": 6321.240715
   },
   {
    "code": "180607",
@@ -5110,7 +5677,8 @@
    "net_profit_wan": 368.386508,
    "distributable_wan": 1300.1812320000001,
    "unit_distributable": 0.0433,
-   "ebitda_wan": 1207.084405
+   "ebitda_wan": 1207.084405,
+   "total_cost_wan": 2019.153124
   },
   {
    "code": "180701",
@@ -5119,7 +5687,8 @@
    "net_profit_wan": 2631.300115,
    "distributable_wan": 2395.3928,
    "unit_distributable": 0.0399,
-   "ebitda_wan": 3854.232856
+   "ebitda_wan": 3854.232856,
+   "total_cost_wan": 4865.003317000001
   },
   {
    "code": "180801",
@@ -5128,7 +5697,8 @@
    "net_profit_wan": 769.333782,
    "distributable_wan": 2878.117951,
    "unit_distributable": 0.2878,
-   "ebitda_wan": 3664.132682
+   "ebitda_wan": 3664.132682,
+   "total_cost_wan": 12355.410274
   },
   {
    "code": "180901",
@@ -5137,7 +5707,8 @@
    "net_profit_wan": 1768.398668,
    "distributable_wan": 16533.341433,
    "unit_distributable": 0.1653,
-   "ebitda_wan": 7626.35785
+   "ebitda_wan": 7626.35785,
+   "total_cost_wan": 7302.439645999999
   },
   {
    "code": "508000",
@@ -5146,7 +5717,8 @@
    "net_profit_wan": -1367.904751,
    "distributable_wan": 2749.781525,
    "unit_distributable": 0.0286,
-   "ebitda_wan": 2550.327013
+   "ebitda_wan": 2550.327013,
+   "total_cost_wan": 635.895215
   },
   {
    "code": "508001",
@@ -5155,7 +5727,8 @@
    "net_profit_wan": -2672.763938,
    "distributable_wan": 8056.929487,
    "unit_distributable": 0.1611,
-   "ebitda_wan": 10498.206203
+   "ebitda_wan": 10498.206203,
+   "total_cost_wan": 23318.630017
   },
   {
    "code": "508002",
@@ -5164,7 +5737,8 @@
    "net_profit_wan": 596.946854,
    "distributable_wan": 3860.177475,
    "unit_distributable": 0.0386,
-   "ebitda_wan": 4380.868793
+   "ebitda_wan": 4380.868793,
+   "total_cost_wan": 6720.224681000001
   },
   {
    "code": "508003",
@@ -5173,7 +5747,8 @@
    "net_profit_wan": -256.62484700000005,
    "distributable_wan": 1998.532563,
    "unit_distributable": 0.04,
-   "ebitda_wan": 2094.138403
+   "ebitda_wan": 2094.138403,
+   "total_cost_wan": 2477.7237600000003
   },
   {
    "code": "508005",
@@ -5182,7 +5757,8 @@
    "net_profit_wan": 2256.694166,
    "distributable_wan": 3242.9254379999998,
    "unit_distributable": 0.0405,
-   "ebitda_wan": 4276.890887
+   "ebitda_wan": 4276.890887,
+   "total_cost_wan": 7393.684561
   },
   {
    "code": "508006",
@@ -5191,7 +5767,8 @@
    "net_profit_wan": 1394.6985960000002,
    "distributable_wan": 4872.5425,
    "unit_distributable": 0.0975,
-   "ebitda_wan": 4669.054218
+   "ebitda_wan": 4669.054218,
+   "total_cost_wan": 5265.1668549999995
   },
   {
    "code": "508007",
@@ -5200,7 +5777,8 @@
    "net_profit_wan": 752.24628,
    "distributable_wan": 4402.7930369999995,
    "unit_distributable": 0.1101,
-   "ebitda_wan": 3588.17986
+   "ebitda_wan": 3588.17986,
+   "total_cost_wan": 7241.850231999999
   },
   {
    "code": "508008",
@@ -5209,7 +5787,8 @@
    "net_profit_wan": 287.099023,
    "distributable_wan": 8508.785624,
    "unit_distributable": 0.1702,
-   "ebitda_wan": 11844.042581
+   "ebitda_wan": 11844.042581,
+   "total_cost_wan": 18975.413234
   },
   {
    "code": "508009",
@@ -5218,7 +5797,8 @@
    "net_profit_wan": -7156.571181,
    "distributable_wan": 12432.557282,
    "unit_distributable": 0.1243,
-   "ebitda_wan": 12102.3458
+   "ebitda_wan": 12102.3458,
+   "total_cost_wan": 44175.59864
   },
   {
    "code": "508010",
@@ -5227,7 +5807,8 @@
    "net_profit_wan": 1127.131787,
    "distributable_wan": 1393.953818,
    "unit_distributable": 0.0348,
-   "ebitda_wan": 1961.1259899999998
+   "ebitda_wan": 1961.1259899999998,
+   "total_cost_wan": 2832.3192940000004
   },
   {
    "code": "508011",
@@ -5236,7 +5817,8 @@
    "net_profit_wan": 571.246459,
    "distributable_wan": 1725.0371300000002,
    "unit_distributable": 0.0431,
-   "ebitda_wan": 1835.079864
+   "ebitda_wan": 1835.079864,
+   "total_cost_wan": 3352.608115
   },
   {
    "code": "508012",
@@ -5245,7 +5827,8 @@
    "net_profit_wan": 720.760033,
    "distributable_wan": 1778.4425260000003,
    "unit_distributable": 0.0593,
-   "ebitda_wan": 1670.8683199999998
+   "ebitda_wan": 1670.8683199999998,
+   "total_cost_wan": 1071.681515
   },
   {
    "code": "508015",
@@ -5254,7 +5837,8 @@
    "net_profit_wan": 1033.464586,
    "distributable_wan": 2546.348281,
    "unit_distributable": 0.1273,
-   "ebitda_wan": 4071.287467
+   "ebitda_wan": 4071.287467,
+   "total_cost_wan": 5852.25673
   },
   {
    "code": "508016",
@@ -5263,7 +5847,8 @@
    "net_profit_wan": -1659.975952,
    "distributable_wan": 2901.769183,
    "unit_distributable": 0.058,
-   "ebitda_wan": 2145.1687469999997
+   "ebitda_wan": 2145.1687469999997,
+   "total_cost_wan": 43021.382852999996
   },
   {
    "code": "508017",
@@ -5272,7 +5857,8 @@
    "net_profit_wan": 593.6870240000001,
    "distributable_wan": 1495.827072,
    "unit_distributable": 0.0374,
-   "ebitda_wan": 1644.177545
+   "ebitda_wan": 1644.177545,
+   "total_cost_wan": 3538.3328899999997
   },
   {
    "code": "508018",
@@ -5281,7 +5867,8 @@
    "net_profit_wan": 1909.1591460000002,
    "distributable_wan": 6078.5043399999995,
    "unit_distributable": 0.0608,
-   "ebitda_wan": 7964.013677
+   "ebitda_wan": 7964.013677,
+   "total_cost_wan": 18872.859956
   },
   {
    "code": "508019",
@@ -5290,7 +5877,8 @@
    "net_profit_wan": 116.89679199999999,
    "distributable_wan": 1291.6578630000001,
    "unit_distributable": 0.0215,
-   "ebitda_wan": 1610.494962
+   "ebitda_wan": 1610.494962,
+   "total_cost_wan": 2056.786114
   },
   {
    "code": "508021",
@@ -5299,7 +5887,8 @@
    "net_profit_wan": 1541.201077,
    "distributable_wan": 3359.384458,
    "unit_distributable": 0.0571,
-   "ebitda_wan": 2648.116115
+   "ebitda_wan": 2648.116115,
+   "total_cost_wan": 842.7293980000001
   },
   {
    "code": "508022",
@@ -5308,7 +5897,8 @@
    "net_profit_wan": 986.9554220000001,
    "distributable_wan": 2212.53662,
    "unit_distributable": 0.0443,
-   "ebitda_wan": 2180.474498
+   "ebitda_wan": 2180.474498,
+   "total_cost_wan": 1385.595053
   },
   {
    "code": "508026",
@@ -5317,7 +5907,8 @@
    "net_profit_wan": -174.272859,
    "distributable_wan": 2591.161982,
    "unit_distributable": 0.0648,
-   "ebitda_wan": 1287.602877
+   "ebitda_wan": 1287.602877,
+   "total_cost_wan": 3130.489483
   },
   {
    "code": "508027",
@@ -5326,7 +5917,8 @@
    "net_profit_wan": 605.336892,
    "distributable_wan": 3120.923662,
    "unit_distributable": 0.0347,
-   "ebitda_wan": 3191.312671
+   "ebitda_wan": 3191.312671,
+   "total_cost_wan": 1414.564061
   },
   {
    "code": "508028",
@@ -5335,7 +5927,8 @@
    "net_profit_wan": 8959.080958,
    "distributable_wan": 16031.552399,
    "unit_distributable": 0.2004,
-   "ebitda_wan": 20273.26591
+   "ebitda_wan": 20273.26591,
+   "total_cost_wan": 22516.225529
   },
   {
    "code": "508029",
@@ -5344,7 +5937,8 @@
    "net_profit_wan": -467.753559,
    "distributable_wan": 6512.6296,
    "unit_distributable": 0.2171,
-   "ebitda_wan": 1379.412609
+   "ebitda_wan": 1379.412609,
+   "total_cost_wan": 2783.380168
   },
   {
    "code": "508031",
@@ -5353,7 +5947,8 @@
    "net_profit_wan": 2139.203485,
    "distributable_wan": 3251.990053,
    "unit_distributable": 0.0325,
-   "ebitda_wan": 3643.9495380000003
+   "ebitda_wan": 3643.9495380000003,
+   "total_cost_wan": 2102.073721
   },
   {
    "code": "508033",
@@ -5362,7 +5957,8 @@
    "net_profit_wan": -1475.609477,
    "distributable_wan": 4522.917993999999,
    "unit_distributable": 0.1508,
-   "ebitda_wan": 4942.641562
+   "ebitda_wan": 4942.641562,
+   "total_cost_wan": 18053.480641
   },
   {
    "code": "508036",
@@ -5371,7 +5967,8 @@
    "net_profit_wan": 3529.4168590000004,
    "distributable_wan": 16879.339739,
    "unit_distributable": 0.1688,
-   "ebitda_wan": 38657.963385
+   "ebitda_wan": 38657.963385,
+   "total_cost_wan": 36148.49027
   },
   {
    "code": "508039",
@@ -5380,7 +5977,8 @@
    "net_profit_wan": 3247.195513,
    "distributable_wan": 5941.226682,
    "unit_distributable": 0.0594,
-   "ebitda_wan": 6614.481569
+   "ebitda_wan": 6614.481569,
+   "total_cost_wan": 28472.182641000003
   },
   {
    "code": "508048",
@@ -5389,7 +5987,8 @@
    "net_profit_wan": 33.149665999999996,
    "distributable_wan": 1445.005498,
    "unit_distributable": 0.0361,
-   "ebitda_wan": 1557.2745730000001
+   "ebitda_wan": 1557.2745730000001,
+   "total_cost_wan": 1861.156716
   },
   {
    "code": "508055",
@@ -5398,7 +5997,8 @@
    "net_profit_wan": 488.30104500000004,
    "distributable_wan": 1289.742031,
    "unit_distributable": 0.0258,
-   "ebitda_wan": 1431.380606
+   "ebitda_wan": 1431.380606,
+   "total_cost_wan": 3110.3511989999997
   },
   {
    "code": "508056",
@@ -5407,7 +6007,8 @@
    "net_profit_wan": -180.495207,
    "distributable_wan": 8664.921938,
    "unit_distributable": 0.0447,
-   "ebitda_wan": 6760.115686
+   "ebitda_wan": 6760.115686,
+   "total_cost_wan": 2131.8585239999998
   },
   {
    "code": "508058",
@@ -5416,7 +6017,8 @@
    "net_profit_wan": 728.181481,
    "distributable_wan": 1443.165403,
    "unit_distributable": 0.0289,
-   "ebitda_wan": 1622.893041
+   "ebitda_wan": 1622.893041,
+   "total_cost_wan": 325.359755
   },
   {
    "code": "508060",
@@ -5425,7 +6027,8 @@
    "net_profit_wan": 954.9411859999999,
    "distributable_wan": 6743.233045999999,
    "unit_distributable": 0.0843,
-   "ebitda_wan": 3857.369556
+   "ebitda_wan": 3857.369556,
+   "total_cost_wan": 2150.200547
   },
   {
    "code": "508066",
@@ -5434,7 +6037,8 @@
    "net_profit_wan": 2700.740589,
    "distributable_wan": 7269.572665000001,
    "unit_distributable": 0.1817,
-   "ebitda_wan": 8749.098642
+   "ebitda_wan": 8749.098642,
+   "total_cost_wan": 14895.476576
   },
   {
    "code": "508068",
@@ -5443,7 +6047,8 @@
    "net_profit_wan": 1437.727948,
    "distributable_wan": 2362.530537,
    "unit_distributable": 0.0326,
-   "ebitda_wan": 2563.5838329999997
+   "ebitda_wan": 2563.5838329999997,
+   "total_cost_wan": 4136.977318
   },
   {
    "code": "508069",
@@ -5452,7 +6057,8 @@
    "net_profit_wan": 837.051587,
    "distributable_wan": 8950.186664,
    "unit_distributable": 0.179,
-   "ebitda_wan": 8489.293723
+   "ebitda_wan": 8489.293723,
+   "total_cost_wan": 21302.363649000003
   },
   {
    "code": "508077",
@@ -5461,7 +6067,8 @@
    "net_profit_wan": 281.053005,
    "distributable_wan": 1385.705757,
    "unit_distributable": 0.0146,
-   "ebitda_wan": 1478.945912
+   "ebitda_wan": 1478.945912,
+   "total_cost_wan": 2945.688395
   },
   {
    "code": "508078",
@@ -5470,7 +6077,8 @@
    "net_profit_wan": -1981.0913440000002,
    "distributable_wan": 5039.769924,
    "unit_distributable": 0.063,
-   "ebitda_wan": 2397.619315
+   "ebitda_wan": 2397.619315,
+   "total_cost_wan": 6964.754191
   },
   {
    "code": "508080",
@@ -5479,7 +6087,8 @@
    "net_profit_wan": -202.760148,
    "distributable_wan": 1532.980397,
    "unit_distributable": 0.0383,
-   "ebitda_wan": 1656.3202880000001
+   "ebitda_wan": 1656.3202880000001,
+   "total_cost_wan": 3529.5294719999997
   },
   {
    "code": "508082",
@@ -5488,7 +6097,8 @@
    "net_profit_wan": -654.472939,
    "distributable_wan": 4108.0031,
    "unit_distributable": 0.0411,
-   "ebitda_wan": 5801.532878
+   "ebitda_wan": 5801.532878,
+   "total_cost_wan": 7533.3033700000005
   },
   {
    "code": "508084",
@@ -5497,7 +6107,8 @@
    "net_profit_wan": 256.32185400000003,
    "distributable_wan": 1684.060027,
    "unit_distributable": 0.0421,
-   "ebitda_wan": 1705.0555420000003
+   "ebitda_wan": 1705.0555420000003,
+   "total_cost_wan": 3879.391675
   },
   {
    "code": "508085",
@@ -5506,7 +6117,8 @@
    "net_profit_wan": 232.623072,
    "distributable_wan": 1130.2770150000001,
    "unit_distributable": 0.0226,
-   "ebitda_wan": 1374.3993150000001
+   "ebitda_wan": 1374.3993150000001,
+   "total_cost_wan": 3325.35176
   },
   {
    "code": "508086",
@@ -5515,7 +6127,8 @@
    "net_profit_wan": -219.10695299999998,
    "distributable_wan": 10223.878261,
    "unit_distributable": 0.1022,
-   "ebitda_wan": 10806.589858
+   "ebitda_wan": 10806.589858,
+   "total_cost_wan": 16267.731463999999
   },
   {
    "code": "508087",
@@ -5524,7 +6137,8 @@
    "net_profit_wan": -1762.2120530000002,
    "distributable_wan": 5137.278246,
    "unit_distributable": 0.2569,
-   "ebitda_wan": -18.838549
+   "ebitda_wan": -18.838549,
+   "total_cost_wan": 31267.641497000004
   },
   {
    "code": "508088",
@@ -5533,7 +6147,8 @@
    "net_profit_wan": 1500.545692,
    "distributable_wan": 1758.292016,
    "unit_distributable": 0.0284,
-   "ebitda_wan": 1799.1381760000002
+   "ebitda_wan": 1799.1381760000002,
+   "total_cost_wan": 868.626381
   },
   {
    "code": "508089",
@@ -5542,7 +6157,8 @@
    "net_profit_wan": 2118.647696,
    "distributable_wan": 3614.3194869999998,
    "unit_distributable": 0.1205,
-   "ebitda_wan": 3411.890499
+   "ebitda_wan": 3411.890499,
+   "total_cost_wan": 4772.573168
   },
   {
    "code": "508090",
@@ -5551,7 +6167,8 @@
    "net_profit_wan": 371.346075,
    "distributable_wan": 1583.341073,
    "unit_distributable": 0.0396,
-   "ebitda_wan": 1980.751398
+   "ebitda_wan": 1980.751398,
+   "total_cost_wan": 2115.40323
   },
   {
    "code": "508091",
@@ -5560,7 +6177,8 @@
    "net_profit_wan": 174.43516499999998,
    "distributable_wan": 2625.410632,
    "unit_distributable": 0.0656,
-   "ebitda_wan": 3650.359182
+   "ebitda_wan": 3650.359182,
+   "total_cost_wan": 6364.156825
   },
   {
    "code": "508092",
@@ -5569,7 +6187,8 @@
    "net_profit_wan": 837.956217,
    "distributable_wan": 1995.400634,
    "unit_distributable": 0.0499,
-   "ebitda_wan": 2103.9935370000003
+   "ebitda_wan": 2103.9935370000003,
+   "total_cost_wan": 3850.965183
   },
   {
    "code": "508096",
@@ -5578,7 +6197,8 @@
    "net_profit_wan": 1349.88294,
    "distributable_wan": 5603.424404,
    "unit_distributable": 0.0933,
-   "ebitda_wan": 6023.873063
+   "ebitda_wan": 6023.873063,
+   "total_cost_wan": 20620.61089
   },
   {
    "code": "508097",
@@ -5587,7 +6207,8 @@
    "net_profit_wan": 766.586716,
    "distributable_wan": 1265.4954970000001,
    "unit_distributable": 0.0316,
-   "ebitda_wan": 1498.680505
+   "ebitda_wan": 1498.680505,
+   "total_cost_wan": 2150.746609
   },
   {
    "code": "508098",
@@ -5596,7 +6217,8 @@
    "net_profit_wan": 659.465618,
    "distributable_wan": 1434.918064,
    "unit_distributable": 0.0287,
-   "ebitda_wan": 1863.871622
+   "ebitda_wan": 1863.871622,
+   "total_cost_wan": 3605.876724
   },
   {
    "code": "508099",
@@ -5605,7 +6227,8 @@
    "net_profit_wan": -453.487391,
    "distributable_wan": 1136.472793,
    "unit_distributable": 0.0126,
-   "ebitda_wan": 1617.514626
+   "ebitda_wan": 1617.514626,
+   "total_cost_wan": 2302.3326629999997
   },
   {
    "code": "180101",
@@ -5614,7 +6237,8 @@
    "net_profit_wan": 998.190351,
    "distributable_wan": 2035.5551679999999,
    "unit_distributable": 0.0143,
-   "ebitda_wan": 3173.928635
+   "ebitda_wan": 3173.928635,
+   "total_cost_wan": 544.498299
   },
   {
    "code": "180102",
@@ -5623,7 +6247,8 @@
    "net_profit_wan": 5.040201000000001,
    "distributable_wan": 844.311959,
    "unit_distributable": 0.0121,
-   "ebitda_wan": 927.3220130000001
+   "ebitda_wan": 927.3220130000001,
+   "total_cost_wan": 1531.810791
   },
   {
    "code": "180103",
@@ -5632,7 +6257,8 @@
    "net_profit_wan": -119.691084,
    "distributable_wan": 1213.1749,
    "unit_distributable": 0.0243,
-   "ebitda_wan": 1230.25794
+   "ebitda_wan": 1230.25794,
+   "total_cost_wan": 2983.758405
   },
   {
    "code": "180105",
@@ -5641,7 +6267,8 @@
    "net_profit_wan": -283.140894,
    "distributable_wan": 1373.716775,
    "unit_distributable": 0.0172,
-   "ebitda_wan": 1647.318695
+   "ebitda_wan": 1647.318695,
+   "total_cost_wan": 616.782976
   },
   {
    "code": "180106",
@@ -5650,7 +6277,8 @@
    "net_profit_wan": 531.327154,
    "distributable_wan": 1552.216668,
    "unit_distributable": 0.0388,
-   "ebitda_wan": 1655.72892
+   "ebitda_wan": 1655.72892,
+   "total_cost_wan": 2125.162845
   },
   {
    "code": "180201",
@@ -5659,7 +6287,8 @@
    "net_profit_wan": 5434.944802,
    "distributable_wan": 15036.655584999999,
    "unit_distributable": 0.2148,
-   "ebitda_wan": 16532.565166999997
+   "ebitda_wan": 16532.565166999997,
+   "total_cost_wan": 22590.245374000002
   },
   {
    "code": "180202",
@@ -5668,7 +6297,8 @@
    "net_profit_wan": 995.563774,
    "distributable_wan": 3008.2026140000003,
    "unit_distributable": 0.1003,
-   "ebitda_wan": 5145.58818
+   "ebitda_wan": 5145.58818,
+   "total_cost_wan": 8253.415123
   },
   {
    "code": "180203",
@@ -5677,7 +6307,8 @@
    "net_profit_wan": 3637.8405020000005,
    "distributable_wan": 6854.9514,
    "unit_distributable": 0.1371,
-   "ebitda_wan": 11050.719439
+   "ebitda_wan": 11050.719439,
+   "total_cost_wan": 5801.578452000001
   },
   {
    "code": "180301",
@@ -5686,7 +6317,8 @@
    "net_profit_wan": 756.9950349999999,
    "distributable_wan": 2155.026077,
    "unit_distributable": 0.0226,
-   "ebitda_wan": 2439.018321
+   "ebitda_wan": 2439.018321,
+   "total_cost_wan": 3629.124054
   },
   {
    "code": "180302",
@@ -5695,7 +6327,8 @@
    "net_profit_wan": 327.831312,
    "distributable_wan": 1768.2410960000002,
    "unit_distributable": 0.0295,
-   "ebitda_wan": 1747.2020260000002
+   "ebitda_wan": 1747.2020260000002,
+   "total_cost_wan": 3423.465421
   },
   {
    "code": "180303",
@@ -5704,7 +6337,8 @@
    "net_profit_wan": 61.395602000000004,
    "distributable_wan": 1444.796573,
    "unit_distributable": 0.0482,
-   "ebitda_wan": 1305.847925
+   "ebitda_wan": 1305.847925,
+   "total_cost_wan": 2261.263414
   },
   {
    "code": "180305",
@@ -5713,7 +6347,8 @@
    "net_profit_wan": 1273.634095,
    "distributable_wan": 4330.850625,
    "unit_distributable": 0.0433,
-   "ebitda_wan": 4532.359742000001
+   "ebitda_wan": 4532.359742000001,
+   "total_cost_wan": 6761.058725
   },
   {
    "code": "180306",
@@ -5722,7 +6357,8 @@
    "net_profit_wan": 556.985012,
    "distributable_wan": 2675.8633219999997,
    "unit_distributable": 0.0669,
-   "ebitda_wan": 2959.2083559999996
+   "ebitda_wan": 2959.2083559999996,
+   "total_cost_wan": 4710.14049
   },
   {
    "code": "180401",
@@ -5731,7 +6367,8 @@
    "net_profit_wan": 1967.404427,
    "distributable_wan": 4417.871234,
    "unit_distributable": 0.0736,
-   "ebitda_wan": 5881.857167
+   "ebitda_wan": 5881.857167,
+   "total_cost_wan": 30410.341551999998
   },
   {
    "code": "180402",
@@ -5740,7 +6377,8 @@
    "net_profit_wan": 678.851676,
    "distributable_wan": 243.54140800000002,
    "unit_distributable": 0.0122,
-   "ebitda_wan": 2134.158838
+   "ebitda_wan": 2134.158838,
+   "total_cost_wan": 3416.0690189999996
   },
   {
    "code": "180501",
@@ -5749,7 +6387,8 @@
    "net_profit_wan": 576.312366,
    "distributable_wan": 1179.6376480000001,
    "unit_distributable": 0.0236,
-   "ebitda_wan": 1227.238007
+   "ebitda_wan": 1227.238007,
+   "total_cost_wan": 1865.364238
   },
   {
    "code": "180502",
@@ -5758,7 +6397,8 @@
    "net_profit_wan": 117.595601,
    "distributable_wan": 1413.983018,
    "unit_distributable": 0.0283,
-   "ebitda_wan": 1580.311643
+   "ebitda_wan": 1580.311643,
+   "total_cost_wan": 959.0710640000001
   },
   {
    "code": "180601",
@@ -5767,7 +6407,8 @@
    "net_profit_wan": 2326.054121,
    "distributable_wan": 9013.027320000001,
    "unit_distributable": 0.0901,
-   "ebitda_wan": 12052.689956999999
+   "ebitda_wan": 12052.689956999999,
+   "total_cost_wan": 23599.871337
   },
   {
    "code": "180602",
@@ -5776,7 +6417,8 @@
    "net_profit_wan": 519.316459,
    "distributable_wan": 4273.869288,
    "unit_distributable": 0.0427,
-   "ebitda_wan": 5686.239864
+   "ebitda_wan": 5686.239864,
+   "total_cost_wan": 7713.314059
   },
   {
    "code": "180603",
@@ -5785,7 +6427,8 @@
    "net_profit_wan": 1376.937122,
    "distributable_wan": 4618.875562,
    "unit_distributable": 0.0462,
-   "ebitda_wan": 5379.444887
+   "ebitda_wan": 5379.444887,
+   "total_cost_wan": 12016.328365000001
   },
   {
    "code": "180605",
@@ -5794,7 +6437,8 @@
    "net_profit_wan": 1108.230035,
    "distributable_wan": 2247.02465,
    "unit_distributable": 0.0449,
-   "ebitda_wan": 2467.658598
+   "ebitda_wan": 2467.658598,
+   "total_cost_wan": 811.093928
   },
   {
    "code": "180606",
@@ -5803,7 +6447,8 @@
    "net_profit_wan": 470.93116299999997,
    "distributable_wan": 2091.655671,
    "unit_distributable": 0.0418,
-   "ebitda_wan": 2539.1672399999998
+   "ebitda_wan": 2539.1672399999998,
+   "total_cost_wan": 5761.219092
   },
   {
    "code": "180607",
@@ -5812,7 +6457,8 @@
    "net_profit_wan": 66.43781800000001,
    "distributable_wan": 1645.762599,
    "unit_distributable": 0.0549,
-   "ebitda_wan": 1904.2212550000002
+   "ebitda_wan": 1904.2212550000002,
+   "total_cost_wan": 3464.177982
   },
   {
    "code": "180701",
@@ -5821,7 +6467,8 @@
    "net_profit_wan": -1020.6489310000001,
    "distributable_wan": 633.677994,
    "unit_distributable": 0.0106,
-   "ebitda_wan": -55.234191
+   "ebitda_wan": -55.234191,
+   "total_cost_wan": 3060.960539
   },
   {
    "code": "180801",
@@ -5830,7 +6477,8 @@
    "net_profit_wan": 1526.062199,
    "distributable_wan": 1092.838928,
    "unit_distributable": 0.1093,
-   "ebitda_wan": 3793.8991109999997
+   "ebitda_wan": 3793.8991109999997,
+   "total_cost_wan": 10328.930470000001
   },
   {
    "code": "180901",
@@ -5839,7 +6487,8 @@
    "net_profit_wan": 1513.661397,
    "distributable_wan": 6039.8531,
    "unit_distributable": 0.0604,
-   "ebitda_wan": 7579.478669
+   "ebitda_wan": 7579.478669,
+   "total_cost_wan": 15770.629254
   },
   {
    "code": "508000",
@@ -5848,7 +6497,8 @@
    "net_profit_wan": -1231.576984,
    "distributable_wan": 2578.896666,
    "unit_distributable": 0.0269,
-   "ebitda_wan": 2600.944075
+   "ebitda_wan": 2600.944075,
+   "total_cost_wan": 371.078954
   },
   {
    "code": "508001",
@@ -5857,7 +6507,8 @@
    "net_profit_wan": 1924.559643,
    "distributable_wan": 13597.376185,
    "unit_distributable": 0.2719,
-   "ebitda_wan": 14968.010336000001
+   "ebitda_wan": 14968.010336000001,
+   "total_cost_wan": 20591.817239
   },
   {
    "code": "508002",
@@ -5866,7 +6517,8 @@
    "net_profit_wan": 1098.717512,
    "distributable_wan": 3646.106839,
    "unit_distributable": 0.0365,
-   "ebitda_wan": 4088.56755
+   "ebitda_wan": 4088.56755,
+   "total_cost_wan": 6305.612809
   },
   {
    "code": "508003",
@@ -5875,7 +6527,8 @@
    "net_profit_wan": -218.606849,
    "distributable_wan": 1984.7429399999999,
    "unit_distributable": 0.0397,
-   "ebitda_wan": 2093.760315
+   "ebitda_wan": 2093.760315,
+   "total_cost_wan": 2394.021877
   },
   {
    "code": "508005",
@@ -5884,7 +6537,8 @@
    "net_profit_wan": 2685.619922,
    "distributable_wan": 4225.645493,
    "unit_distributable": 0.0528,
-   "ebitda_wan": 4977.7356
+   "ebitda_wan": 4977.7356,
+   "total_cost_wan": 8173.5937890000005
   },
   {
    "code": "508007",
@@ -5893,7 +6547,8 @@
    "net_profit_wan": 1497.646502,
    "distributable_wan": 4921.132651,
    "unit_distributable": 0.123,
-   "ebitda_wan": 4456.119829
+   "ebitda_wan": 4456.119829,
+   "total_cost_wan": 7262.955928
   },
   {
    "code": "508008",
@@ -5902,7 +6557,8 @@
    "net_profit_wan": 1928.103339,
    "distributable_wan": 11243.321272,
    "unit_distributable": 0.2249,
-   "ebitda_wan": 14078.434618000001
+   "ebitda_wan": 14078.434618000001,
+   "total_cost_wan": 16988.262617
   },
   {
    "code": "508009",
@@ -5911,7 +6567,8 @@
    "net_profit_wan": -1482.252053,
    "distributable_wan": 8814.891286,
    "unit_distributable": 0.0881,
-   "ebitda_wan": 17651.086795
+   "ebitda_wan": 17651.086795,
+   "total_cost_wan": 35930.947414999995
   },
   {
    "code": "508010",
@@ -5920,7 +6577,8 @@
    "net_profit_wan": 758.802811,
    "distributable_wan": 1287.0841070000001,
    "unit_distributable": 0.0322,
-   "ebitda_wan": 1575.8836019999999
+   "ebitda_wan": 1575.8836019999999,
+   "total_cost_wan": 2638.7143260000003
   },
   {
    "code": "508011",
@@ -5929,7 +6587,8 @@
    "net_profit_wan": 893.4503199999999,
    "distributable_wan": 1806.652183,
    "unit_distributable": 0.0452,
-   "ebitda_wan": 2170.061444
+   "ebitda_wan": 2170.061444,
+   "total_cost_wan": 3285.31085
   },
   {
    "code": "508012",
@@ -5938,7 +6597,8 @@
    "net_profit_wan": 214.337963,
    "distributable_wan": 538.843668,
    "unit_distributable": 0.018,
-   "ebitda_wan": 1109.639008
+   "ebitda_wan": 1109.639008,
+   "total_cost_wan": 910.3562949999999
   },
   {
    "code": "508015",
@@ -5947,7 +6607,8 @@
    "net_profit_wan": 1483.736703,
    "distributable_wan": 1519.150035,
    "unit_distributable": 0.076,
-   "ebitda_wan": 3530.1710369999996
+   "ebitda_wan": 3530.1710369999996,
+   "total_cost_wan": 2927.9735920000003
   },
   {
    "code": "508016",
@@ -5956,7 +6617,8 @@
    "net_profit_wan": -510.482117,
    "distributable_wan": 2989.56247,
    "unit_distributable": 0.0598,
-   "ebitda_wan": 3866.6770100000003
+   "ebitda_wan": 3866.6770100000003,
+   "total_cost_wan": 39057.710372
   },
   {
    "code": "508017",
@@ -5965,7 +6627,8 @@
    "net_profit_wan": 452.73292999999995,
    "distributable_wan": 1471.83825,
    "unit_distributable": 0.0368,
-   "ebitda_wan": 1504.8744789999998
+   "ebitda_wan": 1504.8744789999998,
+   "total_cost_wan": 3460.202847
   },
   {
    "code": "508018",
@@ -5974,7 +6637,8 @@
    "net_profit_wan": 2826.67215,
    "distributable_wan": 8655.681070999999,
    "unit_distributable": 0.0866,
-   "ebitda_wan": 10025.194935
+   "ebitda_wan": 10025.194935,
+   "total_cost_wan": 18180.872672999998
   },
   {
    "code": "508019",
@@ -5983,7 +6647,8 @@
    "net_profit_wan": -137.619125,
    "distributable_wan": 1137.989497,
    "unit_distributable": 0.019,
-   "ebitda_wan": 1235.15104
+   "ebitda_wan": 1235.15104,
+   "total_cost_wan": 1837.1024260000002
   },
   {
    "code": "508021",
@@ -5992,7 +6657,8 @@
    "net_profit_wan": 1085.450144,
    "distributable_wan": 1491.504985,
    "unit_distributable": 0.0253,
-   "ebitda_wan": 2544.872948
+   "ebitda_wan": 2544.872948,
+   "total_cost_wan": 656.890353
   },
   {
    "code": "508022",
@@ -6001,7 +6667,8 @@
    "net_profit_wan": 935.758957,
    "distributable_wan": 1897.901301,
    "unit_distributable": 0.038,
-   "ebitda_wan": 2140.576693
+   "ebitda_wan": 2140.576693,
+   "total_cost_wan": 1260.933679
   },
   {
    "code": "508026",
@@ -6010,7 +6677,8 @@
    "net_profit_wan": 1001.2359789999999,
    "distributable_wan": 2457.978788,
    "unit_distributable": 0.0614,
-   "ebitda_wan": 2077.6998949999997
+   "ebitda_wan": 2077.6998949999997,
+   "total_cost_wan": 2974.7823399999997
   },
   {
    "code": "508027",
@@ -6019,7 +6687,8 @@
    "net_profit_wan": 1105.766792,
    "distributable_wan": 3255.931523,
    "unit_distributable": 0.0362,
-   "ebitda_wan": 3468.151665
+   "ebitda_wan": 3468.151665,
+   "total_cost_wan": 1328.651484
   },
   {
    "code": "508028",
@@ -6028,7 +6697,8 @@
    "net_profit_wan": 6680.89456,
    "distributable_wan": 8279.639482999999,
    "unit_distributable": 0.1035,
-   "ebitda_wan": 17118.986958
+   "ebitda_wan": 17118.986958,
+   "total_cost_wan": 20430.944107
   },
   {
    "code": "508029",
@@ -6037,7 +6707,8 @@
    "net_profit_wan": -494.485974,
    "distributable_wan": 1524.799483,
    "unit_distributable": 0.0508,
-   "ebitda_wan": 1621.942792
+   "ebitda_wan": 1621.942792,
+   "total_cost_wan": 5806.458903
   },
   {
    "code": "508031",
@@ -6046,7 +6717,8 @@
    "net_profit_wan": 2021.443611,
    "distributable_wan": 3159.612873,
    "unit_distributable": 0.0316,
-   "ebitda_wan": 3451.8049170000004
+   "ebitda_wan": 3451.8049170000004,
+   "total_cost_wan": 2119.0716350000002
   },
   {
    "code": "508033",
@@ -6055,7 +6727,8 @@
    "net_profit_wan": 1901.5307460000001,
    "distributable_wan": 7195.831151,
    "unit_distributable": 0.2399,
-   "ebitda_wan": 8366.101426000001
+   "ebitda_wan": 8366.101426000001,
+   "total_cost_wan": 4562.89282
   },
   {
    "code": "508036",
@@ -6064,7 +6737,8 @@
    "net_profit_wan": 9354.464348,
    "distributable_wan": 31864.995039999998,
    "unit_distributable": 0.3186,
-   "ebitda_wan": 44108.135485
+   "ebitda_wan": 44108.135485,
+   "total_cost_wan": 22586.03843
   },
   {
    "code": "508039",
@@ -6073,7 +6747,8 @@
    "net_profit_wan": 1427.4522279999999,
    "distributable_wan": 4804.973532999999,
    "unit_distributable": 0.048,
-   "ebitda_wan": 6510.571712
+   "ebitda_wan": 6510.571712,
+   "total_cost_wan": 9164.528720999999
   },
   {
    "code": "508048",
@@ -6082,7 +6757,8 @@
    "net_profit_wan": 5.156834,
    "distributable_wan": 1402.338526,
    "unit_distributable": 0.0351,
-   "ebitda_wan": 1510.990752
+   "ebitda_wan": 1510.990752,
+   "total_cost_wan": 1826.36488
   },
   {
    "code": "508050",
@@ -6091,7 +6767,8 @@
    "net_profit_wan": -518.597224,
    "distributable_wan": 1087.155139,
    "unit_distributable": 0.0362,
-   "ebitda_wan": 699.812737
+   "ebitda_wan": 699.812737,
+   "total_cost_wan": 1774.819518
   },
   {
    "code": "508055",
@@ -6100,7 +6777,8 @@
    "net_profit_wan": 353.786631,
    "distributable_wan": 1287.3053300000001,
    "unit_distributable": 0.0257,
-   "ebitda_wan": 1369.1503619999999
+   "ebitda_wan": 1369.1503619999999,
+   "total_cost_wan": 3000.284631
   },
   {
    "code": "508056",
@@ -6109,7 +6787,8 @@
    "net_profit_wan": -708.330094,
    "distributable_wan": 6888.871781,
    "unit_distributable": 0.0355,
-   "ebitda_wan": 6262.872340999999
+   "ebitda_wan": 6262.872340999999,
+   "total_cost_wan": 1940.891388
   },
   {
    "code": "508058",
@@ -6118,7 +6797,8 @@
    "net_profit_wan": 836.753779,
    "distributable_wan": 1494.475301,
    "unit_distributable": 0.0299,
-   "ebitda_wan": 1703.1964420000002
+   "ebitda_wan": 1703.1964420000002,
+   "total_cost_wan": 97.825761
   },
   {
    "code": "508060",
@@ -6127,7 +6807,8 @@
    "net_profit_wan": 1626.096043,
    "distributable_wan": 1866.2372649999998,
    "unit_distributable": 0.0233,
-   "ebitda_wan": 3918.818639
+   "ebitda_wan": 3918.818639,
+   "total_cost_wan": 4914.871053
   },
   {
    "code": "508066",
@@ -6136,7 +6817,8 @@
    "net_profit_wan": 4269.240703,
    "distributable_wan": 9432.804879000001,
    "unit_distributable": 0.2358,
-   "ebitda_wan": 10213.089182
+   "ebitda_wan": 10213.089182,
+   "total_cost_wan": 12976.259903
   },
   {
    "code": "508068",
@@ -6145,7 +6827,8 @@
    "net_profit_wan": 1374.242469,
    "distributable_wan": 2242.946594,
    "unit_distributable": 0.031,
-   "ebitda_wan": 2583.8350969999997
+   "ebitda_wan": 2583.8350969999997,
+   "total_cost_wan": 4133.582964
   },
   {
    "code": "508069",
@@ -6154,7 +6837,8 @@
    "net_profit_wan": 2566.6419769999998,
    "distributable_wan": 7491.493441,
    "unit_distributable": 0.1498,
-   "ebitda_wan": 8369.623466
+   "ebitda_wan": 8369.623466,
+   "total_cost_wan": 15849.904786000001
   },
   {
    "code": "508077",
@@ -6163,7 +6847,8 @@
    "net_profit_wan": 290.086568,
    "distributable_wan": 2253.749869,
    "unit_distributable": 0.0238,
-   "ebitda_wan": 2480.865957
+   "ebitda_wan": 2480.865957,
+   "total_cost_wan": 5103.596952
   },
   {
    "code": "508078",
@@ -6172,7 +6857,8 @@
    "net_profit_wan": -1515.060732,
    "distributable_wan": 2010.1230170000001,
    "unit_distributable": 0.0251,
-   "ebitda_wan": 2628.409329
+   "ebitda_wan": 2628.409329,
+   "total_cost_wan": 4719.054449
   },
   {
    "code": "508080",
@@ -6181,7 +6867,8 @@
    "net_profit_wan": 345.382129,
    "distributable_wan": 1717.08287,
    "unit_distributable": 0.0429,
-   "ebitda_wan": 2081.703212
+   "ebitda_wan": 2081.703212,
+   "total_cost_wan": 3117.674221
   },
   {
    "code": "508082",
@@ -6190,7 +6877,8 @@
    "net_profit_wan": -81.68413699999999,
    "distributable_wan": 4666.808028,
    "unit_distributable": 0.0467,
-   "ebitda_wan": 6245.295486
+   "ebitda_wan": 6245.295486,
+   "total_cost_wan": 7747.083433
   },
   {
    "code": "508084",
@@ -6199,7 +6887,8 @@
    "net_profit_wan": 603.484641,
    "distributable_wan": 1538.023746,
    "unit_distributable": 0.0385,
-   "ebitda_wan": 1804.319827
+   "ebitda_wan": 1804.319827,
+   "total_cost_wan": 3322.447414
   },
   {
    "code": "508085",
@@ -6208,7 +6897,8 @@
    "net_profit_wan": 514.823906,
    "distributable_wan": 1444.014473,
    "unit_distributable": 0.0289,
-   "ebitda_wan": 1721.0712019999999
+   "ebitda_wan": 1721.0712019999999,
+   "total_cost_wan": 2829.4362149999997
   },
   {
    "code": "508086",
@@ -6217,7 +6907,8 @@
    "net_profit_wan": -2205.092451,
    "distributable_wan": 8198.761290999999,
    "unit_distributable": 0.082,
-   "ebitda_wan": 8570.588077
+   "ebitda_wan": 8570.588077,
+   "total_cost_wan": 15969.2342
   },
   {
    "code": "508087",
@@ -6226,7 +6917,8 @@
    "net_profit_wan": 5610.801618,
    "distributable_wan": 5319.718691,
    "unit_distributable": 0.266,
-   "ebitda_wan": 8739.405506000001
+   "ebitda_wan": 8739.405506000001,
+   "total_cost_wan": 40811.787614
   },
   {
    "code": "508088",
@@ -6235,7 +6927,8 @@
    "net_profit_wan": 1623.651098,
    "distributable_wan": 2847.716625,
    "unit_distributable": 0.046,
-   "ebitda_wan": 2745.9560109999998
+   "ebitda_wan": 2745.9560109999998,
+   "total_cost_wan": 780.178768
   },
   {
    "code": "508089",
@@ -6244,7 +6937,8 @@
    "net_profit_wan": 2262.712216,
    "distributable_wan": 736.356085,
    "unit_distributable": 0.0245,
-   "ebitda_wan": 3769.2206539999997
+   "ebitda_wan": 3769.2206539999997,
+   "total_cost_wan": 4757.894617
   },
   {
    "code": "508090",
@@ -6253,7 +6947,8 @@
    "net_profit_wan": 640.92165,
    "distributable_wan": 1608.464232,
    "unit_distributable": 0.0402,
-   "ebitda_wan": 1961.478682
+   "ebitda_wan": 1961.478682,
+   "total_cost_wan": 3253.998786
   },
   {
    "code": "508091",
@@ -6262,7 +6957,8 @@
    "net_profit_wan": 216.26344500000002,
    "distributable_wan": 2686.0656870000003,
    "unit_distributable": 0.0672,
-   "ebitda_wan": 3681.1517799999997
+   "ebitda_wan": 3681.1517799999997,
+   "total_cost_wan": 7092.612477
   },
   {
    "code": "508092",
@@ -6271,7 +6967,8 @@
    "net_profit_wan": 1008.7959279999999,
    "distributable_wan": 1740.2805230000001,
    "unit_distributable": 0.0435,
-   "ebitda_wan": 2361.07782
+   "ebitda_wan": 2361.07782,
+   "total_cost_wan": 3439.834637
   },
   {
    "code": "508096",
@@ -6280,7 +6977,8 @@
    "net_profit_wan": 3802.7968909999995,
    "distributable_wan": 15418.968061000001,
    "unit_distributable": 0.2566,
-   "ebitda_wan": 11026.077766
+   "ebitda_wan": 11026.077766,
+   "total_cost_wan": 11135.544559
   },
   {
    "code": "508097",
@@ -6289,7 +6987,8 @@
    "net_profit_wan": 443.398242,
    "distributable_wan": 1251.491892,
    "unit_distributable": 0.0313,
-   "ebitda_wan": 1134.664982
+   "ebitda_wan": 1134.664982,
+   "total_cost_wan": 2282.4086039999997
   },
   {
    "code": "508098",
@@ -6298,7 +6997,8 @@
    "net_profit_wan": 707.679637,
    "distributable_wan": 1800.761802,
    "unit_distributable": 0.036,
-   "ebitda_wan": 1908.971081
+   "ebitda_wan": 1908.971081,
+   "total_cost_wan": 3443.9140119999997
   },
   {
    "code": "508099",
@@ -6307,7 +7007,8 @@
    "net_profit_wan": -382.124826,
    "distributable_wan": 1211.117119,
    "unit_distributable": 0.0135,
-   "ebitda_wan": 1644.413225
+   "ebitda_wan": 1644.413225,
+   "total_cost_wan": 2073.901362
   },
   {
    "code": "180101",
@@ -6316,7 +7017,8 @@
    "net_profit_wan": 943.6730660000001,
    "distributable_wan": 3116.419068,
    "unit_distributable": 0.0219,
-   "ebitda_wan": 3152.311466
+   "ebitda_wan": 3152.311466,
+   "total_cost_wan": 607.2668980000001
   },
   {
    "code": "180102",
@@ -6325,7 +7027,8 @@
    "net_profit_wan": -128.42296299999998,
    "distributable_wan": 732.765021,
    "unit_distributable": 0.0105,
-   "ebitda_wan": 806.4781429999999
+   "ebitda_wan": 806.4781429999999,
+   "total_cost_wan": 1876.667432
   },
   {
    "code": "180103",
@@ -6334,7 +7037,8 @@
    "net_profit_wan": -85.033142,
    "distributable_wan": 1155.160707,
    "unit_distributable": 0.0231,
-   "ebitda_wan": 1263.614718
+   "ebitda_wan": 1263.614718,
+   "total_cost_wan": 2964.4867440000003
   },
   {
    "code": "180105",
@@ -6343,7 +7047,8 @@
    "net_profit_wan": -513.3401700000001,
    "distributable_wan": 1001.67394,
    "unit_distributable": 0.0125,
-   "ebitda_wan": 1456.2582519999999
+   "ebitda_wan": 1456.2582519999999,
+   "total_cost_wan": 689.072445
   },
   {
    "code": "180106",
@@ -6352,7 +7057,8 @@
    "net_profit_wan": 233.99620499999997,
    "distributable_wan": 1417.830258,
    "unit_distributable": 0.0354,
-   "ebitda_wan": 1237.002657
+   "ebitda_wan": 1237.002657,
+   "total_cost_wan": 2244.864912
   },
   {
    "code": "180201",
@@ -6361,7 +7067,8 @@
    "net_profit_wan": 3032.096994,
    "distributable_wan": 9917.015159,
    "unit_distributable": 0.1417,
-   "ebitda_wan": 13618.275212999999
+   "ebitda_wan": 13618.275212999999,
+   "total_cost_wan": 23043.990264
   },
   {
    "code": "180202",
@@ -6370,7 +7077,8 @@
    "net_profit_wan": 414.475782,
    "distributable_wan": 2888.159756,
    "unit_distributable": 0.0963,
-   "ebitda_wan": 4392.491402000001
+   "ebitda_wan": 4392.491402000001,
+   "total_cost_wan": 8225.665183
   },
   {
    "code": "180203",
@@ -6379,7 +7087,8 @@
    "net_profit_wan": 3652.589403,
    "distributable_wan": 9870.324069,
    "unit_distributable": 0.1974,
-   "ebitda_wan": 10300.212823
+   "ebitda_wan": 10300.212823,
+   "total_cost_wan": 5299.125546
   },
   {
    "code": "180301",
@@ -6388,7 +7097,8 @@
    "net_profit_wan": 750.1424969999999,
    "distributable_wan": 2061.297004,
    "unit_distributable": 0.0216,
-   "ebitda_wan": 2443.3033170000003
+   "ebitda_wan": 2443.3033170000003,
+   "total_cost_wan": 3619.9867520000003
   },
   {
    "code": "180302",
@@ -6397,7 +7107,8 @@
    "net_profit_wan": 124.334792,
    "distributable_wan": 1781.2204769999998,
    "unit_distributable": 0.0297,
-   "ebitda_wan": 1801.259477
+   "ebitda_wan": 1801.259477,
+   "total_cost_wan": 3433.824228
   },
   {
    "code": "180303",
@@ -6406,7 +7117,8 @@
    "net_profit_wan": 137.72608400000001,
    "distributable_wan": 1537.453226,
    "unit_distributable": 0.0512,
-   "ebitda_wan": 1397.5665099999999
+   "ebitda_wan": 1397.5665099999999,
+   "total_cost_wan": 2320.803363
   },
   {
    "code": "180305",
@@ -6415,7 +7127,8 @@
    "net_profit_wan": 1117.264691,
    "distributable_wan": 4049.461758,
    "unit_distributable": 0.0405,
-   "ebitda_wan": 4422.869259
+   "ebitda_wan": 4422.869259,
+   "total_cost_wan": 6881.879584
   },
   {
    "code": "180306",
@@ -6424,7 +7137,8 @@
    "net_profit_wan": 462.013412,
    "distributable_wan": 2678.7672850000004,
    "unit_distributable": 0.067,
-   "ebitda_wan": 2848.809993
+   "ebitda_wan": 2848.809993,
+   "total_cost_wan": 4573.9266020000005
   },
   {
    "code": "180401",
@@ -6433,7 +7147,8 @@
    "net_profit_wan": 4805.268405,
    "distributable_wan": 3210.8731780000003,
    "unit_distributable": 0.0535,
-   "ebitda_wan": 9666.060353
+   "ebitda_wan": 9666.060353,
+   "total_cost_wan": 29081.141045
   },
   {
    "code": "180402",
@@ -6442,7 +7157,8 @@
    "net_profit_wan": 120.89301599999999,
    "distributable_wan": 1820.4835480000002,
    "unit_distributable": 0.091,
-   "ebitda_wan": 1959.1902309999998
+   "ebitda_wan": 1959.1902309999998,
+   "total_cost_wan": 3447.962899
   },
   {
    "code": "180501",
@@ -6451,7 +7167,8 @@
    "net_profit_wan": 581.163854,
    "distributable_wan": 1193.2404279999998,
    "unit_distributable": 0.0239,
-   "ebitda_wan": 1230.593957
+   "ebitda_wan": 1230.593957,
+   "total_cost_wan": 1821.0644559999998
   },
   {
    "code": "180502",
@@ -6460,7 +7177,8 @@
    "net_profit_wan": 109.896176,
    "distributable_wan": 1561.7996210000001,
    "unit_distributable": 0.0312,
-   "ebitda_wan": 1581.8185349999999
+   "ebitda_wan": 1581.8185349999999,
+   "total_cost_wan": 984.626137
   },
   {
    "code": "180503",
@@ -6469,7 +7187,8 @@
    "net_profit_wan": 1060.168491,
    "distributable_wan": 3432.1378090000003,
    "unit_distributable": 0.0858,
-   "ebitda_wan": 821.882549
+   "ebitda_wan": 821.882549,
+   "total_cost_wan": 730.950563
   },
   {
    "code": "180601",
@@ -6478,7 +7197,8 @@
    "net_profit_wan": 1831.02037,
    "distributable_wan": 9213.54987,
    "unit_distributable": 0.0921,
-   "ebitda_wan": 11560.003716
+   "ebitda_wan": 11560.003716,
+   "total_cost_wan": 23394.690611
   },
   {
    "code": "180602",
@@ -6487,7 +7207,8 @@
    "net_profit_wan": 630.393941,
    "distributable_wan": 4346.695844,
    "unit_distributable": 0.0435,
-   "ebitda_wan": 5738.116647999999
+   "ebitda_wan": 5738.116647999999,
+   "total_cost_wan": 7786.474939
   },
   {
    "code": "180603",
@@ -6496,7 +7217,8 @@
    "net_profit_wan": 1259.730022,
    "distributable_wan": 4598.030542,
    "unit_distributable": 0.046,
-   "ebitda_wan": 5114.887203
+   "ebitda_wan": 5114.887203,
+   "total_cost_wan": 12399.430065999999
   },
   {
    "code": "180605",
@@ -6505,7 +7227,8 @@
    "net_profit_wan": 770.884479,
    "distributable_wan": 2290.267389,
    "unit_distributable": 0.0458,
-   "ebitda_wan": 2392.2314579999997
+   "ebitda_wan": 2392.2314579999997,
+   "total_cost_wan": 816.757042
   },
   {
    "code": "180606",
@@ -6514,7 +7237,8 @@
    "net_profit_wan": 435.880221,
    "distributable_wan": 2003.8365079999999,
    "unit_distributable": 0.0401,
-   "ebitda_wan": 2502.14542
+   "ebitda_wan": 2502.14542,
+   "total_cost_wan": 5682.9790570000005
   },
   {
    "code": "180607",
@@ -6523,7 +7247,8 @@
    "net_profit_wan": -51.929123,
    "distributable_wan": 1701.838904,
    "unit_distributable": 0.0567,
-   "ebitda_wan": 1926.02097
+   "ebitda_wan": 1926.02097,
+   "total_cost_wan": 3896.2203649999997
   },
   {
    "code": "180701",
@@ -6532,7 +7257,8 @@
    "net_profit_wan": 1030.163166,
    "distributable_wan": 1865.036379,
    "unit_distributable": 0.0311,
-   "ebitda_wan": 2015.2817300000002
+   "ebitda_wan": 2015.2817300000002,
+   "total_cost_wan": 4265.920479
   },
   {
    "code": "180801",
@@ -6541,7 +7267,8 @@
    "net_profit_wan": 846.574384,
    "distributable_wan": 1056.913716,
    "unit_distributable": 0.1057,
-   "ebitda_wan": 3335.5350120000003
+   "ebitda_wan": 3335.5350120000003,
+   "total_cost_wan": 9696.379088
   },
   {
    "code": "180901",
@@ -6550,7 +7277,8 @@
    "net_profit_wan": 1721.667802,
    "distributable_wan": 7771.44543,
    "unit_distributable": 0.0777,
-   "ebitda_wan": 7021.31331
+   "ebitda_wan": 7021.31331,
+   "total_cost_wan": 15765.914359999999
   },
   {
    "code": "508000",
@@ -6559,7 +7287,8 @@
    "net_profit_wan": -1164.453688,
    "distributable_wan": 2369.5441920000003,
    "unit_distributable": 0.0247,
-   "ebitda_wan": 2647.439377
+   "ebitda_wan": 2647.439377,
+   "total_cost_wan": 426.27024400000005
   },
   {
    "code": "508001",
@@ -6568,7 +7297,8 @@
    "net_profit_wan": -476.75744299999997,
    "distributable_wan": 5404.764238000001,
    "unit_distributable": 0.1081,
-   "ebitda_wan": 13007.825301
+   "ebitda_wan": 13007.825301,
+   "total_cost_wan": 4073.6215060000004
   },
   {
    "code": "508002",
@@ -6577,7 +7307,8 @@
    "net_profit_wan": 300.94929,
    "distributable_wan": 3223.906939,
    "unit_distributable": 0.0322,
-   "ebitda_wan": 3635.941596
+   "ebitda_wan": 3635.941596,
+   "total_cost_wan": 6119.315585
   },
   {
    "code": "508003",
@@ -6586,7 +7317,8 @@
    "net_profit_wan": -266.25080099999997,
    "distributable_wan": 1981.6697629999999,
    "unit_distributable": 0.0396,
-   "ebitda_wan": 2098.34163
+   "ebitda_wan": 2098.34163,
+   "total_cost_wan": 2391.331449
   },
   {
    "code": "508005",
@@ -6595,7 +7327,8 @@
    "net_profit_wan": 1447.1115320000001,
    "distributable_wan": 2971.603616,
    "unit_distributable": 0.0371,
-   "ebitda_wan": 3595.494631
+   "ebitda_wan": 3595.494631,
+   "total_cost_wan": 7346.332898000001
   },
   {
    "code": "508006",
@@ -6604,7 +7337,8 @@
    "net_profit_wan": 1292.489284,
    "distributable_wan": 5527.730609,
    "unit_distributable": 0.1106,
-   "ebitda_wan": 4971.873191
+   "ebitda_wan": 4971.873191,
+   "total_cost_wan": 5488.498277000001
   },
   {
    "code": "508007",
@@ -6613,7 +7347,8 @@
    "net_profit_wan": 1544.5423039999998,
    "distributable_wan": 4838.5109840000005,
    "unit_distributable": 0.121,
-   "ebitda_wan": 4979.858469
+   "ebitda_wan": 4979.858469,
+   "total_cost_wan": 7212.603195999999
   },
   {
    "code": "508008",
@@ -6622,7 +7357,8 @@
    "net_profit_wan": 943.4238789999999,
    "distributable_wan": 9031.251929,
    "unit_distributable": 0.1806,
-   "ebitda_wan": 12812.048081
+   "ebitda_wan": 12812.048081,
+   "total_cost_wan": 17545.652648
   },
   {
    "code": "508009",
@@ -6631,7 +7367,8 @@
    "net_profit_wan": -838.051693,
    "distributable_wan": 16950.782132,
    "unit_distributable": 0.1695,
-   "ebitda_wan": 18306.900806
+   "ebitda_wan": 18306.900806,
+   "total_cost_wan": 36537.296493
   },
   {
    "code": "508010",
@@ -6640,7 +7377,8 @@
    "net_profit_wan": 815.615849,
    "distributable_wan": 1540.311316,
    "unit_distributable": 0.0385,
-   "ebitda_wan": 1636.369076
+   "ebitda_wan": 1636.369076,
+   "total_cost_wan": 2754.817227
   },
   {
    "code": "508011",
@@ -6649,7 +7387,8 @@
    "net_profit_wan": 659.186282,
    "distributable_wan": 1811.400623,
    "unit_distributable": 0.0453,
-   "ebitda_wan": 2161.451234
+   "ebitda_wan": 2161.451234,
+   "total_cost_wan": 3323.3336600000002
   },
   {
    "code": "508012",
@@ -6658,7 +7397,8 @@
    "net_profit_wan": 135.036155,
    "distributable_wan": 761.1152450000001,
    "unit_distributable": 0.0254,
-   "ebitda_wan": 1026.581659
+   "ebitda_wan": 1026.581659,
+   "total_cost_wan": 927.8771109999999
   },
   {
    "code": "508015",
@@ -6667,7 +7407,8 @@
    "net_profit_wan": 1283.741074,
    "distributable_wan": 1101.779283,
    "unit_distributable": 0.0551,
-   "ebitda_wan": 3575.310729
+   "ebitda_wan": 3575.310729,
+   "total_cost_wan": 7332.215226
   },
   {
    "code": "508016",
@@ -6676,7 +7417,8 @@
    "net_profit_wan": 772.28387,
    "distributable_wan": 3034.746807,
    "unit_distributable": 0.0607,
-   "ebitda_wan": 4893.048874
+   "ebitda_wan": 4893.048874,
+   "total_cost_wan": 31205.430364999997
   },
   {
    "code": "508017",
@@ -6685,7 +7427,8 @@
    "net_profit_wan": 503.648221,
    "distributable_wan": 1494.92766,
    "unit_distributable": 0.0374,
-   "ebitda_wan": 1556.67148
+   "ebitda_wan": 1556.67148,
+   "total_cost_wan": 3540.4217270000004
   },
   {
    "code": "508018",
@@ -6694,7 +7437,8 @@
    "net_profit_wan": 2480.293096,
    "distributable_wan": 7617.914051000001,
    "unit_distributable": 0.0762,
-   "ebitda_wan": 9384.642878
+   "ebitda_wan": 9384.642878,
+   "total_cost_wan": 17929.637411
   },
   {
    "code": "508019",
@@ -6703,7 +7447,8 @@
    "net_profit_wan": -122.897756,
    "distributable_wan": 1248.182401,
    "unit_distributable": 0.0208,
-   "ebitda_wan": 1312.5106759999999
+   "ebitda_wan": 1312.5106759999999,
+   "total_cost_wan": 1882.799227
   },
   {
    "code": "508020",
@@ -6712,7 +7457,8 @@
    "net_profit_wan": 3434.727176,
    "distributable_wan": 52415.044575,
    "unit_distributable": 0.5242,
-   "ebitda_wan": 12166.561817
+   "ebitda_wan": 12166.561817,
+   "total_cost_wan": 5701.272639
   },
   {
    "code": "508021",
@@ -6721,7 +7467,8 @@
    "net_profit_wan": 1561.3555939999999,
    "distributable_wan": 3059.001682,
    "unit_distributable": 0.052,
-   "ebitda_wan": 2520.345825
+   "ebitda_wan": 2520.345825,
+   "total_cost_wan": 827.2132889999999
   },
   {
    "code": "508022",
@@ -6730,7 +7477,8 @@
    "net_profit_wan": 983.226778,
    "distributable_wan": 1828.8660920000002,
    "unit_distributable": 0.0366,
-   "ebitda_wan": 2179.912996
+   "ebitda_wan": 2179.912996,
+   "total_cost_wan": 1213.987956
   },
   {
    "code": "508026",
@@ -6739,7 +7487,8 @@
    "net_profit_wan": -761.253061,
    "distributable_wan": 610.461197,
    "unit_distributable": 0.0153,
-   "ebitda_wan": 361.869844
+   "ebitda_wan": 361.869844,
+   "total_cost_wan": 3127.956788
   },
   {
    "code": "508027",
@@ -6748,7 +7497,8 @@
    "net_profit_wan": 915.1129300000001,
    "distributable_wan": 2703.283857,
    "unit_distributable": 0.03,
-   "ebitda_wan": 3252.15822
+   "ebitda_wan": 3252.15822,
+   "total_cost_wan": 1372.7733449999998
   },
   {
    "code": "508028",
@@ -6757,7 +7507,8 @@
    "net_profit_wan": 845.980488,
    "distributable_wan": -1121.239448,
    "unit_distributable": -0.014,
-   "ebitda_wan": 14696.299604
+   "ebitda_wan": 14696.299604,
+   "total_cost_wan": 41371.867758
   },
   {
    "code": "508029",
@@ -6766,7 +7517,8 @@
    "net_profit_wan": -588.847625,
    "distributable_wan": 1459.2700029999999,
    "unit_distributable": 0.0486,
-   "ebitda_wan": 1416.102424
+   "ebitda_wan": 1416.102424,
+   "total_cost_wan": 2547.71551
   },
   {
    "code": "508031",
@@ -6775,7 +7527,8 @@
    "net_profit_wan": 2183.473713,
    "distributable_wan": 3337.2966420000002,
    "unit_distributable": 0.0334,
-   "ebitda_wan": 3629.5371619999996
+   "ebitda_wan": 3629.5371619999996,
+   "total_cost_wan": 2077.229734
   },
   {
    "code": "508033",
@@ -6784,7 +7537,8 @@
    "net_profit_wan": 1176.4655289999998,
    "distributable_wan": 4657.8563619999995,
    "unit_distributable": 0.1553,
-   "ebitda_wan": 6570.188697
+   "ebitda_wan": 6570.188697,
+   "total_cost_wan": 3940.1193909999997
   },
   {
    "code": "508036",
@@ -6793,7 +7547,8 @@
    "net_profit_wan": 9227.09173,
    "distributable_wan": 28693.356135,
    "unit_distributable": 0.2869,
-   "ebitda_wan": 46204.68243
+   "ebitda_wan": 46204.68243,
+   "total_cost_wan": 27343.664814
   },
   {
    "code": "508039",
@@ -6802,7 +7557,8 @@
    "net_profit_wan": 1427.4522279999999,
    "distributable_wan": null,
    "unit_distributable": null,
-   "ebitda_wan": null
+   "ebitda_wan": null,
+   "total_cost_wan": null
   },
   {
    "code": "508048",
@@ -6811,7 +7567,8 @@
    "net_profit_wan": 16.481803,
    "distributable_wan": 1365.96679,
    "unit_distributable": 0.0341,
-   "ebitda_wan": 1521.2856470000002
+   "ebitda_wan": 1521.2856470000002,
+   "total_cost_wan": 2066.099195
   },
   {
    "code": "508050",
@@ -6820,7 +7577,8 @@
    "net_profit_wan": 1322.5044050000001,
    "distributable_wan": 2429.638009,
    "unit_distributable": 0.081,
-   "ebitda_wan": 2877.126746
+   "ebitda_wan": 2877.126746,
+   "total_cost_wan": 2254.574987
   },
   {
    "code": "508055",
@@ -6829,7 +7587,8 @@
    "net_profit_wan": 302.1426,
    "distributable_wan": 1389.890324,
    "unit_distributable": 0.0278,
-   "ebitda_wan": 1409.334348
+   "ebitda_wan": 1409.334348,
+   "total_cost_wan": 4751.732316
   },
   {
    "code": "508056",
@@ -6838,7 +7597,8 @@
    "net_profit_wan": -747.979935,
    "distributable_wan": 7244.529041,
    "unit_distributable": 0.0374,
-   "ebitda_wan": 6174.657004
+   "ebitda_wan": 6174.657004,
+   "total_cost_wan": 1945.48818
   },
   {
    "code": "508058",
@@ -6847,7 +7607,8 @@
    "net_profit_wan": 966.83922,
    "distributable_wan": 1861.2703149999998,
    "unit_distributable": 0.0261,
-   "ebitda_wan": 2131.160068
+   "ebitda_wan": 2131.160068,
+   "total_cost_wan": 234.432844
   },
   {
    "code": "508060",
@@ -6856,7 +7617,8 @@
    "net_profit_wan": 2010.276506,
    "distributable_wan": 3382.375035,
    "unit_distributable": 0.0423,
-   "ebitda_wan": 4392.142436
+   "ebitda_wan": 4392.142436,
+   "total_cost_wan": 5767.363898
   },
   {
    "code": "508066",
@@ -6865,7 +7627,8 @@
    "net_profit_wan": 3598.2453560000004,
    "distributable_wan": 7574.851111,
    "unit_distributable": 0.1894,
-   "ebitda_wan": 9628.055898
+   "ebitda_wan": 9628.055898,
+   "total_cost_wan": 14959.055165
   },
   {
    "code": "508068",
@@ -6874,7 +7637,8 @@
    "net_profit_wan": 1372.39091,
    "distributable_wan": 2242.983091,
    "unit_distributable": 0.031,
-   "ebitda_wan": 2578.438903
+   "ebitda_wan": 2578.438903,
+   "total_cost_wan": 4134.177605
   },
   {
    "code": "508069",
@@ -6883,7 +7647,8 @@
    "net_profit_wan": 1769.8036670000001,
    "distributable_wan": 5945.981914,
    "unit_distributable": 0.1189,
-   "ebitda_wan": 7779.960126999999
+   "ebitda_wan": 7779.960126999999,
+   "total_cost_wan": 16570.399295
   },
   {
    "code": "508077",
@@ -6892,7 +7657,8 @@
    "net_profit_wan": 446.382209,
    "distributable_wan": 2276.7056239999997,
    "unit_distributable": 0.024,
-   "ebitda_wan": 2603.58278
+   "ebitda_wan": 2603.58278,
+   "total_cost_wan": 4954.02501
   },
   {
    "code": "508078",
@@ -6901,7 +7667,8 @@
    "net_profit_wan": -1488.133174,
    "distributable_wan": 2303.164927,
    "unit_distributable": 0.0288,
-   "ebitda_wan": 2597.0299370000002
+   "ebitda_wan": 2597.0299370000002,
+   "total_cost_wan": 4590.627165999999
   },
   {
    "code": "508080",
@@ -6910,7 +7677,8 @@
    "net_profit_wan": -176.08637099999999,
    "distributable_wan": 1711.0598699999998,
    "unit_distributable": 0.0428,
-   "ebitda_wan": 1562.326066
+   "ebitda_wan": 1562.326066,
+   "total_cost_wan": 3405.8234310000003
   },
   {
    "code": "508082",
@@ -6919,7 +7687,8 @@
    "net_profit_wan": -1450.885569,
    "distributable_wan": 4098.303006,
    "unit_distributable": 0.041,
-   "ebitda_wan": 4865.347065
+   "ebitda_wan": 4865.347065,
+   "total_cost_wan": 7143.746925
   },
   {
    "code": "508084",
@@ -6928,7 +7697,8 @@
    "net_profit_wan": 602.453551,
    "distributable_wan": 1559.978633,
    "unit_distributable": 0.039,
-   "ebitda_wan": 1808.527609
+   "ebitda_wan": 1808.527609,
+   "total_cost_wan": 3340.390601
   },
   {
    "code": "508085",
@@ -6937,7 +7707,8 @@
    "net_profit_wan": 232.31228,
    "distributable_wan": 1492.1108140000001,
    "unit_distributable": 0.0298,
-   "ebitda_wan": 1702.6117219999999
+   "ebitda_wan": 1702.6117219999999,
+   "total_cost_wan": 2867.979484
   },
   {
    "code": "508086",
@@ -6946,7 +7717,8 @@
    "net_profit_wan": -1277.4866710000001,
    "distributable_wan": 9126.858962999999,
    "unit_distributable": 0.0913,
-   "ebitda_wan": 9457.916965999999
+   "ebitda_wan": 9457.916965999999,
+   "total_cost_wan": 15667.389863
   },
   {
    "code": "508087",
@@ -6955,7 +7727,8 @@
    "net_profit_wan": -2360.404587,
    "distributable_wan": 225.68662700000002,
    "unit_distributable": 0.0113,
-   "ebitda_wan": -514.016084
+   "ebitda_wan": -514.016084,
+   "total_cost_wan": 1836.2985239999998
   },
   {
    "code": "508088",
@@ -6964,7 +7737,8 @@
    "net_profit_wan": 1753.362232,
    "distributable_wan": 2140.733732,
    "unit_distributable": 0.0346,
-   "ebitda_wan": 2516.777764
+   "ebitda_wan": 2516.777764,
+   "total_cost_wan": 826.836634
   },
   {
    "code": "508089",
@@ -6973,7 +7747,8 @@
    "net_profit_wan": 1975.5566579999997,
    "distributable_wan": 5479.6775880000005,
    "unit_distributable": 0.1827,
-   "ebitda_wan": 3431.5485479999998
+   "ebitda_wan": 3431.5485479999998,
+   "total_cost_wan": 4706.177245
   },
   {
    "code": "508090",
@@ -6982,7 +7757,8 @@
    "net_profit_wan": 695.361391,
    "distributable_wan": 1646.6520990000001,
    "unit_distributable": 0.0412,
-   "ebitda_wan": 1910.5090890000001
+   "ebitda_wan": 1910.5090890000001,
+   "total_cost_wan": 3278.328644
   },
   {
    "code": "508091",
@@ -6991,7 +7767,8 @@
    "net_profit_wan": 65.49107,
    "distributable_wan": 2617.68481,
    "unit_distributable": 0.0654,
-   "ebitda_wan": 3435.7202429999998
+   "ebitda_wan": 3435.7202429999998,
+   "total_cost_wan": 7804.25867
   },
   {
    "code": "508092",
@@ -7000,7 +7777,8 @@
    "net_profit_wan": 773.549745,
    "distributable_wan": 1967.3390190000002,
    "unit_distributable": 0.0492,
-   "ebitda_wan": 2115.071514
+   "ebitda_wan": 2115.071514,
+   "total_cost_wan": 3534.013504
   },
   {
    "code": "508096",
@@ -7009,7 +7787,8 @@
    "net_profit_wan": 5565.474849,
    "distributable_wan": 12562.321241,
    "unit_distributable": 0.2091,
-   "ebitda_wan": 13746.182399000001
+   "ebitda_wan": 13746.182399000001,
+   "total_cost_wan": 26546.656044
   },
   {
    "code": "508097",
@@ -7018,7 +7797,8 @@
    "net_profit_wan": 455.363313,
    "distributable_wan": 991.8106429999999,
    "unit_distributable": 0.0248,
-   "ebitda_wan": 1139.511303
+   "ebitda_wan": 1139.511303,
+   "total_cost_wan": 2304.3084910000002
   },
   {
    "code": "508098",
@@ -7027,7 +7807,8 @@
    "net_profit_wan": 613.9776860000001,
    "distributable_wan": 1818.441025,
    "unit_distributable": 0.0364,
-   "ebitda_wan": 1837.3916390000002
+   "ebitda_wan": 1837.3916390000002,
+   "total_cost_wan": 3439.391073
   },
   {
    "code": "508099",
@@ -7036,7 +7817,8 @@
    "net_profit_wan": -510.757453,
    "distributable_wan": 920.876031,
    "unit_distributable": 0.0102,
-   "ebitda_wan": 1520.00015
+   "ebitda_wan": 1520.00015,
+   "total_cost_wan": 2115.726896
   }
  ]
 }

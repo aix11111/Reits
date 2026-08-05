@@ -20,6 +20,7 @@ from src.data_loader import (
     load_fund_shares,
     load_market_completion,
     load_market_funds,
+    load_market_ops_energy,
     load_market_ops_rental,
     load_market_quarterly,
     load_market_shares,
@@ -117,6 +118,7 @@ _MARKET_QUARTERLY_PATH = Path(__file__).parent / "data" / "market_quarterly.json
 _MARKET_COMPLETION_PATH = Path(__file__).parent / "data" / "market_completion.json"
 _MARKET_SHARES_PATH = Path(__file__).parent / "data" / "market_shares.json"
 _MARKET_OPS_RENTAL_PATH = Path(__file__).parent / "data" / "market_ops_rental.json"
+_MARKET_OPS_ENERGY_PATH = Path(__file__).parent / "data" / "market_ops_energy.json"
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -351,11 +353,82 @@ def _render_rental_ops(rental_df):
         st.plotly_chart(fig, width="stretch")
 
 
-def render_operations(code, name, monthly_df, quarterly_df, rental_df=None):
+def _render_energy_ops(energy_df):
+    """能源类运营指标区块：发电量/利用小时/结算电量/结算电价 KPI 卡 + 发电量趋势图。
+
+    数据来自 data/market_ops_energy.json（能源类季报 4.1.3 节）。
+    KPI 取最新报告期；趋势图按报告期升序画出 发电量 折线（plotly 深色）。
+    """
+    latest = energy_df.sort_values("period").iloc[-1]
+
+    def fmt(v, render):
+        if pd.isna(v):
+            return "—"
+        return render(v)
+
+    cards = "".join(
+        [
+            _kpi_card(
+                "发电量",
+                fmt(latest["generation_wan_kwh"], lambda v: f"{v:,.2f}"),
+                f"报告期 {latest['period']}",
+            ),
+            _kpi_card(
+                "等效利用小时",
+                fmt(latest["utilization_hours"], lambda v: f"{v:.0f}"),
+                "小时",
+            ),
+            _kpi_card(
+                "结算电量",
+                fmt(latest["grid_wan_kwh"], lambda v: f"{v:,.2f}"),
+                "万千瓦时",
+            ),
+            _kpi_card(
+                "结算电价",
+                fmt(latest["price_yuan_kwh"], lambda v: f"{v:.4f}"),
+                "元/千瓦时",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    chart_df = energy_df.sort_values("period")
+    if chart_df["generation_wan_kwh"].notna().any():
+        fig = go.Figure(
+            go.Scatter(
+                x=chart_df["period"],
+                y=chart_df["generation_wan_kwh"],
+                mode="lines+markers",
+                line=dict(color=_ACCENT, width=2),
+                marker=dict(color=_ACCENT),
+            )
+        )
+        fig.update_layout(
+            title="发电量趋势",
+            xaxis_title="报告期",
+            yaxis_title="发电量（万千瓦时）",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+
+def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
+                      energy_df=None):
     """经营数据页签：最新指标 KPI、月度图表与季度明细表。
 
     选中基金有租赁类运营指标（data/market_ops_rental.json）时，在 KPI 区下方
-    追加出租率 KPI 卡与出租率趋势图；无数据（非租赁类）保持原视图不变。
+    追加出租率 KPI 卡与出租率趋势图；有能源类运营指标
+    （data/market_ops_energy.json）时追加发电量 KPI 卡与发电量趋势图；
+    均无数据（其他类）保持原视图不变。
     """
     st.subheader(f"基金：{code} {name}")
 
@@ -384,6 +457,12 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None):
         if not rental.empty:
             st.markdown("### 租赁运营指标（出租率）")
             _render_rental_ops(rental)
+
+    if energy_df is not None and not energy_df.empty:
+        energy = energy_df[energy_df["code"] == code]
+        if not energy.empty:
+            st.markdown("### 能源运营指标（发电量）")
+            _render_energy_ops(energy)
 
     monthly = monthly_df[monthly_df["code"] == code].sort_values("period")
     if not monthly.empty:
@@ -754,13 +833,16 @@ def _ttm_display_table(ttm_df, name_map):
 
 def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_df,
                      market_funds=None, market_quarterly=None, market_completion=None,
-                     market_shares=None, asset_type="全部"):
+                     market_shares=None, asset_type="全部", market_ops_energy=None):
     """估值对标页签：分派率收益率排名、NAV 折溢价与风险聚合提示。
 
     市值数据来自本地快照（market_snapshot.json），不依赖运行时网络。
     全市场模式（market_funds 非空）：排名/折溢价/风险用全市场 JSON 数据，
     并按「资产类型」筛选；market JSON 缺失时回退现有 14 只高速视图。
     快照缺失时降级为 st.info + 仅显示 TTM 分派表。
+    剩余年限口径：高速用静态表 concession_years_left；能源类用
+    market_ops_energy 的 ops_until_year（最新报告期，基准年 2026 约算）；
+    产权类 IRR 不适用。
     """
     st.subheader("估值对标")
     st.caption(
@@ -769,6 +851,17 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
 
     snapshot_latest = snapshot_data.get("latest") or {}
     years_left = static_df.set_index("code")["concession_years_left"]
+
+    # 能源类剩余年限：market_ops_energy 最新报告期的 ops_until_year，
+    # 基准年 2026 约算（years_left = ops_until_year − 2026）
+    _ENERGY_BASE_YEAR = 2026
+    energy_left = {}
+    if market_ops_energy is not None and not market_ops_energy.empty:
+        for ecode, sub in market_ops_energy.groupby("code"):
+            latest = sub.sort_values("period").iloc[-1]
+            until = latest.get("ops_until_year")
+            if pd.notna(until):
+                energy_left[str(ecode)] = int(until) - _ENERGY_BASE_YEAR
 
     full_market = market_funds is not None and not market_funds.empty
     if full_market:
@@ -814,6 +907,8 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         annual = ttm.loc[code, "dist_ttm_wan"] if code in ttm.index else None
         left = years_left.get(code) if code in years_left.index else None
         a_type = asset_type_map.get(code, "")
+        if a_type == "能源" and code in energy_left:
+            left = energy_left[code]
         if a_type in _PROPERTY_ASSET_TYPES:
             irr = None
             irr_label = "不适用（产权类）"
@@ -1005,6 +1100,7 @@ def main():
     market_completion = load_market_completion(_MARKET_COMPLETION_PATH)
     market_shares = load_market_shares(_MARKET_SHARES_PATH)
     market_ops_rental = load_market_ops_rental(_MARKET_OPS_RENTAL_PATH)
+    market_ops_energy = load_market_ops_energy(_MARKET_OPS_ENERGY_PATH)
 
     with st.sidebar:
         st.header("市场筛选")
@@ -1033,6 +1129,7 @@ def main():
             monthly_df,
             quarterly_df,
             rental_df=market_ops_rental,
+            energy_df=market_ops_energy,
         )
 
     with tab_mkt:
@@ -1055,6 +1152,7 @@ def main():
             market_completion=market_completion,
             market_shares=market_shares,
             asset_type=asset_type,
+            market_ops_energy=market_ops_energy,
         )
 
 

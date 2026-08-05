@@ -1,0 +1,484 @@
+{
+ "ops": [
+  {
+   "code": "180401",
+   "period": "2025Q1",
+   "generation_wan_kwh": 51463.66,
+   "utilization_hours": 440.0,
+   "grid_wan_kwh": 50722.65,
+   "electricity_revenue_wan": 23209.586764,
+   "price_yuan_kwh": null,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180401",
+   "period": "2025Q2",
+   "generation_wan_kwh": 86547.46,
+   "utilization_hours": 740.0,
+   "grid_wan_kwh": 85166.4,
+   "electricity_revenue_wan": 38581.940625,
+   "price_yuan_kwh": 0.51,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180401",
+   "period": "2025Q3",
+   "generation_wan_kwh": 116681.33,
+   "utilization_hours": 997.0,
+   "grid_wan_kwh": 114637.05,
+   "electricity_revenue_wan": 44776.309713999995,
+   "price_yuan_kwh": 0.44,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180401",
+   "period": "2025Q4",
+   "generation_wan_kwh": 65563.63,
+   "utilization_hours": 560.0,
+   "grid_wan_kwh": 64582.65,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180401",
+   "period": "2026Q1",
+   "generation_wan_kwh": 62922.89,
+   "utilization_hours": 538.0,
+   "grid_wan_kwh": 62136.25,
+   "electricity_revenue_wan": 28300.920512,
+   "price_yuan_kwh": null,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180401",
+   "period": "2026Q2",
+   "generation_wan_kwh": 61620.34,
+   "utilization_hours": 527.0,
+   "grid_wan_kwh": 60688.1,
+   "electricity_revenue_wan": 30768.673841000003,
+   "price_yuan_kwh": 0.57,
+   "ops_until_year": 2037
+  },
+  {
+   "code": "180402",
+   "period": "2025Q1",
+   "generation_wan_kwh": 11747.52,
+   "utilization_hours": 785.79,
+   "grid_wan_kwh": 11373.48,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3445,
+   "ops_until_year": null
+  },
+  {
+   "code": "180402",
+   "period": "2025Q2",
+   "generation_wan_kwh": 11127.93,
+   "utilization_hours": 744.34,
+   "grid_wan_kwh": 10943.76,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.32,
+   "ops_until_year": null
+  },
+  {
+   "code": "180402",
+   "period": "2025Q3",
+   "generation_wan_kwh": 6878.94,
+   "utilization_hours": 460.1,
+   "grid_wan_kwh": 6495.33,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3377,
+   "ops_until_year": null
+  },
+  {
+   "code": "180402",
+   "period": "2025Q4",
+   "generation_wan_kwh": 10752.66,
+   "utilization_hours": 719.24,
+   "grid_wan_kwh": 10418.55,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3271,
+   "ops_until_year": null
+  },
+  {
+   "code": "180402",
+   "period": "2026Q1",
+   "generation_wan_kwh": 8989.84,
+   "utilization_hours": 601.33,
+   "grid_wan_kwh": 8667.01,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3175,
+   "ops_until_year": null
+  },
+  {
+   "code": "180402",
+   "period": "2026Q2",
+   "generation_wan_kwh": 9235.24,
+   "utilization_hours": 617.74,
+   "grid_wan_kwh": 8881.95,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3073,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2025Q1",
+   "generation_wan_kwh": 12656.48,
+   "utilization_hours": 843.77,
+   "grid_wan_kwh": 12337.95,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5471,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2025Q2",
+   "generation_wan_kwh": 10981.95,
+   "utilization_hours": 732.13,
+   "grid_wan_kwh": 10713.17,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5662,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2025Q3",
+   "generation_wan_kwh": 5295.9,
+   "utilization_hours": 353.06,
+   "grid_wan_kwh": 5146.77,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5529,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2025Q4",
+   "generation_wan_kwh": 9737.9,
+   "utilization_hours": 649.19,
+   "grid_wan_kwh": 9426.29,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5366,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2026Q1",
+   "generation_wan_kwh": 10569.12,
+   "utilization_hours": 704.61,
+   "grid_wan_kwh": 10327.75,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.5214,
+   "ops_until_year": null
+  },
+  {
+   "code": "508015",
+   "period": "2026Q2",
+   "generation_wan_kwh": 9425.88,
+   "utilization_hours": 628.39,
+   "grid_wan_kwh": 9247.03,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.503,
+   "ops_until_year": null
+  },
+  {
+   "code": "508016",
+   "period": "2025Q3",
+   "generation_wan_kwh": 72614.63,
+   "utilization_hours": 756.01,
+   "grid_wan_kwh": 71064.05,
+   "electricity_revenue_wan": 46722.82,
+   "price_yuan_kwh": 0.7429,
+   "ops_until_year": null
+  },
+  {
+   "code": "508016",
+   "period": "2025Q4",
+   "generation_wan_kwh": 53678.28,
+   "utilization_hours": 558.86,
+   "grid_wan_kwh": 52599.45,
+   "electricity_revenue_wan": 35894.08,
+   "price_yuan_kwh": 0.7711,
+   "ops_until_year": null
+  },
+  {
+   "code": "508016",
+   "period": "2026Q1",
+   "generation_wan_kwh": 48257.36,
+   "utilization_hours": 502.42,
+   "grid_wan_kwh": 47350.25,
+   "electricity_revenue_wan": 34031.48,
+   "price_yuan_kwh": 0.8122,
+   "ops_until_year": null
+  },
+  {
+   "code": "508016",
+   "period": "2026Q2",
+   "generation_wan_kwh": 33699.88,
+   "utilization_hours": 350.86,
+   "grid_wan_kwh": 32938.44,
+   "electricity_revenue_wan": 27152.82,
+   "price_yuan_kwh": 0.9315,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2025Q1",
+   "generation_wan_kwh": 5791.1392,
+   "utilization_hours": null,
+   "grid_wan_kwh": 5680.1939,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": null,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2025Q2",
+   "generation_wan_kwh": 9259.3872,
+   "utilization_hours": null,
+   "grid_wan_kwh": 9125.6374,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": null,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2025Q3",
+   "generation_wan_kwh": 22043.064,
+   "utilization_hours": null,
+   "grid_wan_kwh": 21767.4671,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": null,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2025Q4",
+   "generation_wan_kwh": 9775.3648,
+   "utilization_hours": 714,
+   "grid_wan_kwh": 9634.2076,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.2013,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2026Q1",
+   "generation_wan_kwh": 8590.6752,
+   "utilization_hours": 627,
+   "grid_wan_kwh": 8448.1966,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.3255,
+   "ops_until_year": null
+  },
+  {
+   "code": "508026",
+   "period": "2026Q2",
+   "generation_wan_kwh": 8421.2304,
+   "utilization_hours": 615,
+   "grid_wan_kwh": 8293.1378,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.1443,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2025Q1",
+   "generation_wan_kwh": 34933.27,
+   "utilization_hours": 698.67,
+   "grid_wan_kwh": 34005.55,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.863,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2025Q2",
+   "generation_wan_kwh": 33776.96,
+   "utilization_hours": 675.54,
+   "grid_wan_kwh": 33043.17,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.8499,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2025Q3",
+   "generation_wan_kwh": 21963.23,
+   "utilization_hours": 421.85,
+   "grid_wan_kwh": 21092.41,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.853,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2025Q4",
+   "generation_wan_kwh": 35849.05,
+   "utilization_hours": 716.98,
+   "grid_wan_kwh": 35212.86,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.847,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2026Q1",
+   "generation_wan_kwh": 28156.57,
+   "utilization_hours": 563.13,
+   "grid_wan_kwh": 27508.83,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.835,
+   "ops_until_year": null
+  },
+  {
+   "code": "508028",
+   "period": "2026Q2",
+   "generation_wan_kwh": 25758.24,
+   "utilization_hours": 515.16,
+   "grid_wan_kwh": 24847.85,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": 0.8425,
+   "ops_until_year": null
+  },
+  {
+   "code": "508050",
+   "period": "2026Q1",
+   "generation_wan_kwh": 6946.58,
+   "utilization_hours": 463.11,
+   "grid_wan_kwh": 6797.26,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": null,
+   "ops_until_year": null
+  },
+  {
+   "code": "508050",
+   "period": "2026Q2",
+   "generation_wan_kwh": 20782.4,
+   "utilization_hours": 1385.49,
+   "grid_wan_kwh": 20485.62,
+   "electricity_revenue_wan": null,
+   "price_yuan_kwh": null,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2025Q1",
+   "generation_wan_kwh": 6443.53,
+   "utilization_hours": 429.57,
+   "grid_wan_kwh": 6297.05,
+   "electricity_revenue_wan": 1185.45,
+   "price_yuan_kwh": 0.2127,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2025Q2",
+   "generation_wan_kwh": 6177.02,
+   "utilization_hours": 411.8,
+   "grid_wan_kwh": 6114.99,
+   "electricity_revenue_wan": 1190.47,
+   "price_yuan_kwh": 0.22,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2025Q3",
+   "generation_wan_kwh": 6771.32,
+   "utilization_hours": 451.42,
+   "grid_wan_kwh": 6644.73,
+   "electricity_revenue_wan": 1295.82,
+   "price_yuan_kwh": 0.2204,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2025Q4",
+   "generation_wan_kwh": 5789.84,
+   "utilization_hours": 385.99,
+   "grid_wan_kwh": 5689.44,
+   "electricity_revenue_wan": 1121.85,
+   "price_yuan_kwh": 0.2228,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2026Q1",
+   "generation_wan_kwh": 6088.85,
+   "utilization_hours": 405.92,
+   "grid_wan_kwh": 5898.78,
+   "electricity_revenue_wan": 1191.17,
+   "price_yuan_kwh": 0.2282,
+   "ops_until_year": null
+  },
+  {
+   "code": "508089",
+   "period": "2026Q2",
+   "generation_wan_kwh": 5328.56,
+   "utilization_hours": 355.24,
+   "grid_wan_kwh": 5203.1,
+   "electricity_revenue_wan": 1004.23,
+   "price_yuan_kwh": 0.2181,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2025Q1",
+   "generation_wan_kwh": 10600.0,
+   "utilization_hours": 244.67,
+   "grid_wan_kwh": 10300.0,
+   "electricity_revenue_wan": 8400.0,
+   "price_yuan_kwh": 0.81,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2025Q2",
+   "generation_wan_kwh": 11399.999999999998,
+   "utilization_hours": 263.42,
+   "grid_wan_kwh": 11100.000000000002,
+   "electricity_revenue_wan": 8800.0,
+   "price_yuan_kwh": 0.79,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2025Q3",
+   "generation_wan_kwh": 11200.000000000002,
+   "utilization_hours": 259.11,
+   "grid_wan_kwh": 10900.0,
+   "electricity_revenue_wan": 9500.0,
+   "price_yuan_kwh": 0.87,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2025Q4",
+   "generation_wan_kwh": 10700.0,
+   "utilization_hours": 239.96,
+   "grid_wan_kwh": 10400.0,
+   "electricity_revenue_wan": 7900.0,
+   "price_yuan_kwh": 0.76,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2026Q1",
+   "generation_wan_kwh": 41600.0,
+   "utilization_hours": 455.03,
+   "grid_wan_kwh": 41000.0,
+   "electricity_revenue_wan": 15700.0,
+   "price_yuan_kwh": 0.38,
+   "ops_until_year": null
+  },
+  {
+   "code": "508096",
+   "period": "2026Q2",
+   "generation_wan_kwh": 52200.0,
+   "utilization_hours": 571.12,
+   "grid_wan_kwh": 51500.0,
+   "electricity_revenue_wan": 19000.0,
+   "price_yuan_kwh": 0.37,
+   "ops_until_year": null
+  }
+ ]
+}

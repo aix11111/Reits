@@ -783,6 +783,71 @@ def test_fetch_market_ops_rental_filters_rental_types_and_writes_ops(
     assert written == {"ops": rows}
 
 
+# ---- fetch_market_ops_energy（Phase 6：能源类发电量运营指标） ----
+
+
+def _energy_report_text(period_title, generation="61620.34"):
+    """构造能源类季报文本：标题含基金全名 + 报告期 + 4.1.3 运营指标表。"""
+    return (
+        f"鹏华深圳能源封闭式基础设施证券投资基金\n{period_title}\n\n"
+        "4.1.3 报告期及上年同期重要不动产项目运营指标\n"
+        "1\n发电量\n万千瓦时\n"
+        f"{generation}\n"
+        "2\n等效利用小时数\n小时\n527.00\n"
+        "3\n结算电量\n万千瓦时\n60,688.10\n"
+        "4\n结算电费\n元\n307,686,738.41\n"
+        "5\n结算电价\n元/千瓦时(含税)\n0.57\n"
+        "不动产项目运营年限预计至2037 年\n"
+    )
+
+
+def test_fetch_market_ops_energy_filters_energy_types_and_writes_ops(
+    monkeypatch, tmp_path
+):
+    """仅能源类基金入库；非能源类跳过；解析为 None 的行丢弃；
+    沪市按文件名前缀取 code、深市数字文件名按名称匹配 code；(code, period)
+    去重；写回 market_ops_energy.json {"ops": [...]}。"""
+    ops_path = tmp_path / "market_ops_energy.json"
+    monkeypatch.setattr(market_fetch, "MARKET_OPS_ENERGY_PATH", ops_path)
+    _patch_shares_cache(
+        monkeypatch,
+        tmp_path,
+        {
+            "180401_2026Q2.pdf": _energy_report_text("2026年第2季度报告"),
+            "508015_2026Q2.pdf": _energy_report_text("2026年第2季度报告", "1000.00"),
+            "1225431331.PDF": _energy_report_text("2026年第2季度报告"),
+            "508001_2026Q2.pdf": "浙商沪杭甬REIT\n2026年第2季度报告\n3.1 主要财务指标\n",
+            "508015_2027Q1.pdf": "中信建投明阳智能新能源REIT\n2027年第1季度报告\n",
+        },
+    )
+
+    funds = [
+        {"code": "180401", "name": "鹏华深圳能源REIT", "asset_type": "能源"},
+        {"code": "508015", "name": "中信建投明阳智能新能源REIT", "asset_type": "能源"},
+        {"code": "508001", "name": "浙商沪杭甬REIT", "asset_type": "高速"},
+    ]
+    rows = market_fetch.fetch_market_ops_energy(funds)
+
+    # 508001（高速）跳过；508015_2027Q1 无发电量字段 → None 行丢弃；
+    # 1225431331.PDF 与 180401_2026Q2.pdf 同 (code, period) → 去重
+    assert [r["code"] for r in rows] == ["180401", "508015"]
+    assert [r["period"] for r in rows] == ["2026Q2", "2026Q2"]
+
+    by_code = {r["code"]: r for r in rows}
+    assert by_code["180401"]["generation_wan_kwh"] == pytest.approx(61620.34)
+    assert by_code["180401"]["utilization_hours"] == pytest.approx(527.0)
+    assert by_code["180401"]["grid_wan_kwh"] == pytest.approx(60688.10)
+    assert by_code["180401"]["electricity_revenue_wan"] == pytest.approx(
+        30768.67, abs=0.01
+    )
+    assert by_code["180401"]["price_yuan_kwh"] == pytest.approx(0.57)
+    assert by_code["180401"]["ops_until_year"] == 2037
+    assert by_code["508015"]["generation_wan_kwh"] == pytest.approx(1000.0)
+
+    written = json.loads(ops_path.read_text(encoding="utf-8"))
+    assert written == {"ops": rows}
+
+
 def test_fetch_market_quarterly_missing_fields_are_none(monkeypatch, tmp_path):
     """解析结果缺失字段如实为 None；period 缺失行丢弃。"""
     mq_path = tmp_path / "market_quarterly.json"

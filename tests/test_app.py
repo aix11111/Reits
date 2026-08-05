@@ -436,3 +436,165 @@ def test_valuation_tab_degraded_when_market_json_missing(no_network, monkeypatch
     frames = [df.value for df in val_tab.dataframe]
     rank = next(f for f in frames if "分派率收益率" in f.columns)
     assert not rank.empty
+
+
+# ---------------------------------------------------------------------------
+# Phase 6（M6）：能源类运营指标 + 能源 IRR
+# ---------------------------------------------------------------------------
+
+
+def _patch_market_data_with_energy(monkeypatch):
+    """全市场 fixture：能源 180401（有 ops_until_year）+ 高速 508001。"""
+    import pandas as pd
+
+    import src.data_loader as dl
+
+    funds = pd.DataFrame(
+        {
+            "code": ["180401", "508001"],
+            "name": ["鹏华深圳能源REIT", "浙商沪杭甬REIT"],
+            "asset_type": ["能源", "高速"],
+        }
+    )
+    quarterly = pd.DataFrame(
+        {
+            "code": ["180401", "508001"],
+            "period": ["2026Q1", "2026Q1"],
+            "distributable_wan": [12500.0, 4000.0],
+        }
+    )
+    completion = pd.DataFrame(
+        {
+            "code": ["180401", "508001"],
+            "name": ["鹏华深圳能源REIT", "浙商沪杭甬REIT"],
+            "year": [2025, 2025],
+            "completion_pct": [100.0, 90.0],
+            "nav_unit_price": [5.0, 6.0],
+        }
+    )
+    shares = {"180401": 1_000_000_000.0, "508001": 2_000_000_000.0}
+    snapshot = {
+        "latest": {
+            "180401": {"price": 5.0, "market_cap_wan": 500000.0},
+            "508001": {"price": 6.5, "market_cap_wan": 1300000.0},
+        },
+        "snapshots": [],
+    }
+    energy = pd.DataFrame(
+        {
+            "code": ["180401"],
+            "period": ["2026Q1"],
+            "generation_wan_kwh": [61620.34],
+            "utilization_hours": [527.0],
+            "grid_wan_kwh": [60688.10],
+            "electricity_revenue_wan": [30768.67],
+            "price_yuan_kwh": [0.57],
+            "ops_until_year": [2037],
+        }
+    )
+    monkeypatch.setattr(dl, "load_market_funds", lambda path=None: funds, raising=False)
+    monkeypatch.setattr(
+        dl, "load_market_quarterly", lambda path=None: quarterly, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_completion", lambda path=None: completion, raising=False
+    )
+    monkeypatch.setattr(dl, "load_market_shares", lambda path=None: shares, raising=False)
+    monkeypatch.setattr(
+        dl, "load_market_snapshot", lambda path=None: snapshot, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_energy", lambda path=None: energy, raising=False
+    )
+
+
+def test_valuation_tab_energy_irr_computed_from_ops_until_year(
+    no_network, monkeypatch
+):
+    """能源类基金（有 ops_until_year）估值 IRR 列显示百分比而非「—」：
+    years_left = ops_until_year − 2026（180401 → 2037−2026=11）。"""
+    import streamlit as st
+
+    _patch_market_data_with_energy(monkeypatch)
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派率收益率" in f.columns)
+
+    energy_row = rank[rank["基金代码"] == "180401"]
+    irr_label = energy_row["特许经营IRR"].iloc[0]
+    assert isinstance(irr_label, str)
+    assert irr_label != "—"
+    assert irr_label != "不适用（产权类）"
+    assert irr_label.endswith("%")
+
+
+def test_operations_tab_energy_kpi_renders_for_energy_fund(no_network, monkeypatch):
+    """能源类基金（有发电量数据）在经营数据页签渲染「发电量」KPI 卡；
+    无发电量数据的基金不显示占位、不崩。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static = pd.DataFrame(
+        {
+            "code": ["180401", "508001"],
+            "name": ["鹏华深圳能源REIT", "浙商沪杭甬REIT"],
+            "asset": ["能源", "高速"],
+            "region": ["广东", "浙江"],
+            "mileage_km": [None, 100],
+            "listing_date": ["2022-07-26", "2021-06-29"],
+            "issue_scale_yi": [36, 43],
+            "concession_years_left": [None, 20],
+            "asset_type": ["能源", "高速"],
+        }
+    )
+    empty = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": empty, "quarterly": empty},
+        raising=False,
+    )
+
+    energy = pd.DataFrame(
+        {
+            "code": ["180401", "180401"],
+            "period": ["2026Q1", "2026Q2"],
+            "generation_wan_kwh": [60000.0, 61620.34],
+            "utilization_hours": [500.0, 527.0],
+            "grid_wan_kwh": [59000.0, 60688.10],
+            "electricity_revenue_wan": [30000.0, 30768.67],
+            "price_yuan_kwh": [0.55, 0.57],
+            "ops_until_year": [2037, 2037],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_energy", lambda path=None: energy, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("180401").run()
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "发电量" in cards[0]
+    assert "61,620.34" in cards[0]
+
+    # 无发电量数据（高速基金）→ 不显示发电量占位、不崩
+    box.select("508001").run()
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert all("发电量" not in c for c in cards)

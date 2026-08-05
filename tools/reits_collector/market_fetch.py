@@ -20,6 +20,7 @@ from pathlib import Path
 from tools.reits_collector import (
     cninfo,
     parser_annual,
+    parser_ops_energy,
     parser_ops_rental,
     parser_quarterly,
     sse,
@@ -77,6 +78,24 @@ RENTAL_OPS_ROW_KEYS = (
 
 MARKET_OPS_RENTAL_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "market_ops_rental.json"
+)
+
+# 能源类运营指标（Phase 6）：仅有发电量类指标的资产类型
+ENERGY_ASSET_TYPES = {"能源"}
+
+ENERGY_OPS_ROW_KEYS = (
+    "code",
+    "period",
+    "generation_wan_kwh",
+    "utilization_hours",
+    "grid_wan_kwh",
+    "electricity_revenue_wan",
+    "price_yuan_kwh",
+    "ops_until_year",
+)
+
+MARKET_OPS_ENERGY_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "market_ops_energy.json"
 )
 
 REPORT_FUND_NAME_RE = re.compile(
@@ -406,6 +425,77 @@ def fetch_market_ops_rental(market_funds, errors=None) -> list[dict]:
 
     rows.sort(key=lambda r: (str(r["code"]), str(r["period"])))
     MARKET_OPS_RENTAL_PATH.write_text(
+        json.dumps({"ops": rows}, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
+    return rows
+
+
+def fetch_market_ops_energy(market_funds, errors=None) -> list[dict]:
+    """逐基金从季度报告 PDF 缓存取能源类运营指标（发电量等）。
+
+    仅处理 market_funds 中能源类基金：遍历 CACHE_DIR 季度报告缓存每个 PDF，
+    沪市文件名以代码开头直接取 code，深市数字文件名按报告标题基金全名与
+    深市基金简称唯一匹配 code；非能源类或解析为 None（无发电量字段）的行
+    跳过。写回 data/market_ops_energy.json
+    {"ops": [code/period/generation_wan_kwh/utilization_hours/grid_wan_kwh/
+    electricity_revenue_wan/price_yuan_kwh/ops_until_year]}（保留全部期，
+    (code, period) 去重，升序），返回全部行。
+    """
+    if errors is None:
+        errors = []
+    energy_codes = {
+        str(f.get("code") or "").strip()
+        for f in market_funds
+        if str(f.get("asset_type") or "") in ENERGY_ASSET_TYPES
+    }
+    # 数字文件名来自 cninfo 公告（adjunctUrl），仅深市（180xxx）走名称匹配
+    szse_funds = [
+        f for f in market_funds if str(f.get("code") or "").startswith("180")
+    ]
+    rows = []
+    seen_pairs = set()
+    pdf_paths = [
+        p for p in Path(CACHE_DIR).iterdir() if p.is_file() and p.suffix.lower() == ".pdf"
+    ]
+    for path in sorted(pdf_paths, key=lambda p: p.name):
+        code = _code_from_filename(path.name)
+        text = None
+        if code is None:
+            try:
+                text = parser_annual.extract_text(path)
+            except Exception as exc:
+                errors.append(f"{path.name}：{exc}")
+                continue
+            full_name = _report_fund_name(text)
+            if full_name is None:
+                errors.append(f"{path.name}：无法识别基金全名")
+                continue
+            code = _match_fund_code(full_name, szse_funds)
+            if code is None:
+                errors.append(f"{path.name}：无法唯一匹配基金代码")
+                continue
+        if code not in energy_codes:
+            continue
+        if text is None:
+            try:
+                text = parser_annual.extract_text(path)
+            except Exception as exc:
+                errors.append(f"{path.name}：{exc}")
+                continue
+        period = parser_quarterly._parse_period(text)
+        if period is None:
+            continue
+        pair = (code, period)
+        if pair in seen_pairs:
+            continue
+        parsed = parser_ops_energy.parse_energy_ops_text(text)
+        if parsed is None:
+            continue
+        seen_pairs.add(pair)
+        rows.append({"code": code, "period": period, **parsed})
+
+    rows.sort(key=lambda r: (str(r["code"]), str(r["period"])))
+    MARKET_OPS_ENERGY_PATH.write_text(
         json.dumps({"ops": rows}, ensure_ascii=False, indent=1), encoding="utf-8"
     )
     return rows

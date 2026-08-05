@@ -242,3 +242,28 @@ def load_market_ops_rental(path):
             ]
         )
     return pd.DataFrame(rows)
+
+
+def load_market_ops_energy(path):
+    """读取全市场能源类运营指标 JSON（{"ops": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / period / generation_wan_kwh / utilization_hours /
+    grid_wan_kwh / electricity_revenue_wan / price_yuan_kwh / ops_until_year
+    （其余字段按 JSON 原样保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("ops") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(
+            columns=[
+                "code",
+                "period",
+                "generation_wan_kwh",
+                "utilization_hours",
+                "grid_wan_kwh",
+                "electricity_revenue_wan",
+                "price_yuan_kwh",
+                "ops_until_year",
+            ]
+        )
+    return pd.DataFrame(rows)

@@ -660,3 +660,128 @@ def test_operations_tab_energy_kpi_renders_for_energy_fund(no_network, monkeypat
     ops_tab = at.tabs[0]
     cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
     assert all("发电量" not in c for c in cards)
+
+
+# ---------------------------------------------------------------------------
+# Phase 6c（M6c）：生态环保类运营指标 + 经营 Tab 处理量 KPI
+# ---------------------------------------------------------------------------
+
+
+def test_operations_tab_env_kpi_renders_for_env_fund(no_network, monkeypatch):
+    """环保类基金（有处理量数据）在经营数据页签渲染「处理量」KPI 卡；
+    无处理量数据的基金不显示占位、不崩。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static = pd.DataFrame(
+        {
+            "code": ["508006", "508001"],
+            "name": ["富国首创水务REIT", "浙商沪杭甬REIT"],
+            "asset": ["生态环保", "高速"],
+            "region": ["安徽", "浙江"],
+            "mileage_km": [None, 100],
+            "listing_date": ["2021-06-07", "2021-06-29"],
+            "issue_scale_yi": [18, 43],
+            "concession_years_left": [None, 20],
+            "asset_type": ["生态环保", "高速"],
+        }
+    )
+    empty = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": empty, "quarterly": empty},
+        raising=False,
+    )
+
+    env = pd.DataFrame(
+        {
+            "code": ["508006", "508006"],
+            "period": ["2026Q1", "2026Q2"],
+            "volume_wan_ton": [2200.0, 2277.81],
+            "capacity_utilization_pct": [80.0, 83.44],
+            "unit_price_yuan": [1.28, 1.298],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_environment", lambda path=None: env, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("508006").run()
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "处理量" in cards[0]
+    assert "2,277.81" in cards[0]
+
+    # 无处理量数据（高速基金）→ 不显示处理量占位、不崩
+    box.select("508001").run()
+    assert not at.exception
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert all("处理量" not in c for c in cards)
+
+
+def test_operations_tab_env_kpi_renders_capacity_and_price(no_network, monkeypatch):
+    """环保类 KPI 卡含产能利用率与服务费单价（最新报告期 83.44% / 1.2980 元/吨）。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    static = pd.DataFrame(
+        {
+            "code": ["508006"],
+            "name": ["富国首创水务REIT"],
+            "asset": ["生态环保"],
+            "region": ["安徽"],
+            "mileage_km": [None],
+            "listing_date": ["2021-06-07"],
+            "issue_scale_yi": [18],
+            "concession_years_left": [None],
+            "asset_type": ["生态环保"],
+        }
+    )
+    empty = pd.DataFrame(
+        columns=["period", "code", "name", "toll_revenue_wan", "daily_traffic"]
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_all",
+        lambda path=None: {"static": static, "monthly": empty, "quarterly": empty},
+        raising=False,
+    )
+
+    env = pd.DataFrame(
+        {
+            "code": ["508006"],
+            "period": ["2026Q2"],
+            "volume_wan_ton": [2277.81],
+            "capacity_utilization_pct": [83.44],
+            "unit_price_yuan": [1.298],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_ops_environment", lambda path=None: env, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    box = next(b for b in at.selectbox if b.label == "选择REIT")
+    box.select("508006").run()
+    assert not at.exception
+    cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
+    assert "83.44%" in cards[0]
+    assert "1.2980" in cards[0]

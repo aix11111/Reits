@@ -244,6 +244,27 @@ def load_market_ops_rental(path):
     return pd.DataFrame(rows)
 
 
+def load_market_ops_environment(path):
+    """读取全市场生态环保类运营指标 JSON（{"ops": [...]}），缺失/损坏返回空 DataFrame。
+
+    返回列：code / period / volume_wan_ton / capacity_utilization_pct /
+    unit_price_yuan（其余字段按 JSON 原样保留）。
+    """
+    data = _load_json_dict(path)
+    rows = data.get("ops") if isinstance(data, dict) else None
+    if not rows:
+        return pd.DataFrame(
+            columns=[
+                "code",
+                "period",
+                "volume_wan_ton",
+                "capacity_utilization_pct",
+                "unit_price_yuan",
+            ]
+        )
+    return pd.DataFrame(rows)
+
+
 def load_market_ops_energy(path):
     """读取全市场能源类运营指标 JSON（{"ops": [...]}），缺失/损坏返回空 DataFrame。
 

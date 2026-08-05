@@ -783,6 +783,76 @@ def test_fetch_market_ops_rental_filters_rental_types_and_writes_ops(
     assert written == {"ops": rows}
 
 
+# ---- fetch_market_ops_environment（Phase 6c：生态环保类处理量运营指标） ----
+
+
+def _env_report_text(period_title, volume="2277.81", utilization="83.44",
+                     price="1.2980"):
+    """构造环保类季报文本：标题含基金全名 + 报告期 + 4.1.3 运营指标表。"""
+    return (
+        f"富国首创水务封闭式基础设施证券投资基金\n{period_title}\n\n"
+        "4.1.3 报告期及上年同期重要不动产项目运营指标\n"
+        "不动产项目名称：1 合肥十五里河首创水务有限责任公司\n"
+        "1\n污水处理量\n万吨\n"
+        f"{volume}\n"
+        "2\n产能利用率\n%\n"
+        f"{utilization}\n"
+        "注：报告期内协议约定污水处理服务费含税单价为"
+        f"{price} 元/吨\n"
+    )
+
+
+def test_fetch_market_ops_environment_filters_env_types_and_writes_ops(
+    monkeypatch, tmp_path
+):
+    """仅生态环保类基金入库；非环保类跳过；解析为 None 的行丢弃；
+    沪市按文件名前缀取 code、深市数字文件名按名称匹配 code；(code, period)
+    去重；写回 market_ops_environment.json {"ops": [...]}。"""
+    ops_path = tmp_path / "market_ops_environment.json"
+    monkeypatch.setattr(market_fetch, "MARKET_OPS_ENV_PATH", ops_path)
+    _patch_shares_cache(
+        monkeypatch,
+        tmp_path,
+        {
+            "508006_2026Q2.pdf": _env_report_text("2026年第2季度报告"),
+            "508006_2026Q1.pdf": _env_report_text(
+                "2026年第1季度报告", "2100.00", "80.00", "1.2800"
+            ),
+            "1211111111.PDF": (
+                "银华绍兴原水水利封闭式基础设施证券投资基金\n"
+                "2026年第2季度报告\n\n"
+                "4.1.3 报告期及上年同期重要不动产项目运营指标\n"
+                "1\n供应原水量\n万立方米\n5,360.59\n"
+            ),
+            "508001_2026Q2.pdf": "浙商沪杭甬REIT\n2026年第2季度报告\n3.1 主要财务指标\n",
+            "508006_2027Q1.pdf": "富国首创水务REIT\n2027年第1季度报告\n",
+        },
+    )
+
+    funds = [
+        {"code": "508006", "name": "富国首创水务REIT", "asset_type": "生态环保"},
+        {"code": "180701", "name": "银华绍兴原水水利REIT", "asset_type": "生态环保"},
+        {"code": "508001", "name": "浙商沪杭甬REIT", "asset_type": "高速"},
+    ]
+    rows = market_fetch.fetch_market_ops_environment(funds)
+
+    # 508001（高速）跳过；508006_2027Q1 无处理量字段 → None 行丢弃
+    assert [r["code"] for r in rows] == ["180701", "508006", "508006"]
+    assert [r["period"] for r in rows] == ["2026Q2", "2026Q1", "2026Q2"]
+
+    by_key = {f"{r['code']} {r['period']}": r for r in rows}
+    assert by_key["508006 2026Q2"]["volume_wan_ton"] == pytest.approx(2277.81)
+    assert by_key["508006 2026Q2"]["capacity_utilization_pct"] == pytest.approx(83.44)
+    assert by_key["508006 2026Q2"]["unit_price_yuan"] == pytest.approx(1.298)
+    assert by_key["508006 2026Q1"]["volume_wan_ton"] == pytest.approx(2100.0)
+    assert by_key["180701 2026Q2"]["volume_wan_ton"] == pytest.approx(5360.59)
+    assert by_key["180701 2026Q2"]["capacity_utilization_pct"] is None
+    assert by_key["180701 2026Q2"]["unit_price_yuan"] is None
+
+    written = json.loads(ops_path.read_text(encoding="utf-8"))
+    assert written == {"ops": rows}
+
+
 # ---- fetch_market_ops_energy（Phase 6：能源类发电量运营指标） ----
 
 

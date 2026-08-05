@@ -21,6 +21,7 @@ from src.data_loader import (
     load_market_completion,
     load_market_funds,
     load_market_ops_energy,
+    load_market_ops_environment,
     load_market_ops_rental,
     load_market_quarterly,
     load_market_shares,
@@ -119,6 +120,7 @@ _MARKET_COMPLETION_PATH = Path(__file__).parent / "data" / "market_completion.js
 _MARKET_SHARES_PATH = Path(__file__).parent / "data" / "market_shares.json"
 _MARKET_OPS_RENTAL_PATH = Path(__file__).parent / "data" / "market_ops_rental.json"
 _MARKET_OPS_ENERGY_PATH = Path(__file__).parent / "data" / "market_ops_energy.json"
+_MARKET_OPS_ENV_PATH = Path(__file__).parent / "data" / "market_ops_environment.json"
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -429,14 +431,79 @@ def _render_energy_ops(energy_df):
         st.plotly_chart(fig, width="stretch")
 
 
+def _render_env_ops(env_df):
+    """生态环保类运营指标区块：处理量/产能利用率/服务费单价 KPI 卡 + 处理量趋势图。
+
+    数据来自 data/market_ops_environment.json（生态环保类季报 4.1.3 节）。
+    KPI 取最新报告期；趋势图按报告期升序画出 处理量 折线（plotly 深色）。
+    多项目表时取第一个项目值，KPI 卡注明「第一项目」。
+    """
+    latest = env_df.sort_values("period").iloc[-1]
+
+    def fmt(v, render):
+        if pd.isna(v):
+            return "—"
+        return render(v)
+
+    cards = "".join(
+        [
+            _kpi_card(
+                "处理量",
+                fmt(latest["volume_wan_ton"], lambda v: f"{v:,.2f}"),
+                f"报告期 {latest['period']}（第一项目）",
+            ),
+            _kpi_card(
+                "产能利用率",
+                fmt(latest["capacity_utilization_pct"], lambda v: f"{v:.2f}%"),
+                "实际处理量/设计产能",
+            ),
+            _kpi_card(
+                "服务费单价",
+                fmt(latest["unit_price_yuan"], lambda v: f"{v:.4f}"),
+                "元/吨",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    chart_df = env_df.sort_values("period")
+    if chart_df["volume_wan_ton"].notna().any():
+        fig = go.Figure(
+            go.Scatter(
+                x=chart_df["period"],
+                y=chart_df["volume_wan_ton"],
+                mode="lines+markers",
+                line=dict(color=_ACCENT, width=2),
+                marker=dict(color=_ACCENT),
+            )
+        )
+        fig.update_layout(
+            title="处理量趋势",
+            xaxis_title="报告期",
+            yaxis_title="处理量（万吨）",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+
 def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
-                      energy_df=None):
+                      energy_df=None, env_df=None):
     """经营数据页签：最新指标 KPI、月度图表与季度明细表。
 
     选中基金有租赁类运营指标（data/market_ops_rental.json）时，在 KPI 区下方
     追加出租率 KPI 卡与出租率趋势图；有能源类运营指标
     （data/market_ops_energy.json）时追加发电量 KPI 卡与发电量趋势图；
-    均无数据（其他类）保持原视图不变。
+    有生态环保类运营指标（data/market_ops_environment.json）时追加处理量
+    KPI 卡与处理量趋势图；均无数据（其他类）保持原视图不变。
     """
     st.subheader(f"基金：{code} {name}")
 
@@ -471,6 +538,12 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
         if not energy.empty:
             st.markdown("### 能源运营指标（发电量）")
             _render_energy_ops(energy)
+
+    if env_df is not None and not env_df.empty:
+        env = env_df[env_df["code"] == code]
+        if not env.empty:
+            st.markdown("### 生态环保运营指标（处理量）")
+            _render_env_ops(env)
 
     monthly = monthly_df[monthly_df["code"] == code].sort_values("period")
     if not monthly.empty:
@@ -1109,6 +1182,7 @@ def main():
     market_shares = load_market_shares(_MARKET_SHARES_PATH)
     market_ops_rental = load_market_ops_rental(_MARKET_OPS_RENTAL_PATH)
     market_ops_energy = load_market_ops_energy(_MARKET_OPS_ENERGY_PATH)
+    market_ops_env = load_market_ops_environment(_MARKET_OPS_ENV_PATH)
 
     with st.sidebar:
         st.header("市场筛选")
@@ -1138,6 +1212,7 @@ def main():
             quarterly_df,
             rental_df=market_ops_rental,
             energy_df=market_ops_energy,
+            env_df=market_ops_env,
         )
 
     with tab_mkt:

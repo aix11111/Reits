@@ -1,0 +1,123 @@
+{
+ "ops": [
+  {
+   "code": "180701",
+   "period": "2025Q1",
+   "volume_wan_ton": 6613.03,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180701",
+   "period": "2025Q2",
+   "volume_wan_ton": 6639.49,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180701",
+   "period": "2025Q3",
+   "volume_wan_ton": 10019.98,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180701",
+   "period": "2025Q4",
+   "volume_wan_ton": 8425.24,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180701",
+   "period": "2026Q1",
+   "volume_wan_ton": 2062.78,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180701",
+   "period": "2026Q2",
+   "volume_wan_ton": 5360.59,
+   "capacity_utilization_pct": null,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2025Q1",
+   "volume_wan_ton": 21.62,
+   "capacity_utilization_pct": 0.22,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2025Q2",
+   "volume_wan_ton": 24.49,
+   "capacity_utilization_pct": 24.49,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2025Q3",
+   "volume_wan_ton": 27.18,
+   "capacity_utilization_pct": 27.18,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2025Q4",
+   "volume_wan_ton": 28.46,
+   "capacity_utilization_pct": 28.46,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2026Q1",
+   "volume_wan_ton": 25.39,
+   "capacity_utilization_pct": 0.25,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "180801",
+   "period": "2026Q2",
+   "volume_wan_ton": 25.99,
+   "capacity_utilization_pct": 25.99,
+   "unit_price_yuan": null
+  },
+  {
+   "code": "508006",
+   "period": "2025Q1",
+   "volume_wan_ton": 1759.01,
+   "capacity_utilization_pct": 65.15,
+   "unit_price_yuan": 1.261
+  },
+  {
+   "code": "508006",
+   "period": "2025Q2",
+   "volume_wan_ton": 2350.15,
+   "capacity_utilization_pct": 86.09,
+   "unit_price_yuan": 1.261
+  },
+  {
+   "code": "508006",
+   "period": "2025Q3",
+   "volume_wan_ton": 2499.26,
+   "capacity_utilization_pct": 90.55,
+   "unit_price_yuan": 1.298
+  },
+  {
+   "code": "508006",
+   "period": "2025Q4",
+   "volume_wan_ton": 2081.85,
+   "capacity_utilization_pct": 77.11,
+   "unit_price_yuan": 1.298
+  },
+  {
+   "code": "508006",
+   "period": "2026Q2",
+   "volume_wan_ton": 2277.81,
+   "capacity_utilization_pct": 83.44,
+   "unit_price_yuan": 1.298
+  }
+ ]
+}

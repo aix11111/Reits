@@ -428,9 +428,240 @@ def test_parse_completion_text_linebreak_actual_fixture():
     assert result["completion_pct"] == pytest.approx(LINEBREAK_EXPECTED["completion_pct"])
 
 
+DIFF_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508000_2021_completion.txt"
+).read_text(encoding="utf-8")
+
+DIFF_EXPECTED = {
+    "year": 2021,
+    "predicted_wan": 6974.05089,
+    "actual_wan": 4226.249591,
+    "completion_pct": 60.60,
+}
+
+TABLE_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508000_2025_completion.txt"
+).read_text(encoding="utf-8")
+
+
+def test_parse_completion_text_difference_format_fixture():
+    """产业园「差异情况说明」格式（508000 2021 年报）：披露本期实际与
+    {YYYY} 年预测可供分配金额，但不直接给出完成率 →
+    completion_pct = round(实际/预测 × 100, 2)。"""
+    result = parser_annual._parse_completion_text(DIFF_FIXTURE_TEXT)
+
+    assert result["year"] == DIFF_EXPECTED["year"]
+    assert result["predicted_wan"] == pytest.approx(DIFF_EXPECTED["predicted_wan"])
+    assert result["actual_wan"] == pytest.approx(DIFF_EXPECTED["actual_wan"])
+    assert result["completion_pct"] == pytest.approx(DIFF_EXPECTED["completion_pct"])
+
+
+def test_parse_completion_text_difference_table_no_prediction_fixture():
+    """产业园 2025 年报表格格式：预测数为「-」（本期无招募说明书预测数）→
+    predicted_wan/completion_pct 为 None；实际金额按表头单位「万元」照实解析。"""
+    result = parser_annual._parse_completion_text(TABLE_FIXTURE_TEXT, year=2025)
+
+    assert result["year"] == 2025
+    assert result["actual_wan"] == pytest.approx(11268.57)
+    assert result["predicted_wan"] is None
+    assert result["completion_pct"] is None
+
+
+def test_parse_annual_completion_difference_format_with_nav(monkeypatch):
+    """产业园年报端到端：差异格式完成度 + 3.2 净值字段（nav fixture）。"""
+    full_text = DIFF_FIXTURE_TEXT + "\n\n" + NAV_FIXTURE_TEXT
+    monkeypatch.setattr(parser_annual, "extract_text", lambda path: full_text)
+
+    result = parser_annual.parse_annual_completion("508000 2021 年报.pdf")
+
+    assert result["year"] == 2021
+    assert result["completion_pct"] == pytest.approx(60.60)
+    assert result["nav_unit_price"] == 12.2867
+    assert result["nav_wan"] == 860066.41
+
+
+NODATA_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_508001_2023_nodata.txt"
+).read_text(encoding="utf-8")
+
+NODISCLOSURE_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_180201_2023_nodata.txt"
+).read_text(encoding="utf-8")
+
+
+def test_parse_completion_text_no_data_no_difference_fixture():
+    """508001 2023：差异情况说明段仅「无」——无完成度数据 → 金额字段为 None。"""
+    result = parser_annual._parse_completion_text(NODATA_FIXTURE_TEXT, year=2023)
+
+    assert result["year"] == 2023
+    assert result["predicted_wan"] is None
+    assert result["actual_wan"] is None
+    assert result["completion_pct"] is None
+
+
+def test_parse_completion_text_no_disclosure_fixture():
+    """180201 2023：「招募说明书未披露2023 年可供分配金额」→ 无完成度数据。"""
+    result = parser_annual._parse_completion_text(NODISCLOSURE_FIXTURE_TEXT)
+
+    assert result["year"] == 2023
+    assert result["predicted_wan"] is None
+    assert result["actual_wan"] is None
+    assert result["completion_pct"] is None
+
+
+def test_extract_nav_price_narrative_variant():
+    """508000 2023+ 净值叙述格式：「基金份额净值人民币2.9780 元，
+    基金份额公允价值参考净值人民币3.0071 元」→ nav_unit_price=2.9780。"""
+    text = (
+        "期末基金资产净值 100.00 元\n"
+        "基金份额净值人民币2.9780 元，基金份额公允价值参考净值人民币3.0071 元，"
+        "基金份额总额960,326,121.00 份。"
+    )
+
+    result = parser_annual._extract_nav_fields(text)
+
+    assert result["nav_unit_price"] == 2.9780
+
+
+def test_parse_completion_text_achieved_cumulative_actual():
+    """鹏华深圳能源：实际措辞「实现全年累计可供分配金额{X} 万元」。"""
+    text = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "根据《鹏华深圳能源清洁能源封闭式基础设施证券投资基金招募说明书》，"
+        "预测本基金2022 年度可供分配金额38,154.35 万元，报告期内本基金实现全年累计"
+        "可供分配金额45,743.56 万元，完成招募说明书预测的119.89%。"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2022
+    assert result["predicted_wan"] == pytest.approx(38154.35)
+    assert result["actual_wan"] == pytest.approx(45743.56)
+    assert result["completion_pct"] == pytest.approx(119.89)
+
+
+def test_parse_completion_text_completion_rate_variants():
+    """完成率措辞变体：无「预测」字样（完成率为96% / 目标完成率达111.10%）。"""
+    base = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "预计2024 年度全年的可供分配金额146,868,591.73 元。"
+        "本报告期实现可供分配金额为141,627,991.95 元，完成率为96%。"
+    )
+    result = parser_annual._parse_completion_text(base)
+    assert result["completion_pct"] == 96
+
+    goal = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "2024 年度，本基金实现可供分配金额77,917.43 万元，较招募说明书披露的同期目标值"
+        "70,131.19 万元超额完成7,786.24 万元，目标完成率达111.10%。"
+    )
+    result = parser_annual._parse_completion_text(goal, year=2024)
+    assert result["predicted_wan"] == pytest.approx(70131.19)
+    assert result["actual_wan"] == pytest.approx(77917.43)
+    assert result["completion_pct"] == pytest.approx(111.10)
+
+
+def test_parse_completion_text_cashflow_format():
+    """博时/招商蛇口现金流格式：「项目可供分配现金流{X} 元，较可供分配金额测算报告
+    {Y} 元增加…，完成《招募说明书》预测的{Z}%」。"""
+    text = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "2022 年1 月1 日至2022 年12 月31 日，项目可供分配现金流86,947,616.70 元，"
+        "较可供分配金额测算报告81,036,624.44 元增加5,910,992.26 元，"
+        "完成《招募说明书》预测的107.29%。"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["actual_wan"] == pytest.approx(8694.76167)
+    assert result["predicted_wan"] == pytest.approx(8103.662444)
+    assert result["completion_pct"] == pytest.approx(107.29)
+
+
+def test_parse_completion_text_2025_table_with_completion():
+    """2025 表格格式带三项：实际（万元）/预测（万元）/完成度（%）。"""
+    text = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "项目 本期实现金额（万元） 招募说明书预测数（万元） 完成度（%） 差异原因 "
+        "可供分配金额 8,052.61 6,489.62 124.08 基金管理人通过积极督促运营管理机构拓展招商渠道"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["actual_wan"] == pytest.approx(8052.61)
+    assert result["predicted_wan"] == pytest.approx(6489.62)
+    assert result["completion_pct"] == pytest.approx(124.08)
+
+
+def test_parse_completion_text_shanghai_deviation_no_wei():
+    """沪市偏离度无「为」：『偏离度25.30%』；预测在括号内且无「为」。"""
+    text = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "本报告期内，本基金实现可供分配金额为60,761,363.43 元，"
+        "相较招募说明书中披露的2023 年可供分配金额（48,491,856.40 元），偏离度25.30%。"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2023
+    assert result["actual_wan"] == pytest.approx(6076.136343)
+    assert result["predicted_wan"] == pytest.approx(4849.18564)
+    assert result["completion_pct"] == pytest.approx(125.30)
+
+
+def test_parse_completion_text_shanghai_noparen_predicted():
+    """沪市无括号预测：「预测的2024 年7-12 月可供分配金额6,014.02 万元，偏离度1.06%」。"""
+    text = (
+        "本报告期内，本基金实现可供分配金额为6,077.67 万元，"
+        "相较招募说明书中刊载的可供分配金额测算报告预测的2024 年7-12 月可供分配金额"
+        "6,014.02 万元，偏离度1.06%。"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2024
+    assert result["actual_wan"] == pytest.approx(6077.67)
+    assert result["predicted_wan"] == pytest.approx(6014.02)
+    assert result["completion_pct"] == pytest.approx(101.06)
+
+
+def test_parse_completion_text_no_data_bu_sheji():
+    """无数据措辞变体：「不涉及。」与「未披露本期可供分配金额预测数。」。"""
+    result = parser_annual._parse_completion_text(
+        "刊载的可供分配金额测算报告的差异情况说明\n不涉及。", year=2024
+    )
+    assert result["year"] == 2024
+    assert result["predicted_wan"] is None
+    assert result["actual_wan"] is None
+    assert result["completion_pct"] is None
+
+    result = parser_annual._parse_completion_text(
+        "刊载的可供分配金额测算报告的差异情况说明\n招募说明书未披露本期可供分配金额预测数。",
+        year=2023,
+    )
+    assert result["year"] == 2023
+    assert result["completion_pct"] is None
+
+
+def test_parse_completion_text_whitespace_collapse_g_format():
+    """换行落在任意字符间（「可供分\\n配预测金额」）折叠后 G 格式仍解析。"""
+    text = (
+        "刊载的可供分配金额测算报告的差异情况说明"
+        "本报告期内实际可供分配金额265,836,477.17 元，与招募说明书中刊载的"
+        "2022 年度可供分\n配预测金额251,606,801.40 元相比，实际金额约为预测金额的106%。"
+    )
+
+    result = parser_annual._parse_completion_text(text)
+
+    assert result["year"] == 2022
+    assert result["predicted_wan"] == pytest.approx(25160.68014)
+    assert result["actual_wan"] == pytest.approx(26583.647717)
+    assert result["completion_pct"] == pytest.approx(106)
+
+
 def test_parse_completion_text_missing_marker_raises_value_error():
     with pytest.raises(ValueError):
-        parser_annual._parse_completion_text("没有刊载的可供分配金额测算报告的文本")
+        parser_annual._parse_completion_text("完全没有完成度段落的正文文本")
 
 
 def test_parse_completion_text_missing_year_raises_value_error():
@@ -561,6 +792,14 @@ def test_extract_fund_shares_split_label():
 
 def test_extract_fund_shares_missing_label_returns_none():
     assert parser_annual._extract_fund_shares("无份额总额披露的文本") is None
+
+
+def test_extract_fund_shares_unit_in_label():
+    """季度报告变体：label 后跟「（单位：份）」，数值不带「份」后缀
+    （508006 季报格式「报告期末基金份额总额（单位：份）500,000,000.00」）。"""
+    text = "报告期末基金份额总额（单位：份）\n500,000,000.00\n基金合同存续期"
+
+    assert parser_annual._extract_fund_shares(text) == 500000000.0
 
 
 def test_build_fund_shares_snapshot_picks_latest_report_year(monkeypatch, tmp_path):

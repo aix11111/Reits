@@ -1049,9 +1049,11 @@ def test_fund_selector_links_to_asset_type_energy(no_network):
     assert "180201" not in options
 
 
-def test_operations_tab_non_highway_fund_renders_quarterly_no_monthly(no_network):
-    """选中非高速基金（能源 180401）→ 经营数据 Tab 渲染季度表、
-    不渲染月度区块/文案（无「月度」区块与月度空态提示、无「通行费收入」）。"""
+def test_operations_tab_non_highway_fund_renders_quarterly_with_placeholder(
+    no_network,
+):
+    """选中非高速基金（能源 180401）→ 经营数据 Tab 渲染季度表，
+    月度区块显示「该资产类型暂无月度披露」（原月度图表位置）。"""
     import streamlit as st
 
     st.cache_data.clear()
@@ -1071,10 +1073,9 @@ def test_operations_tab_non_highway_fund_renders_quarterly_no_monthly(no_network
     assert "季度经营明细" in subheaders
 
     infos = [i.value for i in ops_tab.info]
-    assert all("月度" not in v for v in infos)
+    assert any("该资产类型暂无月度披露" in v for v in infos)
 
     marks = [m.value for m in ops_tab.markdown]
-    assert all("月度" not in m for m in marks)
     assert all("通行费收入" not in m for m in marks)
 
     frames = [df.value for df in ops_tab.dataframe]

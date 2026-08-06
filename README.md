@@ -25,11 +25,13 @@ This is not another price-charting dashboard. The dataset is the product; the ap
 
 Structured, standardized, free — collected automatically from exchange PDF announcements (cninfo for Shenzhen-listed, SSE for Shanghai-listed) and parsed into a normalized schema:
 
-| Coverage | 14 highway/toll-road REITs (all listed in China) |
+| Coverage | **87 funds · 8 asset types** (highway, industrial park, warehouse, residential rental, energy, consumer, eco-environment, commercial) |
 |---|---|
-| History | Full history since first listing (2021) |
-| Monthly | 398 rows: toll revenue, daily traffic volume, YoY growth (2023-06 ~ 2026-06) |
-| Quarterly | 168 rows: revenue, net profit, **distributable amount**, unit distributable, EBITDA, distribution rate (2021Q3 ~ 2026Q2) |
+| Monthly operations | 398 rows — toll revenue, daily traffic volume, YoY growth (highway funds, 2023-06 ~ 2026-06) |
+| Quarterly financials | 782 rows — revenue, net profit, **distributable amount**, EBITDA, NAV (2021Q3 ~ 2026Q2) |
+| Annual completion & NAV | 149 rows — actual vs. prospectus-forecast distributable amount, year-end net asset value |
+| Rental ops | 460 rows — occupancy rate, rent levels (52 funds) |
+| Energy ops | generation, utilization hours, settlement price |
 | Static | Asset, region, mileage, concession years left (verified from public disclosures) |
 
 ### 2. Post-investment analytics (the domain layer)
@@ -37,15 +39,16 @@ Structured, standardized, free — collected automatically from exchange PDF ann
 Analytics rules that generic market trackers cannot produce, because they require hands-on post-investment (投后管理) experience:
 
 - **Distributable amount completion vs. prospectus forecast** — actual annual distributable amount vs. the forecast in the prospectus (disclosed in annual reports), with status flags
-- **Distributable amount YoY & peer benchmark** — quarterly distributable amount growth vs. prior-year quarter, and ranking against the industry median per period
+- **Valuation benchmark** — TTM distributable yield ranking (rolling 4-quarter actual ÷ market cap), NAV premium/discount vs. year-end NAV, aggregated risk flags
+- **Concession IRR** — buy at market price, hold to concession expiry (asset value → 0), solve for IRR — a valuation unique to China's concession-based REITs
+- **Distributable amount YoY & peer benchmark** — quarterly growth vs. prior-year quarter, ranked against the industry median
 - **Traffic/revenue divergence detection** — traffic up but toll revenue flat signals anomalies (waivers, tariff changes, route diversion)
 - **Monthly MoM spike detection** — abnormal month-over-month jumps in revenue or traffic
 - **Concession decay risk levels** — remaining concession life bucketed into near-expiry / watch / normal
-- **Peer benchmarking** — cross-fund ranking against industry averages
 
-### 3. A clean, interactive dashboard
+### 3. A dark-terminal dashboard
 
-Streamlit web app: pick a fund → operational trend charts, KPI cards (NOI margin, net margin, annualized distributable yield), price history. Network failures degrade gracefully.
+A Bloomberg-meets-Apple Streamlit app: market-wide **status wall** (fund health dots), asset-type linked fund navigation across all 87 funds, KPI cards, operational trends, valuation tables — all in a dark financial-terminal theme with a teal accent. Network failures degrade gracefully.
 
 ---
 
@@ -56,39 +59,40 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+Open `http://localhost:8501`.
+
 ## Data
 
 | Layer | Source | Frequency |
 |---|---|---|
-| Operational data | Exchange monthly/quarterly announcements (cninfo + SSE) → `data/REITsMonitor_数据模板_v1.xlsx` | Incremental updater (`tools/reits_collector/update.py`), monthly |
-| Annual completion | Annual report 3.3.3 disclosure (actual vs. forecast) → `data/annual_completion.json` | Annual |
-| Market data | `akshare` (realtime + daily history) | Automatic |
+| Operational data | Exchange monthly/quarterly announcements (cninfo + SSE) → `data/REITsMonitor_数据模板_v1.xlsx` + `data/market_*.json` | Incremental updater (`tools/reits_collector/update.py`), monthly |
+| Annual completion & NAV | Annual report disclosures (actual vs. forecast) → `data/annual_completion.json` | Annual |
+| Market data | `akshare` (realtime + daily history) → `data/market_snapshot.json` | Monthly snapshot |
 
 The Excel template (`data/`) is the dataset's maintenance interface: fill it once, reuse forever.
 
 ## Project structure
 
 ```
-app.py                  Streamlit entry point (3 tabs: operations, market, rules)
-src/data_loader.py      Excel → normalized DataFrame (Chinese cols → English)
+app.py                  Streamlit entry point (4 tabs: operations, market, rules, valuation)
+src/data_loader.py      Excel/JSON → normalized DataFrame (Chinese cols → English)
 src/metrics.py          Derived metrics (NOI margin, net margin, distributable yield)
 src/rules.py            Post-investment rule engine (divergence, MoM spikes, distributable YoY, benchmark, concession decay)
+src/valuation.py        Valuation module (TTM yield, NAV premium, concession IRR, risk flags)
 src/market_data.py      akshare wrapper with graceful degradation
-src/charts.py           plotly chart builders
-tools/reits_collector/  Announcement collectors (cninfo/SSE), PDF parsers, incremental updater
-data/                   Excel data template
-tests/                  pytest suite
+src/charts.py           plotly chart builders (dark theme)
+tools/reits_collector/  Announcement collectors (cninfo/SSE), PDF parsers (10+ format variants), incremental updater
+data/                   Excel data template + market JSON datasets
+tests/                  pytest suite (400+ tests)
 ```
 
-## Roadmap
+## Tech stack
 
-- [x] **Phase 1** — Highway REITs: single-fund operational dashboard + dataset foundation
-- [x] **Phase 2** — Rule engine: peer benchmarking, divergence detection, distributable YoY, concession decay
-- [x] **Phase 3** — Distributable amount vs. prospectus forecast (10 funds, 11 rows)
-- [x] **Phase 4 (一期)** — Valuation benchmark: TTM yield ranking, NAV premium, risk flags, market snapshot
-- [x] **Phase 4 (二期)** — Concession IRR (bisection solver, expiry-aware valuation)
-- [x] **Phase 5** — Full market (87 funds, 8 types): quarterly financials (782 rows), annual completion/NAV (149 rows), market-wide valuation, type filter, rental ops (460 rows, 52 funds)
-- [ ] **Phase 6** — Energy/consumption ops metrics (发电量/客流), IRR for energy funds
+- **Streamlit + Plotly** — interactive dashboard, dark theme
+- **pandas / openpyxl** — data normalization and template maintenance
+- **PyMuPDF** — PDF announcement parsing (format-tolerant, coordinate-based)
+- **akshare** — market data with graceful degradation
+- **pytest** — TDD, 413 tests
 
 ---
 

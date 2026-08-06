@@ -16,6 +16,42 @@ import math
 import pandas as pd
 
 
+def backfill_nav(
+    quarterly_df: pd.DataFrame, annual_nav: dict[str, dict[int, float | None]]
+) -> pd.DataFrame:
+    """按年报年末基金净资产（nav_wan，万元）回填季度行的 NAV 列。
+
+    annual_nav：{code: {报告年: nav_wan}}，报告年与季度行按 code + 年份匹配：
+    - 报告期 Q4 行（年末）→ 当年年报 nav_wan（报告年 == 季度年）；
+    - Q1-Q3 行 → 前向填充：沿用最近可得、报告年早于季度年的年报值
+      （通常即上年年报值，缺失时回退更早年份）；
+    - 无任何年报数据的基金/期间 → nav_wan 置 NaN。
+
+    以年报年末值为准重算：既有值亦被覆盖。返回副本，不改动输入。
+    纯函数，不做 I/O；缺失数据以 NaN 表达。
+    """
+    df = quarterly_df.copy()
+    for idx, row in df.iterrows():
+        series = annual_nav.get(str(row.get("code")))
+        if not series:
+            df.at[idx, "nav_wan"] = float("nan")
+            continue
+        period = str(row.get("period"))
+        try:
+            year = int(period[:4])
+            quarter = int(period[-1])
+        except (ValueError, IndexError):
+            df.at[idx, "nav_wan"] = float("nan")
+            continue
+        if quarter == 4:
+            value = series.get(year)
+        else:
+            prior_years = [y for y in series if y < year and series[y] is not None]
+            value = series[max(prior_years)] if prior_years else None
+        df.at[idx, "nav_wan"] = value if value is not None else float("nan")
+    return df
+
+
 def concession_irr(
     price: float,
     shares: float,

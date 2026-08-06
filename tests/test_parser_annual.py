@@ -140,6 +140,18 @@ NAV_FIXTURE_TEXT = (FIXTURES_DIR / "annual_180201_2022_nav.txt").read_text(
     encoding="utf-8"
 )
 
+NAV_2023_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_180201_2023_nav.txt"
+).read_text(encoding="utf-8")
+
+NAV_2024_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_180201_2024_nav.txt"
+).read_text(encoding="utf-8")
+
+NAV_2025_FIXTURE_TEXT = (
+    FIXTURES_DIR / "annual_180201_2025_nav.txt"
+).read_text(encoding="utf-8")
+
 EMPTY_RESULT = {}
 
 ANNUAL_DIR = Path(__file__).resolve().parents[1] / "data" / "_cache" / "annual"
@@ -735,6 +747,33 @@ def test_extract_nav_fields_linebreak_thousands():
     result = parser_annual._extract_nav_fields(text)
 
     assert result["nav_wan"] == 860066.41
+
+
+def test_extract_nav_fields_2023_split_label_and_three_years():
+    """2023 年报 3.1 节：label「期末基金\n净资产」跨行拆分 + 三列值
+    （2023/2022/2021）→ 取首个（报告年）→ nav_wan=817472.93。"""
+    result = parser_annual._extract_nav_fields(NAV_2023_FIXTURE_TEXT)
+
+    assert result["nav_unit_price"] == 11.6782
+    assert result["nav_wan"] == 817472.93
+
+
+def test_extract_nav_fields_2024_split_label_and_three_years():
+    """2024 年报 3.1/3.2 节：label「期末基金净\n资产」「期末基金份额\n净值」
+    跨行拆分 + 三列值（2024/2023/2022）→ 取报告年值。"""
+    result = parser_annual._extract_nav_fields(NAV_2024_FIXTURE_TEXT)
+
+    assert result["nav_unit_price"] == 10.4979
+    assert result["nav_wan"] == 734851.28
+
+
+def test_extract_nav_fields_2025_immovable_property_label():
+    """2025 年报 3.1/3.2 节：label 更名「期末不动产\n基金净资产」「期末不动产基\n
+    金份额净值」+ 三列值（2025/2024/2023）→ 取报告年值。"""
+    result = parser_annual._extract_nav_fields(NAV_2025_FIXTURE_TEXT)
+
+    assert result["nav_unit_price"] == 10.0063
+    assert result["nav_wan"] == 700438.43
 
 
 def test_parse_annual_completion_nav_fixture(monkeypatch):

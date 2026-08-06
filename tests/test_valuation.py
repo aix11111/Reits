@@ -16,6 +16,7 @@ import pandas as pd
 import pytest
 
 from src.valuation import (
+    backfill_nav,
     concession_irr,
     distribution_yield,
     nav_premium,
@@ -258,3 +259,125 @@ def test_concession_irr_nan_or_none_inputs_do_not_crash():
     assert concession_irr(10, None, 10000, 10) is None
     assert concession_irr(10, 1e8, None, 10) is None
     assert concession_irr(10, 1e8, 10000, None) is None
+
+
+# ---------------------------------------------------------------------------
+# backfill_nav（年报年末净资产回填季度 NAV 列）
+# ---------------------------------------------------------------------------
+
+
+def _nav_df(rows):
+    return pd.DataFrame(rows, columns=["code", "period", "nav_wan"])
+
+
+def test_backfill_nav_q4_uses_same_year_annual():
+    """报告期 Q4 行填当年年报年末值（2025Q4 → 2025 年报 nav_wan）。"""
+    df = _nav_df(
+        [
+            ["180201", "2025Q4", None],
+            ["180201", "2026Q1", None],
+        ]
+    )
+    annual = {"180201": {2025: 700438.43, 2024: 734851.28}}
+
+    result = backfill_nav(df, annual)
+
+    assert result.loc[0, "nav_wan"] == pytest.approx(700438.43)
+
+
+def test_backfill_nav_q1_to_q3_use_prior_year():
+    """Q1-Q3 行前向填充：沿用最近可得年报值（上年年报值）。"""
+    df = _nav_df(
+        [
+            ["180201", "2025Q1", None],
+            ["180201", "2025Q2", None],
+            ["180201", "2025Q3", None],
+        ]
+    )
+    annual = {"180201": {2025: 700438.43, 2024: 734851.28, 2023: 817472.93}}
+
+    result = backfill_nav(df, annual)
+
+    assert result["nav_wan"].tolist() == pytest.approx([734851.28] * 3)
+
+
+def test_backfill_nav_ffill_falls_back_to_earliest_available():
+    """Q1-Q3 无上年年报时回退到最近可得更早年份（2024 缺失 → 2023 值）。"""
+    df = _nav_df([["180201", "2025Q2", None]])
+    annual = {"180201": {2023: 817472.93}}
+
+    result = backfill_nav(df, annual)
+
+    assert result.loc[0, "nav_wan"] == pytest.approx(817472.93)
+
+
+def test_backfill_nav_no_annual_data_keeps_nan():
+    """无任何年报数据的基金/期间保持 NaN（508020 无年报）。"""
+    df = _nav_df(
+        [
+            ["508020", "2026Q1", None],
+            ["508020", "2026Q4", None],
+        ]
+    )
+
+    result = backfill_nav(df, {"180201": {2025: 700438.43}})
+
+    assert result["nav_wan"].isna().all()
+
+
+def test_backfill_nav_q4_missing_same_year_annual_is_nan():
+    """Q4 当年无年报值 → NaN（不回退到上年值）。"""
+    df = _nav_df([["180201", "2025Q4", None]])
+    annual = {"180201": {2024: 734851.28}}
+
+    result = backfill_nav(df, annual)
+
+    assert pd.isna(result.loc[0, "nav_wan"])
+
+
+def test_backfill_nav_recomputes_existing_values():
+    """既有值行以年报年末值为准重算（覆盖期初口径值）。"""
+    df = _nav_df([["180201", "2025Q4", 999999.0]])
+    annual = {"180201": {2025: 700438.43}}
+
+    result = backfill_nav(df, annual)
+
+    assert result.loc[0, "nav_wan"] == pytest.approx(700438.43)
+
+
+def test_backfill_nav_does_not_mutate_input():
+    df = _nav_df([["180201", "2025Q4", None]])
+    annual = {"180201": {2025: 700438.43}}
+
+    backfill_nav(df, annual)
+
+    assert pd.isna(df.loc[0, "nav_wan"])
+
+
+def test_backfill_nav_empty_and_none_annual_values():
+    """空 annual_nav / 序列值全 None → 结果 NaN。"""
+    df = _nav_df(
+        [
+            ["180201", "2025Q4", None],
+            ["180202", "2026Q1", None],
+        ]
+    )
+    annual = {"180201": {2025: None, 2024: None}, "180202": {}}
+
+    result = backfill_nav(df, annual)
+
+    assert result["nav_wan"].isna().all()
+def test_backfill_nav_empty_df_returns_empty():
+    result = backfill_nav(_nav_df([]), {})
+
+    assert result.empty
+
+
+def test_backfill_nav_ffill_skips_none_prior_year():
+    """最近一年年报值 None（未披露）时 ffill 回退到更早有值年份。"""
+    df = _nav_df([["180201", "2025Q2", None]])
+    annual = {"180201": {2024: None, 2023: 817472.93}}
+
+    result = backfill_nav(df, annual)
+
+    assert result.loc[0, "nav_wan"] == pytest.approx(817472.93)

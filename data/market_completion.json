@@ -31,6 +31,16 @@
    "nav_wan": 186182.31
   },
   {
+   "code": "180801",
+   "name": "中航首钢绿能REIT",
+   "year": 2021,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 11.9403,
+   "nav_wan": 119403.4
+  },
+  {
    "code": "508000",
    "name": "华安张江产业园REIT",
    "year": 2021,
@@ -49,6 +59,16 @@
    "completion_pct": 106.47,
    "nav_unit_price": 8.3498,
    "nav_wan": 417491.28
+  },
+  {
+   "code": "508006",
+   "name": "富国首创水务REIT",
+   "year": 2021,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.772,
+   "nav_wan": 188599.51
   },
   {
    "code": "508027",
@@ -141,6 +161,16 @@
    "nav_wan": 125519.91
   },
   {
+   "code": "180801",
+   "name": "中航首钢绿能REIT",
+   "year": 2022,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 11.2531,
+   "nav_wan": 112531.29
+  },
+  {
    "code": "508000",
    "name": "华安张江产业园REIT",
    "year": 2022,
@@ -181,6 +211,26 @@
    "nav_wan": 478747.48
   },
   {
+   "code": "508018",
+   "name": "华夏中国交建REIT",
+   "year": 2022,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 9.2751,
+   "nav_wan": 927505.37
+  },
+  {
+   "code": "508021",
+   "name": "国泰海通临港创新产业园REIT",
+   "year": 2022,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 4.1813,
+   "nav_wan": 83626.86
+  },
+  {
    "code": "508027",
    "name": "东吴苏园产业REIT",
    "year": 2022,
@@ -219,6 +269,16 @@
    "completion_pct": 106.72,
    "nav_unit_price": 2.5364,
    "nav_wan": 126819.57
+  },
+  {
+   "code": "508088",
+   "name": "国泰海通东久新经济REIT",
+   "year": 2022,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.0718,
+   "nav_wan": 153587.9
   },
   {
    "code": "508099",
@@ -268,7 +328,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 11.6782,
-   "nav_wan": null
+   "nav_wan": 817472.93
   },
   {
    "code": "180202",
@@ -287,8 +347,8 @@
    "predicted_wan": 9810.853362,
    "actual_wan": 9718.20276,
    "completion_pct": 106,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 2.2931,
+   "nav_wan": 218678.51
   },
   {
    "code": "180401",
@@ -328,7 +388,7 @@
    "actual_wan": 9709.641631999999,
    "completion_pct": 77.78,
    "nav_unit_price": 2.978,
-   "nav_wan": null
+   "nav_wan": 285983.76
   },
   {
    "code": "508001",
@@ -339,6 +399,16 @@
    "completion_pct": null,
    "nav_unit_price": 6.8779,
    "nav_wan": 343894.6
+  },
+  {
+   "code": "508006",
+   "name": "富国首创水务REIT",
+   "year": 2023,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.1834,
+   "nav_wan": 159168.76
   },
   {
    "code": "508007",
@@ -371,6 +441,26 @@
    "nav_wan": 972712.38
   },
   {
+   "code": "508018",
+   "name": "华夏中国交建REIT",
+   "year": 2023,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 9.0603,
+   "nav_wan": 906030.32
+  },
+  {
+   "code": "508019",
+   "name": "中金湖北科投光谷REIT",
+   "year": 2023,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.6411,
+   "nav_wan": 158464.14
+  },
+  {
    "code": "508021",
    "name": "国泰海通临港创新产业园REIT",
    "year": 2023,
@@ -389,6 +479,16 @@
    "completion_pct": null,
    "nav_unit_price": 3.7971,
    "nav_wan": 341736.83
+  },
+  {
+   "code": "508028",
+   "name": "中信建投国家电投新能源REIT",
+   "year": 2023,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 9.4069,
+   "nav_wan": 752552.51
   },
   {
    "code": "508056",
@@ -478,7 +578,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.641,
-   "nav_wan": null
+   "nav_wan": 237692.85
   },
   {
    "code": "180101",
@@ -511,6 +611,16 @@
    "nav_wan": 132273.52
   },
   {
+   "code": "180105",
+   "name": "易方达广开产园REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.5743,
+   "nav_wan": 205947.31
+  },
+  {
    "code": "180201",
    "name": "平安广州广河REIT",
    "year": 2024,
@@ -518,7 +628,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 10.4979,
-   "nav_wan": null
+   "nav_wan": 734851.28
   },
   {
    "code": "180202",
@@ -548,7 +658,7 @@
    "actual_wan": 9462.742448,
    "completion_pct": 103,
    "nav_unit_price": 2.1883,
-   "nav_wan": null
+   "nav_wan": 208678.75
   },
   {
    "code": "180302",
@@ -578,7 +688,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 5.3503,
-   "nav_wan": null
+   "nav_wan": 321017.85
   },
   {
    "code": "180501",
@@ -588,7 +698,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.3936,
-   "nav_wan": null
+   "nav_wan": 119679.32
   },
   {
    "code": "180502",
@@ -658,7 +768,7 @@
    "actual_wan": 12002.534126999999,
    "completion_pct": 94.65,
    "nav_unit_price": 2.8069,
-   "nav_wan": null
+   "nav_wan": 269558.11
   },
   {
    "code": "508001",
@@ -691,6 +801,16 @@
    "nav_wan": 161598.28
   },
   {
+   "code": "508005",
+   "name": "华夏首创奥莱REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.4844,
+   "nav_wan": 198754.69
+  },
+  {
    "code": "508006",
    "name": "富国首创水务REIT",
    "year": 2024,
@@ -701,6 +821,16 @@
    "nav_wan": 149264.41
   },
   {
+   "code": "508007",
+   "name": "中金山东高速REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 6.4355,
+   "nav_wan": 257418.97
+  },
+  {
    "code": "508008",
    "name": "国金中国铁建REIT",
    "year": 2024,
@@ -708,7 +838,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 7.8723,
-   "nav_wan": null
+   "nav_wan": 393615.94
   },
   {
    "code": "508009",
@@ -741,6 +871,16 @@
    "nav_wan": 123822.29
   },
   {
+   "code": "508018",
+   "name": "华夏中国交建REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 7.5997,
+   "nav_wan": 759969.65
+  },
+  {
    "code": "508019",
    "name": "中金湖北科投光谷REIT",
    "year": 2024,
@@ -751,6 +891,16 @@
    "nav_wan": 144830.15
   },
   {
+   "code": "508021",
+   "name": "国泰海通临港创新产业园REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 4.1527,
+   "nav_wan": 83053.38
+  },
+  {
    "code": "508022",
    "name": "博时津开产园REIT",
    "year": 2024,
@@ -759,6 +909,16 @@
    "completion_pct": 107,
    "nav_unit_price": 2.4262,
    "nav_wan": 121311.94
+  },
+  {
+   "code": "508026",
+   "name": "嘉实中国电建清洁能源REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.5561,
+   "nav_wan": 102245.54
   },
   {
    "code": "508027",
@@ -791,13 +951,23 @@
    "nav_wan": 306673.49
   },
   {
+   "code": "508033",
+   "name": "易方达深高速REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 6.2505,
+   "nav_wan": 187514.29
+  },
+  {
    "code": "508056",
    "name": "中金普洛斯REIT",
    "year": 2024,
    "predicted_wan": 35554.547037000004,
    "actual_wan": 35845.607238,
    "completion_pct": 100.82,
-   "nav_unit_price": null,
+   "nav_unit_price": 3.4197,
    "nav_wan": 662822.87
   },
   {
@@ -861,6 +1031,16 @@
    "nav_wan": 534166.17
   },
   {
+   "code": "508088",
+   "name": "国泰海通东久新经济REIT",
+   "year": 2024,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.0458,
+   "nav_wan": 152287.6
+  },
+  {
    "code": "508089",
    "name": "华夏特变电工新能源REIT",
    "year": 2024,
@@ -898,7 +1078,37 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.2047,
-   "nav_wan": null
+   "nav_wan": 198425.2
+  },
+  {
+   "code": "180101",
+   "name": "博时蛇口产园REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.1235,
+   "nav_wan": 301780.04
+  },
+  {
+   "code": "180102",
+   "name": "华夏合肥高新REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.0176,
+   "nav_wan": 141229.56
+  },
+  {
+   "code": "180103",
+   "name": "华夏和达高科REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.4282,
+   "nav_wan": 121411.39
   },
   {
    "code": "180105",
@@ -908,7 +1118,7 @@
    "actual_wan": 7965.631018,
    "completion_pct": 75.89,
    "nav_unit_price": 2.3673,
-   "nav_wan": null
+   "nav_wan": 189386.75
   },
   {
    "code": "180106",
@@ -918,7 +1128,27 @@
    "actual_wan": 6547.013785,
    "completion_pct": 94.93,
    "nav_unit_price": 2.9565,
-   "nav_wan": null
+   "nav_wan": 118258.21
+  },
+  {
+   "code": "180201",
+   "name": "平安广州广河REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 10.0063,
+   "nav_wan": 700438.43
+  },
+  {
+   "code": "180202",
+   "name": "华夏越秀高速REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 5.8195,
+   "nav_wan": 174584.72
   },
   {
    "code": "180203",
@@ -928,7 +1158,7 @@
    "actual_wan": 31833.5,
    "completion_pct": 100.23,
    "nav_unit_price": 6.1971,
-   "nav_wan": null
+   "nav_wan": 309856.31
   },
   {
    "code": "180301",
@@ -938,7 +1168,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.0835,
-   "nav_wan": null
+   "nav_wan": 198685.98
   },
   {
    "code": "180302",
@@ -948,7 +1178,7 @@
    "actual_wan": 7440.12,
    "completion_pct": 103.38,
    "nav_unit_price": 2.4098,
-   "nav_wan": null
+   "nav_wan": 144590.76
   },
   {
    "code": "180303",
@@ -958,7 +1188,7 @@
    "actual_wan": 5499.596567,
    "completion_pct": 100.0,
    "nav_unit_price": 3.8294,
-   "nav_wan": null
+   "nav_wan": 114881.33
   },
   {
    "code": "180305",
@@ -968,7 +1198,17 @@
    "actual_wan": 12395.66,
    "completion_pct": 107.75,
    "nav_unit_price": 3.2482,
-   "nav_wan": null
+   "nav_wan": 324821.37
+  },
+  {
+   "code": "180401",
+   "name": "鹏华深圳能源REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 5.0233,
+   "nav_wan": 301399.54
   },
   {
    "code": "180402",
@@ -977,8 +1217,8 @@
    "predicted_wan": 18161.02,
    "actual_wan": 19377.05,
    "completion_pct": 106.7,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 4.7187,
+   "nav_wan": 94373.42
   },
   {
    "code": "180501",
@@ -988,7 +1228,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.3433,
-   "nav_wan": null
+   "nav_wan": 117165.58
   },
   {
    "code": "180502",
@@ -998,7 +1238,7 @@
    "actual_wan": 5672.2,
    "completion_pct": 102.72,
    "nav_unit_price": 2.6233,
-   "nav_wan": null
+   "nav_wan": 131164.59
   },
   {
    "code": "180601",
@@ -1008,7 +1248,7 @@
    "actual_wan": 36506.35,
    "completion_pct": 100.05,
    "nav_unit_price": 6.3829,
-   "nav_wan": null
+   "nav_wan": 638288.66
   },
   {
    "code": "180602",
@@ -1018,7 +1258,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 3.04,
-   "nav_wan": null
+   "nav_wan": 304001.28
   },
   {
    "code": "180603",
@@ -1028,7 +1268,7 @@
    "actual_wan": 18213.95,
    "completion_pct": 102.92,
    "nav_unit_price": 3.1652,
-   "nav_wan": null
+   "nav_wan": 316524.53
   },
   {
    "code": "180605",
@@ -1038,7 +1278,7 @@
    "actual_wan": 11930.458628,
    "completion_pct": 128.69,
    "nav_unit_price": 2.9324,
-   "nav_wan": null
+   "nav_wan": 146621.83
   },
   {
    "code": "180606",
@@ -1048,7 +1288,7 @@
    "actual_wan": 4294.96,
    "completion_pct": 105.61,
    "nav_unit_price": 3.188,
-   "nav_wan": null
+   "nav_wan": 159398.33
   },
   {
    "code": "180607",
@@ -1058,7 +1298,7 @@
    "actual_wan": 1300.18,
    "completion_pct": 102.46,
    "nav_unit_price": 5.2933,
-   "nav_wan": null
+   "nav_wan": 158798.39
   },
   {
    "code": "180701",
@@ -1067,8 +1307,18 @@
    "predicted_wan": 11580.48,
    "actual_wan": 12321.38,
    "completion_pct": 106.4,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 2.7537,
+   "nav_wan": 165224.24
+  },
+  {
+   "code": "180801",
+   "name": "中航首钢绿能REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 8.9534,
+   "nav_wan": 89534.46
   },
   {
    "code": "180901",
@@ -1078,7 +1328,7 @@
    "actual_wan": 21549.81,
    "completion_pct": 164.71,
    "nav_unit_price": 4.5316,
-   "nav_wan": null
+   "nav_wan": 453163.61
   },
   {
    "code": "508000",
@@ -1088,7 +1338,17 @@
    "actual_wan": 11268.57,
    "completion_pct": null,
    "nav_unit_price": 2.6374,
-   "nav_wan": null
+   "nav_wan": 253279.1
+  },
+  {
+   "code": "508001",
+   "name": "浙商沪杭甬REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 4.7631,
+   "nav_wan": 238154.3
   },
   {
    "code": "508002",
@@ -1098,7 +1358,7 @@
    "actual_wan": 14596.22,
    "completion_pct": 100.64,
    "nav_unit_price": 2.1983,
-   "nav_wan": null
+   "nav_wan": 219834.94
   },
   {
    "code": "508003",
@@ -1108,7 +1368,7 @@
    "actual_wan": 8084.47,
    "completion_pct": 103.14,
    "nav_unit_price": 3.1143,
-   "nav_wan": null
+   "nav_wan": 155712.5
   },
   {
    "code": "508005",
@@ -1118,7 +1378,17 @@
    "actual_wan": 12864.86,
    "completion_pct": 111.58,
    "nav_unit_price": 2.4565,
-   "nav_wan": null
+   "nav_wan": 196518.26
+  },
+  {
+   "code": "508006",
+   "name": "富国首创水务REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.808,
+   "nav_wan": 140400.01
   },
   {
    "code": "508007",
@@ -1128,7 +1398,17 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 6.1266,
-   "nav_wan": null
+   "nav_wan": 245062.99
+  },
+  {
+   "code": "508008",
+   "name": "国金中国铁建REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 7.0871,
+   "nav_wan": 354353.11
   },
   {
    "code": "508009",
@@ -1138,7 +1418,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 7.2587,
-   "nav_wan": null
+   "nav_wan": 725866.39
   },
   {
    "code": "508010",
@@ -1148,7 +1428,7 @@
    "actual_wan": 5478.81,
    "completion_pct": 100.26,
    "nav_unit_price": 2.5496,
-   "nav_wan": null
+   "nav_wan": 101984.75
   },
   {
    "code": "508011",
@@ -1158,7 +1438,7 @@
    "actual_wan": 6978.73,
    "completion_pct": 100.27,
    "nav_unit_price": 2.3089,
-   "nav_wan": null
+   "nav_wan": 92356.18
   },
   {
    "code": "508012",
@@ -1168,7 +1448,7 @@
    "actual_wan": 4553.3,
    "completion_pct": 100.01,
    "nav_unit_price": 3.0816,
-   "nav_wan": null
+   "nav_wan": 92446.76
   },
   {
    "code": "508015",
@@ -1178,7 +1458,7 @@
    "actual_wan": 14323.230835,
    "completion_pct": 101.72,
    "nav_unit_price": 5.6678,
-   "nav_wan": null
+   "nav_wan": 113355.98
   },
   {
    "code": "508016",
@@ -1188,7 +1468,17 @@
    "actual_wan": 5349.72,
    "completion_pct": 106.43,
    "nav_unit_price": 3.7721,
-   "nav_wan": null
+   "nav_wan": 188606.4
+  },
+  {
+   "code": "508018",
+   "name": "华夏中国交建REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 7.4036,
+   "nav_wan": 740355.87
   },
   {
    "code": "508019",
@@ -1198,7 +1488,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.269,
-   "nav_wan": null
+   "nav_wan": 136142.84
   },
   {
    "code": "508021",
@@ -1207,8 +1497,8 @@
    "predicted_wan": 8252.45,
    "actual_wan": 6733.05,
    "completion_pct": 81.59,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 4.2101,
+   "nav_wan": 247883.66
   },
   {
    "code": "508022",
@@ -1218,7 +1508,37 @@
    "actual_wan": 8052.61,
    "completion_pct": 124.08,
    "nav_unit_price": 2.3591,
-   "nav_wan": null
+   "nav_wan": 117955.12
+  },
+  {
+   "code": "508026",
+   "name": "嘉实中国电建清洁能源REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 2.3024,
+   "nav_wan": 92097.19
+  },
+  {
+   "code": "508027",
+   "name": "东吴苏园产业REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.287,
+   "nav_wan": 295832.76
+  },
+  {
+   "code": "508028",
+   "name": "中信建投国家电投新能源REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 8.5982,
+   "nav_wan": 687856.9
   },
   {
    "code": "508029",
@@ -1228,7 +1548,17 @@
    "actual_wan": 6605.181237,
    "completion_pct": 116.47,
    "nav_unit_price": 3.6438,
-   "nav_wan": null
+   "nav_wan": 109313.43
+  },
+  {
+   "code": "508031",
+   "name": "国泰海通城投宽庭保租房REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.0206,
+   "nav_wan": 302055.19
   },
   {
    "code": "508033",
@@ -1238,7 +1568,17 @@
    "actual_wan": 22674.741577,
    "completion_pct": null,
    "nav_unit_price": 5.6571,
-   "nav_wan": null
+   "nav_wan": 169713.76
+  },
+  {
+   "code": "508036",
+   "name": "平安宁波交投REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 7.3076,
+   "nav_wan": 730759.41
   },
   {
    "code": "508039",
@@ -1248,7 +1588,7 @@
    "actual_wan": 25471.4,
    "completion_pct": 100.02,
    "nav_unit_price": 3.7209,
-   "nav_wan": null
+   "nav_wan": 372086.97
   },
   {
    "code": "508048",
@@ -1258,7 +1598,7 @@
    "actual_wan": 5929.71,
    "completion_pct": 99.29,
    "nav_unit_price": 2.5817,
-   "nav_wan": null
+   "nav_wan": 103269.27
   },
   {
    "code": "508055",
@@ -1268,7 +1608,7 @@
    "actual_wan": 5099.57,
    "completion_pct": 114.94,
    "nav_unit_price": 2.6811,
-   "nav_wan": null
+   "nav_wan": 134053.1
   },
   {
    "code": "508056",
@@ -1278,7 +1618,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 3.2017,
-   "nav_wan": null
+   "nav_wan": 620578.56
   },
   {
    "code": "508058",
@@ -1288,7 +1628,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.4594,
-   "nav_wan": null
+   "nav_wan": 122969.49
   },
   {
    "code": "508060",
@@ -1298,7 +1638,7 @@
    "actual_wan": 9205.85,
    "completion_pct": 165.21,
    "nav_unit_price": 3.0291,
-   "nav_wan": null
+   "nav_wan": 242328.08
   },
   {
    "code": "508066",
@@ -1308,7 +1648,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 4.0718,
-   "nav_wan": null
+   "nav_wan": 162873.76
   },
   {
    "code": "508068",
@@ -1318,7 +1658,7 @@
    "actual_wan": 7482.39,
    "completion_pct": 105.86,
    "nav_unit_price": 2.9927,
-   "nav_wan": null
+   "nav_wan": 216737.92
   },
   {
    "code": "508069",
@@ -1328,7 +1668,7 @@
    "actual_wan": 29865.44,
    "completion_pct": 100.34,
    "nav_unit_price": 4.897,
-   "nav_wan": null
+   "nav_wan": 244847.87
   },
   {
    "code": "508077",
@@ -1338,7 +1678,7 @@
    "actual_wan": 5055.99,
    "completion_pct": 102.15,
    "nav_unit_price": 2.3431,
-   "nav_wan": null
+   "nav_wan": 222078.25
   },
   {
    "code": "508078",
@@ -1348,7 +1688,7 @@
    "actual_wan": 12412.05,
    "completion_pct": 109.11,
    "nav_unit_price": 2.4242,
-   "nav_wan": null
+   "nav_wan": 193938.94
   },
   {
    "code": "508080",
@@ -1358,7 +1698,7 @@
    "actual_wan": 3604.55,
    "completion_pct": 105.96,
    "nav_unit_price": 2.7325,
-   "nav_wan": null
+   "nav_wan": 109300.24
   },
   {
    "code": "508082",
@@ -1368,7 +1708,7 @@
    "actual_wan": 5702.36,
    "completion_pct": 108.99,
    "nav_unit_price": 3.4827,
-   "nav_wan": null
+   "nav_wan": 348271.57
   },
   {
    "code": "508084",
@@ -1378,7 +1718,7 @@
    "actual_wan": 5536.28,
    "completion_pct": 106.1,
    "nav_unit_price": 2.8542,
-   "nav_wan": null
+   "nav_wan": 114169.53
   },
   {
    "code": "508085",
@@ -1388,7 +1728,7 @@
    "actual_wan": 3791.281962,
    "completion_pct": 100.83,
    "nav_unit_price": 2.6491,
-   "nav_wan": null
+   "nav_wan": 132453.69
   },
   {
    "code": "508086",
@@ -1397,8 +1737,8 @@
    "predicted_wan": 56949.0,
    "actual_wan": 47350.16,
    "completion_pct": 83.14,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 4.8642,
+   "nav_wan": 486418.54
   },
   {
    "code": "508087",
@@ -1408,7 +1748,7 @@
    "actual_wan": 12842.36,
    "completion_pct": 106.38,
    "nav_unit_price": 7.2564,
-   "nav_wan": null
+   "nav_wan": 145128.62
   },
   {
    "code": "508088",
@@ -1417,8 +1757,8 @@
    "predicted_wan": 4334.05,
    "actual_wan": 7540.13,
    "completion_pct": 173.97,
-   "nav_unit_price": null,
-   "nav_wan": null
+   "nav_unit_price": 2.9315,
+   "nav_wan": 181536.59
   },
   {
    "code": "508089",
@@ -1428,7 +1768,7 @@
    "actual_wan": 11945.33,
    "completion_pct": 107.54,
    "nav_unit_price": 3.8855,
-   "nav_wan": null
+   "nav_wan": 116566.34
   },
   {
    "code": "508090",
@@ -1438,7 +1778,7 @@
    "actual_wan": 33727321.34,
    "completion_pct": 103.8,
    "nav_unit_price": 3.0943,
-   "nav_wan": null
+   "nav_wan": 123772.63
   },
   {
    "code": "508091",
@@ -1448,7 +1788,7 @@
    "actual_wan": 3044.17,
    "completion_pct": 103.15,
    "nav_unit_price": 5.7473,
-   "nav_wan": null
+   "nav_wan": 229890.71
   },
   {
    "code": "508092",
@@ -1458,7 +1798,7 @@
    "actual_wan": 7434.56,
    "completion_pct": 100.14,
    "nav_unit_price": 2.8023,
-   "nav_wan": null
+   "nav_wan": 112090.09
   },
   {
    "code": "508096",
@@ -1468,7 +1808,7 @@
    "actual_wan": 32336.1,
    "completion_pct": 98.18,
    "nav_unit_price": 8.8388,
-   "nav_wan": null
+   "nav_wan": 551124.85
   },
   {
    "code": "508097",
@@ -1478,7 +1818,17 @@
    "actual_wan": 5297.61029,
    "completion_pct": 100.0,
    "nav_unit_price": 2.5185,
-   "nav_wan": null
+   "nav_wan": 100739.11
+  },
+  {
+   "code": "508098",
+   "name": "嘉实京东仓储基础设施REIT",
+   "year": 2025,
+   "predicted_wan": null,
+   "actual_wan": null,
+   "completion_pct": null,
+   "nav_unit_price": 3.1377,
+   "nav_wan": 156883.8
   },
   {
    "code": "508099",
@@ -1488,7 +1838,7 @@
    "actual_wan": null,
    "completion_pct": null,
    "nav_unit_price": 2.0849,
-   "nav_wan": null
+   "nav_wan": 187643.49
   }
  ]
 }

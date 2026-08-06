@@ -56,6 +56,24 @@ SECTION_LIMIT = 800
 NAV_PRICE_LABEL = "期末基金份额净值"
 NAV_ASSET_LABEL = "期末基金净资产"
 
+# 2025 年报 3.1/3.2 节 label 更名「不动产基金」：期末不动产基金份额净值 /
+# 期末不动产基金净资产；且 label 在抽取文本中可跨行（「期末基金\n净资产」、
+# 「期末不动产基\n金份额净值」）→ 容空白匹配 + 双变体。
+NAV_PRICE_LABELS = (NAV_PRICE_LABEL, "期末不动产基金份额净值")
+NAV_ASSET_LABELS = (NAV_ASSET_LABEL, "期末不动产基金净资产")
+
+
+def _nav_label_pattern(labels):
+    """label 集合 → 容空白正则（任意两字符间可含空白/换行）。
+
+    如「期末基金净资产」→ r"期\\s*末\\s*基\\s*金\\s*净\\s*资\\s*产"，跨行 label
+    与单行 label 均可命中；labels 为单个字符串或可迭代。
+    """
+    if isinstance(labels, str):
+        labels = (labels,)
+    alternatives = [r"\s*".join(re.escape(ch) for ch in label) for label in labels]
+    return re.compile("|".join(alternatives))
+
 SHARES_LABEL = "报告期末基金份额总额"
 SHARES_LABEL_PAT = re.compile(r"报告\s*期\s*末\s*基\s*金\s*份\s*额\s*总\s*额")
 
@@ -201,27 +219,28 @@ def _to_wan(raw: str, unit: str) -> float:
 _NUM_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 
-def _extract_nav_value(text: str, label: str) -> float | None:
+def _extract_nav_value(text: str, labels) -> float | None:
     """返回 label 后的第一个数值；早期年报无净值披露时返回 None。
 
-    按行取 label 后的首个数字：完整数值行含小数点即停止；值跨行（数字被
-    换行截断，如 508001「3,438,945,95\\n5.16」）时上一行无小数点、续接下一行
-    数字直到出现小数点，绝不与相邻年份数值合并。千分位逗号由 _to_number
-    去除。
+    按行取 label 后的首个数字：完整数值行含小数点即停止；值跨行（数字被换行
+    截断，如 508001「3,438,945,95\\n5.16」）时上一行无小数点、续接下一行数字
+    直到出现小数点，绝不与相邻年份数值合并。千分位逗号由 _to_number 去除。
+    label 用 _nav_label_pattern 容空白匹配，兼容跨行 label 与 2025「不动产
+    基金」更名变体。
     """
-    idx = text.find(label)
-    if idx == -1:
+    match = _nav_label_pattern(labels).search(text)
+    if match is None:
         return None
-    tail = text[idx + len(label) : idx + len(label) + 200]
+    tail = text[match.end() : match.end() + 200]
     parts = []
     for line in tail.splitlines():
         line = line.strip()
         if not line:
             continue
-        match = _NUM_RE.match(line)
-        if match is None:
+        num_match = _NUM_RE.match(line)
+        if num_match is None:
             break
-        parts.append(match.group(0))
+        parts.append(num_match.group(0))
         if "." in parts[-1]:
             break
     if not parts:
@@ -232,11 +251,11 @@ def _extract_nav_value(text: str, label: str) -> float | None:
 def _extract_nav_price(text: str) -> float | None:
     """提取期末单位净值（元/份）。
 
-    优先「期末基金份额净值」表格标签（值可跨行）；缺失时回退到
-    「基金份额净值人民币{X} 元」叙述格式（508000 2023+）与无「期末」
-    前缀的表格格式。
+    优先「期末基金份额净值」/「期末不动产基金份额净值」（2025 更名）表格标签
+    （值可跨行、label 可跨行）；缺失时回退到「基金份额净值人民币{X} 元」叙述
+    格式（508000 2023+）与无「期末」前缀的表格格式。
     """
-    value = _extract_nav_value(text, NAV_PRICE_LABEL)
+    value = _extract_nav_value(text, NAV_PRICE_LABELS)
     if value is not None:
         return value
     narrative = NAV_NARRATIVE_RE.search(text)
@@ -248,11 +267,11 @@ def _extract_nav_price(text: str) -> float | None:
 def _extract_nav_fields(text: str) -> dict:
     """从全文提取净值字段：nav_unit_price（元/份）、nav_wan（万元）。
 
-    早期年报无净值披露 → 字段为 None 不抛错。nav_wan 为「期末基金净资产」元值
-    除以 10000 并保留两位。
+    早期年报无净值披露 → 字段为 None 不抛错。nav_wan 为「期末基金净资产」/
+    「期末不动产基金净资产」（2025 更名）元值除以 10000 并保留两位。
     """
     nav_unit_price = _extract_nav_price(text)
-    nav_wan = _extract_nav_value(text, NAV_ASSET_LABEL)
+    nav_wan = _extract_nav_value(text, NAV_ASSET_LABELS)
     if nav_wan is not None:
         nav_wan = round(nav_wan / 10000.0, 2)
     return {"nav_unit_price": nav_unit_price, "nav_wan": nav_wan}

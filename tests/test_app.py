@@ -190,6 +190,9 @@ def test_valuation_tab_renders_ranking_premium_and_risk(no_network):
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
     assert not at.exception
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    asset_box.select("全部").run()
+    assert not at.exception
     val_tab = at.tabs[3]
 
     frames = [df.value for df in val_tab.dataframe]
@@ -420,6 +423,9 @@ def test_valuation_tab_full_market_rank_all_types(no_network, monkeypatch):
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
     assert not at.exception
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    asset_box.select("全部").run()
+    assert not at.exception
     val_tab = at.tabs[3]
     frames = [df.value for df in val_tab.dataframe]
     rank = next(f for f in frames if "分派率收益率" in f.columns)
@@ -457,6 +463,9 @@ def test_valuation_tab_property_irr_not_applicable(no_network, monkeypatch):
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
+    assert not at.exception
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    asset_box.select("全部").run()
     assert not at.exception
     val_tab = at.tabs[3]
     frames = [df.value for df in val_tab.dataframe]
@@ -581,6 +590,9 @@ def test_valuation_tab_energy_irr_computed_from_ops_until_year(
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
 
+    assert not at.exception
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
     assert not at.exception
     val_tab = at.tabs[3]
     frames = [df.value for df in val_tab.dataframe]
@@ -788,6 +800,70 @@ def test_operations_tab_env_kpi_renders_capacity_and_price(no_network, monkeypat
 
 
 # ---------------------------------------------------------------------------
+# Phase 5.1（M5.1）：全市场联动导航（资产类型 → 基金选择器 / 经营数据 / 状态墙）
+# ---------------------------------------------------------------------------
+
+
+def test_selector_default_highway_and_energy_linked(no_network, monkeypatch):
+    """联动：默认「高速」→ 选择器 14 只静态高速；选「能源」→ options 含
+    能源基金 180401、不含高速 180201。"""
+    import streamlit as st
+
+    _patch_market_data_with_energy(monkeypatch)
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+
+    assert not at.exception
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    assert asset_box.value == "高速"
+    fund_box = next(b for b in at.selectbox if b.label == "选择REIT")
+    assert len(fund_box.options) == 14
+
+    asset_box.select("能源").run()
+    assert not at.exception
+    fund_box = next(b for b in at.selectbox if b.label == "选择REIT")
+    options = [o.split(" ")[0] for o in fund_box.options]
+    assert "180401" in options
+    assert "180201" not in options
+
+
+def test_operations_tab_non_highway_no_quarterly_degrade(no_network, monkeypatch):
+    """经营数据 Tab：非高速基金无季度数据 → st.info「该资产类型暂无数据」。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    funds = pd.DataFrame(
+        {
+            "code": ["180402"],
+            "name": ["测试能源REIT"],
+            "asset_type": ["能源"],
+        }
+    )
+    empty_quarterly = pd.DataFrame(columns=["code", "period", "distributable_wan"])
+    monkeypatch.setattr(
+        dl, "load_market_funds", lambda path=None: funds, raising=False
+    )
+    monkeypatch.setattr(
+        dl, "load_market_quarterly", lambda path=None: empty_quarterly, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    asset_box = next(b for b in at.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
+    fund_box = next(b for b in at.selectbox if b.label == "选择REIT")
+    fund_box.select("180402").run()
+
+    assert not at.exception
+    infos = [i.value for i in at.tabs[0].info]
+    assert any("该资产类型暂无数据" in v for v in infos)
+
+
+# ---------------------------------------------------------------------------
 # 高速 KPI 缺数字修复：total_cost_wan 解析 + NAV 改年报净值
 # ---------------------------------------------------------------------------
 
@@ -942,3 +1018,151 @@ def test_operations_tab_kpi_yield_dash_when_no_nav(no_network, monkeypatch):
     cards = [m.value for m in at.tabs[0].markdown if "reit-kpi-card" in m.value]
     assert "年化可供分配收益率" in cards[0]
     assert f"{(16539.13 - 23043.99) / 16539.13:.1%}" in cards[0]
+
+
+# ---------------------------------------------------------------------------
+# Phase 7（M7）：资产类型联动基金选择器（全市场导航）
+# ---------------------------------------------------------------------------
+
+
+def _energy_fund_options(at):
+    """返回侧边栏「选择REIT」下拉框当前 options（格式化后的显示文本）。"""
+    return next(b for b in at.sidebar.selectbox if b.label == "选择REIT").options
+
+
+def test_fund_selector_links_to_asset_type_energy(no_network):
+    """资产类型选「能源」→ 基金选择器 options 变为能源基金列表（含 180401）；
+    高速基金 180201 不在 options 中。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    asset_box = next(b for b in at.sidebar.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
+    assert not at.exception
+
+    options = [o.split(" ")[0] for o in _energy_fund_options(at)]
+    assert "180401" in options
+    assert "508015" in options
+    assert "180201" not in options
+
+
+def test_operations_tab_non_highway_fund_renders_quarterly_no_monthly(no_network):
+    """选中非高速基金（能源 180401）→ 经营数据 Tab 渲染季度表、
+    不渲染月度区块/文案（无「月度」区块与月度空态提示、无「通行费收入」）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    asset_box = next(b for b in at.sidebar.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
+    assert not at.exception
+
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    fund_box.select("180401").run()
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    subheaders = [s.value for s in ops_tab.subheader]
+    assert "季度经营明细" in subheaders
+
+    infos = [i.value for i in ops_tab.info]
+    assert all("月度" not in v for v in infos)
+
+    marks = [m.value for m in ops_tab.markdown]
+    assert all("月度" not in m for m in marks)
+    assert all("通行费收入" not in m for m in marks)
+
+    frames = [df.value for df in ops_tab.dataframe]
+    assert any("报告期" in f.columns for f in frames)
+
+
+def test_fund_selector_honest_warning_when_market_funds_missing(no_network, monkeypatch):
+    """market_funds.json 缺失 → 选非高速类型出现 st.warning（含「全市场基金数据缺失」）、
+    选择器无可选项（不静默回退）；选「高速」无 warning、14 只照常。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(
+        dl,
+        "load_market_funds",
+        lambda path=None: pd.DataFrame(columns=["code", "name", "asset_type"]),
+        raising=False,
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    # 高速：无 warning、14 只高速照常
+    asset_box = next(b for b in at.sidebar.selectbox if b.label == "资产类型")
+    asset_box.select("高速").run()
+    assert not at.exception
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    assert len(fund_box.options) == 14
+    assert all("全市场基金数据缺失" not in w.value for w in at.sidebar.warning)
+
+    # 非高速类型：如实 warning + 选择器无可选项，不是静默回退
+    asset_box.select("能源").run()
+    assert not at.exception
+    warnings = [w.value for w in at.sidebar.warning]
+    assert any("全市场基金数据缺失" in v for v in warnings)
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    assert len(fund_box.options) == 0
+
+
+def test_non_highway_type_without_funds_shows_info(no_network, monkeypatch):
+    """market_funds 存在但该非高速类型无基金 → st.info「该资产类型暂无数据」、
+    选择器无可选项；不显示「全市场基金数据缺失」warning。"""
+    import pandas as pd
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    funds = pd.DataFrame(
+        {
+            "code": ["180201"],
+            "name": ["平安广州广河REIT"],
+            "asset_type": ["高速"],
+        }
+    )
+    monkeypatch.setattr(
+        dl, "load_market_funds", lambda path=None: funds, raising=False
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    asset_box = next(b for b in at.sidebar.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
+    assert not at.exception
+
+    infos = [i.value for i in at.sidebar.info]
+    assert any("该资产类型暂无数据" in v for v in infos)
+    assert all("全市场基金数据缺失" not in w.value for w in at.sidebar.warning)
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    assert len(fund_box.options) == 0
+
+
+def test_status_wall_follows_asset_type_energy(no_network):
+    """状态墙跟随资产类型：选「能源」→ 色点带渲染能源基金（含 180401）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    asset_box = next(b for b in at.sidebar.selectbox if b.label == "资产类型")
+    asset_box.select("能源").run()
+    assert not at.exception
+
+    wall = next(m.value for m in at.markdown if "reit-status-wall" in m.value)
+    assert "1804" in wall
+    assert "180201" not in wall

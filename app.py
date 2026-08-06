@@ -59,6 +59,17 @@ _QUARTERLY_COLUMNS = [
     ("nav_wan", "NAV"),
 ]
 
+# 全市场季度经营明细展示列（Phase 5 market_quarterly 数据；列有则显示）
+_MARKET_QUARTERLY_COLUMNS = [
+    ("period", "报告期"),
+    ("revenue_wan", "总收入"),
+    ("total_cost_wan", "总成本"),
+    ("net_profit_wan", "净利润"),
+    ("distributable_wan", "可供分配"),
+    ("ebitda_wan", "EBITDA"),
+    ("nav_wan", "NAV"),
+]
+
 # 分析规则页签：可供分配对标展示列
 _RULES_BENCHMARK_COLUMNS = [
     ("code", "基金代码"),
@@ -496,7 +507,8 @@ def _render_env_ops(env_df):
 
 
 def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
-                      energy_df=None, env_df=None, nav_wan=None):
+                      energy_df=None, env_df=None, nav_wan=None,
+                      fund_asset_type="高速", market_quarterly=None):
     """经营数据页签：最新指标 KPI、月度图表与季度明细表。
 
     选中基金有租赁类运营指标（data/market_ops_rental.json）时，在 KPI 区下方
@@ -507,28 +519,34 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
 
     nav_wan：该基金最新年报净值（万元），用于年化可供分配收益率
     （不再依赖季度 Sheet 的 nav_wan 列）；缺失基金该 KPI 显示「—」。
+
+    fund_asset_type：选中基金的资产类型（8 类）。高速基金保持现状（月度+
+    季度+KPI）；非高速基金在月度区块如实提示「该资产类型暂无月度披露」，
+    仅渲染季度数据表（Phase 5 market_quarterly 数据，列有则显示）；
+    该基金无季度数据时降级 st.info「该资产类型暂无数据」。
     """
     st.subheader(f"基金：{code} {name}")
 
-    metrics = latest_metrics(quarterly_df, code, nav_wan=nav_wan)
-    if metrics:
-        cards = "".join(
-            [
-                _kpi_card("最新季度", str(metrics["period"]), "报告期"),
-                _kpi_card("NOI利润率", _fmt_pct(metrics["noi_margin"]),
-                          "(营业总收入-营业成本)/营业总收入"),
-                _kpi_card("净利润率", _fmt_pct(metrics["net_margin"]), "净利润/营业总收入"),
-                _kpi_card("年化可供分配收益率", _fmt_pct(metrics["distributable_yield"]),
-                          "可供分配×4/NAV（年化，年报净值）"),
-            ]
-        )
-        st.markdown(
-            '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
-            'margin:8px 0 16px;">' + cards + "</div>",
-            unsafe_allow_html=True,
-        )
-    else:
-        st.warning("暂无季度数据，无法计算经营指标。")
+    if fund_asset_type == "高速":
+        metrics = latest_metrics(quarterly_df, code, nav_wan=nav_wan)
+        if metrics:
+            cards = "".join(
+                [
+                    _kpi_card("最新季度", str(metrics["period"]), "报告期"),
+                    _kpi_card("NOI利润率", _fmt_pct(metrics["noi_margin"]),
+                              "(营业总收入-营业成本)/营业总收入"),
+                    _kpi_card("净利润率", _fmt_pct(metrics["net_margin"]), "净利润/营业总收入"),
+                    _kpi_card("年化可供分配收益率", _fmt_pct(metrics["distributable_yield"]),
+                              "可供分配×4/NAV（年化，年报净值）"),
+                ]
+            )
+            st.markdown(
+                '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
+                'margin:8px 0 16px;">' + cards + "</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.warning("暂无季度数据，无法计算经营指标。")
 
     if rental_df is not None and not rental_df.empty:
         rental = rental_df[rental_df["code"] == code]
@@ -548,38 +566,62 @@ def render_operations(code, name, monthly_df, quarterly_df, rental_df=None,
             st.markdown("### 生态环保运营指标（处理量）")
             _render_env_ops(env)
 
-    monthly = monthly_df[monthly_df["code"] == code].sort_values("period")
-    if not monthly.empty:
-        st.plotly_chart(
-            line_chart(
-                monthly, "period", "toll_revenue_wan",
-                "通行费收入（万元）", "通行费收入（万元）",
-            ),
-            width="stretch",
-        )
-        st.plotly_chart(
-            bar_chart(
-                monthly, "period", "daily_traffic",
-                "日均自然车流量（辆/日）", "日均自然车流量（辆/日）",
-            ),
-            width="stretch",
-        )
-    else:
-        st.info("暂无月度数据。")
+    if fund_asset_type == "高速":
+        monthly = monthly_df[monthly_df["code"] == code].sort_values("period")
+        if not monthly.empty:
+            st.plotly_chart(
+                line_chart(
+                    monthly, "period", "toll_revenue_wan",
+                    "通行费收入（万元）", "通行费收入（万元）",
+                ),
+                width="stretch",
+            )
+            st.plotly_chart(
+                bar_chart(
+                    monthly, "period", "daily_traffic",
+                    "日均自然车流量（辆/日）", "日均自然车流量（辆/日）",
+                ),
+                width="stretch",
+            )
+        else:
+            st.info("暂无月度数据。")
 
-    quarterly = quarterly_df[quarterly_df["code"] == code]
-    if not quarterly.empty:
-        st.subheader("季度经营明细")
-        display = (
-            quarterly.sort_values("period", ascending=False)
-            .copy()
-            .rename(columns=dict(_QUARTERLY_COLUMNS))
-        )
-        st.dataframe(
-            display[[label for _, label in _QUARTERLY_COLUMNS]],
-            hide_index=True,
-            width="stretch",
-        )
+        quarterly = quarterly_df[quarterly_df["code"] == code]
+        if not quarterly.empty:
+            st.subheader("季度经营明细")
+            display = (
+                quarterly.sort_values("period", ascending=False)
+                .copy()
+                .rename(columns=dict(_QUARTERLY_COLUMNS))
+            )
+            st.dataframe(
+                display[[label for _, label in _QUARTERLY_COLUMNS]],
+                hide_index=True,
+                width="stretch",
+            )
+    else:
+        # 非高速基金：月度区块如实提示「该资产类型暂无月度披露」，随后仅渲染季度表
+        st.info("该资产类型暂无月度披露")
+        if market_quarterly is not None and not market_quarterly.empty:
+            mq = market_quarterly[market_quarterly["code"] == code]
+        else:
+            mq = pd.DataFrame()
+        if not mq.empty:
+            st.subheader("季度经营明细")
+            display = mq.sort_values("period", ascending=False).copy()
+            cols = [
+                (src, label)
+                for src, label in _MARKET_QUARTERLY_COLUMNS
+                if src in display.columns
+            ]
+            display = display.rename(columns=dict(cols))
+            st.dataframe(
+                display[[label for _, label in cols]],
+                hide_index=True,
+                width="stretch",
+            )
+        else:
+            st.info("该资产类型暂无数据")
 
 
 def render_market(code):
@@ -693,24 +735,44 @@ def _premium_color(value):
     return f"color: {_TEXT_TERTIARY}"
 
 
-def render_status_wall(static_df, completion_df):
+def render_status_wall(static_df, completion_df, market_funds=None,
+                       market_completion=None, asset_type="全部"):
     """签名元素 1：行业状态墙——title 下方一行基金完成度色点带。
 
     每只基金 = 圆点 12px + 4 位代码 10px 三级灰小字（flex 一行）。
     状态取每基金最新年份 completion_pct：>=100 达标绿、>=80 警告橙、<80
     风险红、无记录灰。title 属性携带「{code} {name}：完成率 {pct}%（{year}）」。
     空数据降级为 st.info。
-    """
-    if completion_df.empty:
+
+    跟随 asset_type 联动：选中具体非高速类型时，色点带取该类型基金
+    （market_funds 过滤），完成度取全市场完成度记录（market_completion）；
+    无完成度记录的基金为灰点。「全部」/「高速」保持现状（14 只静态 +
+    annual_completion）。market_funds 缺失时非高速类型如实提示
+    「暂无基金数据」（不静默回退 14 只高速）。"""
+    if asset_type not in ("全部", "高速"):
+        if market_funds is not None and not market_funds.empty:
+            funds = market_funds[market_funds["asset_type"] == asset_type]
+            completion = market_completion
+            if funds.empty:
+                st.info(f"资产类型「{asset_type}」暂无基金数据。")
+                return
+        else:
+            st.info(f"资产类型「{asset_type}」暂无基金数据。")
+            return
+    else:
+        funds = static_df
+        completion = completion_df
+
+    if completion is None or completion.empty:
         st.info("暂无年度可供分配完成度数据，行业状态墙跳过。")
         return
 
-    latest = distributable_completion(completion_df).sort_values("year")
+    latest = distributable_completion(completion).sort_values("year")
     latest = latest.groupby("code").tail(1)
     by_code = {str(r.code): r for r in latest.itertuples(index=False)}
 
     dots = []
-    for _, fund in static_df.iterrows():
+    for _, fund in funds.iterrows():
         code = str(fund["code"])
         name = fund["name"]
         rec = by_code.get(code)
@@ -1195,7 +1257,6 @@ def main():
     name_map = dict(zip(static_df["code"], static_df["name"]))
 
     completion_df = _load_annual_completion()
-    render_status_wall(static_df, completion_df)
 
     # 全市场数据层（M4）：缺失时各 load_ 返回空结构，估值对标回退 14 只高速视图
     market_funds = load_market_funds(_MARKET_FUNDS_PATH)
@@ -1212,21 +1273,56 @@ def main():
     for code, nav in _nav_map_from_completion(market_completion).items():
         nav_map.setdefault(code, nav)
 
+    market_loaded = market_funds is not None and not market_funds.empty
+    if market_loaded:
+        fund_name_map = dict(zip(static_df["code"], static_df["name"]))
+        fund_name_map.update(dict(zip(market_funds["code"], market_funds["name"])))
+        asset_type_map = dict(zip(static_df["code"], static_df["asset_type"]))
+        asset_type_map.update(dict(zip(market_funds["code"], market_funds["asset_type"])))
+    else:
+        # 降级：全市场基金清单缺失时，全部基金按高速处理（回退 14 只静态列表）
+        fund_name_map = name_map
+        asset_type_map = {code: "高速" for code in static_df["code"]}
+
     with st.sidebar:
         st.header("市场筛选")
         asset_type = st.selectbox(
             "资产类型",
             options=_ASSET_TYPE_OPTIONS,
-            index=0,
+            index=1,
             help="估值对标页签全市场视图按资产类型筛选",
         )
+
         st.header("选择REIT")
+        # 联动：基金选择器 options 跟随资产类型。
+        # 「全部」/「高速」保持现有 14 只高速静态列表（不从 market_funds 取）；
+        # 其余类型从 market_funds 过滤。market_funds 缺失时非高速类型如实提示、
+        # 选择器无可选项（不静默回退高速列表）。
+        if asset_type in ("全部", "高速"):
+            fund_codes = sorted(static_df["code"].tolist())
+        elif not market_loaded:
+            st.warning("全市场基金数据缺失（文件不存在或损坏），当前仅可浏览高速基金")
+            fund_codes = []
+        else:
+            typed_funds = market_funds[market_funds["asset_type"] == asset_type]
+            fund_codes = sorted(typed_funds["code"].tolist())
+            if not fund_codes:
+                st.info("该资产类型暂无数据")
+
         selected_code = st.selectbox(
             "选择REIT",
-            options=sorted(static_df["code"].tolist()),
-            format_func=lambda code: f"{code} {name_map.get(code, '')}",
+            options=fund_codes,
+            format_func=lambda code: f"{code} {fund_name_map.get(code, '')}",
         )
         st.caption("行情数据来自 akshare，网络异常时自动降级。")
+
+    render_status_wall(
+        static_df,
+        completion_df,
+        market_funds=market_funds,
+        market_completion=market_completion,
+        asset_type=asset_type,
+    )
 
     tab_ops, tab_mkt, tab_rules, tab_val = st.tabs(
         ["📈 经营数据", "📉 行情走势", "📐 分析规则", "📊 估值对标"]
@@ -1235,13 +1331,15 @@ def main():
     with tab_ops:
         render_operations(
             selected_code,
-            name_map.get(selected_code, ""),
+            fund_name_map.get(selected_code, ""),
             monthly_df,
             quarterly_df,
             rental_df=market_ops_rental,
             energy_df=market_ops_energy,
             env_df=market_ops_env,
             nav_wan=nav_map.get(selected_code),
+            fund_asset_type=asset_type_map.get(selected_code, "高速"),
+            market_quarterly=market_quarterly,
         )
 
     with tab_mkt:

@@ -12,6 +12,8 @@
 code/period/distributable_wan，完成度列 code/completion_pct。
 """
 
+import math
+
 import pandas as pd
 import pytest
 
@@ -19,7 +21,10 @@ from src.valuation import (
     backfill_nav,
     concession_irr,
     distribution_yield,
+    hk_distribution_yield,
+    hk_nav_premium,
     nav_premium,
+    npi_margin,
     risk_flags,
     ttm_distributable,
 )
@@ -381,3 +386,60 @@ def test_backfill_nav_ffill_skips_none_prior_year():
     result = backfill_nav(df, annual)
 
     assert result.loc[0, "nav_wan"] == pytest.approx(817472.93)
+
+
+def test_hk_distribution_yield_link_baseline():
+    """领展基准：272.34¢/100/38.78 ≈ 0.0702（round 4）。"""
+    result = hk_distribution_yield(272.34, 38.78)
+
+    assert round(result, 4) == pytest.approx(0.0702)
+
+
+def test_hk_distribution_yield_zero_or_none_nan():
+    """价格非正 / 任一输入 None/NaN → NaN。"""
+    assert math.isnan(hk_distribution_yield(272.34, 0.0))
+    assert math.isnan(hk_distribution_yield(272.34, -1.0))
+    assert math.isnan(hk_distribution_yield(None, 38.78))
+    assert math.isnan(hk_distribution_yield(272.34, None))
+    assert math.isnan(hk_distribution_yield(float("nan"), 38.78))
+    assert math.isnan(hk_distribution_yield(272.34, float("nan")))
+
+
+def test_hk_nav_premium_link_baseline():
+    """领展基准：38.78/63.30 − 1 ≈ −0.3874（round 4）。"""
+    result = hk_nav_premium(38.78, 63.30)
+
+    assert round(result, 4) == pytest.approx(-0.3874)
+
+
+def test_hk_nav_premium_positive_when_price_above_nav():
+    result = hk_nav_premium(80.0, 63.30)
+
+    assert result > 0
+
+
+def test_hk_nav_premium_zero_or_none_nan():
+    """NAV 非正 / 任一输入 None/NaN → NaN。"""
+    assert math.isnan(hk_nav_premium(38.78, 0.0))
+    assert math.isnan(hk_nav_premium(38.78, -5.0))
+    assert math.isnan(hk_nav_premium(None, 63.30))
+    assert math.isnan(hk_nav_premium(38.78, None))
+    assert math.isnan(hk_nav_premium(float("nan"), 63.30))
+    assert math.isnan(hk_nav_premium(38.78, float("nan")))
+
+
+def test_npi_margin_link_baseline():
+    """领展基准：10619/14223 ≈ 0.7466（round 4）。"""
+    result = npi_margin(10619.0, 14223.0)
+
+    assert round(result, 4) == pytest.approx(0.7466)
+
+
+def test_npi_margin_zero_or_none_nan():
+    """收入非正 / 任一输入 None/NaN → NaN。"""
+    assert math.isnan(npi_margin(10619.0, 0.0))
+    assert math.isnan(npi_margin(10619.0, -1.0))
+    assert math.isnan(npi_margin(None, 14223.0))
+    assert math.isnan(npi_margin(10619.0, None))
+    assert math.isnan(npi_margin(float("nan"), 14223.0))
+    assert math.isnan(npi_margin(10619.0, float("nan")))

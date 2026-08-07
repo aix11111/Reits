@@ -242,3 +242,39 @@ def risk_flags(
             rows.append([code, flags])
 
     return pd.DataFrame(rows, columns=["code", "flags"])
+
+
+def hk_distribution_yield(dpu_hk_cents: float, price_hkd: float) -> float:
+    """计算香港 REITs 年化分派收益率 = dpu(港元) / price = dpu_cents/100 / price。
+
+    输入非法（price<=0，或任一输入为 None/NaN）→ NaN。纯函数，不做 I/O。
+    """
+    if not _valid_positive(price_hkd):
+        return float("nan")
+    if not isinstance(dpu_hk_cents, (int, float)) or math.isnan(dpu_hk_cents):
+        return float("nan")
+    return dpu_hk_cents / 100 / price_hkd
+
+
+def hk_nav_premium(price_hkd: float, nav_per_unit: float) -> float:
+    """计算香港 REITs 的 NAV 溢折价 = price / nav - 1。
+
+    输入非法（nav<=0，或任一输入为 None/NaN）→ NaN。纯函数，不做 I/O。
+    """
+    if not _valid_positive(nav_per_unit):
+        return float("nan")
+    if not isinstance(price_hkd, (int, float)) or math.isnan(price_hkd):
+        return float("nan")
+    return price_hkd / nav_per_unit - 1
+
+
+def npi_margin(npi_wan: float, revenue_wan: float) -> float:
+    """计算物业收入净利率（NPI margin）= npi / revenue。
+
+    输入非法（revenue<=0，或任一输入为 None/NaN）→ NaN。纯函数，不做 I/O。
+    """
+    if not _valid_positive(revenue_wan):
+        return float("nan")
+    if not isinstance(npi_wan, (int, float)) or math.isnan(npi_wan):
+        return float("nan")
+    return npi_wan / revenue_wan

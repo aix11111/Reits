@@ -29,6 +29,9 @@ from src.data_loader import (
     load_market_quarterly,
     load_market_shares,
     load_market_snapshot,
+    load_sg_annual,
+    load_sg_funds,
+    load_sg_snapshot,
 )
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
@@ -46,6 +49,7 @@ from src.valuation import (
     hk_distribution_yield,
     hk_nav_premium,
     nav_premium,
+    npi_margin,
     risk_flags,
     ttm_distributable,
 )
@@ -143,8 +147,13 @@ _HK_FUNDS_PATH = Path(__file__).parent / "data" / "hk_funds.json"
 _HK_ANNUAL_PATH = Path(__file__).parent / "data" / "hk_annual.json"
 _HK_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "hk_market_snapshot.json"
 
+# 新加坡数据文件路径（SG 模块：凯德综合商业信托 C38U）
+_SG_FUNDS_PATH = Path(__file__).parent / "data" / "sg_funds.json"
+_SG_ANNUAL_PATH = Path(__file__).parent / "data" / "sg_annual.json"
+_SG_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "sg_market_snapshot.json"
+
 # 市场维度：侧边栏「市场」选择（中国为默认，渲染路径零变化）
-_MARKET_OPTIONS = ["中国", "香港"]
+_MARKET_OPTIONS = ["中国", "香港", "新加坡"]
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -208,6 +217,26 @@ _HK_VALUATION_PREMIUM_COLUMNS = [
     ("price", "市价(港元)"),
     ("nav_unit_price", "单位NAV(港元)"),
     ("premium_pct", "折溢价"),
+]
+
+# 估值对标页签（新加坡）：分派收益率排名展示列（复用香港列定义）
+_SG_VALUATION_RANK_COLUMNS = _HK_VALUATION_RANK_COLUMNS
+
+# 估值对标页签（新加坡）：P/NAV 折溢价展示列
+_SG_VALUATION_PREMIUM_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("price", "市价(SGD)"),
+    ("nav_unit_price", "单位NAV(SGD)"),
+    ("premium_pct", "折溢价"),
+]
+
+# 估值对标页签（新加坡）：NPI 利润率排名展示列
+_SG_NPI_MARGIN_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("npi_margin_pct", "NPI利润率"),
+    ("fiscal_year", "财年"),
 ]
 
 # risk_flags 英文标记 → 中文风险提示
@@ -1503,6 +1532,246 @@ def render_hk_status_wall(funds_map):
     )
 
 
+def _sg_occupancy_pct(occupancy):
+    """从 SG 年报 occupancy 取综合出租率小数；支持 float/dict 两种形态，缺失 → None。"""
+    if isinstance(occupancy, dict):
+        return next(iter(occupancy.values())) if occupancy else None
+    if isinstance(occupancy, (int, float)):
+        return float(occupancy)
+    return None
+
+
+def render_sg_operations(code, name, annual_data):
+    """经营数据页签（新加坡）：SG 指标 KPI 卡 + 财务摘要表，无月度区块。
+
+    数据来自 data/sg_annual.json（annual 多期记录，币种 SGD）。KPI 卡显示
+    最新报告，财务摘要表列出该基金全部记录并标注「报告期」列；无数据时
+    降级 st.info「新加坡数据缺失」。新 REITs 无月度披露，不渲染月度图表区块。
+    """
+    st.subheader(f"基金：{code} {name}")
+    records = annual_data.get(code) or []
+    if not records:
+        st.info("新加坡数据缺失")
+        return
+
+    rec = _hk_latest_rec(records)
+    occupancy = _sg_occupancy_pct(rec.get("occupancy"))
+    cards = "".join(
+        [
+            _kpi_card("FY", str(rec.get("fiscal_year", "—")), "报告期"),
+            _kpi_card("Revenue", _fmt_wan(rec.get("revenue_wan")), "万SGD"),
+            _kpi_card("NPI", _fmt_wan(rec.get("npi_wan")), "万SGD"),
+            _kpi_card(
+                "Distributable Income", _fmt_wan(rec.get("distributable_wan")), "万SGD"
+            ),
+            _kpi_card("DPU", _fmt_num(rec.get("dpu_cents")), "SGD分"),
+            _kpi_card("NAV", _fmt_num(rec.get("nav_per_unit")), "SGD/单位"),
+            _kpi_card(
+                "出租率",
+                f"{occupancy * 100:.1f}%" if occupancy is not None else "—",
+                "综合出租率",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    rows = []
+    for rec in records:
+        occ = _sg_occupancy_pct(rec.get("occupancy"))
+        rows.append(
+            {
+                "报告期": _PERIOD_LABELS.get(rec.get("period"), rec.get("period")),
+                "财务年": rec.get("fiscal_year"),
+                "Revenue": rec.get("revenue_wan"),
+                "NPI": rec.get("npi_wan"),
+                "Distributable Income": rec.get("distributable_wan"),
+                "DPU": rec.get("dpu_cents"),
+                "NAV": rec.get("nav_per_unit"),
+                "出租率(%)": (
+                    f"{occ * 100:.1f}" if occ is not None else None
+                ),
+            }
+        )
+    st.subheader("财务摘要")
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+
+
+def render_sg_market(code, snapshot_latest):
+    """行情走势页签（新加坡）：SG 价格快照文本；快照缺失降级 st.info。"""
+    st.subheader("行情走势")
+    price = snapshot_latest.get(code)
+    if price is None:
+        st.info("新加坡数据缺失")
+        return
+    st.markdown(f"**{code} 最新收盘价：{price:.2f} SGD**")
+    st.caption("行情快照来自 data/sg_market_snapshot.json（Yahoo 日线）。")
+
+
+def render_sg_rules():
+    """分析规则页签（新加坡）：模块建设中占位提示，不崩。"""
+    st.subheader("分析规则引擎")
+    st.info("新加坡模块分析规则建设中")
+
+
+def render_sg_valuation(funds_map, annual_data, snapshot_latest):
+    """估值对标页签（新加坡）：分派收益率排名 + P/NAV 折溢价 + NPI 利润率排名。
+
+    分派收益率 = hk_distribution_yield(DPU, 市价)（同币种 SGD 直接算），DPU 或
+    市价缺失 → 该行「—」；P/NAV 折溢价 = hk_nav_premium(市价, NAV)，NAV 缺失
+    →「—」，语义色复用中国版 _premium_color（溢价红 / 折价绿）。NPI 利润率 =
+    npi_margin(NPI, Revenue)。行情快照缺失降级 st.info「新加坡数据缺失」。
+    """
+    st.subheader("估值对标")
+    st.caption(
+        "分派收益率=DPU/市价；P/NAV 折溢价=市价/NAV-1（溢价红、折价绿）；"
+        "NPI 利润率=NPI/Revenue。"
+    )
+    if not snapshot_latest:
+        st.info("新加坡数据缺失")
+        return
+
+    # ---- 1. 分派收益率排名 ----
+    st.markdown("### 1. 分派收益率排名")
+    rank_rows = []
+    for code, name in funds_map.items():
+        rec = _hk_annual_rec(annual_data.get(code))
+        price = snapshot_latest.get(code)
+        if rec is None or price is None:
+            continue
+        rank_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "yield": hk_distribution_yield(rec.get("dpu_cents"), price),
+                "fiscal_year": rec.get("fiscal_year"),
+            }
+        )
+    rank = pd.DataFrame(rank_rows)
+
+    valid = rank[rank["yield"].notna()]
+    if not valid.empty:
+        chart = valid.sort_values("yield", ascending=True)
+        median_yield = chart["yield"].median()
+        fig = go.Figure(
+            go.Bar(
+                x=chart["yield"],
+                y=chart["name"],
+                orientation="h",
+                marker_color=_ACCENT,
+            )
+        )
+        fig.add_vline(
+            x=median_yield,
+            line_dash="dash",
+            line_color=_TEXT_TERTIARY,
+            annotation_text="中位数",
+            annotation_font_color=_TEXT_TERTIARY,
+        )
+        fig.update_layout(
+            title="分派收益率排名",
+            xaxis_title="分派收益率",
+            xaxis_tickformat=".0%",
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+            yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        )
+        st.plotly_chart(fig, width="stretch")
+
+    display = rank.sort_values("yield", ascending=False, na_position="last").copy()
+    display["yield_pct"] = display["yield"].map(_fmt_pct)
+    display = display.rename(columns=dict(_SG_VALUATION_RANK_COLUMNS))
+    st.dataframe(
+        display[[label for _, label in _SG_VALUATION_RANK_COLUMNS]],
+        hide_index=True,
+        width="stretch",
+    )
+
+    # ---- 2. P/NAV 折溢价 ----
+    st.markdown("### 2. P/NAV 折溢价（最新年报单位净值）")
+    prem_rows = []
+    for code, name in funds_map.items():
+        rec = _hk_annual_rec(annual_data.get(code))
+        price = snapshot_latest.get(code)
+        nav = rec.get("nav_per_unit") if rec is not None else None
+        prem_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "price": price,
+                "nav_unit_price": nav,
+                "premium_pct": hk_nav_premium(price, nav),
+            }
+        )
+    prem_df = pd.DataFrame(prem_rows)
+    prem_display = prem_df.rename(columns=dict(_SG_VALUATION_PREMIUM_COLUMNS))
+    styled = prem_display.style.map(_premium_color, subset=["折溢价"]).format(
+        {"市价(SGD)": "{:.3f}", "单位NAV(SGD)": "{:.4f}", "折溢价": _fmt_pct},
+        na_rep="—",
+    )
+    st.dataframe(styled, hide_index=True, width="stretch")
+
+    # ---- 3. NPI 利润率排名 ----
+    st.markdown("### 3. NPI 利润率排名")
+    npi_rows = []
+    for code, name in funds_map.items():
+        rec = _hk_annual_rec(annual_data.get(code))
+        if rec is None:
+            continue
+        npi_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "npi_margin": npi_margin(
+                    rec.get("npi_wan"), rec.get("revenue_wan")
+                ),
+                "fiscal_year": rec.get("fiscal_year"),
+            }
+        )
+    npi_df = pd.DataFrame(npi_rows)
+    npi_display = (
+        npi_df.sort_values("npi_margin", ascending=False, na_position="last")
+        .copy()
+    )
+    npi_display["npi_margin_pct"] = npi_display["npi_margin"].map(_fmt_pct)
+    npi_display = npi_display.rename(columns=dict(_SG_NPI_MARGIN_COLUMNS))
+    st.dataframe(
+        npi_display[[label for _, label in _SG_NPI_MARGIN_COLUMNS]],
+        hide_index=True,
+        width="stretch",
+    )
+
+
+def render_sg_status_wall(funds_map):
+    """状态墙（新加坡）：SG 基金色点带，暂无完成度记录全部为灰点。"""
+    if not funds_map:
+        return
+    dots = []
+    for code, name in funds_map.items():
+        dots.append(
+            f'<div title="{code} {name}：暂无完成度数据" '
+            f'style="display:flex;align-items:center;gap:6px;cursor:default;">'
+            f'<span class="reit-dot" style="width:12px;height:12px;border-radius:50%;'
+            f'background-color:{_NO_RECORD_GRAY};display:inline-block;flex:none;"></span>'
+            f'<span style="font-family:\'JetBrains Mono\',ui-monospace,monospace;'
+            f'font-size:10px;color:#8A8F98;">{code[-4:]}</span>'
+            "</div>"
+        )
+    st.markdown(
+        '<div class="reit-status-wall" style="display:flex;flex-wrap:wrap;'
+        'align-items:center;gap:12px 18px;padding:16px;'
+        'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'
+        'border-radius:8px;margin:8px 0 16px;">' + "".join(dots) + "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与四个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
@@ -1510,7 +1779,8 @@ def main():
     st.title("📊 REITsMonitor — 多市场REITs投后分析看板")
     st.caption(
         "中国市场：公募REITs（经营数据来自本地模板，行情来自 akshare）| "
-        "香港市场：11 只 REITs（年报+中期报告解析 + 新浪日线快照）"
+        "香港市场：11 只 REITs（年报+中期报告解析 + 新浪日线快照）| "
+        "新加坡市场：官网年报解析 + Yahoo 行情快照"
     )
 
     try:
@@ -1576,6 +1846,21 @@ def main():
                 format_func=lambda code: f"{code} {hk_funds.get(code, '')}",
             )
             st.caption("行情快照来自 data/hk_market_snapshot.json（新浪日线）。")
+        elif market == "新加坡":
+            # 新加坡模式：基金选择器 = SG 清单（data/sg_funds.json）；资产类型联动不适用
+            sg_funds = load_sg_funds(_SG_FUNDS_PATH)
+            st.header("选择REIT")
+            if not sg_funds:
+                st.info("新加坡数据缺失")
+                sg_codes = []
+            else:
+                sg_codes = sorted(sg_funds.keys())
+            selected_code = st.selectbox(
+                "选择REIT",
+                options=sg_codes,
+                format_func=lambda code: f"{code} {sg_funds.get(code, '')}",
+            )
+            st.caption("行情快照来自 data/sg_market_snapshot.json（Yahoo 日线）。")
         else:
             st.header("市场筛选")
             asset_type = st.selectbox(
@@ -1612,6 +1897,10 @@ def main():
         hk_annual = load_hk_annual(_HK_ANNUAL_PATH)
         hk_snapshot = load_hk_snapshot(_HK_MARKET_SNAPSHOT_PATH)
         render_hk_status_wall(hk_funds)
+    elif market == "新加坡":
+        sg_annual = load_sg_annual(_SG_ANNUAL_PATH)
+        sg_snapshot = load_sg_snapshot(_SG_MARKET_SNAPSHOT_PATH)
+        render_sg_status_wall(sg_funds)
     else:
         render_status_wall(
             static_df,
@@ -1644,6 +1933,26 @@ def main():
                 hk_funds,
                 hk_annual,
                 hk_snapshot,
+            )
+    elif market == "新加坡":
+        with tab_ops:
+            render_sg_operations(
+                selected_code,
+                sg_funds.get(selected_code, ""),
+                sg_annual,
+            )
+
+        with tab_mkt:
+            render_sg_market(selected_code, sg_snapshot)
+
+        with tab_rules:
+            render_sg_rules()
+
+        with tab_val:
+            render_sg_valuation(
+                sg_funds,
+                sg_annual,
+                sg_snapshot,
             )
     else:
         with tab_ops:

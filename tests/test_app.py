@@ -1467,3 +1467,149 @@ def test_hk_mode_degrades_when_json_missing(no_network, monkeypatch):
     assert not at.exception
     infos = [i.value for i in at.tabs[0].info]
     assert any("香港数据缺失" in v for v in infos)
+
+
+# ---------------------------------------------------------------------------
+# Task SG：市场维度（中国/香港/新加坡）+ 新加坡视图（CICT）
+# ---------------------------------------------------------------------------
+
+
+def _select_sg(at):
+    """把侧边栏「市场」下拉切到「新加坡」并重跑。"""
+    box = next(b for b in at.sidebar.selectbox if b.label == "市场")
+    box.select("新加坡").run()
+
+
+def _sg_annual_by_code():
+    """读 data/sg_annual.json 为 {code: annual rec}（估值对标仅用年报口径）。"""
+    annual = json.loads((DATA_PATH / "sg_annual.json").read_text(encoding="utf-8"))[
+        "annual"
+    ]
+    result = {}
+    for r in annual:
+        if r.get("period", "annual") == "annual":
+            result[str(r["code"])] = r
+    return result
+
+
+def test_market_options_include_singapore(no_network):
+    """侧边栏「市场」含新加坡；默认仍为中国（零变化）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+    box = next(b for b in at.sidebar.selectbox if b.label == "市场")
+    assert box.options == ["中国", "香港", "新加坡"]
+    assert box.value == "中国"
+
+
+def test_sg_market_fund_selector_lists_sg_funds(no_network):
+    """市场选新加坡 → 基金选择器 options = SG 清单（含 C38U）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_sg(at)
+    assert not at.exception
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    options = [o.split(" ")[0] for o in fund_box.options]
+    assert "C38U" in options
+
+
+def test_sg_operations_tab_renders_sg_kpis(no_network):
+    """市场选新加坡 → 经营数据 Tab 渲染 SG 指标 KPI 卡（含 Revenue / SGD 币种标注）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_sg(at)
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "Revenue" in cards[0]
+    assert "Distributable Income" in cards[0]
+    assert "SGD" in cards[0]
+
+
+def test_sg_valuation_tab_renders_yield_ranking(no_network):
+    """市场选新加坡 → 估值 Tab 渲染「分派收益率」排名表，C38U 收益率按实跑数据≈4.7%。"""
+    import streamlit as st
+
+    from src.valuation import hk_distribution_yield
+
+    snapshot = json.loads(
+        (DATA_PATH / "sg_market_snapshot.json").read_text(encoding="utf-8")
+    )["latest"]
+    annual_by_code = _sg_annual_by_code()
+    dpu = annual_by_code["C38U"]["dpu_cents"]
+    price = snapshot["C38U"]
+    expected_yield = f"{hk_distribution_yield(dpu, price):.1%}"
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_sg(at)
+    assert not at.exception
+
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派收益率" in f.columns)
+    c38u = rank[rank["基金代码"] == "C38U"]
+    assert c38u["分派收益率"].iloc[0] == expected_yield
+    assert "财年" in rank.columns
+
+
+def test_sg_valuation_tab_renders_pnav_and_npi_margin(no_network):
+    """估值 Tab：P/NAV 折溢价表 + NPI 利润率排名表（C38U 折溢价 ≈ +15%）。"""
+    import streamlit as st
+
+    from src.valuation import hk_nav_premium
+
+    snapshot = json.loads(
+        (DATA_PATH / "sg_market_snapshot.json").read_text(encoding="utf-8")
+    )["latest"]
+    annual_by_code = _sg_annual_by_code()
+    rec = annual_by_code["C38U"]
+    price = snapshot["C38U"]
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_sg(at)
+    assert not at.exception
+
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+
+    premium = next(f for f in frames if "折溢价" in f.columns)
+    c38u_prem = premium[premium["基金代码"] == "C38U"]
+    assert c38u_prem["折溢价"].iloc[0] == pytest.approx(
+        hk_nav_premium(price, rec["nav_per_unit"])
+    )
+
+    npi = next(f for f in frames if "NPI利润率" in f.columns)
+    c38u_npi = npi[npi["基金代码"] == "C38U"]
+    assert c38u_npi["NPI利润率"].iloc[0] == f"{rec['npi_wan'] / rec['revenue_wan']:.1%}"
+
+
+def test_sg_mode_degrades_when_json_missing(no_network, monkeypatch):
+    """sg_funds/sg_annual/sg_market_snapshot 缺失 → 各 Tab st.info「新加坡数据缺失」不崩。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(dl, "load_sg_funds", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_sg_annual", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_sg_snapshot", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_sg(at)
+    assert not at.exception
+    infos = [i.value for i in at.tabs[0].info]
+    assert any("新加坡数据缺失" in v for v in infos)

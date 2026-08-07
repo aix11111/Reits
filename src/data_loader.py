@@ -288,3 +288,42 @@ def load_market_ops_energy(path):
             ]
         )
     return pd.DataFrame(rows)
+
+
+def load_hk_funds(path):
+    """读取香港基金清单 JSON（{"funds": [...]}），缺失/损坏返回空 dict。
+
+    返回 {code: 基金简称} 映射（code 统一转为字符串）。
+    """
+    data = _load_json_dict(path)
+    funds = data.get("funds") if isinstance(data, dict) else None
+    if not funds:
+        return {}
+    return {str(f.get("code")): f.get("name", "") for f in funds}
+
+
+def load_hk_annual(path):
+    """读取香港年报数据 JSON（{"annual": [...]}），缺失/损坏返回空 dict。
+
+    返回 {code: 最新年度记录}（PoC 单条；多年度时按出现顺序取首个）。
+    """
+    data = _load_json_dict(path)
+    annual = data.get("annual") if isinstance(data, dict) else None
+    if not annual:
+        return {}
+    latest = {}
+    for rec in annual:
+        code = str(rec.get("code"))
+        if code not in latest:
+            latest[code] = rec
+    return latest
+
+
+def load_hk_snapshot(path):
+    """读取香港行情快照 JSON（{"latest": {code: price}}），缺失/损坏返回空 dict。
+
+    返回 latest 映射（code → price）。
+    """
+    data = _load_json_dict(path)
+    latest = data.get("latest") if isinstance(data, dict) else None
+    return latest if isinstance(latest, dict) else {}

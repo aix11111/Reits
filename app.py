@@ -18,6 +18,9 @@ from src.charts import bar_chart, line_chart
 from src.data_loader import (
     load_all,
     load_fund_shares,
+    load_hk_annual,
+    load_hk_funds,
+    load_hk_snapshot,
     load_market_completion,
     load_market_funds,
     load_market_ops_energy,
@@ -40,7 +43,10 @@ from src.rules import (
 from src.valuation import (
     concession_irr,
     distribution_yield,
+    hk_distribution_yield,
+    hk_nav_premium,
     nav_premium,
+    npi_margin,
     risk_flags,
     ttm_distributable,
 )
@@ -132,6 +138,14 @@ _MARKET_SHARES_PATH = Path(__file__).parent / "data" / "market_shares.json"
 _MARKET_OPS_RENTAL_PATH = Path(__file__).parent / "data" / "market_ops_rental.json"
 _MARKET_OPS_ENERGY_PATH = Path(__file__).parent / "data" / "market_ops_energy.json"
 _MARKET_OPS_ENV_PATH = Path(__file__).parent / "data" / "market_ops_environment.json"
+
+# 香港数据文件路径（HK 模块 PoC：领展）
+_HK_FUNDS_PATH = Path(__file__).parent / "data" / "hk_funds.json"
+_HK_ANNUAL_PATH = Path(__file__).parent / "data" / "hk_annual.json"
+_HK_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "hk_market_snapshot.json"
+
+# 市场维度：侧边栏「市场」选择（中国为默认，渲染路径零变化）
+_MARKET_OPTIONS = ["中国", "香港"]
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -283,6 +297,27 @@ def _fmt_pct(v) -> str:
     if pd.isna(v):
         return "—"
     return f"{v:.1%}"
+
+
+def _fmt_wan(v) -> str:
+    """万港元数值格式化：None/NaN → "—"，否则千分位整数。"""
+    if pd.isna(v):
+        return "—"
+    return f"{v:,.0f}"
+
+
+def _fmt_num(v) -> str:
+    """通用数值格式化：None/NaN → "—"，否则保留两位小数。"""
+    if pd.isna(v):
+        return "—"
+    return f"{v:,.2f}"
+
+
+def _hk_occupancy_pct(occupancy):
+    """从 HK 年报 occupancy 字典取综合出租率小数；缺失/空 → None。"""
+    if not isinstance(occupancy, dict) or not occupancy:
+        return None
+    return next(iter(occupancy.values()))
 
 
 def _kpi_card(label: str, value: str, note: str) -> str:
@@ -1231,13 +1266,150 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         st.info("暂无风险标记：各基金完成度、折溢价与剩余年限均在正常区间。")
 
 
+def render_hk_operations(code, name, annual_data):
+    """经营数据页签（香港）：HK 指标 KPI 卡 + 单行数据表，无月度区块。
+
+    数据来自 data/hk_annual.json（PoC 领展单条）。财务年/Revenue/NPI/DPU/NAV/
+    出租率 6 项 KPI 卡（复用 _kpi_card 样式）；无年报数据时降级 st.info。
+    港 REITs 无月度披露，不渲染月度图表区块。
+    """
+    st.subheader(f"基金：{code} {name}")
+    rec = annual_data.get(code)
+    if rec is None:
+        st.info("香港数据缺失")
+        return
+
+    occupancy = _hk_occupancy_pct(rec.get("occupancy"))
+    cards = "".join(
+        [
+            _kpi_card("财务年", str(rec.get("fiscal_year", "—")), "报告期"),
+            _kpi_card("Revenue", _fmt_wan(rec.get("revenue_wan")), "万港元"),
+            _kpi_card("NPI", _fmt_wan(rec.get("npi_wan")), "万港元"),
+            _kpi_card("DPU", _fmt_num(rec.get("dpu_hk_cents")), "港仙"),
+            _kpi_card("NAV", _fmt_num(rec.get("nav_per_unit_hkd")), "港元/单位"),
+            _kpi_card(
+                "出租率",
+                f"{occupancy * 100:.1f}%" if occupancy is not None else "—",
+                "综合出租率",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    row = {
+        "基金代码": code,
+        "财务年": rec.get("fiscal_year"),
+        "Revenue(万港元)": rec.get("revenue_wan"),
+        "NPI(万港元)": rec.get("npi_wan"),
+        "DPU(港仙)": rec.get("dpu_hk_cents"),
+        "NAV(港元/单位)": rec.get("nav_per_unit_hkd"),
+        "出租率(%)": (
+            f"{occupancy * 100:.1f}" if occupancy is not None else None
+        ),
+    }
+    st.subheader("年度财务摘要")
+    st.dataframe(pd.DataFrame([row]), hide_index=True, width="stretch")
+
+
+def render_hk_market(code, snapshot_latest):
+    """行情走势页签（香港）：港股价格快照文本；快照缺失降级 st.info。"""
+    st.subheader("行情走势")
+    price = snapshot_latest.get(code)
+    if price is None:
+        st.info("香港数据缺失")
+        return
+    st.markdown(f"**{code} 最新收盘价：{price:.2f} 港元**")
+    st.caption("行情快照来自 data/hk_market_snapshot.json（新浪日线）。")
+
+
+def render_hk_rules():
+    """分析规则页签（香港）：模块建设中占位提示，不崩。"""
+    st.subheader("分析规则引擎")
+    st.info("香港模块分析规则建设中")
+
+
+def render_hk_valuation(code, name, annual_data, snapshot_latest):
+    """估值对标页签（香港）：分派收益率 / P-NAV 折溢价 / NPI 利润率。
+
+    分派收益率 = hk_distribution_yield(DPU, 市价)；P/NAV 折溢价 =
+    hk_nav_premium(市价, NAV)；NPI 利润率 = npi_margin(NPI, Revenue)。
+    数据来自 data/hk_annual.json + data/hk_market_snapshot.json latest；
+    任一缺失降级 st.info。
+    """
+    st.subheader("估值对标")
+    st.caption(
+        "分派收益率=DPU/市价；P/NAV 折溢价=市价/NAV-1；NPI 利润率=物业收入净额/总收入。"
+    )
+    rec = annual_data.get(code)
+    price = snapshot_latest.get(code)
+    if rec is None or price is None:
+        st.info("香港数据缺失")
+        return
+
+    dpu = rec.get("dpu_hk_cents")
+    nav = rec.get("nav_per_unit_hkd")
+    cards = "".join(
+        [
+            _kpi_card(
+                "分派收益率",
+                _fmt_pct(hk_distribution_yield(dpu, price)),
+                f"DPU {_fmt_num(dpu)} 港仙 / 市价 {_fmt_num(price)} 港元",
+            ),
+            _kpi_card(
+                "P/NAV 折溢价",
+                _fmt_pct(hk_nav_premium(price, nav)),
+                f"市价 {_fmt_num(price)} / 单位NAV {_fmt_num(nav)} 港元",
+            ),
+            _kpi_card(
+                "NPI 利润率",
+                _fmt_pct(npi_margin(rec.get("npi_wan"), rec.get("revenue_wan"))),
+                "物业收入净额/总收入",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+
+def render_hk_status_wall(funds_map):
+    """状态墙（香港）：香港基金色点带，暂无完成度记录全部为灰点。"""
+    if not funds_map:
+        return
+    dots = []
+    for code, name in funds_map.items():
+        dots.append(
+            f'<div title="{code} {name}：暂无完成度数据" '
+            f'style="display:flex;align-items:center;gap:6px;cursor:default;">'
+            f'<span class="reit-dot" style="width:12px;height:12px;border-radius:50%;'
+            f'background-color:{_NO_RECORD_GRAY};display:inline-block;flex:none;"></span>'
+            f'<span style="font-family:\'JetBrains Mono\',ui-monospace,monospace;'
+            f'font-size:10px;color:#8A8F98;">{code[-4:]}</span>'
+            "</div>"
+        )
+    st.markdown(
+        '<div class="reit-status-wall" style="display:flex;flex-wrap:wrap;'
+        'align-items:center;gap:12px 18px;padding:16px;'
+        'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'
+        'border-radius:8px;margin:8px 0 16px;">' + "".join(dots) + "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与四个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
     st.markdown(f"<style>{_GLOBAL_CSS}</style>", unsafe_allow_html=True)
-    st.title("📊 REITsMonitor — 公募REITs投后分析看板")
+    st.title("📊 REITsMonitor — 多市场REITs投后分析看板")
     st.caption(
-        "Phase 1：高速公路 REITs | 经营数据来自本地模板，行情数据来自 akshare"
+        "中国市场：公募REITs（经营数据来自本地模板，行情来自 akshare）| "
+        "香港市场：PoC 领展（年报解析 + 新浪日线快照）"
     )
 
     try:
@@ -1285,85 +1457,131 @@ def main():
         asset_type_map = {code: "高速" for code in static_df["code"]}
 
     with st.sidebar:
-        st.header("市场筛选")
-        asset_type = st.selectbox(
-            "资产类型",
-            options=_ASSET_TYPE_OPTIONS,
-            index=1,
-            help="估值对标页签全市场视图按资产类型筛选",
-        )
+        st.header("市场")
+        market = st.selectbox("市场", options=_MARKET_OPTIONS, index=0)
 
-        st.header("选择REIT")
-        # 联动：基金选择器 options 跟随资产类型。
-        # 「全部」/「高速」保持现有 14 只高速静态列表（不从 market_funds 取）；
-        # 其余类型从 market_funds 过滤。market_funds 缺失时非高速类型如实提示、
-        # 选择器无可选项（不静默回退高速列表）。
-        if asset_type in ("全部", "高速"):
-            fund_codes = sorted(static_df["code"].tolist())
-        elif not market_loaded:
-            st.warning("全市场基金数据缺失（文件不存在或损坏），当前仅可浏览高速基金")
-            fund_codes = []
+        if market == "香港":
+            # 香港模式：基金选择器 = HK 清单（data/hk_funds.json）；资产类型联动不适用
+            hk_funds = load_hk_funds(_HK_FUNDS_PATH)
+            st.header("选择REIT")
+            if not hk_funds:
+                st.info("香港数据缺失")
+                hk_codes = []
+            else:
+                hk_codes = sorted(hk_funds.keys())
+            selected_code = st.selectbox(
+                "选择REIT",
+                options=hk_codes,
+                format_func=lambda code: f"{code} {hk_funds.get(code, '')}",
+            )
+            st.caption("行情快照来自 data/hk_market_snapshot.json（新浪日线）。")
         else:
-            typed_funds = market_funds[market_funds["asset_type"] == asset_type]
-            fund_codes = sorted(typed_funds["code"].tolist())
-            if not fund_codes:
-                st.info("该资产类型暂无数据")
+            st.header("市场筛选")
+            asset_type = st.selectbox(
+                "资产类型",
+                options=_ASSET_TYPE_OPTIONS,
+                index=1,
+                help="估值对标页签全市场视图按资产类型筛选",
+            )
 
-        selected_code = st.selectbox(
-            "选择REIT",
-            options=fund_codes,
-            format_func=lambda code: f"{code} {fund_name_map.get(code, '')}",
+            st.header("选择REIT")
+            # 联动：基金选择器 options 跟随资产类型。
+            # 「全部」/「高速」保持现有 14 只高速静态列表（不从 market_funds 取）；
+            # 其余类型从 market_funds 过滤。market_funds 缺失时非高速类型如实提示、
+            # 选择器无可选项（不静默回退高速列表）。
+            if asset_type in ("全部", "高速"):
+                fund_codes = sorted(static_df["code"].tolist())
+            elif not market_loaded:
+                st.warning("全市场基金数据缺失（文件不存在或损坏），当前仅可浏览高速基金")
+                fund_codes = []
+            else:
+                typed_funds = market_funds[market_funds["asset_type"] == asset_type]
+                fund_codes = sorted(typed_funds["code"].tolist())
+                if not fund_codes:
+                    st.info("该资产类型暂无数据")
+
+            selected_code = st.selectbox(
+                "选择REIT",
+                options=fund_codes,
+                format_func=lambda code: f"{code} {fund_name_map.get(code, '')}",
+            )
+            st.caption("行情数据来自 akshare，网络异常时自动降级。")
+
+    if market == "香港":
+        hk_annual = load_hk_annual(_HK_ANNUAL_PATH)
+        hk_snapshot = load_hk_snapshot(_HK_MARKET_SNAPSHOT_PATH)
+        render_hk_status_wall(hk_funds)
+    else:
+        render_status_wall(
+            static_df,
+            completion_df,
+            market_funds=market_funds,
+            market_completion=market_completion,
+            asset_type=asset_type,
         )
-        st.caption("行情数据来自 akshare，网络异常时自动降级。")
-
-    render_status_wall(
-        static_df,
-        completion_df,
-        market_funds=market_funds,
-        market_completion=market_completion,
-        asset_type=asset_type,
-    )
 
     tab_ops, tab_mkt, tab_rules, tab_val = st.tabs(
         ["📈 经营数据", "📉 行情走势", "📐 分析规则", "📊 估值对标"]
     )
 
-    with tab_ops:
-        render_operations(
-            selected_code,
-            fund_name_map.get(selected_code, ""),
-            monthly_df,
-            quarterly_df,
-            rental_df=market_ops_rental,
-            energy_df=market_ops_energy,
-            env_df=market_ops_env,
-            nav_wan=nav_map.get(selected_code),
-            fund_asset_type=asset_type_map.get(selected_code, "高速"),
-            market_quarterly=market_quarterly,
-        )
+    if market == "香港":
+        with tab_ops:
+            render_hk_operations(
+                selected_code,
+                hk_funds.get(selected_code, ""),
+                hk_annual,
+            )
 
-    with tab_mkt:
-        render_market(selected_code)
+        with tab_mkt:
+            render_hk_market(selected_code, hk_snapshot)
 
-    with tab_rules:
-        render_rules(monthly_df, quarterly_df, static_df)
+        with tab_rules:
+            render_hk_rules()
 
-    with tab_val:
-        snapshot_data = load_market_snapshot(_MARKET_SNAPSHOT_PATH)
-        shares_data = load_fund_shares(_FUND_SHARES_PATH)
-        render_valuation(
-            quarterly_df,
-            completion_df,
-            snapshot_data,
-            shares_data,
-            static_df,
-            market_funds=market_funds,
-            market_quarterly=market_quarterly,
-            market_completion=market_completion,
-            market_shares=market_shares,
-            asset_type=asset_type,
-            market_ops_energy=market_ops_energy,
-        )
+        with tab_val:
+            render_hk_valuation(
+                selected_code,
+                hk_funds.get(selected_code, ""),
+                hk_annual,
+                hk_snapshot,
+            )
+    else:
+        with tab_ops:
+            render_operations(
+                selected_code,
+                fund_name_map.get(selected_code, ""),
+                monthly_df,
+                quarterly_df,
+                rental_df=market_ops_rental,
+                energy_df=market_ops_energy,
+                env_df=market_ops_env,
+                nav_wan=nav_map.get(selected_code),
+                fund_asset_type=asset_type_map.get(selected_code, "高速"),
+                market_quarterly=market_quarterly,
+            )
+
+        with tab_mkt:
+            render_market(selected_code)
+
+        with tab_rules:
+            render_rules(monthly_df, quarterly_df, static_df)
+
+        with tab_val:
+            snapshot_data = load_market_snapshot(_MARKET_SNAPSHOT_PATH)
+            shares_data = load_fund_shares(_FUND_SHARES_PATH)
+            render_valuation(
+                quarterly_df,
+                completion_df,
+                snapshot_data,
+                shares_data,
+                static_df,
+                market_funds=market_funds,
+                market_quarterly=market_quarterly,
+                market_completion=market_completion,
+                market_shares=market_shares,
+                asset_type=asset_type,
+                market_ops_energy=market_ops_energy,
+            )
 
 
 if __name__ == "__main__":

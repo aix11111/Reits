@@ -1167,3 +1167,133 @@ def test_status_wall_follows_asset_type_energy(no_network):
     wall = next(m.value for m in at.markdown if "reit-status-wall" in m.value)
     assert "1804" in wall
     assert "180201" not in wall
+
+
+# ---------------------------------------------------------------------------
+# Task 5（HK）：市场维度（中国/香港）+ 香港视图
+# ---------------------------------------------------------------------------
+
+
+def _select_hk(at):
+    """把侧边栏「市场」下拉切到「香港」并重跑。"""
+    box = next(b for b in at.sidebar.selectbox if b.label == "市场")
+    box.select("香港").run()
+
+
+def test_title_contains_multi_market(no_network):
+    """标题升级：st.title 含「多市场」。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+    assert "多市场" in at.title[0].value
+
+
+def test_hk_market_fund_selector_lists_hk_funds(no_network):
+    """市场选香港 → 基金选择器 options = HK 清单（含 00823 领展）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_hk(at)
+    assert not at.exception
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    options = [o.split(" ")[0] for o in fund_box.options]
+    assert "00823" in options
+
+
+def test_hk_operations_tab_renders_hk_kpis(no_network):
+    """市场选香港 → 经营数据 Tab 渲染 HK 指标 KPI 卡（含 DPU / NPI 文案）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "DPU" in cards[0]
+    assert "NPI" in cards[0]
+
+
+def test_hk_valuation_tab_renders_yield_premium_margin(no_network):
+    """市场选香港 → 估值对标 Tab 渲染分派收益率（HK 指标）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    val_tab = at.tabs[3]
+    cards = [m.value for m in val_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "分派收益率" in cards[0]
+
+
+def test_hk_market_tab_shows_price_snapshot(no_network):
+    """市场选香港 → 行情 Tab 显示港股价格快照（含 00823 最新价 38.78）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    mkt_tab = at.tabs[1]
+    marks = [m.value for m in mkt_tab.markdown]
+    assert any("00823" in m and "38.78" in m for m in marks)
+
+
+def test_hk_rules_tab_shows_placeholder(no_network):
+    """市场选香港 → 分析规则 Tab 显示「香港模块分析规则建设中」（不崩）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    rules_tab = at.tabs[2]
+    infos = [i.value for i in rules_tab.info]
+    assert any("香港模块分析规则建设中" in v for v in infos)
+
+
+def test_hk_status_wall_renders_gray_dots(no_network):
+    """市场选香港 → 状态墙渲染香港基金灰点（含 00823 后四位 0823）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    wall = next(m.value for m in at.markdown if "reit-status-wall" in m.value)
+    assert wall.count("reit-dot") == 1
+    assert "#4B5563" in wall
+    assert "0823" in wall
+
+
+def test_hk_mode_degrades_when_json_missing(no_network, monkeypatch):
+    """hk_funds/hk_annual/hk_market_snapshot 缺失 → 对应 Tab st.info「香港数据缺失」不崩。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(dl, "load_hk_funds", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_hk_annual", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_hk_snapshot", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_hk(at)
+    assert not at.exception
+    infos = [i.value for i in at.tabs[0].info]
+    assert any("香港数据缺失" in v for v in infos)

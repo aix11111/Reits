@@ -16,6 +16,12 @@ from tools.reits_collector import parser_sg_annual
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
 FIXTURE_TEXT = (FIXTURES_DIR / "sg_cict_ar2025.txt").read_text(encoding="utf-8")
+A17U_FIXTURE_TEXT = (FIXTURES_DIR / "sg_ascendas_ar2025.txt").read_text(
+    encoding="utf-8"
+)
+KEPPEL_FIXTURE_TEXT = (FIXTURES_DIR / "sg_keppel_ar2025.txt").read_text(
+    encoding="utf-8"
+)
 
 
 def test_parse_sg_annual_text_fixture():
@@ -83,6 +89,49 @@ def test_parse_sg_annual_text_empty():
     result = parser_sg_annual._parse_sg_annual_text("")
     assert result["fy"] is None
     assert result["revenue_wan"] is None
+
+
+def test_parse_sg_annual_text_a17u_before_label_five_year_table():
+    """A17U 凯德系五年表：数字序列在行标签**前**（文本序首个值 = FY2025，最新列）。
+
+    现有 parser 只找标签后数字 → 失败。标签前取文本序第一个值：
+    revenue_wan = 1,538.6m → 153860.0（1,523.0 为 FY2024 值，见年报合并利润表
+    "Revenue Group 2025 $'000 2024 $'000 ... 1,538,574 1,523,046"）；
+    dpu = 15.005（财务表第一列 = FY2025）。
+    """
+    result = parser_sg_annual._parse_sg_annual_text(A17U_FIXTURE_TEXT)
+    assert result["fy"] == "2025"
+    assert result["revenue_wan"] == 153860.0
+    assert result["dpu_cents"] == 15.005
+
+
+def test_parse_sg_annual_text_keppel_narrative_dpu():
+    """K71U 吉宝：叙述式 DPU「Distribution per Unit of 5.23 cents.」（of X cents 模式）。"""
+    result = parser_sg_annual._parse_sg_annual_text(KEPPEL_FIXTURE_TEXT)
+    assert result["fy"] == "2025"
+    assert result["dpu_cents"] == 5.23
+
+
+def test_parse_sg_annual_text_fiscal_year_cover_fallback():
+    """3 月财年：封面「Annual Report 2024/25」→ "2024/25"。"""
+    text = "Annual Report 2024/25  Active Rejuvenation Building Resilience"
+    result = parser_sg_annual._parse_sg_annual_text(text)
+    assert result["fy"] == "2024/25"
+
+
+def test_parse_sg_annual_text_two_column_fy_fy_take_first():
+    """双列 FY2025 FY2024 模式：取第一列（最新财年）。"""
+    text = (
+        "The Manager's Review of FY 2025 Financial Performance\n"
+        "FY 2025 FY 2024 Variance\n"
+        "Gross Revenue (S$ million) 1,538.6 1,523.0 1.0%\n"
+        "Net Property Income (S$ million) 1,067.6 1,049.9 1.7%\n"
+        "Distribution Per Unit (cents) 15.005 15.205 -1.3%\n"
+    )
+    result = parser_sg_annual._parse_sg_annual_text(text)
+    assert result["revenue_wan"] == 153860.0
+    assert result["npi_wan"] == 106760.0
+    assert result["dpu_cents"] == 15.005
 
 
 def test_parse_sg_annual_pdf_wrapper(tmp_path):

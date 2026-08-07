@@ -20,6 +20,11 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures"
 FIXTURE_TEXT = (FIXTURES_DIR / "hk_linkreit_ar2425_financials.txt").read_text(
     encoding="utf-8"
 )
+SUNLIGHT_FIXTURE = (FIXTURES_DIR / "hk_sunlight_ar2025.txt").read_text(encoding="utf-8")
+PROSPERITY_FIXTURE = (FIXTURES_DIR / "hk_prosperity_ar2025.txt").read_text(
+    encoding="utf-8"
+)
+SFREIT_FIXTURE = (FIXTURES_DIR / "hk_sfreit_ar2025.txt").read_text(encoding="utf-8")
 
 
 def test_extract_fiscal_year_march_end():
@@ -107,6 +112,60 @@ def test_parse_hk_annual_text_missing_fields():
     assert result["dpu_hk_cents"] is None
     assert result["nav_per_unit_hkd"] is None
     assert result["occupancy"] is None
+
+
+def test_parse_hk_annual_text_sunlight():
+    result = parser_hk_annual._parse_hk_annual_text(SUNLIGHT_FIXTURE)
+    assert result["revenue_wan"] == 77810.0
+    assert result["npi_wan"] == 60100.0
+    assert result["dpu_hk_cents"] == 18.2
+    assert result["nav_per_unit_hkd"] == 7.09
+    assert result["fiscal_year"] == "2025"
+
+
+def test_parse_hk_annual_text_prosperity():
+    result = parser_hk_annual._parse_hk_annual_text(PROSPERITY_FIXTURE)
+    assert result["revenue_wan"] == 40850.0
+    assert result["npi_wan"] == 30520.0
+    assert result["dpu_hk_cents"] == 11.56
+    assert result["fiscal_year"] == "2025"
+
+
+def test_parse_hk_annual_text_sfreit():
+    result = parser_hk_annual._parse_hk_annual_text(SFREIT_FIXTURE)
+    assert result["revenue_wan"] is not None or result["npi_wan"] is not None
+
+
+def test_cn_wan_amount():
+    assert parser_hk_annual._cn_wan("二十二億零九百萬元") == 220900
+    assert parser_hk_annual._cn_wan("十一億四千六百萬元") == 114600
+    assert parser_hk_annual._cn_wan("一億二千八百萬元") == 12800
+    assert parser_hk_annual._cn_wan("二千萬元") == 2000
+    assert parser_hk_annual._cn_wan("五億") == 50000
+    assert parser_hk_annual._cn_wan("一千二百萬元") == 1200
+
+
+def test_parse_hk_annual_text_cn_narrative_amount():
+    text = (
+        "匯賢產業信託於二零二五年收益減少人民幣一億二千八百萬元至人民幣二十二億零九百萬元。"
+        "物業收入淨額減少人民幣一億五千七百萬元至人民幣十一億四千六百萬元。"
+        "截至二零二五年十二月三十一日止年度，每基金單位分派為人民幣0.0043元。"
+    )
+    result = parser_hk_annual._parse_hk_annual_text(text)
+    assert result["fiscal_year"] == "2025"
+    assert result["revenue_wan"] == 220900.0
+    assert result["npi_wan"] == 114600.0
+    assert result["dpu_hk_cents"] == 0.43
+
+
+def test_parse_hk_annual_text_revenue_not_yield_ratio():
+    text = (
+        "財務摘要\n收益率為6.6%。\n收益 港幣100百萬元\n物業收入淨額 港幣70百萬元\n"
+        "截至2025年12月31日止年度\n"
+    )
+    result = parser_hk_annual._parse_hk_annual_text(text)
+    assert result["revenue_wan"] == 10000.0
+    assert result["npi_wan"] == 7000.0
 
 
 def test_parse_hk_annual_pdf_wrapper(tmp_path):

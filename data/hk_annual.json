@@ -21,9 +21,9 @@
   {
    "code": "00778",
    "fiscal_year": "2025",
-   "revenue_wan": null,
-   "npi_wan": null,
-   "dpu_hk_cents": null,
+   "revenue_wan": 168240.0,
+   "npi_wan": 118810.0,
+   "dpu_hk_cents": 35.22,
    "nav_per_unit_hkd": null,
    "occupancy": null
   },
@@ -75,8 +75,8 @@
   {
    "code": "02191",
    "fiscal_year": "2025",
-   "revenue_wan": 45140.0,
-   "npi_wan": 617080.0,
+   "revenue_wan": 617080.0,
+   "npi_wan": 46040.0,
    "dpu_hk_cents": 26.33,
    "nav_per_unit_hkd": 3.88,
    "occupancy": null
@@ -96,7 +96,7 @@
    "revenue_wan": 220900,
    "npi_wan": 114600,
    "dpu_hk_cents": 0.43,
-   "nav_per_unit_hkd": null,
+   "nav_per_unit_hkd": 3.1737,
    "occupancy": null
   }
  ]

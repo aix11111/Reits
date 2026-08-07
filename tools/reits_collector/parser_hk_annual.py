@@ -120,8 +120,35 @@ _JOINT_REV_NPI_RE = re.compile(
 # DPU 优先命中的上下文（叙述式全年总额）
 _DPU_PREFER = ("總額", "全年")
 
+# 叙述式 FY2025 收益及物業收入淨額（置富 MD&A）：
+# 「錄得總收益1,682.4百萬港元」+「物業收入淨額按年減少5.2%至1,188.1百萬港元」
+_FY_REVENUE_NARRATIVE_RE = re.compile(
+    r"總收益\s*([\d,]+(?:\.\d+)?)\s*百萬\s*港元"
+)
+_FY_NPI_NARRATIVE_RE = re.compile(
+    r"物業收入淨額[^。]{0,20}至\s*([\d,]+(?:\.\d+)?)\s*百萬\s*港元"
+)
+# 叙述式联合句（FY2025）：「錄得收益1,682.4百萬港元及物業收入淨額1,188.1百萬港元」
+_FY_REV_NPI_JOINT_RE = re.compile(
+    r"收益\s*([\d,]+(?:\.\d+)?)\s*百萬\s*港元\s*及\s*物業收入淨額\s*([\d,]+(?:\.\d+)?)\s*百萬\s*港元"
+)
+# 叙述式全年 DPU：「全年每基金單位分派按年下跌1.0%至35.22港仙」
+_FY_DPU_NARRATIVE_RE = re.compile(
+    r"全年\s*每\s*基\s*金\s*單\s*位\s*分\s*派[^。]{0,40}至\s*([\d.]+)\s*港仙"
+)
+
+# 摘要表段标（表現摘要/Performance Summary）：标签顺序-数字顺序对齐
+_SUMMARY_MARKERS = ("表現摘要", "Performance Summary")
+
 # 出租率：Retail 97.8% → {"retail": 0.978}
 RETAIL_OCCUPANCY_RE = re.compile(r"Retail\s*([\d.]+)\s*%", re.IGNORECASE)
+
+# per-unit 裸数字（每基金單位資產淨值，值不带单位，如「3.1737」）：
+# 非「,」/数字开头的含小数数值，且后不接 百万/亿/M/B/百分比/货币单位（总额或比率）
+_PER_UNIT_BARE_RE = re.compile(
+    r"(?<![\d,])(\d+\.\d+)"
+    r"(?!\s*(?:百萬|億|M\b|B\b|%|個百分點|港元|港幣|人民幣|元))"
+)
 
 
 def _cn_to_int(s):
@@ -313,6 +340,20 @@ def _nearest_amount(window, lm, field, cjk):
                 value = None
             if value:
                 return round(value, 2)
+    if field == "nav_per_unit_hkd":
+        # 排除总额：應佔資產淨值后「人民幣百萬元/百萬港元」等 scale 值不可当 per-unit
+        cands = [
+            c
+            for c in cands
+            if c[2].group("scale") not in ("百萬", "M", "B", "億")
+        ]
+        if not cands and cjk:
+            # per-unit 裸数字：标签后直接数字（「（人民幣元）」列头，值不带单位）
+            m = _PER_UNIT_BARE_RE.search(window[lm.end() : lm.end() + 200])
+            if m:
+                return round(float(m.group(1)), 4)
+        if not cands:
+            return None
     if not cands:
         return None
     if field == "dpu_hk_cents":
@@ -385,6 +426,117 @@ def _financial_highlights_window(text):
     return text[best : best + SECTION_LIMIT]
 
 
+def _extract_fy_narrative_rev_npi(text):
+    """叙述式 FY2025 收益及物業收入淨額（置富 MD&A 财务回顧）：
+    「錄得總收益1,682.4百萬港元」及「物業收入淨額按年減少5.2%至1,188.1百萬港元」。
+    优先取联合句「收益A百萬港元及物業收入淨額B百萬港元」，否则分别取两句。"""
+    joint = _FY_REV_NPI_JOINT_RE.search(text)
+    if joint:
+        rev = float(joint.group(1).replace(",", ""))
+        npi = float(joint.group(2).replace(",", ""))
+        return (round(rev * 100, 2), round(npi * 100, 2))
+    rev_m = _FY_REVENUE_NARRATIVE_RE.search(text)
+    npi_m = _FY_NPI_NARRATIVE_RE.search(text)
+    if rev_m and npi_m:
+        rev = float(rev_m.group(1).replace(",", ""))
+        npi = float(npi_m.group(1).replace(",", ""))
+        return (round(rev * 100, 2), round(npi * 100, 2))
+    return None
+
+
+def _extract_fy_narrative_dpu(text):
+    """叙述式全年 DPU：「全年每基金單位分派按年下跌1.0%至35.22港仙」→ 35.22。"""
+    m = _FY_DPU_NARRATIVE_RE.search(text)
+    if m:
+        return round(float(m.group(1)), 2)
+    return None
+
+
+def _extract_summary_table(text):
+    """摘要表（表現摘要 / Performance Summary）「标签顺序-数字顺序」对齐。
+
+    摘要表内当年（非「2024年：」上年列）金额按出现顺序配给标签：
+    收益/物業收入淨額取当年 亿/百万 级金额（按序），DPU 取港仙，NAV 取每单位港元。
+
+    年报目录（TOC）可能先于正文出现「表現摘要」段标（其后仅有章节页码），
+    须逐段尝试，取首个确实含金额序列（>=2 个 亿/百万 级金额）的摘要表。
+    """
+    occurrences = []
+    for marker in _SUMMARY_MARKERS:
+        start = 0
+        while True:
+            idx = text.find(marker, start)
+            if idx == -1:
+                break
+            occurrences.append(idx)
+            start = idx + 1
+    for idx in sorted(occurrences):
+        result = _summary_table_at(text, idx)
+        if result is not None:
+            return result
+    return None
+
+
+def _summary_table_at(text, idx):
+    section = text[idx : idx + SECTION_LIMIT]
+    # 摘要表范围截止到页脚/下一节（年报页脚「年報」）
+    for stop in ("年報", "年度報告", "Annual Report", "Performance Review"):
+        si = section.find(stop)
+        if si != -1:
+            section = section[:si]
+            break
+    scale_vals = []  # (num, scale, pos) 当年 亿/百万级金额
+    hkcent_vals = []  # 当年 港仙/¢
+    hkd_vals = []  # 当年 每单位 港元
+    bare_vals = []  # 当年裸数字（非 个百分點/百分比 差）
+    for m in _AMOUNT_RE.finditer(section):
+        pre = section[max(0, m.start() - 10) : m.start()]
+        if "2024年" in pre:
+            continue
+        num = float(m.group("num").replace(",", ""))
+        scale = m.group("scale") or ""
+        unit = m.group("unit") or ""
+        cur = m.group("cur") or ""
+        if scale in ("億", "百萬", "M", "B"):
+            scale_vals.append((num, scale, m.start()))
+        elif unit == "港仙" or cur == "¢":
+            hkcent_vals.append(num)
+        elif unit == "港元" and not scale:
+            hkd_vals.append(num)
+        elif not (m.group("cur") or m.group("cn")):
+            after = section[m.end() : m.end() + 12]
+            if "個百分點" in after or after.lstrip().startswith("%"):
+                continue
+            if num >= 1000 and num == int(num):
+                continue  # 排除「2024」「2025」等年份
+            bare_vals.append((num, m.start()))
+    if len(scale_vals) < 2:
+        return None
+
+    def _scale_wan(num, scale):
+        if scale == "億":
+            return round(num * 10000, 2)
+        if scale in ("百萬", "M"):
+            return round(num * 100, 2)
+        if scale == "B":
+            return round(num * 100000, 2)
+        return num
+
+    result = {}
+    result["revenue_wan"] = _scale_wan(*scale_vals[0][:2])
+    result["npi_wan"] = _scale_wan(*scale_vals[1][:2])
+    if hkcent_vals:
+        result["dpu_hk_cents"] = round(hkcent_vals[0], 2)
+    elif bare_vals:
+        first_scale_pos = scale_vals[0][2]
+        late_bare = [b for b in bare_vals if b[1] >= first_scale_pos]
+        if late_bare:
+            result["dpu_hk_cents"] = round(late_bare[-1][0], 2)
+    if hkd_vals:
+        result["nav_per_unit_hkd"] = round(hkd_vals[0], 2)
+    return result
+
+
 def _parse_hk_annual_text(text):
     """纯函数：从全文文本解析港年报财务摘要，字段缺失 → None。"""
     if not text:
@@ -392,20 +544,34 @@ def _parse_hk_annual_text(text):
     window = _financial_highlights_window(text)
     result = _empty_result()
     result["fiscal_year"] = _extract_fiscal_year(text)
-    joint = _extract_joint_rev_npi(window)
-    if joint:
-        result["revenue_wan"], result["npi_wan"] = joint
+
+    summary = _extract_summary_table(text)
+    if summary:
+        for key in ("revenue_wan", "npi_wan", "dpu_hk_cents", "nav_per_unit_hkd"):
+            result[key] = summary[key]
     else:
-        result["revenue_wan"] = _find_amount(
-            window, _LABELS["revenue_wan"], "revenue_wan"
+        fy_narr = _extract_fy_narrative_rev_npi(text)
+        if fy_narr:
+            result["revenue_wan"], result["npi_wan"] = fy_narr
+        else:
+            joint = _extract_joint_rev_npi(window)
+            if joint:
+                result["revenue_wan"], result["npi_wan"] = joint
+            else:
+                result["revenue_wan"] = _find_amount(
+                    window, _LABELS["revenue_wan"], "revenue_wan"
+                )
+                result["npi_wan"] = _find_amount(window, _LABELS["npi_wan"], "npi_wan")
+        fy_dpu = _extract_fy_narrative_dpu(text)
+        if fy_dpu is not None:
+            result["dpu_hk_cents"] = fy_dpu
+        else:
+            result["dpu_hk_cents"] = _find_amount(
+                window, _LABELS["dpu_hk_cents"], "dpu_hk_cents", prefer=_DPU_PREFER
+            )
+        result["nav_per_unit_hkd"] = _find_amount(
+            window, _LABELS["nav_per_unit_hkd"], "nav_per_unit_hkd"
         )
-        result["npi_wan"] = _find_amount(window, _LABELS["npi_wan"], "npi_wan")
-    result["dpu_hk_cents"] = _find_amount(
-        window, _LABELS["dpu_hk_cents"], "dpu_hk_cents", prefer=_DPU_PREFER
-    )
-    result["nav_per_unit_hkd"] = _find_amount(
-        window, _LABELS["nav_per_unit_hkd"], "nav_per_unit_hkd"
-    )
     result["occupancy"] = _extract_occupancy(window)
     return result
 

@@ -25,6 +25,12 @@ PROSPERITY_FIXTURE = (FIXTURES_DIR / "hk_prosperity_ar2025.txt").read_text(
     encoding="utf-8"
 )
 SFREIT_FIXTURE = (FIXTURES_DIR / "hk_sfreit_ar2025.txt").read_text(encoding="utf-8")
+FORTUNE_FIXTURE = (FIXTURES_DIR / "hk_fortune_ar2025.txt").read_text(
+    encoding="utf-8"
+)
+HUIXIAN_FIXTURE = (FIXTURES_DIR / "hk_huixian_ar2025.txt").read_text(
+    encoding="utf-8"
+)
 
 
 def test_extract_fiscal_year_march_end():
@@ -134,6 +140,29 @@ def test_parse_hk_annual_text_prosperity():
 def test_parse_hk_annual_text_sfreit():
     result = parser_hk_annual._parse_hk_annual_text(SFREIT_FIXTURE)
     assert result["revenue_wan"] is not None or result["npi_wan"] is not None
+
+
+def test_parse_hk_annual_text_fortune_narrative_dpu():
+    result = parser_hk_annual._parse_hk_annual_text(FORTUNE_FIXTURE)
+    assert result["fiscal_year"] == "2025"
+    assert result["dpu_hk_cents"] == 35.22
+    assert result["revenue_wan"] == 168240.0
+    assert result["npi_wan"] == 118810.0
+
+
+def test_parse_hk_annual_text_sfreit_summary_table():
+    result = parser_hk_annual._parse_hk_annual_text(SFREIT_FIXTURE)
+    assert result["fiscal_year"] == "2025"
+    assert result["revenue_wan"] == 617080.0
+    assert result["npi_wan"] == 46040.0
+    assert result["dpu_hk_cents"] == 26.33
+    assert result["nav_per_unit_hkd"] == 3.88
+
+
+def test_parse_hk_annual_text_huixian_nav_per_unit():
+    result = parser_hk_annual._parse_hk_annual_text(HUIXIAN_FIXTURE)
+    assert result["fiscal_year"] == "2025"
+    assert result["nav_per_unit_hkd"] == 3.1737
 
 
 def test_cn_wan_amount():

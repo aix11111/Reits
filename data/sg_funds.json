@@ -1,11 +1,123 @@
 {
  "funds": [
   {
+   "code": "9A4U",
+   "name": "ESR-LOGOS REIT",
+   "name_zh": "ESR乐歌房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "A17U",
+   "name": "CapitaLand Ascendas REIT",
+   "name_zh": "凯德腾飞房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "AJBU",
+   "name": "Keppel DC REIT",
+   "name_zh": "吉宝数据中心信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "AU8U",
+   "name": "CapitaLand China Trust",
+   "name_zh": "凯德中国信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "BUOU",
+   "name": "Frasers Logistics & Commercial Trust",
+   "name_zh": "星狮物流商业信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "C2PU",
+   "name": "Parkway Life REIT",
+   "name_zh": "百汇生命房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
    "code": "C38U",
    "name": "CapitaLand Integrated Commercial Trust",
    "name_zh": "凯德综合商业信托",
    "market": "SG",
    "annual_url": "https://investor.cict.com.sg/misc/ar2025.pdf",
+   "currency": "SGD"
+  },
+  {
+   "code": "CY6U",
+   "name": "CapitaLand India Trust",
+   "name_zh": "凯德印度信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "HMN",
+   "name": "CapitaLand Ascott Trust",
+   "name_zh": "凯德雅诗阁信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "J69U",
+   "name": "Frasers Centrepoint Trust",
+   "name_zh": "星狮商厦信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "K71U",
+   "name": "Keppel REIT",
+   "name_zh": "吉宝房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "M44U",
+   "name": "Mapletree Logistics Trust",
+   "name_zh": "丰树物流信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "ME8U",
+   "name": "Mapletree Industrial Trust",
+   "name_zh": "丰树工业信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "N2IU",
+   "name": "Mapletree Pan Asia Commercial Trust",
+   "name_zh": "丰树泛亚商业信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "T82U",
+   "name": "Suntec REIT",
+   "name_zh": "新达信托",
+   "market": "SG",
+   "annual_url": null,
    "currency": "SGD"
   }
  ]

@@ -1,0 +1,15 @@
+{
+ "annual": [
+  {
+   "code": "00823",
+   "fiscal_year": "2024/25",
+   "revenue_wan": 1422300.0,
+   "npi_wan": 1061900.0,
+   "dpu_hk_cents": 272.34,
+   "nav_per_unit_hkd": 63.3,
+   "occupancy": {
+    "retail": 0.978
+   }
+  }
+ ]
+}

@@ -1,12 +1,92 @@
 {
  "funds": [
   {
+   "code": "00405",
+   "name": "越秀房产信托基金",
+   "name_en": "Yuexiu REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "00435",
+   "name": "阳光房地产基金",
+   "name_en": "Sunlight REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "00778",
+   "name": "置富产业信托",
+   "name_en": "Fortune REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "00808",
+   "name": "泓富产业信托",
+   "name_en": "Prosperity REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
    "code": "00823",
    "name": "领展房产基金",
    "name_en": "Link REIT",
    "market": "HK",
    "annual_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0616/2025061600521.pdf",
    "fiscal_year_end": "0331"
+  },
+  {
+   "code": "01426",
+   "name": "春泉产业信托",
+   "name_en": "Spring REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "01503",
+   "name": "招商局商业房托",
+   "name_en": "CM Commercial REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "01881",
+   "name": "富豪产业信托",
+   "name_en": "Regal REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "02191",
+   "name": "顺丰房托",
+   "name_en": "SF REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "02778",
+   "name": "冠君产业信托",
+   "name_en": "Champion REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
+  },
+  {
+   "code": "87001",
+   "name": "汇贤产业信托",
+   "name_en": "Hui Xian REIT",
+   "market": "HK",
+   "annual_url": null,
+   "fiscal_year_end": null
   }
  ]
 }

@@ -46,7 +46,6 @@ from src.valuation import (
     hk_distribution_yield,
     hk_nav_premium,
     nav_premium,
-    npi_margin,
     risk_flags,
     ttm_distributable,
 )
@@ -191,6 +190,23 @@ _VALUATION_PREMIUM_COLUMNS = [
     ("name", "基金简称"),
     ("price", "市价(元)"),
     ("nav_unit_price", "单位净值(元)"),
+    ("premium_pct", "折溢价"),
+]
+
+# 估值对标页签（香港）：分派收益率排名展示列
+_HK_VALUATION_RANK_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("yield_pct", "分派收益率"),
+    ("fiscal_year", "财年"),
+]
+
+# 估值对标页签（香港）：P/NAV 折溢价展示列
+_HK_VALUATION_PREMIUM_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("price", "市价(港元)"),
+    ("nav_unit_price", "单位NAV(港元)"),
     ("premium_pct", "折溢价"),
 ]
 
@@ -1332,50 +1348,107 @@ def render_hk_rules():
     st.info("香港模块分析规则建设中")
 
 
-def render_hk_valuation(code, name, annual_data, snapshot_latest):
-    """估值对标页签（香港）：分派收益率 / P-NAV 折溢价 / NPI 利润率。
+def render_hk_valuation(funds_map, annual_data, snapshot_latest):
+    """估值对标页签（香港）：分派收益率排名 + P/NAV 折溢价表。
 
-    分派收益率 = hk_distribution_yield(DPU, 市价)；P/NAV 折溢价 =
-    hk_nav_premium(市价, NAV)；NPI 利润率 = npi_margin(NPI, Revenue)。
-    数据来自 data/hk_annual.json + data/hk_market_snapshot.json latest；
-    任一缺失降级 st.info。
+    分派收益率 = hk_distribution_yield(DPU, 市价)，DPU 或市价缺失 → 该行「—」；
+    少于 3 只有效收益率时降级 st.info「香港分派数据不足」。P/NAV 折溢价 =
+    hk_nav_premium(市价, NAV)，NAV 缺失 → 「—」；语义色复用中国版
+    _premium_color（溢价红 / 折价绿）。行情快照缺失降级 st.info（沿用现有）。
     """
     st.subheader("估值对标")
     st.caption(
-        "分派收益率=DPU/市价；P/NAV 折溢价=市价/NAV-1；NPI 利润率=物业收入净额/总收入。"
+        "分派收益率=DPU/市价；P/NAV 折溢价=市价/NAV-1（溢价红、折价绿）。"
     )
-    rec = annual_data.get(code)
-    price = snapshot_latest.get(code)
-    if rec is None or price is None:
+    if not snapshot_latest:
         st.info("香港数据缺失")
         return
 
-    dpu = rec.get("dpu_hk_cents")
-    nav = rec.get("nav_per_unit_hkd")
-    cards = "".join(
-        [
-            _kpi_card(
-                "分派收益率",
-                _fmt_pct(hk_distribution_yield(dpu, price)),
-                f"DPU {_fmt_num(dpu)} 港仙 / 市价 {_fmt_num(price)} 港元",
-            ),
-            _kpi_card(
-                "P/NAV 折溢价",
-                _fmt_pct(hk_nav_premium(price, nav)),
-                f"市价 {_fmt_num(price)} / 单位NAV {_fmt_num(nav)} 港元",
-            ),
-            _kpi_card(
-                "NPI 利润率",
-                _fmt_pct(npi_margin(rec.get("npi_wan"), rec.get("revenue_wan"))),
-                "物业收入净额/总收入",
-            ),
-        ]
+    # ---- 1. 分派收益率排名 ----
+    st.markdown("### 1. 分派收益率排名")
+    rank_rows = []
+    for code, name in funds_map.items():
+        rec = annual_data.get(code)
+        price = snapshot_latest.get(code)
+        if rec is None or price is None:
+            continue
+        rank_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "yield": hk_distribution_yield(rec.get("dpu_hk_cents"), price),
+                "fiscal_year": rec.get("fiscal_year"),
+            }
+        )
+    rank = pd.DataFrame(rank_rows)
+
+    valid = rank[rank["yield"].notna()]
+    if len(valid) < 3:
+        st.info("香港分派数据不足")
+        return
+
+    chart = valid.sort_values("yield", ascending=True)
+    median_yield = chart["yield"].median()
+    fig = go.Figure(
+        go.Bar(
+            x=chart["yield"],
+            y=chart["name"],
+            orientation="h",
+            marker_color=_ACCENT,
+        )
     )
-    st.markdown(
-        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;'
-        'margin:8px 0 16px;">' + cards + "</div>",
-        unsafe_allow_html=True,
+    fig.add_vline(
+        x=median_yield,
+        line_dash="dash",
+        line_color=_TEXT_TERTIARY,
+        annotation_text="中位数",
+        annotation_font_color=_TEXT_TERTIARY,
     )
+    fig.update_layout(
+        title="分派收益率排名",
+        xaxis_title="分派收益率",
+        xaxis_tickformat=".0%",
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+        xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+    )
+    st.plotly_chart(fig, width="stretch")
+
+    display = rank.sort_values("yield", ascending=False, na_position="last").copy()
+    display["yield_pct"] = display["yield"].map(_fmt_pct)
+    display = display.rename(columns=dict(_HK_VALUATION_RANK_COLUMNS))
+    st.dataframe(
+        display[[label for _, label in _HK_VALUATION_RANK_COLUMNS]],
+        hide_index=True,
+        width="stretch",
+    )
+
+    # ---- 2. P/NAV 折溢价 ----
+    st.markdown("### 2. P/NAV 折溢价（最新年报单位净值）")
+    prem_rows = []
+    for code, name in funds_map.items():
+        rec = annual_data.get(code)
+        price = snapshot_latest.get(code)
+        nav = rec.get("nav_per_unit_hkd") if rec is not None else None
+        prem_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "price": price,
+                "nav_unit_price": nav,
+                "premium_pct": hk_nav_premium(price, nav),
+            }
+        )
+    prem_df = pd.DataFrame(prem_rows)
+    prem_display = prem_df.rename(columns=dict(_HK_VALUATION_PREMIUM_COLUMNS))
+    styled = prem_display.style.map(_premium_color, subset=["折溢价"]).format(
+        {"市价(港元)": "{:.3f}", "单位NAV(港元)": "{:.4f}", "折溢价": _fmt_pct},
+        na_rep="—",
+    )
+    st.dataframe(styled, hide_index=True, width="stretch")
 
 
 def render_hk_status_wall(funds_map):
@@ -1540,8 +1613,7 @@ def main():
 
         with tab_val:
             render_hk_valuation(
-                selected_code,
-                hk_funds.get(selected_code, ""),
+                hk_funds,
                 hk_annual,
                 hk_snapshot,
             )

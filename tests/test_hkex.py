@@ -87,8 +87,7 @@ def test_hk_funds_json_loads_with_link_reit():
     funds = data["funds"]
     assert isinstance(funds, list) and len(funds) >= 1
 
-    link = funds[0]
-    assert link["code"] == "00823"
+    link = next(f for f in funds if f["code"] == "00823")
     assert link["name"] == "领展房产基金"
     assert link["name_en"] == "Link REIT"
     assert link["market"] == "HK"

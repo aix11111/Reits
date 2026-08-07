@@ -1221,9 +1221,37 @@ def test_hk_operations_tab_renders_hk_kpis(no_network):
     assert "NPI" in cards[0]
 
 
-def test_hk_valuation_tab_renders_yield_premium_margin(no_network):
-    """市场选香港 → 估值对标 Tab 渲染分派收益率（HK 指标）。"""
+def _hk_annual_by_code():
+    """读 data/hk_annual.json 为 {code: rec}。"""
+    annual = json.loads((DATA_PATH / "hk_annual.json").read_text(encoding="utf-8"))[
+        "annual"
+    ]
+    return {str(r["code"]): r for r in annual}
+
+
+def test_hk_valuation_tab_renders_yield_ranking(no_network):
+    """市场选香港 → 估值 Tab 渲染「分派收益率」排名表（多行）。
+
+    排名表含全量基金；有效收益率（DPU 与市价均非空）行数 = 实跑数据；
+    领展 00823 收益率 = hk_distribution_yield(253.61, 38.78) ≈ 6.5%，非「—」。
+    """
     import streamlit as st
+
+    from src.valuation import hk_distribution_yield
+
+    funds = json.loads((DATA_PATH / "hk_funds.json").read_text(encoding="utf-8"))[
+        "funds"
+    ]
+    snapshot = json.loads(
+        (DATA_PATH / "hk_market_snapshot.json").read_text(encoding="utf-8")
+    )["latest"]
+    annual_by_code = _hk_annual_by_code()
+    valid_codes = [
+        code
+        for code in annual_by_code
+        if annual_by_code[code].get("dpu_hk_cents") is not None
+        and snapshot.get(code) is not None
+    ]
 
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
@@ -1231,18 +1259,117 @@ def test_hk_valuation_tab_renders_yield_premium_margin(no_network):
     assert not at.exception
 
     val_tab = at.tabs[3]
-    cards = [m.value for m in val_tab.markdown if "reit-kpi-card" in m.value]
-    assert len(cards) == 1
-    assert "分派收益率" in cards[0]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "分派收益率" in f.columns)
+    assert len(rank) == len(funds)
+    valid_rows = rank[rank["分派收益率"] != "—"]
+    assert len(valid_rows) == len(valid_codes)
+
+    link = valid_rows[valid_rows["基金代码"] == "00823"]
+    assert link["分派收益率"].iloc[0] == f"{hk_distribution_yield(253.61, 38.78):.1%}"
+
+    # 财年标注列存在
+    assert "财年" in rank.columns
+
+    # 横向条形图渲染（青绿主色 + 中位数虚线）
+    assert len(val_tab.get("plotly_chart")) >= 1
+
+
+def test_hk_valuation_tab_premium_table_semantic(no_network):
+    """估值 Tab P/NAV 折溢价表：全量基金、00823 折价、NAV 缺失显示「—」。"""
+    import streamlit as st
+
+    from src.valuation import hk_nav_premium
+
+    funds = json.loads((DATA_PATH / "hk_funds.json").read_text(encoding="utf-8"))[
+        "funds"
+    ]
+    annual_by_code = _hk_annual_by_code()
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    premium = next(f for f in frames if "折溢价" in f.columns)
+    assert len(premium) == len(funds)
+
+    link = premium[premium["基金代码"] == "00823"]
+    assert link["折溢价"].iloc[0] == pytest.approx(hk_nav_premium(38.78, 57.75))
+
+    missing_nav = {
+        code for code, rec in annual_by_code.items() if rec.get("nav_per_unit_hkd") is None
+    }
+    missing_rows = premium[premium["基金代码"].isin(missing_nav)]
+    assert not missing_rows.empty
+    assert missing_rows["折溢价"].isna().all()
+    assert missing_rows["单位NAV(港元)"].isna().all()
+
+
+def test_hk_valuation_tab_degrades_when_yield_data_insufficient(
+    no_network, monkeypatch
+):
+    """有效分派收益率少于 3 只 → st.info「香港分派数据不足」。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(
+        dl,
+        "load_hk_annual",
+        lambda path=None: {
+            "00405": {"fiscal_year": "2025", "dpu_hk_cents": 3.33},
+            "00823": {"fiscal_year": "2025/26", "dpu_hk_cents": 253.61},
+            "01426": {"fiscal_year": "2025", "dpu_hk_cents": None},
+        },
+        raising=False,
+    )
+    monkeypatch.setattr(
+        dl,
+        "load_hk_snapshot",
+        lambda path=None: {"00405": 0.68, "00823": 38.78, "01426": 1.18},
+        raising=False,
+    )
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    infos = [i.value for i in at.tabs[3].info]
+    assert any("香港分派数据不足" in v for v in infos)
+
+
+def test_hk_valuation_tab_degrades_when_snapshot_missing(no_network, monkeypatch):
+    """行情快照缺失 → 估值 Tab st.info「香港数据缺失」，不崩。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(dl, "load_hk_snapshot", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    infos = [i.value for i in at.tabs[3].info]
+    assert any("香港数据缺失" in v for v in infos)
 
 
 def test_hk_market_tab_shows_price_snapshot(no_network):
-    """市场选香港 → 行情 Tab 显示港股价格快照（含 00823 最新价 38.78）。"""
+    """市场选香港 → 行情 Tab 显示港股价格快照（选中 00823 领展，最新价 38.78）。"""
     import streamlit as st
 
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
     _select_hk(at)
+    assert not at.exception
+
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    fund_box.select("00823").run()
     assert not at.exception
 
     mkt_tab = at.tabs[1]
@@ -1265,8 +1392,12 @@ def test_hk_rules_tab_shows_placeholder(no_network):
 
 
 def test_hk_status_wall_renders_gray_dots(no_network):
-    """市场选香港 → 状态墙渲染香港基金灰点（含 00823 后四位 0823）。"""
+    """市场选香港 → 状态墙渲染香港基金灰点（全量，含 00823 后四位 0823）。"""
+    import json
     import streamlit as st
+
+    funds_file = DATA_PATH / "hk_funds.json"
+    expected = len(json.loads(funds_file.read_text(encoding="utf-8"))["funds"])
 
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
@@ -1274,7 +1405,7 @@ def test_hk_status_wall_renders_gray_dots(no_network):
     assert not at.exception
 
     wall = next(m.value for m in at.markdown if "reit-status-wall" in m.value)
-    assert wall.count("reit-dot") == 1
+    assert wall.count("reit-dot") == expected
     assert "#4B5563" in wall
     assert "0823" in wall
 

@@ -7,7 +7,8 @@
    "npi_wan": 185590.7,
    "dpu_hk_cents": 3.33,
    "nav_per_unit_hkd": null,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "00435",
@@ -16,7 +17,8 @@
    "npi_wan": 60100.0,
    "dpu_hk_cents": 18.2,
    "nav_per_unit_hkd": 7.09,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "00778",
@@ -25,7 +27,8 @@
    "npi_wan": 118810.0,
    "dpu_hk_cents": 35.22,
    "nav_per_unit_hkd": null,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "00808",
@@ -34,7 +37,8 @@
    "npi_wan": 30520.0,
    "dpu_hk_cents": 11.56,
    "nav_per_unit_hkd": 3.97,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "00823",
@@ -43,7 +47,8 @@
    "npi_wan": 1023000.0,
    "dpu_hk_cents": 253.61,
    "nav_per_unit_hkd": 57.75,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "01426",
@@ -52,7 +57,8 @@
    "npi_wan": 28218.0,
    "dpu_hk_cents": null,
    "nav_per_unit_hkd": null,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "01503",
@@ -61,7 +67,8 @@
    "npi_wan": null,
    "dpu_hk_cents": 5.58,
    "nav_per_unit_hkd": 2.57,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "01881",
@@ -70,7 +77,8 @@
    "npi_wan": null,
    "dpu_hk_cents": 0.88,
    "nav_per_unit_hkd": 3.9,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "02191",
@@ -79,7 +87,8 @@
    "npi_wan": 46040.0,
    "dpu_hk_cents": 26.33,
    "nav_per_unit_hkd": 3.88,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "02778",
@@ -88,7 +97,8 @@
    "npi_wan": null,
    "dpu_hk_cents": 6.13,
    "nav_per_unit_hkd": 6.45,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
   },
   {
    "code": "87001",
@@ -97,7 +107,118 @@
    "npi_wan": 114600,
    "dpu_hk_cents": 0.43,
    "nav_per_unit_hkd": 3.1737,
-   "occupancy": null
+   "occupancy": null,
+   "period": "annual"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 577000.0,
+   "npi_wan": 67903.6,
+   "dpu_hk_cents": null,
+   "nav_per_unit_hkd": null,
+   "occupancy": null,
+   "code": "00405"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 39120.0,
+   "npi_wan": 30740.0,
+   "dpu_hk_cents": null,
+   "nav_per_unit_hkd": 7.53,
+   "occupancy": null,
+   "code": "00435"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 85450.0,
+   "npi_wan": 61260.0,
+   "dpu_hk_cents": 18.41,
+   "nav_per_unit_hkd": 12.67,
+   "occupancy": null,
+   "code": "00778"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 20580.0,
+   "npi_wan": 15310.0,
+   "dpu_hk_cents": 5.85,
+   "nav_per_unit_hkd": 4.11,
+   "occupancy": null,
+   "code": "00808"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 702300.0,
+   "npi_wan": 517800.0,
+   "dpu_hk_cents": 126.88,
+   "nav_per_unit_hkd": 61.19,
+   "occupancy": null,
+   "code": "00823"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 14912.0,
+   "npi_wan": 14912.0,
+   "dpu_hk_cents": null,
+   "nav_per_unit_hkd": null,
+   "occupancy": null,
+   "code": "01426"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": null,
+   "npi_wan": null,
+   "dpu_hk_cents": null,
+   "nav_per_unit_hkd": null,
+   "occupancy": null,
+   "code": "01503"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 1650.0,
+   "npi_wan": 27500.0,
+   "dpu_hk_cents": null,
+   "nav_per_unit_hkd": 3.79,
+   "occupancy": null,
+   "code": "01881"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 22230.0,
+   "npi_wan": 18110.0,
+   "dpu_hk_cents": 14.71,
+   "nav_per_unit_hkd": 4.51,
+   "occupancy": null,
+   "code": "02191"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 120000.0,
+   "npi_wan": 20000.0,
+   "dpu_hk_cents": 544.0,
+   "nav_per_unit_hkd": 6.79,
+   "occupancy": null,
+   "code": "02778"
+  },
+  {
+   "period": "interim",
+   "fiscal_year": "2025H1",
+   "revenue_wan": 110500,
+   "npi_wan": 1000,
+   "dpu_hk_cents": 0.16,
+   "nav_per_unit_hkd": 3.2251,
+   "occupancy": null,
+   "code": "87001"
   }
  ]
 }

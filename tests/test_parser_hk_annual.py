@@ -31,6 +31,9 @@ FORTUNE_FIXTURE = (FIXTURES_DIR / "hk_fortune_ar2025.txt").read_text(
 HUIXIAN_FIXTURE = (FIXTURES_DIR / "hk_huixian_ar2025.txt").read_text(
     encoding="utf-8"
 )
+FORTUNE_INTERIM_FIXTURE = (FIXTURES_DIR / "hk_fortune_interim_2025.txt").read_text(
+    encoding="utf-8"
+)
 
 
 def test_extract_fiscal_year_march_end():
@@ -55,14 +58,40 @@ def test_extract_fiscal_year_missing():
     assert parser_hk_annual._extract_fiscal_year("no fiscal year here") is None
 
 
+def test_extract_fiscal_year_interim_h1():
+    assert (
+        parser_hk_annual._extract_fiscal_year(
+            "截至2025年6月30日止六個月 收益 854.5百萬港元", period="interim"
+        )
+        == "2025H1"
+    )
+    assert (
+        parser_hk_annual._extract_fiscal_year(
+            "for the six months ended 30 September 2025 領展", period="interim"
+        )
+        == "2025H1"
+    )
+
+
 def test_parse_hk_annual_text_fixture():
     result = parser_hk_annual._parse_hk_annual_text(FIXTURE_TEXT)
+    assert result["period"] == "annual"
     assert result["fiscal_year"] == "2024/25"
     assert result["revenue_wan"] == 1422300.0
     assert result["npi_wan"] == 1061900.0
     assert result["dpu_hk_cents"] == 272.34
     assert result["nav_per_unit_hkd"] == 63.30
     assert result["occupancy"] is None or isinstance(result["occupancy"], dict)
+
+
+def test_parse_hk_annual_text_interim_fixture():
+    result = parser_hk_annual._parse_hk_annual_text(
+        FORTUNE_INTERIM_FIXTURE, period="interim"
+    )
+    assert result["period"] == "interim"
+    assert result["fiscal_year"] == "2025H1"
+    assert result["revenue_wan"] == 85450.0
+    assert result["dpu_hk_cents"] == 18.41
 
 
 def test_parse_hk_annual_text_broken_line_numbers():

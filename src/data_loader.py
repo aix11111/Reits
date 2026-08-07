@@ -303,20 +303,19 @@ def load_hk_funds(path):
 
 
 def load_hk_annual(path):
-    """读取香港年报数据 JSON（{"annual": [...]}），缺失/损坏返回空 dict。
+    """读取香港年报/中期数据 JSON（{"annual": [...]}），缺失/损坏返回空 dict。
 
-    返回 {code: 最新年度记录}（PoC 单条；多年度时按出现顺序取首个）。
-    """
+    返回 {code: [记录...]}（含 annual + interim，按 JSON 出现顺序；
+    年报在前、中期在后，每条含 period 字段）。"""
     data = _load_json_dict(path)
     annual = data.get("annual") if isinstance(data, dict) else None
     if not annual:
         return {}
-    latest = {}
+    grouped = {}
     for rec in annual:
         code = str(rec.get("code"))
-        if code not in latest:
-            latest[code] = rec
-    return latest
+        grouped.setdefault(code, []).append(rec)
+    return grouped
 
 
 def load_hk_snapshot(path):

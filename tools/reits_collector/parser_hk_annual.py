@@ -40,9 +40,20 @@ _FY_RE = re.compile(
 )
 # 财年（中文）：截至{年}年{月}月[{日}]止[全]年度（年月日可为中文数字）
 _CN_FY_RE = re.compile(
-    r"截至\s*(?P<yr>[\d零一二三四五六七八九〇兩]{4})\s*年\s*"
+    r"截至\s*(?P<yr>[\d零一二三四五六七八九〇○兩]{4})\s*年\s*"
     r"(?P<mo>\d{1,2}|[一二三四五六七八九十]{1,3})\s*月\s*"
     r"(?:\d{1,2}|[一二三四五六七八九十]{1,5})?\s*日?\s*止\s*(?:全)?年度"
+)
+# 中期报告期（英文）：for the six months ended 30 September 2025
+_H1_EN_FY_RE = re.compile(
+    r"for\s+the\s+(?:six\s+months|half[- ]year)\s+ended\s+\d{1,2}\s+([A-Za-z]+)\s+(\d{4})",
+    re.IGNORECASE,
+)
+# 中期报告期（中文）：截至2025年6月30日止六個月（年月日可为中文数字）
+_H1_CN_FY_RE = re.compile(
+    r"截至\s*(?P<yr>[\d零一二三四五六七八九〇○兩]{4})\s*年\s*"
+    r"(?P<mo>\d{1,2}|[一二三四五六七八九十]{1,3})\s*月\s*"
+    r"(?:\d{1,2}|[一二三四五六七八九十]{1,5})?\s*日?\s*止\s*六個月"
 )
 
 MONTHS = {
@@ -62,6 +73,7 @@ MONTHS = {
 
 _CN_DIGIT = {
     "〇": 0,
+    "○": 0,
     "零": 0,
     "一": 1,
     "二": 2,
@@ -74,7 +86,7 @@ _CN_DIGIT = {
     "八": 8,
     "九": 9,
 }
-_CN_DIGIT_CHARS = "〇零一二三四五六七八九兩"
+_CN_DIGIT_CHARS = "〇○零一二三四五六七八九兩"
 
 # 金额：HK$14,223M / HK¢272.34 / 港幣778.1百萬元 / 408,500,000 港元 /
 # 61.708 億港元 / 18.2港仙 / 0.1156港元 / 港幣7.09 / 人民幣0.0043元
@@ -135,6 +147,21 @@ _FY_REV_NPI_JOINT_RE = re.compile(
 # 叙述式全年 DPU：「全年每基金單位分派按年下跌1.0%至35.22港仙」
 _FY_DPU_NARRATIVE_RE = re.compile(
     r"全年\s*每\s*基\s*金\s*單\s*位\s*分\s*派[^。]{0,40}至\s*([\d.]+)\s*港仙"
+)
+# 叙述式中期 DPU：「中期每基金單位分派按年上升1.0%至18.41港仙」
+_H1_DPU_NARRATIVE_RE = re.compile(
+    r"中期\s*每\s*基\s*金\s*單\s*位\s*分\s*派[^。]{0,40}(?:至|為)\s*([\d.]+)\s*港仙"
+)
+# 叙述式通用 DPU（亿/百万均可）：「每基金單位分派由去年同期134.89港仙下降5.9%至126.88港仙」
+_GEN_DPU_NARRATIVE_RE = re.compile(
+    r"每\s*基\s*金\s*單\s*位\s*分\s*派[^。]{0,40}(?:至|為)\s*([\d.]+)\s*港仙"
+)
+# 叙述式（亿港元，领展 MD&A）：「收益由2024/2025上半年71.53億港元減少1.8%至70.23億港元」
+_YI_REVENUE_NARRATIVE_RE = re.compile(
+    r"收益[^。]{0,30}至\s*([\d,]+(?:\.\d+)?)\s*億港元"
+)
+_YI_NPI_NARRATIVE_RE = re.compile(
+    r"物業收入淨額[^。]{0,30}至\s*([\d,]+(?:\.\d+)?)\s*億港元"
 )
 
 # 摘要表段标（表現摘要/Performance Summary）：标签顺序-数字顺序对齐
@@ -206,13 +233,28 @@ def _cn_month_num(s):
     return _CN_DIGIT[s]
 
 
-def _extract_fiscal_year(text):
+def _extract_fiscal_year(text, period="annual"):
     """从文本提取财年（取出现最多的财年，同年并列取最晚）：
     3 月末结束 → "2024/25"；12 月末 → "2025"。
+    中期（period="interim"）：截至2025年6月30日止六個月 → "2025H1"（一律结束年+H1）。
     频率优先避免里程碑/附注中的往年或展望年份干扰。"""
     if not text:
         return None
     counts = {}
+    if period == "interim":
+        for match in _H1_EN_FY_RE.finditer(text):
+            month = MONTHS.get(match.group(1).lower())
+            if month is None:
+                continue
+            key = (int(match.group(2)), month)
+            counts[key] = counts.get(key, 0) + 1
+        for match in _H1_CN_FY_RE.finditer(text):
+            key = (_cn_to_int(match.group("yr")), _cn_month_num(match.group("mo")))
+            counts[key] = counts.get(key, 0) + 1
+        if not counts:
+            return None
+        year, month = max(counts, key=lambda k: (counts[k], k))
+        return f"{year}H1"
     for match in _FY_RE.finditer(text):
         month = MONTHS.get(match.group(1).lower())
         if month is None:
@@ -385,6 +427,9 @@ def _find_amount(window, labels, field, prefer=()):
             value = _nearest_amount(window, lm, field, cjk)
             if value is None or value == 0:
                 continue
+            if field == "dpu_hk_cents" and value > 10000:
+                # 每单位 DPU 港仙不会上万：排除误配的总额（物业估值/收入）
+                continue
             ctx = window[lm.end(): lm.end() + 25]
             score = 1 if any(k in ctx for k in prefer) else 0
             hits.append((score, value))
@@ -426,10 +471,11 @@ def _financial_highlights_window(text):
     return text[best : best + SECTION_LIMIT]
 
 
-def _extract_fy_narrative_rev_npi(text):
+def _extract_fy_narrative_rev_npi(text, period="annual"):
     """叙述式 FY2025 收益及物業收入淨額（置富 MD&A 财务回顧）：
     「錄得總收益1,682.4百萬港元」及「物業收入淨額按年減少5.2%至1,188.1百萬港元」。
-    优先取联合句「收益A百萬港元及物業收入淨額B百萬港元」，否则分别取两句。"""
+    优先取联合句「收益A百萬港元及物業收入淨額B百萬港元」，否则分别取两句。
+    中期（period="interim"）额外支持亿港元叙述式（领展 MD&A）。"""
     joint = _FY_REV_NPI_JOINT_RE.search(text)
     if joint:
         rev = float(joint.group(1).replace(",", ""))
@@ -441,14 +487,13 @@ def _extract_fy_narrative_rev_npi(text):
         rev = float(rev_m.group(1).replace(",", ""))
         npi = float(npi_m.group(1).replace(",", ""))
         return (round(rev * 100, 2), round(npi * 100, 2))
-    return None
-
-
-def _extract_fy_narrative_dpu(text):
-    """叙述式全年 DPU：「全年每基金單位分派按年下跌1.0%至35.22港仙」→ 35.22。"""
-    m = _FY_DPU_NARRATIVE_RE.search(text)
-    if m:
-        return round(float(m.group(1)), 2)
+    if period == "interim":
+        yi_rev = _YI_REVENUE_NARRATIVE_RE.search(text)
+        yi_npi = _YI_NPI_NARRATIVE_RE.search(text)
+        if yi_rev and yi_npi:
+            rev = float(yi_rev.group(1).replace(",", ""))
+            npi = float(yi_npi.group(1).replace(",", ""))
+            return (round(rev * 10000, 2), round(npi * 10000, 2))
     return None
 
 
@@ -537,20 +582,20 @@ def _summary_table_at(text, idx):
     return result
 
 
-def _parse_hk_annual_text(text):
-    """纯函数：从全文文本解析港年报财务摘要，字段缺失 → None。"""
+def _parse_hk_annual_text(text, period="annual"):
+    """纯函数：从全文文本解析港年报/中期报告财务摘要，字段缺失 → None。"""
     if not text:
-        return _empty_result()
+        return _empty_result(period)
     window = _financial_highlights_window(text)
-    result = _empty_result()
-    result["fiscal_year"] = _extract_fiscal_year(text)
+    result = _empty_result(period)
+    result["fiscal_year"] = _extract_fiscal_year(text, period=period)
 
     summary = _extract_summary_table(text)
     if summary:
         for key in ("revenue_wan", "npi_wan", "dpu_hk_cents", "nav_per_unit_hkd"):
-            result[key] = summary[key]
+            result[key] = summary.get(key)
     else:
-        fy_narr = _extract_fy_narrative_rev_npi(text)
+        fy_narr = _extract_fy_narrative_rev_npi(text, period=period)
         if fy_narr:
             result["revenue_wan"], result["npi_wan"] = fy_narr
         else:
@@ -562,9 +607,18 @@ def _parse_hk_annual_text(text):
                     window, _LABELS["revenue_wan"], "revenue_wan"
                 )
                 result["npi_wan"] = _find_amount(window, _LABELS["npi_wan"], "npi_wan")
-        fy_dpu = _extract_fy_narrative_dpu(text)
-        if fy_dpu is not None:
-            result["dpu_hk_cents"] = fy_dpu
+        dpu_narrative_res = (
+            (_H1_DPU_NARRATIVE_RE, _GEN_DPU_NARRATIVE_RE)
+            if period == "interim"
+            else (_FY_DPU_NARRATIVE_RE,)
+        )
+        dpu_m = None
+        for dpu_re in dpu_narrative_res:
+            dpu_m = dpu_re.search(text)
+            if dpu_m is not None:
+                break
+        if dpu_m is not None:
+            result["dpu_hk_cents"] = round(float(dpu_m.group(1)), 2)
         else:
             result["dpu_hk_cents"] = _find_amount(
                 window, _LABELS["dpu_hk_cents"], "dpu_hk_cents", prefer=_DPU_PREFER
@@ -576,8 +630,9 @@ def _parse_hk_annual_text(text):
     return result
 
 
-def _empty_result():
+def _empty_result(period="annual"):
     return {
+        "period": period,
         "fiscal_year": None,
         "revenue_wan": None,
         "npi_wan": None,
@@ -587,11 +642,19 @@ def _empty_result():
     }
 
 
-def parse_hk_annual(pdf_path):
-    """解析港年报 PDF：fitz 提取全文后调用 _parse_hk_annual_text。"""
+def parse_hk_annual(pdf_path, period="annual"):
+    """解析港年报/中期报告 PDF：fitz 提取全文后调用 _parse_hk_annual_text。
+
+    period="interim" 时 fiscal_year 输出 "2025H1"（截至2025年6月30日止六個月）。
+    """
     doc = fitz.open(str(pdf_path))
     try:
         text = "".join(page.get_text() for page in doc)
     finally:
         doc.close()
-    return _parse_hk_annual_text(text)
+    return _parse_hk_annual_text(text, period=period)
+
+
+def parse_hk_interim(pdf_path):
+    """解析港中期报告 PDF（period="interim"，fiscal_year 为 {结束年}H1）。"""
+    return parse_hk_annual(pdf_path, period="interim")

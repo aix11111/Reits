@@ -1282,19 +1282,42 @@ def render_valuation(quarterly_df, completion_df, snapshot_data, shares, static_
         st.info("暂无风险标记：各基金完成度、折溢价与剩余年限均在正常区间。")
 
 
-def render_hk_operations(code, name, annual_data):
-    """经营数据页签（香港）：HK 指标 KPI 卡 + 单行数据表，无月度区块。
+_PERIOD_LABELS = {"annual": "年度", "interim": "中期"}
 
-    数据来自 data/hk_annual.json（PoC 领展单条）。财务年/Revenue/NPI/DPU/NAV/
-    出租率 6 项 KPI 卡（复用 _kpi_card 样式）；无年报数据时降级 st.info。
-    港 REITs 无月度披露，不渲染月度图表区块。
+
+def _hk_annual_rec(records):
+    """估值对标用年度记录：仅取 period="annual"（DPU 全年口径；
+    interim 半年 DPU 混入会虚高）。"""
+    if not records:
+        return None
+    for rec in records:
+        if rec.get("period") == "annual":
+            return rec
+    return None
+
+
+def _hk_latest_rec(records):
+    """最新报告：interim 优先（更新鲜），否则取列表最后一条。"""
+    for rec in records:
+        if rec.get("period") == "interim":
+            return rec
+    return records[-1]
+
+
+def render_hk_operations(code, name, annual_data):
+    """经营数据页签（香港）：HK 指标 KPI 卡 + 财务摘要表，无月度区块。
+
+    数据来自 data/hk_annual.json（annual + interim 多期记录）。KPI 卡显示
+    最新报告（interim 优先），财务摘要表列出该基金全部记录并标注「年度/中期」
+    报告类型列；无数据时降级 st.info。港 REITs 无月度披露，不渲染月度图表区块。
     """
     st.subheader(f"基金：{code} {name}")
-    rec = annual_data.get(code)
-    if rec is None:
+    records = annual_data.get(code) or []
+    if not records:
         st.info("香港数据缺失")
         return
 
+    rec = _hk_latest_rec(records)
     occupancy = _hk_occupancy_pct(rec.get("occupancy"))
     cards = "".join(
         [
@@ -1316,19 +1339,24 @@ def render_hk_operations(code, name, annual_data):
         unsafe_allow_html=True,
     )
 
-    row = {
-        "基金代码": code,
-        "财务年": rec.get("fiscal_year"),
-        "Revenue(万港元)": rec.get("revenue_wan"),
-        "NPI(万港元)": rec.get("npi_wan"),
-        "DPU(港仙)": rec.get("dpu_hk_cents"),
-        "NAV(港元/单位)": rec.get("nav_per_unit_hkd"),
-        "出租率(%)": (
-            f"{occupancy * 100:.1f}" if occupancy is not None else None
-        ),
-    }
-    st.subheader("年度财务摘要")
-    st.dataframe(pd.DataFrame([row]), hide_index=True, width="stretch")
+    rows = []
+    for rec in records:
+        occ = _hk_occupancy_pct(rec.get("occupancy"))
+        rows.append(
+            {
+                "报告类型": _PERIOD_LABELS.get(rec.get("period"), rec.get("period")),
+                "财务年": rec.get("fiscal_year"),
+                "Revenue(万港元)": rec.get("revenue_wan"),
+                "NPI(万港元)": rec.get("npi_wan"),
+                "DPU(港仙)": rec.get("dpu_hk_cents"),
+                "NAV(港元/单位)": rec.get("nav_per_unit_hkd"),
+                "出租率(%)": (
+                    f"{occ * 100:.1f}" if occ is not None else None
+                ),
+            }
+        )
+    st.subheader("财务摘要")
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
 
 
 def render_hk_market(code, snapshot_latest):
@@ -1368,7 +1396,7 @@ def render_hk_valuation(funds_map, annual_data, snapshot_latest):
     st.markdown("### 1. 分派收益率排名")
     rank_rows = []
     for code, name in funds_map.items():
-        rec = annual_data.get(code)
+        rec = _hk_annual_rec(annual_data.get(code))
         price = snapshot_latest.get(code)
         if rec is None or price is None:
             continue
@@ -1430,7 +1458,7 @@ def render_hk_valuation(funds_map, annual_data, snapshot_latest):
     st.markdown("### 2. P/NAV 折溢价（最新年报单位净值）")
     prem_rows = []
     for code, name in funds_map.items():
-        rec = annual_data.get(code)
+        rec = _hk_annual_rec(annual_data.get(code))
         price = snapshot_latest.get(code)
         nav = rec.get("nav_per_unit_hkd") if rec is not None else None
         prem_rows.append(
@@ -1482,7 +1510,7 @@ def main():
     st.title("📊 REITsMonitor — 多市场REITs投后分析看板")
     st.caption(
         "中国市场：公募REITs（经营数据来自本地模板，行情来自 akshare）| "
-        "香港市场：PoC 领展（年报解析 + 新浪日线快照）"
+        "香港市场：11 只 REITs（年报+中期报告解析 + 新浪日线快照）"
     )
 
     try:

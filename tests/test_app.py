@@ -1221,12 +1221,41 @@ def test_hk_operations_tab_renders_hk_kpis(no_network):
     assert "NPI" in cards[0]
 
 
+def test_hk_operations_tab_lists_annual_and_interim(no_network):
+    """经营数据 Tab：00823 领展财务摘要表显示年度+中期两行并标注报告类型，
+    KPI 卡显示最新报告（interim 2025H1 优先）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_hk(at)
+    assert not at.exception
+
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    fund_box.select("00823").run()
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    frames = [df.value for df in ops_tab.dataframe]
+    summary = next(f for f in frames if "报告类型" in f.columns)
+    assert len(summary) == 2
+    assert set(summary["报告类型"]) == {"年度", "中期"}
+    assert "2025H1" in summary["财务年"].values
+
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert "2025H1" in cards[0]
+
+
 def _hk_annual_by_code():
-    """读 data/hk_annual.json 为 {code: rec}。"""
+    """读 data/hk_annual.json 为 {code: annual rec}（估值对标仅用年报口径）。"""
     annual = json.loads((DATA_PATH / "hk_annual.json").read_text(encoding="utf-8"))[
         "annual"
     ]
-    return {str(r["code"]): r for r in annual}
+    result = {}
+    for r in annual:
+        if r.get("period", "annual") == "annual":
+            result[str(r["code"])] = r
+    return result
 
 
 def test_hk_valuation_tab_renders_yield_ranking(no_network):
@@ -1320,9 +1349,19 @@ def test_hk_valuation_tab_degrades_when_yield_data_insufficient(
         dl,
         "load_hk_annual",
         lambda path=None: {
-            "00405": {"fiscal_year": "2025", "dpu_hk_cents": 3.33},
-            "00823": {"fiscal_year": "2025/26", "dpu_hk_cents": 253.61},
-            "01426": {"fiscal_year": "2025", "dpu_hk_cents": None},
+            "00405": [
+                {"period": "annual", "fiscal_year": "2025", "dpu_hk_cents": 3.33}
+            ],
+            "00823": [
+                {
+                    "period": "annual",
+                    "fiscal_year": "2025/26",
+                    "dpu_hk_cents": 253.61,
+                }
+            ],
+            "01426": [
+                {"period": "annual", "fiscal_year": "2025", "dpu_hk_cents": None}
+            ],
         },
         raising=False,
     )

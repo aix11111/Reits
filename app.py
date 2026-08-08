@@ -248,13 +248,13 @@ _SG_NPI_MARGIN_COLUMNS = [
     ("fiscal_year", "财年"),
 ]
 
-# 估值对标页签（美国）：股息率排名展示列（含 P/FFO；缺股数披露时以 FFO 总额标注）
+# 估值对标页签（美国）：股息率排名展示列（FFO 总额标注——P/FFO 需每股 FFO，暂以总额如实展示）
 _US_VALUATION_RANK_COLUMNS = [
     ("code", "基金代码"),
     ("name", "基金简称"),
     ("yield_pct", "股息率"),
     ("fiscal_year", "财年"),
-    ("p_ffo", "P/FFO"),
+    ("p_ffo", "FFO(万美元)"),
 ]
 
 # risk_flags 英文标记 → 中文风险提示

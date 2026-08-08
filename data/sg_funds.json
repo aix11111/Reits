@@ -41,9 +41,33 @@
    "currency": "SGD"
   },
   {
+   "code": "BMGU",
+   "name": "BHG Retail REIT",
+   "name_zh": "北京华联零售房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "CNY"
+  },
+  {
+   "code": "BTOU",
+   "name": "Manulife US REIT",
+   "name_zh": "宏利美国房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
+  },
+  {
    "code": "BUOU",
    "name": "Frasers Logistics & Commercial Trust",
    "name_zh": "星狮物流商业信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "BWCU",
+   "name": "EC World REIT",
+   "name_zh": "EC 环球房地产投资信托",
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
@@ -87,6 +111,14 @@
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
+  },
+  {
+   "code": "D5IU",
+   "name": "Lippo Malls Indonesia Retail Trust",
+   "name_zh": "力宝印尼零售信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "IDR"
   },
   {
    "code": "DCRU",
@@ -145,6 +177,14 @@
    "currency": "SGD"
   },
   {
+   "code": "M1GU",
+   "name": "Sabana Industrial REIT",
+   "name_zh": "Sabana 工业房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
    "code": "M44U",
    "name": "Mapletree Logistics Trust",
    "name_zh": "丰树物流信托",
@@ -175,6 +215,14 @@
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
+  },
+  {
+   "code": "NTDU",
+   "name": "NTT DC REIT",
+   "name_zh": "NTT 数据中心信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
   },
   {
    "code": "ODBU",
@@ -209,6 +257,14 @@
    "currency": "SGD"
   },
   {
+   "code": "SET",
+   "name": "Stoneweg Europe Stapled Trust (formerly Cromwell EREIT)",
+   "name_zh": "Stoneweg 欧洲合订信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "EUR"
+  },
+  {
    "code": "T82U",
    "name": "Suntec REIT",
    "name_zh": "新达信托",
@@ -231,6 +287,14 @@
    "market": "SG",
    "annual_url": null,
    "currency": "EUR"
+  },
+  {
+   "code": "UIBU",
+   "name": "UI Boustead REIT",
+   "name_zh": "UI 宝德房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
   },
   {
    "code": "XZL",

@@ -61,6 +61,18 @@
    "currency": "SGD"
   },
   {
+   "code": "BMGU",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 5510.6,
+   "npi_wan": null,
+   "distributable_wan": null,
+   "dpu_cents": 0.5,
+   "nav_per_unit": null,
+   "occupancy": 0.934,
+   "currency": "SGD"
+  },
+  {
    "code": "BUOU",
    "fiscal_year": "2025",
    "period": "annual",
@@ -70,6 +82,18 @@
    "dpu_cents": 5.95,
    "nav_per_unit": 1.1,
    "occupancy": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "BWCU",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 3531.6,
+   "npi_wan": 2583.1,
+   "distributable_wan": null,
+   "dpu_cents": null,
+   "nav_per_unit": null,
+   "occupancy": 0.773,
    "currency": "SGD"
   },
   {
@@ -217,6 +241,18 @@
    "currency": "SGD"
   },
   {
+   "code": "M1GU",
+   "fiscal_year": "2024",
+   "period": "annual",
+   "revenue_wan": 11330.0,
+   "npi_wan": 5750.0,
+   "distributable_wan": null,
+   "dpu_cents": 3.15,
+   "nav_per_unit": 0.5,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "M44U",
    "fiscal_year": "2024/25",
    "period": "annual",
@@ -311,6 +347,18 @@
    "nav_per_unit": 0.8,
    "occupancy": null,
    "currency": "SGD"
+  },
+  {
+   "code": "SET",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 19300.0,
+   "npi_wan": null,
+   "distributable_wan": null,
+   "dpu_cents": null,
+   "nav_per_unit": null,
+   "occupancy": null,
+   "currency": "EUR"
   },
   {
    "code": "T82U",

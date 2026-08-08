@@ -361,6 +361,18 @@
    "currency": "SGD"
   },
   {
+   "code": "M1GU",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 6242.2,
+   "npi_wan": 3715.7,
+   "distributable_wan": null,
+   "dpu_cents": 2.03,
+   "nav_per_unit": null,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "M44U",
    "fiscal_year": "2024/25",
    "period": "annual",

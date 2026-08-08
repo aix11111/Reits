@@ -501,7 +501,16 @@ def _extract_fiscal_year(text, period="annual"):
     中期（period="interim"）：for the six-month period ended 30 June 2025 → "2025H1"。"""
     if period == "interim":
         m = _H1_FY_RE.search(text)
-        return f"{m.group(2)}H1" if m else None
+        if m:
+            return f"{m.group(2)}H1"
+        # 其他半年期措辞：HALF YEAR/YEARLY RESULTS ENDED 30 JUNE 2026、
+        # half year ended 30 June 2026 → "2026H1"
+        for m in _FY_RE.finditer(text):
+            return f"{m.group(2)}H1"
+        matches = list(_FY_SHORT_RE.finditer(text))
+        if matches:
+            return f"{max(int(m.group(1)) for m in matches)}H1"
+        return None
     # 封面大字常为「R E P O R T 2 0 2 5」字母/数字间空格——紧凑化数字串
     text = re.sub(r"(?<=\d)\s+(?=\d)", "", text)
     cover = text[:30000]

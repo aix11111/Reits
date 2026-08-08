@@ -16,8 +16,14 @@
 - nav_per_unit: Net Asset Value Per Unit (S$)
 - occupancy: Committed Occupancy {pct}%（label 前/后均可）
 - fy: FY ended 31 December 2025 → "2025"；3 月财年封面「Annual Report 2024/25」→ "2024/25"
+  （中期 period="interim"：for the six-month period ended 30 June 2025 → "2025H1"）
 - currency: "SGD"
-- period: "annual"
+- period: "annual" / "interim"
+
+中期（parse_sg_interim / period="interim"）差异：
+- fy 取「six-month period ended」→ "{结束年}H1"；
+- DPU 取业绩公告「For the period / year」行首列 = 当期半年值（不与年度混用）；
+- 损益表 S$'000 单位 ×0.1 换算（787,646 → 78764.6 万）。
 """
 
 import re
@@ -37,6 +43,16 @@ _RUN_RE = re.compile(rf"{_NUM}(?:\s+{_NUM})*")
 # 财年：for the financial year ended 31 December 2025 / as at 31 December 2025
 _FY_RE = re.compile(r"(?:ended|as at)\s+\d{1,2}\s+([A-Za-z]+)\s+(\d{4})", re.IGNORECASE)
 _FY_SHORT_RE = re.compile(r"FY\s*(\d{4})", re.IGNORECASE)
+# 中期报告期：for the six-month period ended 30 June 2025 → "2025H1"
+_H1_FY_RE = re.compile(
+    r"for\s+the\s+six[\s-]?month\s+period\s+ended\s+\d{1,2}\s+([A-Za-z]+)\s+(\d{4})",
+    re.IGNORECASE,
+)
+# 中期 DPU：「For the period / year 5.62 5.43 10.88 10.75」取首列 = 当期半年值
+_DPU_H1_RE = re.compile(
+    r"Distribution\s+Per\s+Unit[^.]{0,100}?for\s+the\s+period\s*/\s*year\s*([\d.]+)",
+    re.IGNORECASE,
+)
 
 # 五年摘要表行标签 → 提取字段（\s+ 容忍 PDF 提取的断行/多空格）
 _LABEL_PATTERNS = {
@@ -479,9 +495,13 @@ def _extract_summary_table(text):
     return result
 
 
-def _extract_fiscal_year(text):
+def _extract_fiscal_year(text, period="annual"):
     """财年：封面「Annual Report 2025 / 2024/25 / FY2025」优先（前 5 页约 30k 字符）；
-    再 FY ended/as at 31 December 2025 → "2025"；兜底 FYxxxx 取最大年份。"""
+    再 FY ended/as at 31 December 2025 → "2025"；兜底 FYxxxx 取最大年份。
+    中期（period="interim"）：for the six-month period ended 30 June 2025 → "2025H1"。"""
+    if period == "interim":
+        m = _H1_FY_RE.search(text)
+        return f"{m.group(2)}H1" if m else None
     # 封面大字常为「R E P O R T 2 0 2 5」字母/数字间空格——紧凑化数字串
     text = re.sub(r"(?<=\d)\s+(?=\d)", "", text)
     cover = text[:30000]
@@ -508,9 +528,9 @@ def _extract_occupancy(text):
     return round(float(m.group(1)) / 100, 4)
 
 
-def _empty_result():
+def _empty_result(period="annual"):
     return {
-        "period": "annual",
+        "period": period,
         "fy": None,
         "currency": "SGD",
         "revenue_wan": None,
@@ -522,16 +542,18 @@ def _empty_result():
     }
 
 
-def _parse_sg_annual_text(text):
-    """纯函数：从全文文本解析新加坡年报财务摘要，字段缺失 → None。
+def _parse_sg_annual_text(text, period="annual"):
+    """纯函数：从全文文本解析新加坡年报/中期报告财务摘要，字段缺失 → None。
 
     优先级：五年摘要表（C38U 标准格式）> 通用全文扫描（标签前后双向取数、
     双列 FY2025 FY2024、财年 token 列序）> 叙述式 DPU/NAV。
+    中期（period="interim"）：fy → "2025H1"；DPU 取「for the period / year」
+    首列半年值（不能与 annual DPU 混用）。
     """
-    result = _empty_result()
+    result = _empty_result(period)
     if not text:
         return result
-    result["fy"] = _extract_fiscal_year(text)
+    result["fy"] = _extract_fiscal_year(text, period=period)
     result["occupancy"] = _extract_occupancy(text)
     # 币种：按符号出现次数判断（US$ > S$ → USD；€ → EUR；A$ → AUD；默认 SGD）
     usd_n = len(re.findall(r"US\$", text))
@@ -574,6 +596,12 @@ def _parse_sg_annual_text(text):
     for key in ("revenue_wan", "npi_wan", "distributable_wan"):
         if result[key] is not None and result[key] > 3_000_000:
             result[key] = None
+    # 中期 DPU 半年口径：业绩公告「for the period / year」行首列 = 当期半年值，
+    # 覆盖通用扫描（避免误取 annual 列），且不得与年度 DPU 混用
+    if period == "interim":
+        m = _DPU_H1_RE.search(text)
+        if m:
+            result["dpu_cents"] = round(float(m.group(1)), 2)
     # NAV/Unit 合理范围：S-REIT（SGD/USD/GBP 计价）NAV 均在 0.1-8（CICT 2.14 为
     # 最大梯队；误配常见 11-31 来自每股收益/总净资产）；DPU 上限 30 美分/分
     #（S-REIT 最高约 22：9A4U 21.9；44/34 为每股收益/10 倍误配）
@@ -584,15 +612,20 @@ def _parse_sg_annual_text(text):
     return result
 
 
-def parse_sg_annual(pdf_path):
-    """解析新加坡年报 PDF：fitz 提取全文后调用 _parse_sg_annual_text。
+def parse_sg_annual(pdf_path, period="annual"):
+    """解析新加坡年报/中期报告 PDF：fitz 提取全文后调用 _parse_sg_annual_text。
     输出字段与 data/sg_annual.json schema 一致（fy → fiscal_year）。"""
     doc = fitz.open(str(pdf_path))
     try:
         text = "".join(page.get_text() for page in doc)
     finally:
         doc.close()
-    result = _parse_sg_annual_text(text)
+    result = _parse_sg_annual_text(text, period=period)
     if "fy" in result:
         result["fiscal_year"] = result.pop("fy")
     return result
+
+
+def parse_sg_interim(pdf_path):
+    """解析新加坡中期报告（半年业绩公告）PDF（period="interim"，fy → 2025H1）。"""
+    return parse_sg_annual(pdf_path, period="interim")

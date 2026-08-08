@@ -121,6 +121,18 @@
    "currency": "SGD"
   },
   {
+   "code": "C38U",
+   "fiscal_year": "2025H1",
+   "period": "interim",
+   "revenue_wan": 78764.6,
+   "npi_wan": 57986.5,
+   "distributable_wan": null,
+   "dpu_cents": 5.62,
+   "nav_per_unit": null,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "CMOU",
    "fiscal_year": "2025",
    "period": "annual",

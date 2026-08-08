@@ -24,6 +24,9 @@ KEPPEL_FIXTURE_TEXT = (FIXTURES_DIR / "sg_keppel_ar2025.txt").read_text(
 )
 ODBU_FIXTURE_TEXT = (FIXTURES_DIR / "sg_odbu_ar2025.txt").read_text(encoding="utf-8")
 UD1U_FIXTURE_TEXT = (FIXTURES_DIR / "sg_ud1u_ar2025.txt").read_text(encoding="utf-8")
+INTERIM_FIXTURE_TEXT = (FIXTURES_DIR / "sg_cict_interim_2025.txt").read_text(
+    encoding="utf-8"
+)
 
 
 def test_parse_sg_annual_text_fixture():
@@ -37,6 +40,45 @@ def test_parse_sg_annual_text_fixture():
     assert result["dpu_cents"] == 11.58
     assert result["nav_per_unit"] == 2.14
     assert result["occupancy"] == 0.969
+
+
+def test_parse_sg_interim_text_fixture():
+    """C38U 1H 2025 半年业绩公告：period=interim、fy=2025H1；
+    S$'000 损益表 ×0.1（787,646 → 78764.6）；DPU 取「for the period / year」
+    首列半年值 5.62（不能与 annual 10.88 混用）。"""
+    result = parser_sg_annual._parse_sg_annual_text(
+        INTERIM_FIXTURE_TEXT, period="interim"
+    )
+    assert result["period"] == "interim"
+    assert result["fy"] == "2025H1"
+    assert result["currency"] == "SGD"
+    assert result["revenue_wan"] == 78764.6
+    assert result["npi_wan"] == 57986.5
+    assert result["distributable_wan"] == 41188.9
+    assert result["dpu_cents"] == 5.62
+
+
+def test_parse_sg_interim_text_missing_fields_none():
+    result = parser_sg_annual._parse_sg_annual_text("No data.", period="interim")
+    assert result["period"] == "interim"
+    assert result["fy"] is None
+    assert result["revenue_wan"] is None
+    assert result["dpu_cents"] is None
+
+
+def test_parse_sg_interim_pdf_wrapper(tmp_path):
+    import fitz
+
+    doc = fitz.open()
+    page = doc.new_page()
+    page.insert_textbox(fitz.Rect(36, 36, 559, 800), INTERIM_FIXTURE_TEXT, fontsize=7)
+    pdf_path = tmp_path / "sg_interim.pdf"
+    doc.save(pdf_path)
+    result = parser_sg_annual.parse_sg_interim(pdf_path)
+    assert result["period"] == "interim"
+    assert result["fiscal_year"] == "2025H1"
+    assert result["revenue_wan"] == 78764.6
+    assert result["dpu_cents"] == 5.62
 
 
 def test_parse_sg_annual_text_missing_fields_none():

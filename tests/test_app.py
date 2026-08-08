@@ -1721,7 +1721,7 @@ def test_us_valuation_tab_renders_yield_ranking(no_network):
     pld = rank[rank["基金代码"] == "PLD"]
     assert pld["股息率"].iloc[0] == "2.9%"
 
-    with_ffo = rank[rank["P/FFO"] != "—"]
+    with_ffo = rank[rank["FFO(万美元)"] != "—"]
     assert set(with_ffo["基金代码"]) == {"ESS", "EXR", "WELL"}
 
     assert len(val_tab.get("plotly_chart")) >= 1

@@ -13,6 +13,18 @@
    "currency": "SGD"
   },
   {
+   "code": "9A4U",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 22230.0,
+   "npi_wan": 16270.0,
+   "distributable_wan": null,
+   "dpu_cents": 11.51,
+   "nav_per_unit": null,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "A17U",
    "fiscal_year": "2025",
    "period": "annual",
@@ -86,7 +98,7 @@
   },
   {
    "code": "AW9U",
-   "fiscal_year": "2025H1",
+   "fiscal_year": "2026H1",
    "period": "interim",
    "revenue_wan": null,
    "npi_wan": null,
@@ -142,6 +154,18 @@
    "dpu_cents": 15.29,
    "nav_per_unit": 2.56,
    "occupancy": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "C2PU",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 7710.0,
+   "npi_wan": 6750.0,
+   "distributable_wan": null,
+   "dpu_cents": null,
+   "nav_per_unit": 4.05,
+   "occupancy": 1.0,
    "currency": "SGD"
   },
   {
@@ -433,6 +457,18 @@
    "currency": "SGD"
   },
   {
+   "code": "Q5T",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 5379.1,
+   "npi_wan": 4536.0,
+   "distributable_wan": null,
+   "dpu_cents": null,
+   "nav_per_unit": null,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "SET",
    "fiscal_year": "2025",
    "period": "annual",
@@ -454,6 +490,18 @@
    "dpu_cents": 7.035,
    "nav_per_unit": 2.03,
    "occupancy": 1.0,
+   "currency": "SGD"
+  },
+  {
+   "code": "T82U",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 23885.7,
+   "npi_wan": 15896.5,
+   "distributable_wan": null,
+   "dpu_cents": null,
+   "nav_per_unit": 2.033,
+   "occupancy": 0.991,
    "currency": "SGD"
   },
   {

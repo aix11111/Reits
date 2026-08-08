@@ -602,8 +602,9 @@ def _parse_sg_annual_text(text, period="annual"):
 
     # 量级防护：表格式提取可能抓到总资产/总负债/股数等（如 UD1U 46,328 被当
     # million → 4632800 万）——超出 S-REIT 合理量级拒绝置 None
+    #（上限 500000 万 = 50 亿：最大 SG REIT 年收入约 20 亿；interim 半年减半）
     for key in ("revenue_wan", "npi_wan", "distributable_wan"):
-        if result[key] is not None and result[key] > 3_000_000:
+        if result[key] is not None and result[key] > 500_000:
             result[key] = None
     # 中期 DPU 半年口径：业绩公告「for the period / year」行首列 = 当期半年值，
     # 覆盖通用扫描（避免误取 annual 列），且不得与年度 DPU 混用

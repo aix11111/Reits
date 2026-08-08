@@ -22,6 +22,8 @@ A17U_FIXTURE_TEXT = (FIXTURES_DIR / "sg_ascendas_ar2025.txt").read_text(
 KEPPEL_FIXTURE_TEXT = (FIXTURES_DIR / "sg_keppel_ar2025.txt").read_text(
     encoding="utf-8"
 )
+ODBU_FIXTURE_TEXT = (FIXTURES_DIR / "sg_odbu_ar2025.txt").read_text(encoding="utf-8")
+UD1U_FIXTURE_TEXT = (FIXTURES_DIR / "sg_ud1u_ar2025.txt").read_text(encoding="utf-8")
 
 
 def test_parse_sg_annual_text_fixture():
@@ -143,9 +145,52 @@ def test_parse_sg_annual_pdf_wrapper(tmp_path):
     pdf_path = tmp_path / "sg_ar.pdf"
     doc.save(pdf_path)
     result = parser_sg_annual.parse_sg_annual(pdf_path)
-    assert result["fy"] == "2025"
+    assert result["fiscal_year"] == "2025"
     assert result["revenue_wan"] == 161920.0
     assert result["npi_wan"] == 118970.0
     assert result["dpu_cents"] == 11.58
     assert result["nav_per_unit"] == 2.14
     assert result["occupancy"] == 0.969
+
+
+def test_parse_sg_annual_text_odbu_fixture():
+    """ODBU UHREIT（US 计价）：dpu=4.39 US cents、nav=0.73、rev=7197.8
+    （US$'000 表 ×0.1）保持；currency 按年报实际应为 USD。"""
+    result = parser_sg_annual._parse_sg_annual_text(ODBU_FIXTURE_TEXT)
+    assert result["fy"] == "2025"
+    assert result["revenue_wan"] == 7197.8
+    assert result["dpu_cents"] == 4.39
+    assert result["nav_per_unit"] == 0.73
+    assert result["currency"] == "USD"
+
+
+def test_parse_sg_annual_text_ud1u_fixture_rev_reasonable():
+    """UD1U IREIT Global（EUR 计价）：表格式提取抓到 46,328（EUR'000 被当
+    million → 4632800）→ 量级防护拒绝；叙述式「gross revenue of €50.4
+    million」→ 5040.0。rev 合理值（非 4632800）。"""
+    result = parser_sg_annual._parse_sg_annual_text(UD1U_FIXTURE_TEXT)
+    assert result["fy"] == "2025"
+    assert result["revenue_wan"] != 4632800.0
+    assert result["revenue_wan"] is None or result["revenue_wan"] < 20000
+
+
+def test_parse_sg_annual_text_magnitude_guard():
+    """量级防护：rev 提取值 4,632,800（> 上限 3,000,000）→ None。"""
+    text = "Gross Revenue (S$ million)\n46,328\nNet Property Income (S$ million)\n34,623\n"
+    result = parser_sg_annual._parse_sg_annual_text(text)
+    assert result["revenue_wan"] is None
+    assert result["npi_wan"] is None
+
+
+def test_parse_sg_annual_text_cover_fiscal_year_no_slash():
+    """封面无斜线「Annual Report 2025」→ "2025"。"""
+    text = "Annual Report 2025  Reaching New Heights"
+    result = parser_sg_annual._parse_sg_annual_text(text)
+    assert result["fy"] == "2025"
+
+
+def test_parse_sg_annual_text_cover_fiscal_year_fy_token():
+    """封面「FY2025」→ "2025"。"""
+    text = "FY2025  Annual Report"
+    result = parser_sg_annual._parse_sg_annual_text(text)
+    assert result["fy"] == "2025"

@@ -47,8 +47,13 @@ _LABEL_PATTERNS = {
     "dpu_cents": r"Distribution\s+Per\s+Unit",
 }
 
-# 财年兜底：3 月财年封面「Annual Report 2024/25 / 2025/2026」→ "2024/25"
-_COVER_SLASH_FY_RE = re.compile(r"Annual\s+Report\s+(\d{4}/\d{2,4})", re.IGNORECASE)
+# 财年兜底：封面「Annual Report 2025 / 2024/25 / FY2025」→ "2025"/"2024/25"
+#（优先 Annual Report，其次 FY；含斜线形态保留）
+_COVER_AR_FY_RE = re.compile(
+    r"(?:A\s*N\s*N\s*U\s*A\s*L|Annual)\s*(?:R\s*E\s*P\s*O\s*R\s*T|Report)\s*(20\d{2}(?:/20\d{2}|/\d{2})?)",
+    re.IGNORECASE,
+)
+_COVER_FY_TOKEN_RE = re.compile(r"FY\s*(20\d{2}(?:/20\d{2}|/\d{2})?)", re.IGNORECASE)
 
 # 叙述式 DPU：多种措辞，逐个尝试（[^;] 允许 PDF 提取的换行）
 # 1) "Distribution per Unit of 5.23 cents."（K71U 吉宝）
@@ -100,7 +105,7 @@ def _extract_narrative_dpu(text):
 # 叙述式 NAV：「Net asset value per Unit increased 0.9% to S$2.14.」
 # /「Net Asset Value (NAV) increased to S$2.56 per unit」（C2PU）
 _NAV_NARRATIVE_RE = re.compile(
-    r"Net\s+asset\s+value\s*(?:\(NAV\))?\s*(?:per\s+Unit)?[^;]{0,60}?to\s+S?\$?\s*([\d]+(?:\.\d+)?)",
+    r"(?:(?:Net\s+asset\s+value)|NAV)\s*(?:\(NAV\))?\s*(?:per\s+Unit)?[^;]{0,60}?(?:to|was|stood\s+at)\s+(?:US\$|S\$|€|A\$)?\s*([\d]+(?:\.\d+)?)",
     re.IGNORECASE,
 )
 # 出租率：label 在值前（Committed occupancy stood at 96.9%）或值在 label 前
@@ -475,9 +480,15 @@ def _extract_summary_table(text):
 
 
 def _extract_fiscal_year(text):
-    """财年：封面「Annual Report 2024/25」优先（3 月财年）；
+    """财年：封面「Annual Report 2025 / 2024/25 / FY2025」优先（前 5 页约 30k 字符）；
     再 FY ended/as at 31 December 2025 → "2025"；兜底 FYxxxx 取最大年份。"""
-    m = _COVER_SLASH_FY_RE.search(text[:30000])
+    # 封面大字常为「R E P O R T 2 0 2 5」字母/数字间空格——紧凑化数字串
+    text = re.sub(r"(?<=\d)\s+(?=\d)", "", text)
+    cover = text[:30000]
+    m = _COVER_AR_FY_RE.search(cover)
+    if m:
+        return m.group(1)
+    m = _COVER_FY_TOKEN_RE.search(cover)
     if m:
         return m.group(1)
     for m in _FY_RE.finditer(text):
@@ -522,6 +533,19 @@ def _parse_sg_annual_text(text):
         return result
     result["fy"] = _extract_fiscal_year(text)
     result["occupancy"] = _extract_occupancy(text)
+    # 币种：按符号出现次数判断（US$ > S$ → USD；€ → EUR；A$ → AUD；默认 SGD）
+    usd_n = len(re.findall(r"US\$", text))
+    sgd_n = len(re.findall(r"(?<!U)S\$", text))
+    eur_n = len(re.findall(r"€", text))
+    aud_n = len(re.findall(r"A\$", text))
+    if eur_n > sgd_n and eur_n > usd_n:
+        result["currency"] = "EUR"
+    elif aud_n > sgd_n and aud_n > usd_n:
+        result["currency"] = "AUD"
+    elif usd_n > sgd_n:
+        result["currency"] = "USD"
+    else:
+        result["currency"] = "SGD"
 
     summary = _extract_summary_table(text)
     generic = _extract_generic(text)
@@ -544,14 +568,30 @@ def _parse_sg_annual_text(text):
             result[key] = generic[key]
         if result[key] is None:
             result[key] = narrative_fn(text)
+
+    # 量级防护：表格式提取可能抓到总资产/总负债/股数等（如 UD1U 46,328 被当
+    # million → 4632800 万）——超出 S-REIT 合理量级拒绝置 None
+    for key in ("revenue_wan", "npi_wan", "distributable_wan"):
+        if result[key] is not None and result[key] > 3_000_000:
+            result[key] = None
+    # NAV/Unit 合理范围：S-REIT（SGD/USD/GBP 计价）NAV 均在 0.1-8（CICT 2.14 为
+    # 最大梯队；误配常见 11-31 来自每股收益/总净资产）；DPU 上限 500 美分
+    if result["nav_per_unit"] is not None and not (0.1 <= result["nav_per_unit"] <= 8):
+        result["nav_per_unit"] = None
+    if result["dpu_cents"] is not None and result["dpu_cents"] > 500:
+        result["dpu_cents"] = None
     return result
 
 
 def parse_sg_annual(pdf_path):
-    """解析新加坡年报 PDF：fitz 提取全文后调用 _parse_sg_annual_text。"""
+    """解析新加坡年报 PDF：fitz 提取全文后调用 _parse_sg_annual_text。
+    输出字段与 data/sg_annual.json schema 一致（fy → fiscal_year）。"""
     doc = fitz.open(str(pdf_path))
     try:
         text = "".join(page.get_text() for page in doc)
     finally:
         doc.close()
-    return _parse_sg_annual_text(text)
+    result = _parse_sg_annual_text(text)
+    if "fy" in result:
+        result["fiscal_year"] = result.pop("fy")
+    return result

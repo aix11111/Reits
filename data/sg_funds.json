@@ -33,6 +33,14 @@
    "currency": "SGD"
   },
   {
+   "code": "AW9U",
+   "name": "First REIT",
+   "name_zh": "第一房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
    "code": "BUOU",
    "name": "Frasers Logistics & Commercial Trust",
    "name_zh": "星狮物流商业信托",
@@ -57,9 +65,41 @@
    "currency": "SGD"
   },
   {
+   "code": "CMOU",
+   "name": "KORE US REIT (formerly Keppel Pacific Oak)",
+   "name_zh": "KORE 美国房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
+  },
+  {
+   "code": "CRPU",
+   "name": "Sasseur REIT",
+   "name_zh": "砂之船房地产投资信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
    "code": "CY6U",
    "name": "CapitaLand India Trust",
    "name_zh": "凯德印度信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "DCRU",
+   "name": "Digital Core REIT",
+   "name_zh": "Digital Core 数据中心信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
+  },
+  {
+   "code": "DHLU",
+   "name": "Daiwa House Logistics Trust",
+   "name_zh": "大和房屋物流信托",
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
@@ -76,6 +116,22 @@
    "code": "J69U",
    "name": "Frasers Centrepoint Trust",
    "name_zh": "星狮商厦信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "J85",
+   "name": "CDL Hospitality Trusts",
+   "name_zh": "城市发展酒店服务信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "JYEU",
+   "name": "Lendlease Global Commercial REIT",
+   "name_zh": "联实环球商业信托",
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
@@ -105,9 +161,49 @@
    "currency": "SGD"
   },
   {
+   "code": "MXNU",
+   "name": "Elite UK REIT",
+   "name_zh": "Elite 英国房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "GBP"
+  },
+  {
    "code": "N2IU",
    "name": "Mapletree Pan Asia Commercial Trust",
    "name_zh": "丰树泛亚商业信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "ODBU",
+   "name": "United Hampshire US REIT",
+   "name_zh": "合众汉普郡美国信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
+  },
+  {
+   "code": "OXMU",
+   "name": "Prime US REIT",
+   "name_zh": "Prime 美国房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
+  },
+  {
+   "code": "P40U",
+   "name": "Starhill Global REIT",
+   "name_zh": "诗阁广场全球信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "Q5T",
+   "name": "Far East Hospitality Trust",
+   "name_zh": "远东酒店信托",
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
@@ -119,6 +215,30 @@
    "market": "SG",
    "annual_url": null,
    "currency": "SGD"
+  },
+  {
+   "code": "TS0U",
+   "name": "OUE REIT",
+   "name_zh": "华联房地产信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "SGD"
+  },
+  {
+   "code": "UD1U",
+   "name": "IREIT Global",
+   "name_zh": "IREIT 环球",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "EUR"
+  },
+  {
+   "code": "XZL",
+   "name": "Acrophyte Hospitality Trust (formerly ARA US)",
+   "name_zh": "Acrophyte 酒店信托",
+   "market": "SG",
+   "annual_url": null,
+   "currency": "USD"
   }
  ]
 }

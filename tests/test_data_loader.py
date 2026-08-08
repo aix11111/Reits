@@ -210,3 +210,82 @@ def test_missing_file_raises_file_not_found_with_path(tmp_path, loader):
     with pytest.raises(FileNotFoundError) as excinfo:
         loader(missing)
     assert str(missing) in str(excinfo.value)
+
+
+# ---------------------------------------------------------------------------
+# 美国数据加载（load_us_funds / load_us_annual / load_us_snapshot，复用 load_sg 模式）
+# ---------------------------------------------------------------------------
+
+
+def test_load_us_funds_maps_ticker_to_name(tmp_path):
+    import json
+
+    from src.data_loader import load_us_funds
+
+    path = tmp_path / "us_funds.json"
+    path.write_text(
+        json.dumps(
+            {
+                "funds": [
+                    {"ticker": "PLD", "name": "Prologis"},
+                    {"ticker": "O", "name": "Realty Income"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = load_us_funds(path)
+
+    assert result == {"PLD": "Prologis", "O": "Realty Income"}
+
+
+def test_load_us_annual_groups_by_ticker(tmp_path):
+    import json
+
+    from src.data_loader import load_us_annual
+
+    path = tmp_path / "us_annual.json"
+    path.write_text(
+        json.dumps(
+            {
+                "annual": [
+                    {"ticker": "PLD", "fiscal_year": "2025", "dpu_usd": 4.04},
+                    {"ticker": "PLD", "fiscal_year": "2024", "dpu_usd": 3.75},
+                    {"ticker": "O", "fiscal_year": "2025", "dpu_usd": 3.24},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = load_us_annual(path)
+
+    assert set(result.keys()) == {"PLD", "O"}
+    assert len(result["PLD"]) == 2
+    assert result["PLD"][0]["dpu_usd"] == 4.04
+
+
+def test_load_us_snapshot_returns_latest(tmp_path):
+    import json
+
+    from src.data_loader import load_us_snapshot
+
+    path = tmp_path / "us_market_snapshot.json"
+    path.write_text(
+        json.dumps({"latest": {"PLD": 140.16, "O": 62.51}}),
+        encoding="utf-8",
+    )
+
+    result = load_us_snapshot(path)
+
+    assert result == {"PLD": 140.16, "O": 62.51}
+
+
+def test_load_us_missing_files_return_empty(tmp_path):
+    from src.data_loader import load_us_annual, load_us_funds, load_us_snapshot
+
+    missing = tmp_path / "missing.json"
+    assert load_us_funds(missing) == {}
+    assert load_us_annual(missing) == {}
+    assert load_us_snapshot(missing) == {}

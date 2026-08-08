@@ -27,6 +27,7 @@ from src.valuation import (
     npi_margin,
     risk_flags,
     ttm_distributable,
+    us_dividend_yield,
 )
 
 
@@ -443,3 +444,20 @@ def test_npi_margin_zero_or_none_nan():
     assert math.isnan(npi_margin(10619.0, None))
     assert math.isnan(npi_margin(float("nan"), 14223.0))
     assert math.isnan(npi_margin(10619.0, float("nan")))
+
+
+def test_us_dividend_yield_pld_baseline():
+    """PLD 基准：4.04/140.16 ≈ 0.0288（round 4）。"""
+    result = us_dividend_yield(4.04, 140.16)
+
+    assert round(result, 4) == pytest.approx(0.0288)
+
+
+def test_us_dividend_yield_zero_or_none_nan():
+    """价格非正 / 任一输入 None/NaN → NaN。"""
+    assert math.isnan(us_dividend_yield(4.04, 0.0))
+    assert math.isnan(us_dividend_yield(4.04, -1.0))
+    assert math.isnan(us_dividend_yield(None, 140.16))
+    assert math.isnan(us_dividend_yield(4.04, None))
+    assert math.isnan(us_dividend_yield(float("nan"), 140.16))
+    assert math.isnan(us_dividend_yield(4.04, float("nan")))

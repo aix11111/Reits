@@ -1493,14 +1493,14 @@ def _sg_annual_by_code():
 
 
 def test_market_options_include_singapore(no_network):
-    """侧边栏「市场」含新加坡；默认仍为中国（零变化）。"""
+    """侧边栏「市场」含新加坡/美国；默认仍为中国（零变化）。"""
     import streamlit as st
 
     st.cache_data.clear()
     at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
     assert not at.exception
     box = next(b for b in at.sidebar.selectbox if b.label == "市场")
-    assert box.options == ["中国", "香港", "新加坡"]
+    assert box.options == ["中国", "香港", "新加坡", "美国"]
     assert box.value == "中国"
 
 
@@ -1613,3 +1613,167 @@ def test_sg_mode_degrades_when_json_missing(no_network, monkeypatch):
     assert not at.exception
     infos = [i.value for i in at.tabs[0].info]
     assert any("新加坡数据缺失" in v for v in infos)
+
+
+# ---------------------------------------------------------------------------
+# Task US：市场维度（中国/香港/新加坡/美国）+ 美国视图（20 只美股 REITs）
+# ---------------------------------------------------------------------------
+
+
+def _select_us(at):
+    """把侧边栏「市场」下拉切到「美国」并重跑。"""
+    box = next(b for b in at.sidebar.selectbox if b.label == "市场")
+    box.select("美国").run()
+
+
+def test_market_options_include_us(no_network):
+    """侧边栏「市场」含美国；默认仍为中国（零变化）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+    box = next(b for b in at.sidebar.selectbox if b.label == "市场")
+    assert box.options == ["中国", "香港", "新加坡", "美国"]
+    assert box.value == "中国"
+
+
+def test_us_market_fund_selector_lists_us_funds(no_network):
+    """市场选美国 → 基金选择器 options = US 清单（含 PLD Prologis）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_us(at)
+    assert not at.exception
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    options = [o.split(" ")[0] for o in fund_box.options]
+    assert "PLD" in options
+    assert "PLD Prologis" in fund_box.options
+
+
+def test_us_operations_tab_renders_us_kpis(no_network):
+    """市场选美国 → 经营数据 Tab 渲染 US 指标 KPI 卡（FY/Revenue/NOI/FFO/
+    每股股息/出租率，USD 币种标注）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_us(at)
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    cards = [m.value for m in ops_tab.markdown if "reit-kpi-card" in m.value]
+    assert len(cards) == 1
+    assert "FY" in cards[0]
+    assert "Revenue" in cards[0]
+    assert "NOI" in cards[0]
+    assert "FFO" in cards[0]
+    assert "每股股息" in cards[0]
+    assert "出租率" in cards[0]
+    assert "USD" in cards[0]
+
+
+def test_us_operations_tab_lists_annual_summary(no_network):
+    """经营数据 Tab：选中 PLD → 财务摘要表渲染 Prologis 记录（每股股息 USD 列）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_us(at)
+    assert not at.exception
+
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    fund_box.select("PLD").run()
+    assert not at.exception
+
+    ops_tab = at.tabs[0]
+    subheaders = [s.value for s in ops_tab.subheader]
+    assert any("Prologis" in s for s in subheaders)
+    frames = [df.value for df in ops_tab.dataframe]
+    summary = next(f for f in frames if "每股股息(USD)" in f.columns)
+    assert len(summary) == 1
+    assert summary["财务年"].iloc[0] == "2025"
+
+
+def test_us_valuation_tab_renders_yield_ranking(no_network):
+    """市场选美国 → 估值 Tab 渲染「股息率」排名表。
+
+    排名表含全量基金；PLD 股息率 = 4.04/140.16 ≈ 2.9%（按实跑数据）；
+    P/FFO 列 ffo 有值的 3 只显示、其余「—」；横向条形图渲染。
+    """
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_us(at)
+    assert not at.exception
+
+    val_tab = at.tabs[3]
+    frames = [df.value for df in val_tab.dataframe]
+    rank = next(f for f in frames if "股息率" in f.columns)
+    assert len(rank) == 20
+    assert "财年" in rank.columns
+    assert "P/FFO" in rank.columns
+
+    pld = rank[rank["基金代码"] == "PLD"]
+    assert pld["股息率"].iloc[0] == "2.9%"
+
+    with_ffo = rank[rank["P/FFO"] != "—"]
+    assert set(with_ffo["基金代码"]) == {"ESS", "EXR", "WELL"}
+
+    assert len(val_tab.get("plotly_chart")) >= 1
+
+
+def test_us_market_tab_shows_price_snapshot(no_network):
+    """市场选美国 → 行情 Tab 显示美股价格快照（选中 PLD 最新价 140.16）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_us(at)
+    assert not at.exception
+
+    fund_box = next(b for b in at.sidebar.selectbox if b.label == "选择REIT")
+    fund_box.select("PLD").run()
+    assert not at.exception
+
+    mkt_tab = at.tabs[1]
+    marks = [m.value for m in mkt_tab.markdown]
+    assert any("PLD" in m and "140.16" in m for m in marks)
+
+
+def test_us_rules_tab_shows_placeholder(no_network):
+    """市场选美国 → 分析规则 Tab 显示「美国模块分析规则建设中」（不崩）。"""
+    import streamlit as st
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    _select_us(at)
+    assert not at.exception
+
+    rules_tab = at.tabs[2]
+    infos = [i.value for i in rules_tab.info]
+    assert any("美国模块分析规则建设中" in v for v in infos)
+
+
+def test_us_mode_degrades_when_json_missing(no_network, monkeypatch):
+    """us_funds/us_annual/us_market_snapshot 缺失 → 各 Tab st.info「美国数据缺失」不崩。"""
+    import streamlit as st
+
+    import src.data_loader as dl
+
+    monkeypatch.setattr(dl, "load_us_funds", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_us_annual", lambda path=None: {}, raising=False)
+    monkeypatch.setattr(dl, "load_us_snapshot", lambda path=None: {}, raising=False)
+
+    st.cache_data.clear()
+    at = AppTest.from_file(str(APP_PATH), default_timeout=30).run()
+    assert not at.exception
+
+    _select_us(at)
+    assert not at.exception
+    infos = [i.value for i in at.tabs[0].info]
+    assert any("美国数据缺失" in v for v in infos)

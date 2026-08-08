@@ -364,3 +364,40 @@ def load_sg_snapshot(path):
     data = _load_json_dict(path)
     latest = data.get("latest") if isinstance(data, dict) else None
     return latest if isinstance(latest, dict) else {}
+
+
+def load_us_funds(path):
+    """读取美国基金清单 JSON（{"funds": [...]}），缺失/损坏返回空 dict。
+
+    返回 {ticker: 基金简称} 映射（ticker 统一转为字符串）。
+    """
+    data = _load_json_dict(path)
+    funds = data.get("funds") if isinstance(data, dict) else None
+    if not funds:
+        return {}
+    return {str(f.get("ticker")): f.get("name", "") for f in funds}
+
+
+def load_us_annual(path):
+    """读取美国年报数据 JSON（{"annual": [...]}），缺失/损坏返回空 dict。
+
+    返回 {ticker: [记录...]}（含 period 字段；当前数据为 annual 年报口径）。"""
+    data = _load_json_dict(path)
+    annual = data.get("annual") if isinstance(data, dict) else None
+    if not annual:
+        return {}
+    grouped = {}
+    for rec in annual:
+        ticker = str(rec.get("ticker"))
+        grouped.setdefault(ticker, []).append(rec)
+    return grouped
+
+
+def load_us_snapshot(path):
+    """读取美国行情快照 JSON（{"latest": {ticker: price}}），缺失/损坏返回空 dict。
+
+    返回 latest 映射（ticker → price）。
+    """
+    data = _load_json_dict(path)
+    latest = data.get("latest") if isinstance(data, dict) else None
+    return latest if isinstance(latest, dict) else {}

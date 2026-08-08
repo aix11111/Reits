@@ -32,6 +32,9 @@ from src.data_loader import (
     load_sg_annual,
     load_sg_funds,
     load_sg_snapshot,
+    load_us_annual,
+    load_us_funds,
+    load_us_snapshot,
 )
 from src.market_data import get_hist, get_realtime_quotes
 from src.metrics import latest_metrics
@@ -52,6 +55,7 @@ from src.valuation import (
     npi_margin,
     risk_flags,
     ttm_distributable,
+    us_dividend_yield,
 )
 
 # 数据文件路径：位于本文件同级的 data 目录下
@@ -152,8 +156,13 @@ _SG_FUNDS_PATH = Path(__file__).parent / "data" / "sg_funds.json"
 _SG_ANNUAL_PATH = Path(__file__).parent / "data" / "sg_annual.json"
 _SG_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "sg_market_snapshot.json"
 
+# 美国数据文件路径（US 模块：20 只美股 REITs）
+_US_FUNDS_PATH = Path(__file__).parent / "data" / "us_funds.json"
+_US_ANNUAL_PATH = Path(__file__).parent / "data" / "us_annual.json"
+_US_MARKET_SNAPSHOT_PATH = Path(__file__).parent / "data" / "us_market_snapshot.json"
+
 # 市场维度：侧边栏「市场」选择（中国为默认，渲染路径零变化）
-_MARKET_OPTIONS = ["中国", "香港", "新加坡"]
+_MARKET_OPTIONS = ["中国", "香港", "新加坡", "美国"]
 
 # 资产类型枚举（与 data/market_funds.json 的 asset_type 对齐）
 _ASSET_TYPES = [
@@ -237,6 +246,15 @@ _SG_NPI_MARGIN_COLUMNS = [
     ("name", "基金简称"),
     ("npi_margin_pct", "NPI利润率"),
     ("fiscal_year", "财年"),
+]
+
+# 估值对标页签（美国）：股息率排名展示列（含 P/FFO；缺股数披露时以 FFO 总额标注）
+_US_VALUATION_RANK_COLUMNS = [
+    ("code", "基金代码"),
+    ("name", "基金简称"),
+    ("yield_pct", "股息率"),
+    ("fiscal_year", "财年"),
+    ("p_ffo", "P/FFO"),
 ]
 
 # risk_flags 英文标记 → 中文风险提示
@@ -1772,6 +1790,183 @@ def render_sg_status_wall(funds_map):
     )
 
 
+def render_us_operations(code, name, annual_data):
+    """经营数据页签（美国）：US 指标 KPI 卡 + 财务摘要表，无月度区块。
+
+    数据来自 data/us_annual.json（annual 年报口径，币种 USD）。KPI 卡显示
+    最新报告（FY/Revenue/NOI/FFO/每股股息/出租率，复用 HK/SG 卡片样式），
+    财务摘要表列出该基金全部记录；无数据时降级 st.info「美国数据缺失」。
+    美股 REITs 无月度披露，不渲染月度图表区块。
+    """
+    st.subheader(f"基金：{code} {name}")
+    records = annual_data.get(code) or []
+    if not records:
+        st.info("美国数据缺失")
+        return
+
+    rec = _hk_latest_rec(records)
+    occupancy = _sg_occupancy_pct(rec.get("occupancy"))
+    cards = "".join(
+        [
+            _kpi_card("FY", str(rec.get("fiscal_year", "—")), "报告期"),
+            _kpi_card("Revenue", _fmt_wan(rec.get("revenue_wan")), "万USD"),
+            _kpi_card("NOI", _fmt_wan(rec.get("noi_wan")), "万USD"),
+            _kpi_card("FFO", _fmt_wan(rec.get("ffo_wan")), "万USD"),
+            _kpi_card("每股股息", _fmt_num(rec.get("dpu_usd")), "USD"),
+            _kpi_card(
+                "出租率",
+                f"{occupancy * 100:.1f}%" if occupancy is not None else "—",
+                "综合出租率",
+            ),
+        ]
+    )
+    st.markdown(
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;'
+        'margin:8px 0 16px;">' + cards + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    rows = []
+    for rec in records:
+        occ = _sg_occupancy_pct(rec.get("occupancy"))
+        rows.append(
+            {
+                "报告期": _PERIOD_LABELS.get(rec.get("period"), rec.get("period")),
+                "财务年": rec.get("fiscal_year"),
+                "Revenue(万USD)": rec.get("revenue_wan"),
+                "NOI(万USD)": rec.get("noi_wan"),
+                "FFO(万USD)": rec.get("ffo_wan"),
+                "每股股息(USD)": rec.get("dpu_usd"),
+                "出租率(%)": (
+                    f"{occ * 100:.1f}" if occ is not None else None
+                ),
+            }
+        )
+    st.subheader("财务摘要")
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+
+
+def render_us_market(code, snapshot_latest):
+    """行情走势页签（美国）：美股价格快照文本；快照缺失降级 st.info。"""
+    st.subheader("行情走势")
+    price = snapshot_latest.get(code)
+    if price is None:
+        st.info("美国数据缺失")
+        return
+    st.markdown(f"**{code} 最新收盘价：{price:.2f} USD**")
+    st.caption("行情快照来自 data/us_market_snapshot.json（Yahoo 行情快照）。")
+
+
+def render_us_rules():
+    """分析规则页签（美国）：模块建设中占位提示，不崩。"""
+    st.subheader("分析规则引擎")
+    st.info("美国模块分析规则建设中")
+
+
+def render_us_valuation(funds_map, annual_data, snapshot_latest):
+    """估值对标页签（美国）：股息率排名（横向条形图 + 表格，含 P/FFO 列）。
+
+    股息率 = us_dividend_yield(每股股息, 市价)，DPU 或市价缺失 → 该行「—」；
+    少于 3 只有效股息率时降级 st.info「美国股息数据不足」。P/FFO 因缺美股
+    股数披露，暂以 FFO(万美元) 标注（美股标准指标尽力），无 FFO →「—」。
+    行情快照缺失降级 st.info「美国数据缺失」。
+    """
+    st.subheader("估值对标")
+    st.caption(
+        "股息率=每股股息/市价；P/FFO 因缺美股股数披露，暂以 FFO(万美元) 标注（尽力）。"
+    )
+    if not snapshot_latest:
+        st.info("美国数据缺失")
+        return
+
+    # ---- 1. 股息率排名 ----
+    st.markdown("### 1. 股息率排名")
+    rank_rows = []
+    for code, name in funds_map.items():
+        rec = _hk_annual_rec(annual_data.get(code))
+        price = snapshot_latest.get(code)
+        if rec is None or price is None:
+            continue
+        rank_rows.append(
+            {
+                "code": code,
+                "name": name,
+                "yield": us_dividend_yield(rec.get("dpu_usd"), price),
+                "fiscal_year": rec.get("fiscal_year"),
+                "p_ffo": _fmt_wan(rec.get("ffo_wan")),
+            }
+        )
+    rank = pd.DataFrame(rank_rows)
+
+    valid = rank[rank["yield"].notna()]
+    if len(valid) < 3:
+        st.info("美国股息数据不足")
+        return
+
+    chart = valid.sort_values("yield", ascending=True)
+    median_yield = chart["yield"].median()
+    fig = go.Figure(
+        go.Bar(
+            x=chart["yield"],
+            y=chart["name"],
+            orientation="h",
+            marker_color=_ACCENT,
+        )
+    )
+    fig.add_vline(
+        x=median_yield,
+        line_dash="dash",
+        line_color=_TEXT_TERTIARY,
+        annotation_text="中位数",
+        annotation_font_color=_TEXT_TERTIARY,
+    )
+    fig.update_layout(
+        title="股息率排名",
+        xaxis_title="股息率",
+        xaxis_tickformat=".0%",
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Microsoft YaHei, SimHei, sans-serif", color=_TEXT_SECONDARY),
+        xaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+        yaxis=dict(gridcolor="rgba(255,255,255,0.06)"),
+    )
+    st.plotly_chart(fig, width="stretch")
+
+    display = rank.sort_values("yield", ascending=False, na_position="last").copy()
+    display["yield_pct"] = display["yield"].map(_fmt_pct)
+    display = display.rename(columns=dict(_US_VALUATION_RANK_COLUMNS))
+    st.dataframe(
+        display[[label for _, label in _US_VALUATION_RANK_COLUMNS]],
+        hide_index=True,
+        width="stretch",
+    )
+
+
+def render_us_status_wall(funds_map):
+    """状态墙（美国）：US 基金色点带，暂无完成度记录全部为灰点。"""
+    if not funds_map:
+        return
+    dots = []
+    for code, name in funds_map.items():
+        dots.append(
+            f'<div title="{code} {name}：暂无完成度数据" '
+            f'style="display:flex;align-items:center;gap:6px;cursor:default;">'
+            f'<span class="reit-dot" style="width:12px;height:12px;border-radius:50%;'
+            f'background-color:{_NO_RECORD_GRAY};display:inline-block;flex:none;"></span>'
+            f'<span style="font-family:\'JetBrains Mono\',ui-monospace,monospace;'
+            f'font-size:10px;color:#8A8F98;">{code[-4:]}</span>'
+            "</div>"
+        )
+    st.markdown(
+        '<div class="reit-status-wall" style="display:flex;flex-wrap:wrap;'
+        'align-items:center;gap:12px 18px;padding:16px;'
+        'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'
+        'border-radius:8px;margin:8px 0 16px;">' + "".join(dots) + "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 def main():
     """看板主流程：加载数据、渲染侧边栏选择器与四个页签。"""
     st.set_page_config(page_title="REITsMonitor", page_icon="📊", layout="wide")
@@ -1780,7 +1975,8 @@ def main():
     st.caption(
         "中国市场：公募REITs（经营数据来自本地模板，行情来自 akshare）| "
         "香港市场：11 只 REITs（年报+中期报告解析 + 新浪日线快照）| "
-        "新加坡市场：官网年报解析 + Yahoo 行情快照"
+        "新加坡市场：官网年报解析 + Yahoo 行情快照 | "
+        "美国市场：SEC EDGAR 10-K 解析 + Yahoo 行情快照"
     )
 
     try:
@@ -1861,6 +2057,21 @@ def main():
                 format_func=lambda code: f"{code} {sg_funds.get(code, '')}",
             )
             st.caption("行情快照来自 data/sg_market_snapshot.json（Yahoo 日线）。")
+        elif market == "美国":
+            # 美国模式：基金选择器 = US 清单（data/us_funds.json）；资产类型联动不适用
+            us_funds = load_us_funds(_US_FUNDS_PATH)
+            st.header("选择REIT")
+            if not us_funds:
+                st.info("美国数据缺失")
+                us_codes = []
+            else:
+                us_codes = sorted(us_funds.keys())
+            selected_code = st.selectbox(
+                "选择REIT",
+                options=us_codes,
+                format_func=lambda code: f"{code} {us_funds.get(code, '')}",
+            )
+            st.caption("行情快照来自 data/us_market_snapshot.json（Yahoo 行情快照）。")
         else:
             st.header("市场筛选")
             asset_type = st.selectbox(
@@ -1901,6 +2112,10 @@ def main():
         sg_annual = load_sg_annual(_SG_ANNUAL_PATH)
         sg_snapshot = load_sg_snapshot(_SG_MARKET_SNAPSHOT_PATH)
         render_sg_status_wall(sg_funds)
+    elif market == "美国":
+        us_annual = load_us_annual(_US_ANNUAL_PATH)
+        us_snapshot = load_us_snapshot(_US_MARKET_SNAPSHOT_PATH)
+        render_us_status_wall(us_funds)
     else:
         render_status_wall(
             static_df,
@@ -1953,6 +2168,26 @@ def main():
                 sg_funds,
                 sg_annual,
                 sg_snapshot,
+            )
+    elif market == "美国":
+        with tab_ops:
+            render_us_operations(
+                selected_code,
+                us_funds.get(selected_code, ""),
+                us_annual,
+            )
+
+        with tab_mkt:
+            render_us_market(selected_code, us_snapshot)
+
+        with tab_rules:
+            render_us_rules()
+
+        with tab_val:
+            render_us_valuation(
+                us_funds,
+                us_annual,
+                us_snapshot,
             )
     else:
         with tab_ops:

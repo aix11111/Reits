@@ -268,6 +268,19 @@ def hk_nav_premium(price_hkd: float, nav_per_unit: float) -> float:
     return price_hkd / nav_per_unit - 1
 
 
+def us_dividend_yield(dpu_usd: float, price_usd: float) -> float:
+    """计算美国 REITs 年化股息率 = dpu(美元) / 市价(美元)。
+
+    美股 DPU 已为美元口径（非分/仙），直接相除；输入非法（price<=0，
+    或任一输入为 None/NaN）→ NaN。纯函数，不做 I/O。
+    """
+    if not _valid_positive(price_usd):
+        return float("nan")
+    if not isinstance(dpu_usd, (int, float)) or math.isnan(dpu_usd):
+        return float("nan")
+    return dpu_usd / price_usd
+
+
 def npi_margin(npi_wan: float, revenue_wan: float) -> float:
     """计算物业收入净利率（NPI margin）= npi / revenue。
 

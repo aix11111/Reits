@@ -265,6 +265,18 @@
    "currency": "SGD"
   },
   {
+   "code": "DHLU",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": 2573.0,
+   "npi_wan": 1951.2,
+   "distributable_wan": 247400.0,
+   "dpu_cents": 1.82,
+   "nav_per_unit": 0.63,
+   "occupancy": null,
+   "currency": "SGD"
+  },
+  {
    "code": "HMN",
    "fiscal_year": "2025",
    "period": "annual",
@@ -526,6 +538,18 @@
    "dpu_cents": 2.23,
    "nav_per_unit": 0.56,
    "occupancy": 0.954,
+   "currency": "SGD"
+  },
+  {
+   "code": "TS0U",
+   "fiscal_year": "2026H1",
+   "period": "interim",
+   "revenue_wan": null,
+   "npi_wan": 11034.5,
+   "distributable_wan": null,
+   "dpu_cents": 1.26,
+   "nav_per_unit": 0.52,
+   "occupancy": null,
    "currency": "SGD"
   },
   {

@@ -1716,7 +1716,7 @@ def test_us_valuation_tab_renders_yield_ranking(no_network):
     rank = next(f for f in frames if "股息率" in f.columns)
     assert len(rank) == 20
     assert "财年" in rank.columns
-    assert "P/FFO" in rank.columns
+    assert "FFO(万美元)" in rank.columns
 
     pld = rank[rank["基金代码"] == "PLD"]
     assert pld["股息率"].iloc[0] == "2.9%"

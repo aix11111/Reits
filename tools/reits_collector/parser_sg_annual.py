@@ -575,10 +575,11 @@ def _parse_sg_annual_text(text):
         if result[key] is not None and result[key] > 3_000_000:
             result[key] = None
     # NAV/Unit 合理范围：S-REIT（SGD/USD/GBP 计价）NAV 均在 0.1-8（CICT 2.14 为
-    # 最大梯队；误配常见 11-31 来自每股收益/总净资产）；DPU 上限 500 美分
+    # 最大梯队；误配常见 11-31 来自每股收益/总净资产）；DPU 上限 30 美分/分
+    #（S-REIT 最高约 22：9A4U 21.9；44/34 为每股收益/10 倍误配）
     if result["nav_per_unit"] is not None and not (0.1 <= result["nav_per_unit"] <= 8):
         result["nav_per_unit"] = None
-    if result["dpu_cents"] is not None and result["dpu_cents"] > 500:
+    if result["dpu_cents"] is not None and result["dpu_cents"] > 30:
         result["dpu_cents"] = None
     return result
 

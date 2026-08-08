@@ -103,7 +103,7 @@
    "revenue_wan": 15016.5,
    "npi_wan": 8065.6,
    "distributable_wan": null,
-   "dpu_cents": 44.1,
+   "dpu_cents": null,
    "nav_per_unit": 0.68,
    "occupancy": 0.804,
    "currency": "USD"
@@ -247,7 +247,7 @@
    "revenue_wan": null,
    "npi_wan": null,
    "distributable_wan": null,
-   "dpu_cents": 34.2,
+   "dpu_cents": null,
    "nav_per_unit": null,
    "occupancy": null,
    "currency": "SGD"

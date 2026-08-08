@@ -1,0 +1,144 @@
+{
+ "funds": [
+  {
+   "ticker": "AMT",
+   "name": "American Tower",
+   "market": "US",
+   "cik": "1053507",
+   "currency": "USD"
+  },
+  {
+   "ticker": "ARE",
+   "name": "Alexandria Real Estate",
+   "market": "US",
+   "cik": "1035443",
+   "currency": "USD"
+  },
+  {
+   "ticker": "AVB",
+   "name": "AvalonBay",
+   "market": "US",
+   "cik": "915912",
+   "currency": "USD"
+  },
+  {
+   "ticker": "CCI",
+   "name": "Crown Castle",
+   "market": "US",
+   "cik": "1051470",
+   "currency": "USD"
+  },
+  {
+   "ticker": "DLR",
+   "name": "Digital Realty",
+   "market": "US",
+   "cik": "1297996",
+   "currency": "USD"
+  },
+  {
+   "ticker": "EQIX",
+   "name": "Equinix",
+   "market": "US",
+   "cik": "1101239",
+   "currency": "USD"
+  },
+  {
+   "ticker": "EQR",
+   "name": "Equity Residential",
+   "market": "US",
+   "cik": "906107",
+   "currency": "USD"
+  },
+  {
+   "ticker": "ESS",
+   "name": "Essex Property Trust",
+   "market": "US",
+   "cik": "920522",
+   "currency": "USD"
+  },
+  {
+   "ticker": "EXR",
+   "name": "Extra Space Storage",
+   "market": "US",
+   "cik": "1289490",
+   "currency": "USD"
+  },
+  {
+   "ticker": "GLPI",
+   "name": "Gaming and Leisure",
+   "market": "US",
+   "cik": "1575965",
+   "currency": "USD"
+  },
+  {
+   "ticker": "MAA",
+   "name": "Mid-America Apartment",
+   "market": "US",
+   "cik": "912595",
+   "currency": "USD"
+  },
+  {
+   "ticker": "O",
+   "name": "Realty Income",
+   "market": "US",
+   "cik": "726728",
+   "currency": "USD"
+  },
+  {
+   "ticker": "PLD",
+   "name": "Prologis",
+   "market": "US",
+   "cik": "1045609",
+   "currency": "USD"
+  },
+  {
+   "ticker": "PSA",
+   "name": "Public Storage",
+   "market": "US",
+   "cik": "1393311",
+   "currency": "USD"
+  },
+  {
+   "ticker": "REG",
+   "name": "Regency Centers",
+   "market": "US",
+   "cik": "910606",
+   "currency": "USD"
+  },
+  {
+   "ticker": "SPG",
+   "name": "Simon Property Group",
+   "market": "US",
+   "cik": "1063761",
+   "currency": "USD"
+  },
+  {
+   "ticker": "SUI",
+   "name": "Sun Communities",
+   "market": "US",
+   "cik": "912593",
+   "currency": "USD"
+  },
+  {
+   "ticker": "UDR",
+   "name": "UDR Inc",
+   "market": "US",
+   "cik": "74208",
+   "currency": "USD"
+  },
+  {
+   "ticker": "VICI",
+   "name": "VICI Properties",
+   "market": "US",
+   "cik": "1705696",
+   "currency": "USD"
+  },
+  {
+   "ticker": "WELL",
+   "name": "Welltower",
+   "market": "US",
+   "cik": "766704",
+   "currency": "USD"
+  }
+ ]
+}

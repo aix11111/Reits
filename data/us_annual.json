@@ -1,0 +1,224 @@
+{
+ "annual": [
+  {
+   "ticker": "AMT",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 1064460.0,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "ARE",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 302655.6,
+   "noi_wan": 210395.1,
+   "ffo_wan": null,
+   "dpu_usd": 2.88,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "AVB",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 304072.5,
+   "noi_wan": 202094.9,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "CCI",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 426400.0,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "DLR",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 611269.2,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "EQIX",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 921700.0,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": 18.76,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "EQR",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 309395.9,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "ESS",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 188734.5,
+   "noi_wan": 131897.8,
+   "ffo_wan": 106513.6,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "EXR",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 337754.2,
+   "noi_wan": 226104.5,
+   "ffo_wan": 175284.3,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "GLPI",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 159475.2,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "MAA",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 220912.6,
+   "noi_wan": 130426.4,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "O",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 574937.7,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": 3.24,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "PLD",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 879012.7,
+   "noi_wan": 650944.4,
+   "ffo_wan": null,
+   "dpu_usd": 4.04,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "PSA",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 482411.3,
+   "noi_wan": 331237.5,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "REG",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 155352.4,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "SPG",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 636450.5,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "SUI",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 230610.0,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "UDR",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 171231.7,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "VICI",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 400611.6,
+   "noi_wan": null,
+   "ffo_wan": null,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  },
+  {
+   "ticker": "WELL",
+   "fiscal_year": "2025",
+   "period": "annual",
+   "revenue_wan": 1083803.4,
+   "noi_wan": 434995.3,
+   "ffo_wan": 181795.2,
+   "dpu_usd": null,
+   "occupancy": null,
+   "currency": "USD"
+  }
+ ]
+}
